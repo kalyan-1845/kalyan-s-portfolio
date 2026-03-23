@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Futuristic Portfolio - Bhoompally Kalyan Reddy</title>
-    
+    <title> Bhoompally Kalyan Reddy</title>
+
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Roboto:wght@300;400;500&display=swap"
+        rel="stylesheet">
+
     <style>
         /* CSS Variables for Theming */
         :root {
@@ -64,7 +67,10 @@
             color: #fff;
         }
 
-        h1, h2, h3, h4 {
+        h1,
+        h2,
+        h3,
+        h4 {
             font-family: 'Orbitron', sans-serif;
             font-weight: 700;
             margin-bottom: 1rem;
@@ -118,6 +124,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -199,8 +206,13 @@
         }
 
         @keyframes glow {
-            from { text-shadow: 0 0 10px var(--primary-color); }
-            to { text-shadow: 0 0 20px var(--primary-color), 0 0 30px var(--primary-color); }
+            from {
+                text-shadow: 0 0 10px var(--primary-color);
+            }
+
+            to {
+                text-shadow: 0 0 20px var(--primary-color), 0 0 30px var(--primary-color);
+            }
         }
 
         .nav-links {
@@ -308,6 +320,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -324,9 +337,17 @@
         }
 
         @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
         }
 
         .hero-subtitle {
@@ -351,8 +372,15 @@
         }
 
         @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
         }
 
         .social-icons {
@@ -390,9 +418,17 @@
         }
 
         @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
         }
 
         .social-icon:hover {
@@ -427,9 +463,17 @@
         }
 
         @keyframes pulse-button {
-            0% { box-shadow: 0 0 0 0 rgba(0, 242, 254, 0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(0, 242, 254, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(0, 242, 254, 0); }
+            0% {
+                box-shadow: 0 0 0 0 rgba(0, 242, 254, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgba(0, 242, 254, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 242, 254, 0);
+            }
         }
 
         .cta-button::before {
@@ -551,18 +595,21 @@
             left: 0;
             bottom: 0;
             right: 0;
-            background: linear-gradient(
-                90deg,
-                rgba(255, 255, 255, 0) 0%,
-                rgba(255, 255, 255, 0.3) 50%,
-                rgba(255, 255, 255, 0) 100%
-            );
+            background: linear-gradient(90deg,
+                    rgba(255, 255, 255, 0) 0%,
+                    rgba(255, 255, 255, 0.3) 50%,
+                    rgba(255, 255, 255, 0) 100%);
             animation: shimmer 2s infinite;
         }
 
         @keyframes shimmer {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
         }
 
         /* Education Section */
@@ -587,9 +634,17 @@
             opacity: 0;
         }
 
-        .education-item:nth-child(1) { animation-delay: 0.1s; }
-        .education-item:nth-child(2) { animation-delay: 0.2s; }
-        .education-item:nth-child(3) { animation-delay: 0.3s; }
+        .education-item:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .education-item:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .education-item:nth-child(3) {
+            animation-delay: 0.3s;
+        }
 
         .education-item:hover {
             transform: translateY(-10px);
@@ -673,9 +728,17 @@
             overflow: hidden;
         }
 
-        .experience-item:nth-child(1) { animation-delay: 0.1s; }
-        .experience-item:nth-child(2) { animation-delay: 0.2s; }
-        .experience-item:nth-child(3) { animation-delay: 0.3s; }
+        .experience-item:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .experience-item:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .experience-item:nth-child(3) {
+            animation-delay: 0.3s;
+        }
 
         .experience-item:hover {
             transform: translateY(-10px);
@@ -757,10 +820,21 @@
             opacity: 0;
         }
 
-        .project-card:nth-child(1) { animation-delay: 0.1s; }
-        .project-card:nth-child(2) { animation-delay: 0.2s; }
-        .project-card:nth-child(3) { animation-delay: 0.3s; }
-        .project-card:nth-child(4) { animation-delay: 0.4s; }
+        .project-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .project-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .project-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .project-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
 
         .project-card:hover {
             transform: translateY(-15px) scale(1.03);
@@ -884,12 +958,29 @@
             opacity: 0;
         }
 
-        .certificate-card:nth-child(1) { animation-delay: 0.1s; }
-        .certificate-card:nth-child(2) { animation-delay: 0.2s; }
-        .certificate-card:nth-child(3) { animation-delay: 0.3s; }
-        .certificate-card:nth-child(4) { animation-delay: 0.4s; }
-        .certificate-card:nth-child(5) { animation-delay: 0.5s; }
-        .certificate-card:nth-child(6) { animation-delay: 0.6s; }
+        .certificate-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .certificate-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .certificate-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .certificate-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .certificate-card:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .certificate-card:nth-child(6) {
+            animation-delay: 0.6s;
+        }
 
         .certificate-card:hover {
             transform: translateY(-15px) scale(1.03);
@@ -1179,7 +1270,7 @@
                 grid-template-columns: 1fr;
                 text-align: center;
             }
-            
+
             .hero-title {
                 font-size: 3rem;
             }
@@ -1276,6 +1367,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Custom Cursor -->
     <div class="cursor"></div>
@@ -1317,10 +1409,14 @@
                 <p class="hero-subtitle">I'm a <span class="typing-text" id="typing">Computer Science Student</span></p>
                 <div class="social-icons">
                     <!-- Replace these with your actual social media links -->
-                    <a href="https://github.com/kalyan-1845" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/bhoompally-kalyan-reddy/" target="_blank" class="social-icon"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://twitter.com/yourusername" target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
-                    <a href="https://instagram.com/swag_suprem_4" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="https://github.com/kalyan-1845" target="_blank" class="social-icon"><i
+                            class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/bhoompally-kalyan-reddy/" target="_blank"
+                        class="social-icon"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://twitter.com/yourusername" target="_blank" class="social-icon"><i
+                            class="fab fa-twitter"></i></a>
+                    <a href="https://instagram.com/swag_suprem_4" target="_blank" class="social-icon"><i
+                            class="fab fa-instagram"></i></a>
                 </div>
                 <div class="hero-buttons">
                     <a href="#about" class="cta-button">Discover More</a>
@@ -1336,13 +1432,20 @@
             <h2>About Me</h2>
             <div class="about-content">
                 <div class="about-image">
-                       <img src="profile.jpg" alt="Profile Picture">
+                    <img src="profile.jpg" alt="Profile Picture">
                 </div>
                 <div class="about-text">
                     <h2>Hello, I'm Kalyan</h2>
-                    <p>I am a second-year Computer Science Engineering student at ACE Engineering College with a strong interest in AI, software development, and mobile app prototyping. I have hands-on experience developing projects like Aurora AI Pro, a multilingual voice/text translator built using Python, SpeechRecognition, and gTTS. My technical skills include Python, Java, and C, and I enjoy experimenting with AI/ML tools to solve real-world challenges.</p>
-                    <p>I actively participate in technical workshops, hackathons, and college-level coding events to strengthen my knowledge, gain practical exposure, and collaborate with peers. I am passionate about learning new technologies, improving my problem-solving abilities, and building innovative software solutions that create meaningful impact.</p>
-                    
+                    <p>I am a second-year Computer Science Engineering student at ACE Engineering College with a strong
+                        interest in AI, software development, and mobile app prototyping. I have hands-on experience
+                        developing projects like Aurora AI Pro, a multilingual voice/text translator built using Python,
+                        SpeechRecognition, and gTTS. My technical skills include Python, Java, and C, and I enjoy
+                        experimenting with AI/ML tools to solve real-world challenges.</p>
+                    <p>I actively participate in technical workshops, hackathons, and college-level coding events to
+                        strengthen my knowledge, gain practical exposure, and collaborate with peers. I am passionate
+                        about learning new technologies, improving my problem-solving abilities, and building innovative
+                        software solutions that create meaningful impact.</p>
+
                     <div class="skills-container">
                         <h3>My Skills</h3>
                         <div class="skill">
@@ -1373,29 +1476,29 @@
                             </div>
                         </div>
 
-                          </div>
-                        <div class="skill">
-                            <div class="skill-name">
-                                <span>Java Script</span>
-                                <span>80%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="80"></div>
-                            </div>
+                    </div>
+                    <div class="skill">
+                        <div class="skill-name">
+                            <span>Java Script</span>
+                            <span>80%</span>
                         </div>
-                        
-                        <div class="skill">
-                            <div class="skill-name">
-                                <span>C</span>
-                                <span>87%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="87"></div>
-                            </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="80"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill">
+                        <div class="skill-name">
+                            <span>C</span>
+                            <span>87%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="87"></div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </section>
 
@@ -1501,7 +1604,8 @@
                         <div class="experience-date">may 6 2025</div>
                     </div>
                     <p class="experience-description">
-                        Participated in a 3-day intensive workshop on python programming. Gained hands-on experience with Python libraries , and worked on a team project to develop one project.
+                        Participated in a 3-day intensive workshop on python programming. Gained hands-on experience
+                        with Python libraries , and worked on a team project to develop one project.
                     </p>
                     <div class="experience-skills">
                         <span class="experience-skill">Workshop on Python Basics Programming </span>
@@ -1521,7 +1625,8 @@
                         <div class="experience-date">Feb 9 2026</div>
                     </div>
                     <p class="experience-description">
-                        Completed a 2-days bootcamp focused on could server. Learned basics to create an account and deploy a simple web application. , which received recognition from faculty members.
+                        Completed a 2-days bootcamp focused on could server. Learned basics to create an account and
+                        deploy a simple web application. , which received recognition from faculty members.
                     </p>
                     <div class="experience-skills">
                         <span class="experience-skill"></span>
@@ -1541,7 +1646,9 @@
                         <div class="experience-date">feb 7 2026</div>
                     </div>
                     <p class="experience-description">
-                        Attended a 2-day workshop on generative AI tools and techniques. Explored various AI models, and participated in hands-on sessions to create AI-generated content, which enhanced my understanding of the potential applications of generative AI.
+                        Attended a 2-day workshop on generative AI tools and techniques. Explored various AI models, and
+                        participated in hands-on sessions to create AI-generated content, which enhanced my
+                        understanding of the potential applications of generative AI.
                     </p>
                     <div class="experience-skills">
                         <span class="experience-skill">online workshop</span>
@@ -1571,21 +1678,24 @@
                             <span class="tech-tag">gTTS</span>
                         </div>
                     </div>
-                   <a href="https://aurora-ai-pro.netlify.app/" class="project-link"target="_blank"> <i class="fas fa-external-link-alt"></i></a>
+                    <a href="https://aurora-ai-pro.netlify.app/" class="project-link" target="_blank"> <i
+                            class="fas fa-external-link-alt"></i></a>
                 </div>
                 <!-- Project 2 -->
                 <div class="project-card glass-card" data-project-id="2">
                     <img src="project2.png" alt="Project 2" class="project-image">
                     <div class="project-overlay">
                         <h3 class="project-title">Deccan Fresh hyd an Ecommerce Website</h3>
-                        <p class="project-description">A responsive e-commerce website for Deccan Fresh, featuring product listings, cart functionality, and user authentication.</p>
+                        <p class="project-description">A responsive e-commerce website for Deccan Fresh, featuring
+                            product listings, cart functionality, and user authentication.</p>
                         <div class="project-tech">
                             <span class="tech-tag">HTML</span>
                             <span class="tech-tag">CSS</span>
                             <span class="tech-tag">JavaScript</span>
                         </div>
                     </div>
-                    <a href="https://hyddeccanfresh.netlify.app/" class="project-link" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                    <a href="https://hyddeccanfresh.netlify.app/" class="project-link" target="_blank"><i
+                            class="fas fa-external-link-alt"></i></a>
                 </div>
 
                 <!-- Project 3 -->
@@ -1593,14 +1703,16 @@
                     <img src="project3.png" alt="Project 3" class="project-image">
                     <div class="project-overlay">
                         <h3 class="project-title"> Scanify v2 QR Genrator</h3>
-                        <p class="project-description">A QR code generator with customizable options and real-time preview.</p>
+                        <p class="project-description">A QR code generator with customizable options and real-time
+                            preview.</p>
                         <div class="project-tech">
                             <span class="tech-tag">JavaScript</span>
                             <span class="tech-tag">API</span>
                             <span class="tech-tag">Python</span>
                         </div>
                     </div>
-                    <a href="https://scanify-v2.netlify.app/" class="project-link" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                    <a href="https://scanify-v2.netlify.app/" class="project-link" target="_blank"><i
+                            class="fas fa-external-link-alt"></i></a>
                 </div>
 
                 <!-- Project 4
@@ -1638,8 +1750,10 @@
                         </div>
                     </div>
                     <div class="certificate-links">
-                        <a href="#" class="certificate-link" data-certificate-id="1" data-action="view"><i class="fas fa-eye"></i></a>
-                        <a href="#" class="certificate-link" data-certificate-id="1" data-action="download"><i class="fas fa-download"></i></a>
+                        <a href="#" class="certificate-link" data-certificate-id="1" data-action="view"><i
+                                class="fas fa-eye"></i></a>
+                        <a href="#" class="certificate-link" data-certificate-id="1" data-action="download"><i
+                                class="fas fa-download"></i></a>
                     </div>
                 </div>
 
@@ -1655,8 +1769,10 @@
                         </div>
                     </div>
                     <div class="certificate-links">
-                        <a href="#" class="certificate-link" data-certificate-id="2" data-action="view"><i class="fas fa-eye"></i></a>
-                        <a href="#" class="certificate-link" data-certificate-id="2" data-action="download"><i class="fas fa-download"></i></a>
+                        <a href="#" class="certificate-link" data-certificate-id="2" data-action="view"><i
+                                class="fas fa-eye"></i></a>
+                        <a href="#" class="certificate-link" data-certificate-id="2" data-action="download"><i
+                                class="fas fa-download"></i></a>
                     </div>
                 </div>
 
@@ -1672,8 +1788,10 @@
                         </div>
                     </div>
                     <div class="certificate-links">
-                        <a href="#" class="certificate-link" data-certificate-id="3" data-action="view"><i class="fas fa-eye"></i></a>
-                        <a href="#" class="certificate-link" data-certificate-id="3" data-action="download"><i class="fas fa-download"></i></a>
+                        <a href="#" class="certificate-link" data-certificate-id="3" data-action="view"><i
+                                class="fas fa-eye"></i></a>
+                        <a href="#" class="certificate-link" data-certificate-id="3" data-action="download"><i
+                                class="fas fa-download"></i></a>
                     </div>
                 </div>
 
@@ -1786,7 +1904,8 @@
                     <ul class="footer-links">
                         <!-- Replace these with your actual social media links -->
                         <li><a href="https://github.com/kalyan-1845" target="_blank">GitHub</a></li>
-                        <li><a href="https://www.linkedin.com/in/bhoompally-kalyan-reddy/" target="_blank">LinkedIn</a></li>
+                        <li><a href="https://www.linkedin.com/in/bhoompally-kalyan-reddy/" target="_blank">LinkedIn</a>
+                        </li>
                         <li><a href="https://twitter.com/yourusername" target="_blank">Twitter</a></li>
                         <li><a href="https://instagram.com/swag_suprem_4" target="_blank">Instagram</a></li>
                         <li><a href="prsnlkalyan@gmail.com" target="_blank">Email</a></li>
@@ -1846,7 +1965,8 @@
                 <p id="certificate-modal-description"></p>
                 <div style="margin-top: 2rem; display: flex; gap: 1rem;">
                     <a href="#" class="cta-button" id="certificate-modal-view-link" target="_blank">View Certificate</a>
-                    <a href="#" class="cta-button" id="certificate-modal-download-link" download>Download Certificate</a>
+                    <a href="#" class="cta-button" id="certificate-modal-download-link" download>Download
+                        Certificate</a>
                 </div>
             </div>
         </div>
@@ -1868,7 +1988,7 @@
         document.addEventListener('mousemove', (e) => {
             cursor.style.left = e.clientX + 'px';
             cursor.style.top = e.clientY + 'px';
-            
+
             setTimeout(() => {
                 cursorFollower.style.left = e.clientX + 'px';
                 cursorFollower.style.top = e.clientY + 'px';
@@ -1917,7 +2037,7 @@
             document.body.classList.toggle("light-theme");
             const btn = document.querySelector(".toggle-btn");
             const icon = btn.querySelector("i");
-            
+
             if (document.body.classList.contains("light-theme")) {
                 icon.classList.remove("fa-moon");
                 icon.classList.add("fa-sun");
@@ -1927,15 +2047,15 @@
                 icon.classList.add("fa-moon");
                 btn.innerHTML = '<i class="fas fa-moon"></i>';
             }
-            
+
             // Save theme preference to localStorage
             localStorage.setItem('theme', document.body.classList.contains("light-theme") ? 'light' : 'dark');
         }
 
         // Keyboard Shortcuts
-        let textColors = ["#ff0000", "#00ff00", "#0000ff", "#ffcc00", "#333333","rgba(0, 0, 0, 1)","#ff0", "#ff00","#420006ff","#ff0f0f","rgba(2, 120, 255, 1)","rgba(255, 0, 255, 1)"];
+        let textColors = ["#ff0000", "#00ff00", "#0000ff", "#ffcc00", "#333333", "rgba(0, 0, 0, 1)", "#ff0", "#ff00", "#420006ff", "#ff0f0f", "rgba(2, 120, 255, 1)", "rgba(255, 0, 255, 1)"];
         let colorIndex = 0;
-        
+
         // Highlight colors for text selection
         let highlightColors = [
             "rgba(0, 242, 254, 0.3)",  // Default cyan
@@ -1949,14 +2069,14 @@
         ];
         let highlightIndex = 0;
 
-        document.addEventListener("keydown", function(event) {
+        document.addEventListener("keydown", function (event) {
             // Ctrl + G to change text color
             if (event.ctrlKey && event.key === "g") {
                 event.preventDefault();
                 colorIndex = (colorIndex + 1) % textColors.length;
                 const newColor = textColors[colorIndex];
                 document.documentElement.style.setProperty('--text-color', newColor);
-                
+
                 // Show notification
                 showNotification("Text color changed!");
             }
@@ -1965,7 +2085,7 @@
             if (event.ctrlKey && event.key === "b") {
                 event.preventDefault();
                 toggleTheme();
-                
+
                 // Show notification
                 const theme = document.body.classList.contains("light-theme") ? "Light" : "Dark";
                 showNotification(`Switched to ${theme} mode`);
@@ -1977,7 +2097,7 @@
                 highlightIndex = (highlightIndex + 1) % highlightColors.length;
                 const newHighlightColor = highlightColors[highlightIndex];
                 document.documentElement.style.setProperty('--selection-color', newHighlightColor);
-                
+
                 // Show notification
                 const colorNames = ["Cyan", "Pink", "Yellow", "Green", "Red", "Purple", "Orange", "Blue"];
                 showNotification(`Highlight color changed to ${colorNames[highlightIndex]}!`);
@@ -1990,7 +2110,7 @@
             notification.querySelector("h4").textContent = "Notification";
             notification.querySelector("p").textContent = message;
             notification.classList.add("show");
-            
+
             setTimeout(() => {
                 notification.classList.remove("show");
             }, 3000);
@@ -2000,7 +2120,7 @@
         window.addEventListener("load", () => {
             setTimeout(() => {
                 document.getElementById("shortcuts-notification").classList.add("show");
-                
+
                 setTimeout(() => {
                     document.getElementById("shortcuts-notification").classList.remove("show");
                 }, 5000);
@@ -2034,7 +2154,7 @@
 
         // Skill Bars Animation
         const skillBars = document.querySelectorAll(".skill-progress");
-        
+
         const animateSkillBars = () => {
             skillBars.forEach(bar => {
                 const width = bar.getAttribute("data-width");
@@ -2109,15 +2229,15 @@
         // Function to open project modal
         function openProjectModal(projectId) {
             const project = projects[projectId];
-            
+
             modalImage.src = project.image;
             modalTitle.textContent = project.title;
             modalDescription.textContent = project.description;
             modalLink.href = project.link;
-            
+
             // Clear previous tech tags
             modalTech.innerHTML = "";
-            
+
             // Add tech tags
             project.tech.forEach(tech => {
                 const tag = document.createElement("span");
@@ -2125,7 +2245,7 @@
                 tag.textContent = tech;
                 modalTech.appendChild(tag);
             });
-            
+
             modal.style.display = "flex";
             setTimeout(() => {
                 modal.classList.add("show");
@@ -2241,7 +2361,7 @@
         // Function to open certificate modal
         function openCertificateModal(certificateId) {
             const certificate = certificates[certificateId];
-            
+
             certificateModalImage.src = certificate.image;
             certificateModalTitle.textContent = certificate.title;
             certificateModalIssuer.textContent = `Issued by: ${certificate.issuer}`;
@@ -2249,7 +2369,7 @@
             certificateModalDescription.textContent = certificate.description;
             certificateModalViewLink.href = certificate.viewLink;
             certificateModalDownloadLink.href = certificate.downloadLink;
-            
+
             certificateModal.style.display = "flex";
             setTimeout(() => {
                 certificateModal.classList.add("show");
@@ -2262,7 +2382,7 @@
             card.addEventListener("click", (e) => {
                 // If the click is on a link, don't open the modal
                 if (e.target.closest(".certificate-links")) return;
-                
+
                 const certificateId = card.getAttribute("data-certificate-id");
                 openCertificateModal(certificateId);
             });
@@ -2274,7 +2394,7 @@
                 e.stopPropagation();
                 const certificateId = link.getAttribute("data-certificate-id");
                 const action = link.getAttribute("data-action");
-                
+
                 if (action === "view") {
                     openCertificateModal(certificateId);
                 } else if (action === "download") {
@@ -2311,32 +2431,32 @@
         // Contact Form
         const contactForm = document.getElementById("contact-form");
         const formMessage = document.getElementById("form-message");
-        
+
         contactForm.addEventListener("submit", (e) => {
             e.preventDefault();
-            
+
             // Get form values
             const name = document.getElementById("name").value;
             const email = document.getElementById("email").value;
             const subject = document.getElementById("subject").value;
             const message = document.getElementById("message").value;
-            
+
             // Here you would typically send the form data using EmailJS
             // For demonstration, we'll just show a success message
-            
+
             // Show success message
             formMessage.textContent = "Thank you for your message! I will get back to you soon.";
             formMessage.className = "form-message success";
             formMessage.style.display = "block";
-            
+
             // Reset form
             contactForm.reset();
-            
+
             // Hide message after 5 seconds
             setTimeout(() => {
                 formMessage.style.display = "none";
             }, 5000);
-            
+
             /* 
             // Actual EmailJS implementation would look something like this:
             emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', {
@@ -2365,7 +2485,7 @@
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener("click", function (e) {
                 e.preventDefault();
-                
+
                 const target = document.querySelector(this.getAttribute("href"));
                 if (target) {
                     window.scrollTo({
@@ -2380,18 +2500,18 @@
         window.addEventListener("scroll", () => {
             const sections = document.querySelectorAll("section");
             const navLinks = document.querySelectorAll(".nav-links a");
-            
+
             let current = "";
-            
+
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
                 const sectionHeight = section.clientHeight;
-                
+
                 if (pageYOffset >= (sectionTop - 200)) {
                     current = section.getAttribute("id");
                 }
             });
-            
+
             navLinks.forEach(link => {
                 link.classList.remove("active");
                 if (link.getAttribute("href").slice(1) === current) {
@@ -2409,7 +2529,7 @@
 
         // Back to top button
         const backToTopButton = document.getElementById("back-to-top");
-        
+
         window.addEventListener("scroll", () => {
             if (window.pageYOffset > 300) {
                 backToTopButton.classList.add("show");
@@ -2417,7 +2537,7 @@
                 backToTopButton.classList.remove("show");
             }
         });
-        
+
         backToTopButton.addEventListener("click", (e) => {
             e.preventDefault();
             window.scrollTo({
@@ -2427,4 +2547,5 @@
         });
     </script>
 </body>
+
 </html>
