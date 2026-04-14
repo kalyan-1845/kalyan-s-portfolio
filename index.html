@@ -14,6 +14,15 @@
         href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Roboto:wght@300;400;500&display=swap"
         rel="stylesheet">
 
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            // Replace with your actual Public Key from EmailJS
+            emailjs.init("YOUR_PUBLIC_KEY");
+        })();
+    </script>
+
     <style>
         /* CSS Variables for Theming */
         :root {
@@ -1262,6 +1271,82 @@
         .shortcuts-notification p {
             margin-bottom: 5px;
             font-size: 0.9rem;
+        }
+
+        /* Modal Styles */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 12, 41, 0.9);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            padding: 2rem;
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            cursor: none;
+            z-index: 10;
+        }
+
+        .modal-body {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .modal-image {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        #modal-title, #certificate-modal-title {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
         }
 
         /* Responsive Design */
@@ -2835,12 +2920,18 @@
             }
         });
 
-        // Contact Form
+        // Contact Form Submission
         const contactForm = document.getElementById("contact-form");
         const formMessage = document.getElementById("form-message");
 
         contactForm.addEventListener("submit", (e) => {
             e.preventDefault();
+
+            // Change button state
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.textContent;
+            submitBtn.textContent = "Sending...";
+            submitBtn.disabled = true;
 
             // Get form values
             const name = document.getElementById("name").value;
@@ -2848,25 +2939,8 @@
             const subject = document.getElementById("subject").value;
             const message = document.getElementById("message").value;
 
-            // Here you would typically send the form data using EmailJS
-            // For demonstration, we'll just show a success message
-
-            // Show success message
-            formMessage.textContent = "Thank you for your message! I will get back to you soon.";
-            formMessage.className = "form-message success";
-            formMessage.style.display = "block";
-
-            // Reset form
-            contactForm.reset();
-
-            // Hide message after 5 seconds
-            setTimeout(() => {
-                formMessage.style.display = "none";
-            }, 5000);
-
-            /* 
-            // Actual EmailJS implementation would look something like this:
-            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', {
+            // Prepare template parameters
+            const templateParams = {
                 from_name: name,
                 from_email: email,
                 subject: subject,
