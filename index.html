@@ -1473,7 +1473,7 @@
                     <li><a href="#contact">Contact</a></li>
                 </ul>
                 <div style="display: flex; align-items: center; gap: 1rem;">
-                    <a href="resume.pdf" class="resume-btn" download>Resume</a>
+                    <a href="Kalyan_Software_Engineer_Resume.pdf" class="resume-btn" download>Resume</a>
                     <button class="theme-toggle toggle-btn" id="theme-toggle">
                         <i class="fas fa-moon"></i>
                     </button>
@@ -1498,14 +1498,14 @@
                             class="fab fa-github"></i></a>
                     <a href="https://www.linkedin.com/in/bhoompally-kalyan-reddy/" target="_blank"
                         class="social-icon"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://twitter.com/yourusername" target="_blank" class="social-icon"><i
+                    <a href="#" target="_blank" class="social-icon"><i
                             class="fab fa-twitter"></i></a>
                     <a href="https://instagram.com/swag_suprem_4" target="_blank" class="social-icon"><i
                             class="fab fa-instagram"></i></a>
                 </div>
                 <div class="hero-buttons">
                     <a href="#about" class="cta-button">Discover More</a>
-                    <a href="resume.pdf" class="cta-secondary" download>Open Resume</a>
+                    <a href="Kalyan_Software_Engineer_Resume.pdf" class="cta-secondary" download>Open Resume</a>
                 </div>
             </div>
         </div>
@@ -1626,7 +1626,7 @@
                 <!-- Education 2 -->
                 <div class="education-item">
                     <div class="education-image">
-                        <img src="" alt="Vijwala Junior College">
+                        <img src="https://picsum.photos/seed/school2/300/400.jpg" alt="Vijwala Junior College">
                     </div>
                     <div class="education-content">
                         <h3 class="education-title">Vijwala Junior College</h3>
@@ -2296,9 +2296,9 @@
                         <li><a href="https://github.com/kalyan-1845" target="_blank">GitHub</a></li>
                         <li><a href="https://www.linkedin.com/in/bhoompally-kalyan-reddy/" target="_blank">LinkedIn</a>
                         </li>
-                        <li><a href="https://twitter.com/yourusername" target="_blank">Twitter</a></li>
+                        <li><a href="#" target="_blank">Twitter</a></li>
                         <li><a href="https://instagram.com/swag_suprem_4" target="_blank">Instagram</a></li>
-                        <li><a href="prsnlkalyan@gmail.com" target="_blank">Email</a></li>
+                        <li><a href="mailto:prsnlkalyan@gmail.com" target="_blank">Email</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -2352,14 +2352,6 @@
                 <p id="certificate-modal-description"></p>
             </div>
         </div>
-    </div>
-
-    <!-- Keyboard Shortcuts Notification -->
-    <div class="shortcuts-notification" id="shortcuts-notification">
-        <h4>Keyboard Shortcuts</h4>
-        <p><strong>Ctrl + G:</strong> Change text color</p>
-        <p><strong>Ctrl + B:</strong> Toggle dark/light mode</p>
-        <p><strong>Ctrl + K:</strong> Change highlight color</p>
     </div>
 
     <script>
@@ -2433,81 +2425,6 @@
             // Save theme preference to localStorage
             localStorage.setItem('theme', document.body.classList.contains("light-theme") ? 'light' : 'dark');
         }
-
-        // Keyboard Shortcuts
-        let textColors = ["#ff0000", "#00ff00", "#0000ff", "#ffcc00", "#333333", "rgba(0, 0, 0, 1)", "#ff0", "#ff00", "#420006ff", "#ff0f0f", "rgba(2, 120, 255, 1)", "rgba(255, 0, 255, 1)"];
-        let colorIndex = 0;
-
-        // Highlight colors for text selection
-        let highlightColors = [
-            "rgba(0, 242, 254, 0.3)",  // Default cyan
-            "rgba(255, 0, 204, 0.3)",  // Pink
-            "rgba(255, 204, 0, 0.3)",  // Yellow
-            "rgba(0, 255, 0, 0.3)",    // Green
-            "rgba(255, 0, 0, 0.3)",    // Red
-            "rgba(128, 0, 255, 0.3)",  // Purple
-            "rgba(255, 128, 0, 0.3)",  // Orange
-            "rgba(0, 128, 255, 0.3)"   // Blue
-        ];
-        let highlightIndex = 0;
-
-        document.addEventListener("keydown", function (event) {
-            // Ctrl + G to change text color
-            if (event.ctrlKey && event.key === "g") {
-                event.preventDefault();
-                colorIndex = (colorIndex + 1) % textColors.length;
-                const newColor = textColors[colorIndex];
-                document.documentElement.style.setProperty('--text-color', newColor);
-
-                // Show notification
-                showNotification("Text color changed!");
-            }
-
-            // Ctrl + B to toggle dark/light mode
-            if (event.ctrlKey && event.key === "b") {
-                event.preventDefault();
-                toggleTheme();
-
-                // Show notification
-                const theme = document.body.classList.contains("light-theme") ? "Light" : "Dark";
-                showNotification(`Switched to ${theme} mode`);
-            }
-
-            // Ctrl + K to change highlight color
-            if (event.ctrlKey && event.key === "k") {
-                event.preventDefault();
-                highlightIndex = (highlightIndex + 1) % highlightColors.length;
-                const newHighlightColor = highlightColors[highlightIndex];
-                document.documentElement.style.setProperty('--selection-color', newHighlightColor);
-
-                // Show notification
-                const colorNames = ["Cyan", "Pink", "Yellow", "Green", "Red", "Purple", "Orange", "Blue"];
-                showNotification(`Highlight color changed to ${colorNames[highlightIndex]}!`);
-            }
-        });
-
-        // Show notification
-        function showNotification(message) {
-            const notification = document.getElementById("shortcuts-notification");
-            notification.querySelector("h4").textContent = "Notification";
-            notification.querySelector("p").textContent = message;
-            notification.classList.add("show");
-
-            setTimeout(() => {
-                notification.classList.remove("show");
-            }, 3000);
-        }
-
-        // Show keyboard shortcuts notification on page load
-        window.addEventListener("load", () => {
-            setTimeout(() => {
-                document.getElementById("shortcuts-notification").classList.add("show");
-
-                setTimeout(() => {
-                    document.getElementById("shortcuts-notification").classList.remove("show");
-                }, 5000);
-            }, 2000);
-        });
 
         // Theme Toggle Button
         document.getElementById("theme-toggle").addEventListener("click", toggleTheme);
