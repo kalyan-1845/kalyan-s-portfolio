@@ -617,188 +617,159 @@
             margin-top: 3rem;
         }
 
-        .education-item {
-            display: grid;
-            grid-template-columns: 300px 1fr;
-            gap: 2rem;
-            margin-bottom: 3rem;
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 15px;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 8px 32px 0 var(--shadow-color);
-            overflow: hidden;
-            transition: var(--transition);
-            animation: fadeInUp 0.8s ease forwards;
-            opacity: 0;
-        }
-
-        .education-item:nth-child(1) {
-            animation-delay: 0.1s;
-        }
-
-        .education-item:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        .education-item:nth-child(3) {
-            animation-delay: 0.3s;
-        }
-
-        .education-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px 0 var(--shadow-color);
-        }
-
-        .education-image {
-            height: 100%;
-            overflow: hidden;
-        }
-
-        .education-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.8s ease;
-        }
-
-        .education-item:hover .education-image img {
-            transform: scale(1.05);
-        }
-
-        .education-content {
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .education-title {
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
-            color: var(--primary-color);
-        }
-
-        .education-degree {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            color: var(--text-secondary);
-        }
-
-        .education-details {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .education-detail {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .education-detail i {
-            color: var(--primary-color);
-        }
-
-        .education-detail span {
-            color: var(--text-secondary);
-        }
-
-        /* Experience Section */
-        .experience-container {
-            margin-top: 3rem;
-        }
-
-        .experience-item {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 15px;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 8px 32px 0 var(--shadow-color);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            transition: var(--transition);
-            animation: fadeInUp 0.8s ease forwards;
-            opacity: 0;
+        /* Premium Vertical Timeline */
+        .timeline-container {
             position: relative;
-            overflow: hidden;
+            max-width: 1000px;
+            margin: 4rem auto;
+            padding: 2rem 0;
         }
 
-        .experience-item:nth-child(1) {
-            animation-delay: 0.1s;
-        }
-
-        .experience-item:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        .experience-item:nth-child(3) {
-            animation-delay: 0.3s;
-        }
-
-        .experience-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px 0 var(--shadow-color);
-        }
-
-        .experience-item::before {
+        .timeline-container::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
             height: 100%;
-            background: var(--primary-color);
+            background: linear-gradient(to bottom, transparent, var(--primary-color), var(--secondary-color), transparent);
+            box-shadow: 0 0 15px var(--primary-color);
         }
 
-        .experience-header {
+        .timeline-item {
             display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 1rem;
+            justify-content: flex-end;
+            padding-right: 50%;
+            position: relative;
+            margin-bottom: 50px;
+            width: 100%;
         }
 
-        .experience-title {
+        .timeline-item:nth-child(even) {
+            justify-content: flex-start;
+            padding-right: 0;
+            padding-left: 50%;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 20px;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            box-shadow: 0 0 15px var(--primary-color);
+            z-index: 2;
+        }
+
+        .timeline-content {
+            width: 90%;
+            background: var(--card-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 0 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .timeline-item:hover .timeline-content {
+            box-shadow: 0 10px 30px rgba(0, 242, 254, 0.2);
+            border-color: var(--primary-color);
+        }
+
+        .timeline-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .timeline-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 242, 254, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 1.5rem;
             color: var(--primary-color);
+            border: 1px solid var(--border-color);
+        }
+
+        .timeline-title {
+            font-size: 1.4rem;
+            color: #fff;
             margin-bottom: 0.25rem;
         }
 
-        .experience-company {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-        }
-
-        .experience-date {
-            background: rgba(0, 242, 254, 0.2);
+        .timeline-subtitle {
             color: var(--primary-color);
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        .timeline-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .timeline-detail {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
             font-size: 0.9rem;
-            white-space: nowrap;
-        }
-
-        .experience-description {
             color: var(--text-secondary);
-            margin-bottom: 1rem;
         }
 
-        .experience-skills {
+        .timeline-detail i {
+            color: var(--primary-color);
+        }
+
+        .experience-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
+            margin-top: 1rem;
         }
 
-        .experience-skill {
-            background: rgba(255, 255, 255, 0.1);
-            color: #fff;
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
+        .experience-tag {
+            background: rgba(0, 242, 254, 0.1);
+            color: var(--primary-color);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            border: 1px solid rgba(0, 242, 254, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .timeline-container::before {
+                left: 30px;
+            }
+            .timeline-item {
+                justify-content: flex-start;
+                padding-left: 60px;
+                padding-right: 0;
+            }
+            .timeline-item:nth-child(even) {
+                padding-left: 60px;
+            }
+            .timeline-dot {
+                left: 30px;
+            }
+            .timeline-content {
+                width: 100%;
+                margin: 0;
+            }
         }
 
         /* Projects Section */
@@ -1046,18 +1017,55 @@
             gap: 0.5rem;
         }
 
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .certificate-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            height: 350px;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: fadeInUp 0.8s ease forwards;
+            opacity: 0;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+        }
+
+        .certificate-card:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 10px 40px rgba(0, 242, 254, 0.3);
+        }
+
+        /* Staggered entrance animations */
+        .certificate-card:nth-child(1) { animation-delay: 0.1s; }
+        .certificate-card:nth-child(2) { animation-delay: 0.2s; }
+        .certificate-card:nth-child(3) { animation-delay: 0.3s; }
+        .certificate-card:nth-child(4) { animation-delay: 0.4s; }
+        .certificate-card:nth-child(5) { animation-delay: 0.5s; }
+        .certificate-card:nth-child(6) { animation-delay: 0.6s; }
+        .certificate-card:nth-child(7) { animation-delay: 0.7s; }
+        .certificate-card:nth-child(8) { animation-delay: 0.8s; }
+        .certificate-card:nth-child(n+9) { animation-delay: 0.9s; }
+
         .certificate-badge {
             position: absolute;
-            top: 10px;
-            right: 10px;
-            background: var(--accent-color);
-            color: white;
-            font-size: 0.7rem;
-            padding: 0.25rem 0.5rem;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: #fff;
+            font-size: 0.75rem;
+            padding: 4px 12px;
             border-radius: 20px;
             text-transform: uppercase;
-            font-weight: 500;
-            z-index: 1;
+            font-weight: 600;
+            z-index: 5;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
 
         .pdf-placeholder {
@@ -1067,45 +1075,46 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            background: rgba(255, 255, 255, 0.05);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
             color: var(--primary-color);
             font-family: 'Orbitron', sans-serif;
             font-size: 1.2rem;
-            gap: 10px;
+            gap: 15px;
         }
 
         .pdf-placeholder i {
-            font-size: 3rem;
+            font-size: 4rem;
+            filter: drop-shadow(0 0 10px var(--primary-color));
         }
 
         .certificate-links {
             position: absolute;
             bottom: 1.5rem;
-            right: 1.5rem;
+            left: 1.5rem;
             display: flex;
-            gap: 0.5rem;
+            gap: 1rem;
+            z-index: 10;
         }
 
         .certificate-link {
-            background: var(--primary-color);
+            background: rgba(0, 242, 254, 0.2);
+            backdrop-filter: blur(5px);
             color: #fff;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: var(--transition);
-            transform: scale(0);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 242, 254, 0.3);
+            text-decoration: none;
         }
 
         .certificate-card:hover .certificate-link {
-            transform: scale(1);
-        }
-
-        .certificate-link:hover {
-            background: var(--accent-color);
-            transform: scale(1.1);
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
         }
 
         /* Contact Section */
@@ -1524,56 +1533,61 @@
     <!-- Education Section -->
     <section id="education" class="education">
         <div class="container">
-            <h2>My Education</h2>
-            <div class="education-container">
-                <!-- Education 1 -->
-                <div class="education-item">
-                    <div class="education-image">
-                        <img src="https://i.vimeocdn.com/portrait/41571962_640x640"
-                            alt="Detailed Tech Stack & Abilities">
-                    </div>
-                    <div class="education-content">
-                        <h3 class="education-title">Detailed Tech Stack & Abilities</h3>
-                        <p class="education-degree">Bachelor of Technology in Computer Science Engineering</p>
-                        <div class="education-details">
-                            <div class="education-detail">
+            <h2 class="section-title">Academic Journey</h2>
+            <div class="timeline-container">
+                <!-- Education Item 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <div class="timeline-icon">
+                                <i class="fas fa-university"></i>
+                            </div>
+                            <div>
+                                <h3 class="timeline-title">Detailed Tech Stack & Abilities</h3>
+                                <p class="timeline-subtitle">B.Tech in Computer Science Engineering</p>
+                            </div>
+                        </div>
+                        <div class="timeline-details">
+                            <div class="timeline-detail">
                                 <i class="fas fa-calendar-alt"></i>
                                 <span>2020 - 2024 (Expected)</span>
                             </div>
-                            <div class="education-detail">
+                            <div class="timeline-detail">
                                 <i class="fas fa-star"></i>
                                 <span>CGPA: 8.5/10</span>
                             </div>
-                            <div class="education-detail">
+                            <div class="timeline-detail">
                                 <i class="fas fa-map-marker-alt"></i>
                                 <span>Hyderabad, Telangana</span>
-                            </div>
-                            <div class="education-detail">
-                                <i class="fas fa-award"></i>
-                                <span>Second Year</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Education 2 -->
-                <div class="education-item">
-                    <div class="education-image">
-                        <img src="" alt="Vijwala Junior College">
-                    </div>
-                    <div class="education-content">
-                        <h3 class="education-title">Vijwala Junior College</h3>
-                        <p class="education-degree">Intermediate (MPC)</p>
-                        <div class="education-details">
-                            <div class="education-detail">
-                                <i class="fas fa-calendar-alt"></i>
-                                <span>2022-2024</span>
+                <!-- Education Item 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <div class="timeline-icon">
+                                <i class="fas fa-school"></i>
                             </div>
-                            <div class="education-detail">
-                                <i class="fas fa-star"></i>
+                            <div>
+                                <h3 class="timeline-title">Vijwala Junior College</h3>
+                                <p class="timeline-subtitle">Intermediate (MPC)</p>
+                            </div>
+                        </div>
+                        <div class="timeline-details">
+                            <div class="timeline-detail">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>2022 - 2024</span>
+                            </div>
+                            <div class="timeline-detail">
+                                <i class="fas fa-percentage"></i>
                                 <span>Percentage: 91.3%</span>
                             </div>
-                            <div class="education-detail">
+                            <div class="timeline-detail">
                                 <i class="fas fa-map-marker-alt"></i>
                                 <span>Siddipet, Telangana</span>
                             </div>
@@ -1581,24 +1595,29 @@
                     </div>
                 </div>
 
-                <!-- Education 3 -->
-                <div class="education-item">
-                    <div class="education-image">
-                        <img src="https://picsum.photos/seed/school1/300/400.jp" alt="St. Paul's High School">
-                    </div>
-                    <div class="education-content">
-                        <h3 class="education-title">Vidya Nikethan High School</h3>
-                        <p class="education-degree">SSC</p>
-                        <div class="education-details">
-                            <div class="education-detail">
-                                <i class="fas fa-calendar-alt"></i>
-                                <span>2021-2022</span>
+                <!-- Education Item 3 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <div class="timeline-icon">
+                                <i class="fas fa-graduation-cap"></i>
                             </div>
-                            <div class="education-detail">
+                            <div>
+                                <h3 class="timeline-title">Vidya Nikethan High School</h3>
+                                <p class="timeline-subtitle">SSC</p>
+                            </div>
+                        </div>
+                        <div class="timeline-details">
+                            <div class="timeline-detail">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>2021 - 2022</span>
+                            </div>
+                            <div class="timeline-detail">
                                 <i class="fas fa-star"></i>
                                 <span>GPA: 7.5/10</span>
                             </div>
-                            <div class="education-detail">
+                            <div class="timeline-detail">
                                 <i class="fas fa-map-marker-alt"></i>
                                 <span>Hyderabad, Telangana</span>
                             </div>
@@ -1612,70 +1631,98 @@
     <!-- Experience Section -->
     <section id="experience" class="experience">
         <div class="container">
-            <h2>My Experience on various actvities</h2>
-            <div class="experience-container">
-                <!-- Experience 1 -->
-                <div class="experience-item">
-                    <div class="experience-header">
-                        <div>
-                            <h3 class="experience-title">Basic's Python Workshop</h3>
-                            <p class="experience-company">Detailed Tech Stack & Abilities</p>
+            <h2 class="section-title">Professional Activities</h2>
+            <div class="timeline-container">
+                <!-- Experience Item 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <div class="timeline-icon">
+                                <i class="fab fa-python"></i>
+                            </div>
+                            <div>
+                                <h3 class="timeline-title">Basic Python Workshop</h3>
+                                <p class="timeline-subtitle">Detailed Tech Stack & Abilities</p>
+                            </div>
                         </div>
-                        <div class="experience-date">may 6 2025</div>
-                    </div>
-                    <p class="experience-description">
-                        Participated in a 3-day intensive workshop on python programming. Gained hands-on experience
-                        with Python libraries , and worked on a team project to develop one project.
-                    </p>
-                    <div class="experience-skills">
-                        <span class="experience-skill">Workshop on Python Basics Programming </span>
-                        <span class="experience-skill"></span>
-                        <span class="experience-skill"></span>
-                        <span class="experience-skill"></span>
+                        <p class="experience-description">
+                            Participated in a 3-day intensive workshop on Python programming. Gained hands-on experience
+                            with Python libraries and collaborated on a team project to build a functional application.
+                        </p>
+                        <div class="timeline-details">
+                            <div class="timeline-detail">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>May 6, 2025</span>
+                            </div>
+                        </div>
+                        <div class="experience-tags">
+                            <span class="experience-tag">Python Basics</span>
+                            <span class="experience-tag">Team Collaboration</span>
+                            <span class="experience-tag">Problem Solving</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Experience 2 -->
-                <div class="experience-item">
-                    <div class="experience-header">
-                        <div>
-                            <h3 class="experience-title">AWS Workshop</h3>
-                            <p class="experience-company"> Detailed Tech Stack & Abilities</p>
+                <!-- Experience Item 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <div class="timeline-icon">
+                                <i class="fab fa-aws"></i>
+                            </div>
+                            <div>
+                                <h3 class="timeline-title">AWS Cloud Workshop</h3>
+                                <p class="timeline-subtitle">Detailed Tech Stack & Abilities</p>
+                            </div>
                         </div>
-                        <div class="experience-date">Feb 9 2026</div>
-                    </div>
-                    <p class="experience-description">
-                        Completed a 2-days bootcamp focused on could server. Learned basics to create an account and
-                        deploy a simple web application. , which received recognition from faculty members.
-                    </p>
-                    <div class="experience-skills">
-                        <span class="experience-skill"></span>
-                        <span class="experience-skill"></span>
-                        <span class="experience-skill">AWS</span>
-                        <span class="experience-skill"></span>
+                        <p class="experience-description">
+                            Completed a 2-day bootcamp focused on cloud computing. Learned to configure AWS accounts, 
+                            manage EC2 instances, and deploy web applications, receiving faculty recognition.
+                        </p>
+                        <div class="timeline-details">
+                            <div class="timeline-detail">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>Feb 9, 2026</span>
+                            </div>
+                        </div>
+                        <div class="experience-tags">
+                            <span class="experience-tag">AWS EC2</span>
+                            <span class="experience-tag">Cloud Deployment</span>
+                            <span class="experience-tag">Infrastructure</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Experience 3 -->
-                <div class="experience-item">
-                    <div class="experience-header">
-                        <div>
-                            <h3 class="experience-title">Generative AIh3>
-                                <p class="experience-company">OutSkill Platform,vaibav Sisnity
-                                </p>
+                <!-- Experience Item 3 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <div class="timeline-icon">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div>
+                                <h3 class="timeline-title">Generative AI Workshop</h3>
+                                <p class="timeline-subtitle">OutSkill Platform</p>
+                            </div>
                         </div>
-                        <div class="experience-date">feb 7 2026</div>
-                    </div>
-                    <p class="experience-description">
-                        Attended a 2-day workshop on generative AI tools and techniques. Explored various AI models, and
-                        participated in hands-on sessions to create AI-generated content, which enhanced my
-                        understanding of the potential applications of generative AI.
-                    </p>
-                    <div class="experience-skills">
-                        <span class="experience-skill">online workshop</span>
-                        <span class="experience-skill">AI models</span>
-                        <span class="experience-skill">Use Of AI</span>
-                        <span class="experience-skill">Prompt Engineering</span>
+                        <p class="experience-description">
+                            Attended an intensive workshop on generative AI tools and techniques. Explored various AI models
+                            and participated in hands-on sessions to create AI-generated content and prompt engineering strategies.
+                        </p>
+                        <div class="timeline-details">
+                            <div class="timeline-detail">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>Feb 7, 2026</span>
+                            </div>
+                        </div>
+                        <div class="experience-tags">
+                            <span class="experience-tag">Generative AI</span>
+                            <span class="experience-tag">Prompt Engineering</span>
+                            <span class="experience-tag">AI Models</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2940,6 +2987,56 @@
                 top: 0,
                 behavior: "smooth"
             });
+        });
+
+        // 3D Tilt Effect for Cards
+        function initTilt() {
+            const tiltElements = document.querySelectorAll(".certificate-card, .timeline-content, .project-card");
+            
+            tiltElements.forEach(el => {
+                el.addEventListener("mousemove", e => {
+                    const rect = el.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    
+                    const rotateX = (y - centerY) / 10;
+                    const rotateY = (centerX - x) / 10;
+                    
+                    el.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+                });
+                
+                el.addEventListener("mouseleave", () => {
+                    el.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+                });
+            });
+        }
+
+        // Initialize Tilt
+        initTilt();
+
+        // Staggered Reveal on Scroll
+        const revealCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                    observer.unobserve(entry.target);
+                }
+            });
+        };
+
+        const revealObserver = new IntersectionObserver(revealCallback, {
+            threshold: 0.15
+        });
+
+        document.querySelectorAll(".timeline-item, .certificate-card, .project-card").forEach(el => {
+            el.style.opacity = "0";
+            el.style.transform = "translateY(30px)";
+            el.style.transition = "all 0.6s cubic-bezier(0.4, 0, 0.2, 1)";
+            revealObserver.observe(el);
         });
     </script>
 </body>
