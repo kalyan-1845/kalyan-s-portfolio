@@ -1622,6 +1622,134 @@
                 grid-template-columns: 1fr;
             }
         }
+        /* Achievements/Hackathons Section */
+        .achievements {
+            padding: 100px 0;
+            background: linear-gradient(to bottom, transparent, rgba(74, 172, 254, 0.05));
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .achievement-card {
+            text-align: center;
+            padding: 3rem 2rem;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+        }
+
+        .achievement-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, transparent, rgba(255, 255, 255, 0.02));
+            pointer-events: none;
+        }
+
+        /* Unique Glows for cards */
+        .ach-red { border-color: rgba(255, 60, 60, 0.3); box-shadow: 0 10px 30px rgba(255, 60, 60, 0.05); }
+        .ach-red:hover { border-color: #ff3c3c; box-shadow: 0 0 40px rgba(255, 60, 60, 0.3); transform: translateY(-10px); }
+        
+        .ach-purple { border-color: rgba(160, 60, 255, 0.3); box-shadow: 0 10px 30px rgba(160, 60, 255, 0.05); }
+        .ach-purple:hover { border-color: #a03cff; box-shadow: 0 0 40px rgba(160, 60, 255, 0.3); transform: translateY(-10px); }
+
+        .ach-blue { border-color: rgba(60, 160, 255, 0.3); box-shadow: 0 10px 30px rgba(60, 160, 255, 0.05); }
+        .ach-blue:hover { border-color: #3ca0ff; box-shadow: 0 0 40px rgba(60, 160, 255, 0.3); transform: translateY(-10px); }
+
+        .ach-grey { border-color: rgba(184, 190, 200, 0.3); box-shadow: 0 10px 30px rgba(184, 190, 200, 0.05); }
+        .ach-grey:hover { border-color: #b8bec8; box-shadow: 0 0 40px rgba(184, 190, 200, 0.3); transform: translateY(-10px); }
+
+        .ach-icon-wrapper {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            transition: var(--transition);
+        }
+
+        .ach-red .ach-icon-wrapper { color: #ff3c3c; box-shadow: 0 0 20px rgba(255, 60, 60, 0.2); }
+        .ach-purple .ach-icon-wrapper { color: #a03cff; box-shadow: 0 0 20px rgba(160, 60, 255, 0.2); }
+        .ach-blue .ach-icon-wrapper { color: #3ca0ff; box-shadow: 0 0 20px rgba(60, 160, 255, 0.2); }
+        .ach-grey .ach-icon-wrapper { color: #b8bec8; box-shadow: 0 0 20px rgba(184, 190, 200, 0.2); }
+
+        .ach-title {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .ach-institution {
+            color: #ff3377; 
+            font-family: 'Orbitron', monospace;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .ach-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+
+        .ach-date {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            opacity: 0.6;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            width: 100%;
+        }
+
+        /* Standardized Milestone Link */
+        .milestone-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            background: rgba(0, 242, 254, 0.05);
+            border: 1px solid rgba(0, 242, 254, 0.2);
+            transition: var(--transition);
+            width: 100%;
+        }
+
+        .milestone-link:hover {
+            background: var(--primary-color);
+            color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 242, 254, 0.3);
+        }
     </style>
 </head>
 
@@ -1641,6 +1769,7 @@
                     <li><a href="#education">Education</a></li>
                     <li><a href="#experience">Experience</a></li>
                     <li><a href="#ai-roadmap">AI Road Map</a></li>
+                    <li><a href="#achievements">Achievements</a></li>
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#certificates">Certificates</a></li>
                     <li><a href="#contact">Contact</a></li>
@@ -2047,101 +2176,163 @@
 
             </div>
 
-            <!-- Leaderboard Table -->
-            <div class="arena-snapshot">
-                <h3 style="display:flex; align-items:center; gap: 0.5rem;"><i class="fas fa-trophy"
-                        style="color: gold;"></i> AI Arena Leaderboard Snapshot</h3>
-                <p style="color: var(--text-secondary); font-size: 0.9rem;">My target rankings for real-world
-                    performance & architectural reasoning.</p>
-                <div style="overflow-x: auto;">
-                    <table class="arena-table">
-                        <thead>
-                            <tr>
-                                <th>Rank</th>
-                                <th>Model</th>
-                                <th>Lab</th>
-                                <th>Context</th>
-                                <th>Rating</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Claude-Opus-4.6 (Thinking)</td>
-                                <td>Anthropic</td>
-                                <td>1M</td>
-                                <td><span class="arena-trend">1502</span></td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Gemini-3.1-Pro (Preview)</td>
-                                <td>Google</td>
-                                <td>1M</td>
-                                <td><span class="arena-trend">1493</span></td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Grok-4.20-Beta1</td>
-                                <td>xAI</td>
-                                <td>N/A</td>
-                                <td><span class="arena-trend">1485</span></td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>GPT-5.4-High</td>
-                                <td>OpenAI</td>
-                                <td>1.1M</td>
-                                <td><span class="arena-trend">1481</span></td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>DeepSeek-V3.2</td>
-                                <td>DeepSeek</td>
-                                <td>164K</td>
-                                <td><span class="arena-trend">1423</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+
 
             <!-- Projects Milestone Gallery -->
             <div style="margin-top: 6rem;">
                 <h2 class="section-title">Major AI Milestones</h2>
                 <div class="projects-grid">
-                    <div class="project-card glass-card" style="height: auto; padding: 2rem; opacity: 1;">
-                        <h3 class="node-title">🛡️ RepoGuardian AI</h3>
-                        <p style="font-size: 0.9rem; margin: 1rem 0;">State-of-the-art, autonomous repository cybersecurity agent for large scale codebases.</p>
-                        <div class="project-tech"><span class="tech-tag">Cybersecurity</span><span class="tech-tag">Agentic</span></div>
+                    <!-- Project 1: Sarathi -->
+                    <div class="project-card glass-card" style="height: auto; padding: 2.5rem; border: 1px solid gold;">
+                        <div style="display:flex; justify-content: space-between; align-items: flex-start;">
+                            <h3 class="node-title" style="color: gold;">📍 SARATHI Navigation</h3>
+                            <span class="arena-trend" style="font-size: 0.7rem; background: rgba(255, 215, 0, 0.1); color: gold;">PUBLISHED 2026</span>
+                        </div>
+                        <p style="font-size: 0.95rem; margin: 1.5rem 0; line-height: 1.6;">Research project (IJARSCT 2026) for a smart emergency location sharing and intelligent routing system using real-time GPS integration.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Routing Algorithms</span>
+                            <span class="tech-tag">GPS Integration</span>
+                        </div>
+                        <a href="https://github.com/kalyan-1845/Sarathi" target="_blank" class="milestone-link"><i class="fab fa-github"></i> View Repository</a>
                     </div>
-                    <div class="project-card glass-card" style="height: auto; padding: 2rem; opacity: 1;">
-                        <h3 class="node-title">🎥 AI Video Platform</h3>
-                        <p style="font-size: 0.9rem; margin: 1rem 0;">Next-gen digital campus build with integrated free unlimited video generation tools.</p>
-                        <div class="project-tech"><span class="tech-tag">Video Gen</span><span class="tech-tag">Next.js</span></div>
+
+                    <!-- Project 2: Omni Agent Android -->
+                    <div class="project-card glass-card" style="height: auto; padding: 2.5rem; border: 1px solid var(--primary-color);">
+                        <div style="display:flex; justify-content: space-between; align-items: flex-start;">
+                            <h3 class="node-title">🤖 Omni Agent Android</h3>
+                            <span class="arena-trend" style="font-size: 0.7rem;">MIT LICENSE</span>
+                        </div>
+                        <p style="font-size: 0.95rem; margin: 1.5rem 0; line-height: 1.6;">A versatile Android-based AI agent repository for automated system interaction, task conductor logic, and mobile automation.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Android UI</span>
+                            <span class="tech-tag">Autonomous Agent</span>
+                        </div>
+                        <a href="https://github.com/kalyan-1845/Omni-Agent-Android" target="_blank" class="milestone-link"><i class="fab fa-github"></i> View Repository</a>
                     </div>
-                    <div class="project-card glass-card" style="height: auto; padding: 2rem; opacity: 1;">
-                        <h3 class="node-title">🎵 Telugu AI Music Maestro</h3>
-                        <p style="font-size: 0.9rem; margin: 1rem 0;">Premium AI song generator and architecture for regional language music synthesis.</p>
-                        <div class="project-tech"><span class="tech-tag">Audio AI</span><span class="tech-tag">Regional</span></div>
+
+                    <!-- Project 3: Kovixa -->
+                    <div class="project-card glass-card" style="height: auto; padding: 2.5rem;">
+                        <h3 class="node-title">🛡️ Kovixa</h3>
+                        <p style="font-size: 0.95rem; margin: 1.5rem 0; line-height: 1.6;">Advanced system security and verification framework utilizing AI-integrated threat analysis for secure digital environments.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Cybersecurity</span>
+                            <span class="tech-tag">AI Verification</span>
+                        </div>
+                        <a href="https://github.com/kalyan-1845/Kovixa" target="_blank" class="milestone-link"><i class="fab fa-github"></i> View Repository</a>
                     </div>
-                    <div class="project-card glass-card" style="height: auto; padding: 2rem; opacity: 1;">
-                        <h3 class="node-title">🏬 Offline POS PWA</h3>
-                        <p style="font-size: 0.9rem; margin: 1rem 0;">Offline point-of-sale system with license activation and camera flow integration.</p>
-                        <div class="project-tech"><span class="tech-tag">PWA</span><span class="tech-tag">Offline First</span></div>
+
+                    <!-- Project 4: Data Processing System -->
+                    <div class="project-card glass-card" style="height: auto; padding: 2.5rem;">
+                        <h3 class="node-title">📊 Data Processing System</h3>
+                        <p style="font-size: 0.95rem; margin: 1.5rem 0; line-height: 1.6;">High-performance pipeline for automated cleaning, processing, and transformation of large-scale AI datasets and LLM training data.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">ELT/ETL</span>
+                            <span class="tech-tag">Data Engineering</span>
+                        </div>
+                        <a href="https://github.com/kalyan-1845/Data-Processing-System" target="_blank" class="milestone-link"><i class="fab fa-github"></i> View Repository</a>
                     </div>
-                    <div class="project-card glass-card" style="height: auto; padding: 2rem; opacity: 1;">
-                        <h3 class="node-title">🏗️ Smartboard Control</h3>
-                        <p style="font-size: 0.9rem; margin: 1rem 0;">Remote control systems and document processing builds for digital interactive boards.</p>
-                        <div class="project-tech"><span class="tech-tag">IoT</span><span class="tech-tag">Board Control</span></div>
+
+                    <!-- Project 5: 3D-King-PPT -->
+                    <div class="project-card glass-card" style="height: auto; padding: 2.5rem;">
+                        <h3 class="node-title">👑 3D-King-PPT</h3>
+                        <p style="font-size: 0.95rem; margin: 1.5rem 0; line-height: 1.6;">AI-powered presentation engine designed for immersive 3D visual storytelling and dynamic slide deck generation.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Three.js</span>
+                            <span class="tech-tag">Generative Slides</span>
+                        </div>
+                        <a href="https://github.com/kalyan-1845/3D-King-PPT" target="_blank" class="milestone-link"><i class="fab fa-github"></i> View Repository</a>
                     </div>
-                    <div class="project-card glass-card" style="height: auto; padding: 2rem; opacity: 1;">
-                        <h3 class="node-title">🎮 Temple Dash Game</h3>
-                        <p style="font-size: 0.9rem; margin: 1rem 0;">Full game build and avatar camera project structure for interactive gaming.</p>
-                        <div class="project-tech"><span class="tech-tag">Unity</span><span class="tech-tag">Game Dev</span></div>
+
+                    <!-- Project 6: AI Avatar Studio -->
+                    <div class="project-card glass-card" style="height: auto; padding: 2.5rem;">
+                        <h3 class="node-title">👤 AI Avatar Studio</h3>
+                        <p style="font-size: 0.95rem; margin: 1.5rem 0; line-height: 1.6;">Generative media platform focused on high-fidelity AI avatar creation and real-time vision processing (Veo Vision Engine).</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Computer Vision</span>
+                            <span class="tech-tag">Generative AI</span>
+                        </div>
+                        <a href="https://github.com/kalyan-1845/AI-Avatar-Studio" target="_blank" class="milestone-link"><i class="fab fa-github"></i> View Repository</a>
+                    </div>
+
+                    <!-- Project 7: Frnd AI -->
+                    <div class="project-card glass-card" style="height: auto; padding: 2.5rem;">
+                        <h3 class="node-title">💬 Frnd AI</h3>
+                        <p style="font-size: 0.95rem; margin: 1.5rem 0; line-height: 1.6;">A conversational AI agent specialized in natural language interaction, emotional intelligence, and user companionship.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">NLP</span>
+                            <span class="tech-tag">Emotional AI</span>
+                        </div>
+                        <a href="https://github.com/kalyan-1845/Frnd-AI" target="_blank" class="milestone-link"><i class="fab fa-github"></i> View Repository</a>
+                    </div>
+
+                    <!-- Project 8: Flutter POS -->
+                    <div class="project-card glass-card" style="height: auto; padding: 2.5rem; border: 1px solid var(--primary-color);">
+                        <div style="display:flex; justify-content: space-between; align-items: flex-start;">
+                            <h3 class="node-title">🏬 Flutter POS</h3>
+                            <span class="arena-trend" style="font-size: 0.7rem;">MIT LICENSE</span>
+                        </div>
+                        <p style="font-size: 0.95rem; margin: 1.5rem 0; line-height: 1.6;">Robust, cross-platform Point of Sale application built with Flutter, featuring offline-first persistence and license management.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Flutter</span>
+                            <span class="tech-tag">MIT License</span>
+                        </div>
+                        <a href="https://github.com/kalyan-1845/Flutter-POS" target="_blank" class="milestone-link"><i class="fab fa-github"></i> View Repository</a>
                     </div>
                 </div>
             </div>
 
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="achievements">
+        <div class="container">
+            <h2 class="section-title" style="background: linear-gradient(45deg, #ff3377, #ff9900); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-family: 'Orbitron', sans-serif; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 3rem; text-shadow: none; border-bottom: 2px solid #ff3377; display: inline-block; padding-bottom: 10px;">Hackathons & Recognition</h2>
+            <div class="achievements-grid">
+                <!-- Card 1: VBIT -->
+                <div class="achievement-card glass-card ach-red">
+                    <div class="ach-icon-wrapper">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3 class="ach-title">Top 4 — Code Sprint Hackathon 2026</h3>
+                    <span class="ach-institution">VBIT (Vignana Bharathi Institute of Technology)</span>
+                    <p class="ach-description">Secured Top 4 position in a competitive 24-hour hackathon among 200+ participants.</p>
+                    <div class="ach-date">2026</div>
+                </div>
+
+                <!-- Card 2: KL University -->
+                <div class="achievement-card glass-card ach-purple">
+                    <div class="ach-icon-wrapper">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3 class="ach-title">Top 7 — KL University Hackathon</h3>
+                    <span class="ach-institution">KL University</span>
+                    <p class="ach-description">Ranked in the top 7 at KL University's inter-college technology hackathon.</p>
+                    <div class="ach-date">2026</div>
+                </div>
+
+                <!-- Card 3: FOSS Hack -->
+                <div class="achievement-card glass-card ach-blue">
+                    <div class="ach-icon-wrapper">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3 class="ach-title">FOSS Hack Open Source 2026</h3>
+                    <span class="ach-institution">FOSS United</span>
+                    <p class="ach-description">Participant in India's premier open source hackathon, contributing to open source ecosystems.</p>
+                    <div class="ach-date">2026</div>
+                </div>
+
+                <!-- Card 4: Project Demo -->
+                <div class="achievement-card glass-card ach-grey">
+                    <div class="ach-icon-wrapper">
+                        <i class="fas fa-microphone-alt"></i>
+                    </div>
+                    <h3 class="ach-title">Project Demo — KLH University</h3>
+                    <span class="ach-institution">KLH University</span>
+                    <p class="ach-description">Presented a working project demo to faculty and industry experts at KLH University (result awaited).</p>
+                    <div class="ach-date">2026</div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -2683,6 +2874,7 @@
                         <li><a href="#education">Education</a></li>
                         <li><a href="#experience">Experience</a></li>
                         <li><a href="#ai-roadmap">AI Road Map</a></li>
+                        <li><a href="#achievements">Achievements</a></li>
                         <li><a href="#projects">Projects</a></li>
                         <li><a href="#certificates">Certificates</a></li>
                         <li><a href="#contact">Contact</a></li>
