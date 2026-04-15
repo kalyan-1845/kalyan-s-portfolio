@@ -342,24 +342,23 @@
 
         .hero-title {
             font-size: 3.5rem;
-            font-weight: 900;
+            font-weight: 800;
             margin-bottom: 1rem;
-            color: var(--text-color);
-            text-shadow: 0 0 10px var(--primary-color);
-            animation: pulse 2s infinite;
+            background: linear-gradient(135deg, #ffffff 0%, #00f2fe 50%, #7209b5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1px;
+            line-height: 1.1;
+            animation: heroGlow 4s ease-in-out infinite alternate;
         }
 
-        @keyframes pulse {
+        @keyframes heroGlow {
             0% {
-                transform: scale(1);
+                filter: drop-shadow(0 0 8px rgba(0, 242, 254, 0.3));
             }
-
-            50% {
-                transform: scale(1.05);
-            }
-
             100% {
-                transform: scale(1);
+                filter: drop-shadow(0 0 20px rgba(114, 9, 183, 0.4));
             }
         }
 
@@ -1909,8 +1908,9 @@
         <div class="hero-bg"></div>
         <div class="container">
             <div class="hero-content">
+                <p style="font-family: 'Orbitron', sans-serif; font-size: 0.85rem; letter-spacing: 4px; text-transform: uppercase; color: var(--primary-color); margin-bottom: 0.5rem; opacity: 0.8;">AI Engineer &bull; Full-Stack Developer</p>
                 <h1 class="hero-title">Bhoompally Kalyan Reddy</h1>
-                <p class="hero-subtitle">I'm a <span class="typing-text" id="typing">Computer Science Student</span></p>
+                <p class="hero-subtitle">I'm a <span class="typing-text" id="typing"></span></p>
                 <div class="social-icons">
                     <!-- Replace these with your actual social media links -->
                     <a href="https://github.com/kalyan-1845" target="_blank" class="social-icon"><i
@@ -3060,17 +3060,32 @@
             });
         });
 
-        // Typing Effect
-        const text = "Computer Science Student 👨‍💻";
-        let i = 0;
-        function type() {
-            if (i < text.length) {
-                document.getElementById("typing").innerHTML += text.charAt(i);
-                i++;
-                setTimeout(type, 100);
+        // Typing Effect - Multi-role Cycling
+        const roles = ["Computer Science Student 👨‍💻", "AI & GenAI Engineer 🤖", "Full-Stack Developer 🚀", "Mobile App Builder 📱"];
+        let roleIndex = 0, charIndex = 0, isDeleting = false;
+        const typingEl = document.getElementById("typing");
+        function typeRole() {
+            const current = roles[roleIndex];
+            if (!isDeleting) {
+                typingEl.textContent = current.substring(0, charIndex + 1);
+                charIndex++;
+                if (charIndex === current.length) {
+                    isDeleting = true;
+                    setTimeout(typeRole, 2000);
+                    return;
+                }
+                setTimeout(typeRole, 80);
+            } else {
+                typingEl.textContent = current.substring(0, charIndex - 1);
+                charIndex--;
+                if (charIndex === 0) {
+                    isDeleting = false;
+                    roleIndex = (roleIndex + 1) % roles.length;
+                }
+                setTimeout(typeRole, 40);
             }
         }
-        window.onload = type;
+        window.onload = typeRole;
 
         // Scroll Reveal
         const sections = document.querySelectorAll("section");
