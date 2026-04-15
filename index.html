@@ -1098,12 +1098,21 @@
             transform: scale(1.1);
         }
 
-        /* AI Road Map Section */
+        /* AI Road Map Section — Enhanced */
         .ai-roadmap {
             padding: 100px 0;
-            background: linear-gradient(to bottom, #0f172a, #000);
+            background: linear-gradient(to bottom, #0f172a, #060b18);
             position: relative;
             overflow: hidden;
+        }
+
+        .ai-roadmap::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(0, 242, 254, 0.03) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 30%, rgba(114, 9, 183, 0.03) 0%, transparent 50%);
+            pointer-events: none;
         }
 
         .roadmap-container {
@@ -1118,9 +1127,9 @@
             top: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 4px;
+            width: 3px;
             height: 100%;
-            background: rgba(0, 242, 254, 0.1);
+            background: linear-gradient(to bottom, rgba(0, 242, 254, 0.08), rgba(114, 9, 183, 0.08));
             z-index: 1;
         }
 
@@ -1130,8 +1139,8 @@
             left: 0;
             width: 100%;
             height: 0;
-            background: linear-gradient(to bottom, var(--primary-color), var(--accent-color));
-            box-shadow: 0 0 15px var(--primary-color);
+            background: linear-gradient(to bottom, #00f2fe, #7209b5, #f72585);
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.5), 0 0 40px rgba(114, 9, 183, 0.3);
             transition: height 1s ease;
         }
 
@@ -1145,7 +1154,7 @@
             width: 100%;
             opacity: 0;
             transform: translateX(-50px);
-            transition: all 0.8s ease;
+            transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
         .roadmap-node.right {
@@ -1159,59 +1168,114 @@
         }
 
         .node-marker {
-            width: 20px;
-            height: 20px;
-            background: var(--card-bg);
-            border: 3px solid var(--primary-color);
+            width: 22px;
+            height: 22px;
+            background: #0f172a;
+            border: 3px solid #00f2fe;
             border-radius: 50%;
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
-            box-shadow: 0 0 10px var(--primary-color);
+            box-shadow: 0 0 12px rgba(0, 242, 254, 0.6), 0 0 30px rgba(0, 242, 254, 0.2);
             z-index: 3;
+            animation: markerPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes markerPulse {
+            0%, 100% { box-shadow: 0 0 12px rgba(0, 242, 254, 0.6), 0 0 30px rgba(0, 242, 254, 0.2); }
+            50% { box-shadow: 0 0 20px rgba(0, 242, 254, 0.9), 0 0 50px rgba(0, 242, 254, 0.4); }
         }
 
         .node-content {
             width: 45%;
-            padding: 1.5rem;
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--border-color);
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            transition: var(--transition);
+            padding: 2rem;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(0, 242, 254, 0.15);
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .node-content::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #00f2fe, #4facfe, #7209b5);
+            opacity: 0;
+            transition: opacity 0.4s ease;
         }
 
         .roadmap-node:hover .node-content {
-            border-color: var(--primary-color);
-            box-shadow: 0 8px 30px rgba(0, 242, 254, 0.4);
-            transform: scale(1.05);
+            border-color: rgba(0, 242, 254, 0.4);
+            box-shadow: 0 8px 40px rgba(0, 242, 254, 0.15), 0 0 60px rgba(114, 9, 183, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .roadmap-node:hover .node-content::before {
+            opacity: 1;
         }
 
         .node-title {
-            font-size: 1.2rem;
-            color: var(--primary-color);
-            margin-bottom: 0.25rem;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #00f2fe;
+            margin-bottom: 0.5rem;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.6rem;
+        }
+
+        .node-title i {
+            font-size: 1.1rem;
+            opacity: 0.9;
         }
 
         .node-category {
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-secondary);
+            letter-spacing: 2px;
+            color: rgba(255, 255, 255, 0.4);
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 0.3rem;
+        }
+
+        .node-content p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            line-height: 1.6;
         }
 
         /* Tool Roadmap specialized style */
         .roadmap-node.tool .node-marker {
-            border-color: var(--accent-color);
-            box-shadow: 0 0 10px var(--accent-color);
+            border-color: #f72585;
+            box-shadow: 0 0 12px rgba(247, 37, 133, 0.6), 0 0 30px rgba(247, 37, 133, 0.2);
+            animation: markerPulseTool 2s ease-in-out infinite;
+        }
+
+        @keyframes markerPulseTool {
+            0%, 100% { box-shadow: 0 0 12px rgba(247, 37, 133, 0.6), 0 0 30px rgba(247, 37, 133, 0.2); }
+            50% { box-shadow: 0 0 20px rgba(247, 37, 133, 0.9), 0 0 50px rgba(247, 37, 133, 0.4); }
+        }
+
+        .roadmap-node.tool .node-content {
+            border-color: rgba(247, 37, 133, 0.15);
+        }
+
+        .roadmap-node.tool .node-content::before {
+            background: linear-gradient(90deg, #f72585, #b5179e, #7209b5);
+        }
+
+        .roadmap-node.tool:hover .node-content {
+            border-color: rgba(247, 37, 133, 0.4);
+            box-shadow: 0 8px 40px rgba(247, 37, 133, 0.15), 0 0 60px rgba(114, 9, 183, 0.1);
         }
         
         .roadmap-node.tool .node-title {
-            color: var(--accent-color);
+            color: #f72585;
         }
 
         /* Arena Stats Mini Component */
@@ -1767,8 +1831,46 @@
             box-shadow: 0 5px 15px rgba(0, 242, 254, 0.3);
         }
 
-        /* ===== Mobile Responsive: Milestones, Skills, Achievements ===== */
+        /* ===== Mobile Responsive: Roadmap, Milestones, Skills, Achievements ===== */
         @media (max-width: 768px) {
+            /* Roadmap - collapse to single column */
+            .roadmap-path,
+            .roadmap-path-progress {
+                left: 20px;
+                transform: none;
+            }
+
+            .node-marker {
+                left: 20px;
+                transform: translateX(-50%);
+            }
+
+            .roadmap-node,
+            .roadmap-node.right {
+                justify-content: flex-end;
+                padding-left: 50px;
+            }
+
+            .node-content {
+                width: 100%;
+            }
+
+            .node-title {
+                font-size: 1.05rem;
+            }
+
+            .node-category {
+                font-size: 0.65rem;
+            }
+
+            .node-content p {
+                font-size: 0.85rem;
+            }
+
+            .roadmap-node {
+                margin-bottom: 2.5rem;
+            }
+
             /* Skills Grid - single column on mobile */
             .skills-grid {
                 grid-template-columns: 1fr;
@@ -2123,9 +2225,8 @@
     <!-- AI Road Map Section -->
     <section id="ai-roadmap" class="ai-roadmap">
         <div class="container">
-            <h2 class="section-title">AI Road Map & Evolution</h2>
-            <p class="section-subtitle" style="text-align:center; color: var(--text-secondary); margin-bottom: 3rem;">A
-                visual journey through the models and tools that shape my development path.</p>
+            <h2 class="section-title" style="background: linear-gradient(135deg, #00f2fe, #7209b5); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-family: 'Orbitron', sans-serif; letter-spacing: 3px; display: inline-block;">AI Road Map & Evolution</h2>
+            <p class="section-subtitle" style="text-align:center; color: rgba(255,255,255,0.5); margin-bottom: 3rem; font-size: 1rem; letter-spacing: 1px;">Tracing my journey through the models, tools, and agents that define my engineering path.</p>
 
             <div class="roadmap-container">
                 <div class="roadmap-path">
@@ -2136,126 +2237,128 @@
                 <div class="roadmap-node show">
                     <div class="node-marker"></div>
                     <div class="node-content">
-                        <div class="node-category">Phase 1: Generative Origins</div>
-                        <h3 class="node-title"><i class="fas fa-robot"></i> ChatGPT</h3>
-                        <p>The dawn of the LLM era. First exposure to prompt engineering and conversational AI
-                            workflows.</p>
+                        <div class="node-category">⚡ Phase 1 — Generative Origins</div>
+                        <h3 class="node-title"><i class="fas fa-comments"></i> ChatGPT</h3>
+                        <p>Where it all began — first exposure to prompt engineering, conversational AI, and understanding how large language models reshape human-computer interaction.</p>
                     </div>
                 </div>
 
                 <div class="roadmap-node right show">
                     <div class="node-marker"></div>
                     <div class="node-content">
-                        <div class="node-category">Multi-Modal Growth</div>
-                        <h3 class="node-title"><i class="fas fa-brain"></i> Gemini</h3>
-                        <p>Leveraging Google's ecosystem for multi-modal reasoning and deep integration with developer
-                            tools.</p>
+                        <div class="node-category">🧠 Phase 2 — Multi-Modal Intelligence</div>
+                        <h3 class="node-title"><i class="fas fa-brain"></i> Google Gemini</h3>
+                        <p>Harnessing Google's multi-modal reasoning engine — text, image, audio, and video understanding in a single unified model. Deep API integration for production apps.</p>
                     </div>
                 </div>
 
                 <div class="roadmap-node show">
                     <div class="node-marker"></div>
                     <div class="node-content">
-                        <div class="node-category">Real-time Information</div>
-                        <h3 class="node-title"><i class="fas fa-bolt"></i> Grok</h3>
-                        <p>Explored real-time data processing and unfiltered AI insights via the xAI ecosystem.</p>
+                        <div class="node-category">⚡ Phase 3 — Real-Time Intelligence</div>
+                        <h3 class="node-title"><i class="fas fa-bolt-lightning"></i> Grok (xAI)</h3>
+                        <p>Explored unfiltered, real-time AI insights via Elon Musk's xAI ecosystem — live data streams, zero-censorship responses, and raw analytical power.</p>
                     </div>
                 </div>
 
                 <div class="roadmap-node right show">
                     <div class="node-marker"></div>
                     <div class="node-content">
-                        <div class="node-category">Open Innovation</div>
-                        <h3 class="node-title"><i class="fas fa-globe"></i> Z.ai & DeepSeek</h3>
-                        <p>High-efficiency models for specialized coding and mathematical reasoning tasks.</p>
+                        <div class="node-category">🔓 Phase 4 — Open-Source Revolution</div>
+                        <h3 class="node-title"><i class="fas fa-code-branch"></i> DeepSeek & Z.ai</h3>
+                        <p>High-efficiency open-weight models specializing in code generation, mathematical reasoning, and cost-effective inference at scale.</p>
                     </div>
                 </div>
 
                 <div class="roadmap-node show">
                     <div class="node-marker"></div>
                     <div class="node-content">
-                        <div class="node-category">Developer Powerhouse</div>
-                        <h3 class="node-title"><i class="fas fa-code"></i> Google AI Studio</h3>
-                        <p>Advanced prototyping, API management, and fine-tuning experiments for custom applications.
-                        </p>
+                        <div class="node-category">🛠️ Phase 5 — API Mastery</div>
+                        <h3 class="node-title"><i class="fas fa-flask"></i> Google AI Studio</h3>
+                        <p>Advanced prototyping, prompt engineering, API management, and fine-tuning experiments — turning raw model capabilities into production-grade applications.</p>
                     </div>
                 </div>
 
                 <div class="roadmap-node right show">
                     <div class="node-marker"></div>
                     <div class="node-content">
-                        <div class="node-category">Designer-AI Bridge</div>
-                        <h3 class="node-title"><i class="fas fa-magic"></i> Lovable & Arena AI</h3>
-                        <p>Bridging the gap between creative UI design and functional AI block-building.</p>
+                        <div class="node-category">🎨 Phase 6 — AI × Design</div>
+                        <h3 class="node-title"><i class="fas fa-wand-sparkles"></i> Lovable & Arena AI</h3>
+                        <p>Bridging the gap between creative UI design and functional engineering — using AI to generate, iterate, and ship interfaces at unprecedented speed.</p>
                     </div>
                 </div>
 
                 <div class="roadmap-node show">
                     <div class="node-marker"></div>
                     <div class="node-content">
-                        <div class="node-category">Emerging Leaders</div>
+                        <div class="node-category">🌏 Phase 7 — Global Frontier Models</div>
                         <h3 class="node-title"><i class="fas fa-microchip"></i> Kimi & Qwen</h3>
-                        <p>Exploring long-context window models and state-of-the-art Chinese open-source LLMs.</p>
+                        <p>Exploring 128K+ token context windows, state-of-the-art Chinese open-source LLMs, and multilingual reasoning capabilities for global-scale applications.</p>
                     </div>
                 </div>
 
                 <div class="roadmap-node right show">
                     <div class="node-marker"></div>
                     <div class="node-content">
-                        <div class="node-category">Efficiency & Scale</div>
-                        <h3 class="node-title"><i class="fas fa-feather"></i> Gemma & MiniMax</h3>
-                        <p>Local deployment and lightweight, high-performance models for edge computing.</p>
+                        <div class="node-category">🪶 Phase 8 — Edge Intelligence</div>
+                        <h3 class="node-title"><i class="fas fa-feather-pointed"></i> Gemma & MiniMax</h3>
+                        <p>Lightweight, high-performance models for edge computing and local deployment — running AI entirely on-device without cloud dependency.</p>
                     </div>
                 </div>
 
                 <div class="roadmap-node show">
                     <div class="node-marker"></div>
                     <div class="node-content">
-                        <div class="node-category">The Apex of Reasoning</div>
-                        <h3 class="node-title"><i class="fas fa-star"></i> Claude</h3>
-                        <p>Mastering the most sophisticated coding agent for complex architectural builds.</p>
+                        <div class="node-category">👑 Phase 9 — The Apex of Reasoning</div>
+                        <h3 class="node-title"><i class="fas fa-crown"></i> Claude (Anthropic)</h3>
+                        <p>Mastering the most sophisticated reasoning and coding agent — complex architectural builds, multi-file refactoring, and production-grade software engineering.</p>
                     </div>
                 </div>
 
-                <!-- Tools Journey -->
-                <div style="text-align:center; margin: 5rem 0 3rem;">
-                    <h3 style="color: var(--accent-color); font-size: 2rem;">The Master's Toolkit</h3>
-                    <p style="color: var(--text-secondary);">The IDEs and agents that translate AI into reality.</p>
+                <!-- Master's Toolkit Divider -->
+                <div style="text-align:center; margin: 5rem 0 3rem; position: relative; z-index: 5;">
+                    <div style="display: flex; align-items: center; gap: 1.5rem; justify-content: center; margin-bottom: 1rem;">
+                        <div style="height: 1px; width: 80px; background: linear-gradient(90deg, transparent, #f72585);"></div>
+                        <span style="font-family: 'Orbitron', sans-serif; font-size: 0.7rem; letter-spacing: 4px; color: rgba(247, 37, 133, 0.6); text-transform: uppercase;">Developer Arsenal</span>
+                        <div style="height: 1px; width: 80px; background: linear-gradient(90deg, #f72585, transparent);"></div>
+                    </div>
+                    <h3 style="background: linear-gradient(135deg, #f72585, #b5179e, #7209b5); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-family: 'Orbitron', sans-serif; font-size: 2rem; letter-spacing: 3px;">The Master's Toolkit</h3>
+                    <p style="color: rgba(255,255,255,0.4); font-size: 0.95rem; margin-top: 0.5rem;">The IDEs, agents, and platforms that translate AI intelligence into shipped products.</p>
                 </div>
 
                 <div class="roadmap-node tool right show">
                     <div class="node-marker"></div>
                     <div class="node-content">
-                        <div class="node-category">Legacy Foundation</div>
-                        <h3 class="node-title"><i class="fas fa-terminal"></i> VS Code</h3>
-                        <p>The bedrock of modern web and software development, fully customized for efficiency.</p>
+                        <div class="node-category">🖥️ The Foundation</div>
+                        <h3 class="node-title"><i class="fas fa-laptop-code"></i> VS Code</h3>
+                        <p>The bedrock of modern software development — fully customized with extensions, keybindings, and integrated terminal workflows for maximum velocity.</p>
                     </div>
                 </div>
 
                 <div class="roadmap-node tool show">
                     <div class="node-marker"></div>
                     <div class="node-content">
-                        <div class="node-category">AI-Native IDE</div>
+                        <div class="node-category">🤖 AI-Native IDE</div>
                         <h3 class="node-title"><i class="fas fa-wand-magic-sparkles"></i> Cursor</h3>
-                        <p>First encounter with truly symbiotic coding experiences and codebase-aware AI.</p>
+                        <p>First encounter with truly symbiotic AI coding — codebase-aware completions, multi-file edits, and conversational debugging that 10x developer speed.</p>
                     </div>
                 </div>
 
                 <div class="roadmap-node tool right show">
                     <div class="node-marker"></div>
                     <div class="node-content">
-                        <div class="node-category">Self-Evolving Agents</div>
-                        <h3 class="node-title"><i class="fas fa-project-diagram"></i> Emergent</h3>
-                        <p>Exploring complex agentic workflows and multi-step autonomous reasoning systems.</p>
+                        <div class="node-category">🧬 Autonomous Agents</div>
+                        <h3 class="node-title"><i class="fas fa-network-wired"></i> Emergent</h3>
+                        <p>Exploring complex agentic workflows — multi-step autonomous reasoning, tool-use orchestration, and self-correcting systems that think before they act.</p>
                     </div>
                 </div>
 
                 <div class="roadmap-node tool show">
                     <div class="node-marker"></div>
                     <div class="node-content">
-                        <div class="node-category">The Final Frontier</div>
-                        <h3 class="node-title"><i class="fas fa-rocket"></i> Anti Gravity</h3>
-                        <p>Pushing the limits of AI-assisted engineering with highly advanced generative agents.</p>
+                        <div class="node-category">🚀 The Final Frontier</div>
+                        <h3 class="node-title"><i class="fas fa-shuttle-space"></i> Antigravity</h3>
+                        <p>Pushing the absolute limits of AI-assisted engineering — advanced generative agents, full-stack autonomous builds, and the future of software creation.</p>
                     </div>
                 </div>
 
