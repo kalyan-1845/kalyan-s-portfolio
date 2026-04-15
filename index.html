@@ -568,60 +568,77 @@
             color: var(--text-secondary);
         }
 
-        /* Skills Section */
-        .skills-container {
-            margin-top: 2rem;
+        /* AI Skills & Technological Arsenal - Liquid Style */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2.5rem;
         }
 
         .skill {
-            margin-bottom: 1.5rem;
+            margin-bottom: 0.5rem;
         }
 
         .skill-name {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
             font-weight: 500;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            color: var(--text-color);
         }
 
         .skill-bar {
-            height: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 5px;
+            height: 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            position: relative;
             overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
         }
 
         .skill-progress {
             height: 100%;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-            border-radius: 5px;
             width: 0;
-            transition: width 1.5s ease;
+            background: linear-gradient(90deg, #00f2fe 0%, #4facfe 100%);
+            border-radius: 20px;
             position: relative;
+            transition: width 2s cubic-bezier(0.17, 0.67, 0.83, 0.67);
             overflow: hidden;
         }
 
-        .skill-progress::after {
+        /* Liquid Wave Effect */
+        .skill-progress::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            bottom: 0;
-            right: 0;
-            background: linear-gradient(90deg,
-                    rgba(255, 255, 255, 0) 0%,
-                    rgba(255, 255, 255, 0.3) 50%,
-                    rgba(255, 255, 255, 0) 100%);
-            animation: shimmer 2s infinite;
+            width: 200%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 300'%3E%3Cpath fill='%23ffffff' fill-opacity='0.2' d='M0,160L40,149.3C80,139,160,117,240,128C320,139,400,181,480,181.3C560,181,640,139,720,117.3C800,96,880,96,960,106.7C1040,117,1120,139,1200,138.7C1280,139,1360,117,1400,106.7L1440,96L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+            background-size: 50% 100%;
+            animation: moveLiquid 3s linear infinite;
+            opacity: 0.6;
         }
 
-        @keyframes shimmer {
-            0% {
-                transform: translateX(-100%);
-            }
+        @keyframes moveLiquid {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
 
-            100% {
-                transform: translateX(100%);
+        /* Different Colors for Skills */
+        .skill:nth-child(4n+1) .skill-progress { background: linear-gradient(90deg, #00f2fe, #4facfe); }
+        .skill:nth-child(4n+2) .skill-progress { background: linear-gradient(90deg, #f093fb, #f5576c); }
+        .skill:nth-child(4n+3) .skill-progress { background: linear-gradient(90deg, #43e97b, #38f9d7); }
+        .skill:nth-child(4n+4) .skill-progress { background: linear-gradient(90deg, #fa709a, #fee140); }
+
+        @media (max-width: 768px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -1834,59 +1851,27 @@
                         about learning new technologies, improving my problem-solving abilities, and building innovative
                         software solutions that create meaningful impact.</p>
 
-                    <div class="skills-container">
-                        <h3>My Skills</h3>
-                        <div class="skill">
-                            <div class="skill-name">
-                                <span>JAVA</span>
-                                <span>81%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="81"></div>
-                            </div>
-                        </div>
-                        <div class="skill">
-                            <div class="skill-name">
-                                <span>PYTHON</span>
-                                <span>90%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="90"></div>
-                            </div>
-                        </div>
-                        <div class="skill">
-                            <div class="skill-name">
-                                <span>HTML</span>
-                                <span>80%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="80"></div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="skill">
-                        <div class="skill-name">
-                            <span>Java Script</span>
-                            <span>80%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="80"></div>
-                        </div>
-                    </div>
-
-                    <div class="skill">
-                        <div class="skill-name">
-                            <span>C</span>
-                            <span>87%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="87"></div>
+                    <div class="skills-container" style="margin-top: 3rem;">
+                        <h2 style="background: linear-gradient(45deg, #00f2fe, #4facfe); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-family: 'Orbitron', sans-serif; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0; display: inline-block;">My AI Skills &amp; Tech Arsenal</h2>
+                        <div class="skills-grid">
+                            <div class="skill"><div class="skill-name"><span>Python (AI &amp; Automation)</span><span>95%</span></div><div class="skill-bar"><div class="skill-progress" data-width="95"></div></div></div>
+                            <div class="skill"><div class="skill-name"><span>Next.js</span><span>82%</span></div><div class="skill-bar"><div class="skill-progress" data-width="82"></div></div></div>
+                            <div class="skill"><div class="skill-name"><span>React.js</span><span>88%</span></div><div class="skill-bar"><div class="skill-progress" data-width="88"></div></div></div>
+                            <div class="skill"><div class="skill-name"><span>Generative AI (LLMs / Agents)</span><span>92%</span></div><div class="skill-bar"><div class="skill-progress" data-width="92"></div></div></div>
+                            <div class="skill"><div class="skill-name"><span>JAVA</span><span>85%</span></div><div class="skill-bar"><div class="skill-progress" data-width="85"></div></div></div>
+                            <div class="skill"><div class="skill-name"><span>Node.js</span><span>84%</span></div><div class="skill-bar"><div class="skill-progress" data-width="84"></div></div></div>
+                            <div class="skill"><div class="skill-name"><span>Go (Golang)</span><span>75%</span></div><div class="skill-bar"><div class="skill-progress" data-width="75"></div></div></div>
+                            <div class="skill"><div class="skill-name"><span>Flutter &amp; Dart (Mobile)</span><span>86%</span></div><div class="skill-bar"><div class="skill-progress" data-width="86"></div></div></div>
+                            <div class="skill"><div class="skill-name"><span>HTML5 / CSS3 / JavaScript</span><span>95%</span></div><div class="skill-bar"><div class="skill-progress" data-width="95"></div></div></div>
+                            <div class="skill"><div class="skill-name"><span>Tailwind CSS</span><span>90%</span></div><div class="skill-bar"><div class="skill-progress" data-width="90"></div></div></div>
+                            <div class="skill"><div class="skill-name"><span>Computer Vision (Veo Vision)</span><span>88%</span></div><div class="skill-bar"><div class="skill-progress" data-width="88"></div></div></div>
+                            <div class="skill"><div class="skill-name"><span>MongoDB &amp; SQLite</span><span>80%</span></div><div class="skill-bar"><div class="skill-progress" data-width="80"></div></div></div>
+                            <div class="skill"><div class="skill-name"><span>Three.js (3D Graphics)</span><span>80%</span></div><div class="skill-bar"><div class="skill-progress" data-width="80"></div></div></div>
+                            <div class="skill"><div class="skill-name"><span>NLP &amp; Chat Agents</span><span>85%</span></div><div class="skill-bar"><div class="skill-progress" data-width="85"></div></div></div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
         </div>
     </section>
 
@@ -2193,7 +2178,7 @@
                             <span class="tech-tag">Routing Algorithms</span>
                             <span class="tech-tag">GPS Integration</span>
                         </div>
-                        <a href="https://github.com/kalyan-1845/Sarathi" target="_blank" class="milestone-link"><i class="fab fa-github"></i> View Repository</a>
+                        <a href="https://github.com/kalyan-1845/sarathi-emergency" target="_blank" class="milestone-link"><i class="fab fa-github"></i> View Repository</a>
                     </div>
 
                     <!-- Project 2: Omni Agent Android -->
@@ -2207,7 +2192,7 @@
                             <span class="tech-tag">Android UI</span>
                             <span class="tech-tag">Autonomous Agent</span>
                         </div>
-                        <a href="https://github.com/kalyan-1845/Omni-Agent-Android" target="_blank" class="milestone-link"><i class="fab fa-github"></i> View Repository</a>
+                        <a href="https://github.com/kalyan-1845/android" target="_blank" class="milestone-link"><i class="fab fa-github"></i> View Repository</a>
                     </div>
 
                     <!-- Project 3: Kovixa -->
@@ -2218,7 +2203,7 @@
                             <span class="tech-tag">Cybersecurity</span>
                             <span class="tech-tag">AI Verification</span>
                         </div>
-                        <a href="https://github.com/kalyan-1845/Kovixa" target="_blank" class="milestone-link"><i class="fab fa-github"></i> View Repository</a>
+                        <a href="https://github.com/kalyan-1845/kovixa" target="_blank" class="milestone-link"><i class="fab fa-github"></i> View Repository</a>
                     </div>
 
                     <!-- Project 4: Data Processing System -->
@@ -2240,7 +2225,7 @@
                             <span class="tech-tag">Three.js</span>
                             <span class="tech-tag">Generative Slides</span>
                         </div>
-                        <a href="https://github.com/kalyan-1845/3D-King-PPT" target="_blank" class="milestone-link"><i class="fab fa-github"></i> View Repository</a>
+                        <a href="https://github.com/kalyan-1845/3d-king-ppt" target="_blank" class="milestone-link"><i class="fab fa-github"></i> View Repository</a>
                     </div>
 
                     <!-- Project 6: AI Avatar Studio -->
@@ -2251,7 +2236,7 @@
                             <span class="tech-tag">Computer Vision</span>
                             <span class="tech-tag">Generative AI</span>
                         </div>
-                        <a href="https://github.com/kalyan-1845/AI-Avatar-Studio" target="_blank" class="milestone-link"><i class="fab fa-github"></i> View Repository</a>
+                        <a href="https://github.com/kalyan-1845/ai-avatar-studio" target="_blank" class="milestone-link"><i class="fab fa-github"></i> View Repository</a>
                     </div>
 
                     <!-- Project 7: Frnd AI -->
@@ -2262,7 +2247,7 @@
                             <span class="tech-tag">NLP</span>
                             <span class="tech-tag">Emotional AI</span>
                         </div>
-                        <a href="https://github.com/kalyan-1845/Frnd-AI" target="_blank" class="milestone-link"><i class="fab fa-github"></i> View Repository</a>
+                        <a href="https://github.com/kalyan-1845/frnd.ai" target="_blank" class="milestone-link"><i class="fab fa-github"></i> View Repository</a>
                     </div>
 
                     <!-- Project 8: Flutter POS -->
@@ -2276,7 +2261,7 @@
                             <span class="tech-tag">Flutter</span>
                             <span class="tech-tag">MIT License</span>
                         </div>
-                        <a href="https://github.com/kalyan-1845/Flutter-POS" target="_blank" class="milestone-link"><i class="fab fa-github"></i> View Repository</a>
+                        <a href="https://github.com/kalyan-1845/Flutter-POS-System" target="_blank" class="milestone-link"><i class="fab fa-github"></i> View Repository</a>
                     </div>
                 </div>
             </div>
