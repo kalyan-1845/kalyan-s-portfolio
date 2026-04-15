@@ -627,32 +627,29 @@
         }
 
         .education-item {
-            display: grid;
-            grid-template-columns: 300px 1fr;
-            gap: 2rem;
-            margin-bottom: 3rem;
+            position: relative;
             background: var(--card-bg);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border-radius: 15px;
             border: 1px solid var(--border-color);
             box-shadow: 0 8px 32px 0 var(--shadow-color);
-            overflow: hidden;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
             transition: var(--transition);
             animation: fadeInUp 0.8s ease forwards;
             opacity: 0;
+            overflow: hidden;
         }
 
-        .education-item:nth-child(1) {
-            animation-delay: 0.1s;
-        }
-
-        .education-item:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        .education-item:nth-child(3) {
-            animation-delay: 0.3s;
+        .education-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
         }
 
         .education-item:hover {
@@ -660,27 +657,9 @@
             box-shadow: 0 15px 40px 0 var(--shadow-color);
         }
 
-        .education-image {
-            height: 100%;
-            overflow: hidden;
-        }
-
-        .education-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.8s ease;
-        }
-
-        .education-item:hover .education-image img {
-            transform: scale(1.05);
-        }
-
         .education-content {
-            padding: 2rem;
             display: flex;
             flex-direction: column;
-            justify-content: center;
         }
 
         .education-title {
@@ -1564,7 +1543,7 @@
                 </div>
                 <div class="about-text">
                     <h2>Hello, I'm Kalyan</h2>
-                    <p>I am a second-year Computer Science Engineering student at Detailed Tech Stack & Abilities with a
+                    <p>I am a second-year Computer Science Engineering student at Ace Engineering College with a
                         strong
                         interest in AI, software development, and mobile app prototyping. I have hands-on experience
                         developing projects like Aurora AI Pro, a multilingual voice/text translator built using Python,
@@ -1638,12 +1617,8 @@
             <div class="education-container">
                 <!-- Education 1 -->
                 <div class="education-item">
-                    <div class="education-image">
-                        <img src="https://i.vimeocdn.com/portrait/41571962_640x640"
-                            alt="Detailed Tech Stack & Abilities">
-                    </div>
                     <div class="education-content">
-                        <h3 class="education-title">Detailed Tech Stack & Abilities</h3>
+                        <h3 class="education-title">Ace Engineering College</h3>
                         <p class="education-degree">Bachelor of Technology in Computer Science Engineering</p>
                         <div class="education-details">
                             <div class="education-detail">
@@ -1668,9 +1643,6 @@
 
                 <!-- Education 2 -->
                 <div class="education-item">
-                    <div class="education-image">
-                        <img src="https://picsum.photos/seed/school2/300/400.jpg" alt="Vijwala Junior College">
-                    </div>
                     <div class="education-content">
                         <h3 class="education-title">Vijwala Junior College</h3>
                         <p class="education-degree">Intermediate (MPC)</p>
@@ -1693,9 +1665,6 @@
 
                 <!-- Education 3 -->
                 <div class="education-item">
-                    <div class="education-image">
-                        <img src="https://picsum.photos/seed/school1/300/400.jp" alt="St. Paul's High School">
-                    </div>
                     <div class="education-content">
                         <h3 class="education-title">Vidya Nikethan High School</h3>
                         <p class="education-degree">SSC</p>
@@ -1722,26 +1691,24 @@
     <!-- Experience Section -->
     <section id="experience" class="experience">
         <div class="container">
-            <h2>My Experience on various actvities</h2>
+            <h2>My Experience in Various Activities</h2>
             <div class="experience-container">
                 <!-- Experience 1 -->
                 <div class="experience-item">
                     <div class="experience-header">
                         <div>
-                            <h3 class="experience-title">Basic's Python Workshop</h3>
-                            <p class="experience-company">Detailed Tech Stack & Abilities</p>
+                            <h3 class="experience-title">Basics of Python Workshop</h3>
+                            <p class="experience-company">Ace Engineering College</p>
                         </div>
-                        <div class="experience-date">may 6 2025</div>
+                        <div class="experience-date">May 6, 2025</div>
                     </div>
                     <p class="experience-description">
-                        Participated in a 3-day intensive workshop on python programming. Gained hands-on experience
-                        with Python libraries , and worked on a team project to develop one project.
+                        Participated in a 3-day intensive workshop on Python programming. Gained hands-on experience
+                        with Python libraries, and worked on a team project to develop a custom project.
                     </p>
                     <div class="experience-skills">
-                        <span class="experience-skill">Workshop on Python Basics Programming </span>
-                        <span class="experience-skill"></span>
-                        <span class="experience-skill"></span>
-                        <span class="experience-skill"></span>
+                        <span class="experience-skill">Python Basics</span>
+                        <span class="experience-skill">Team Collaboration</span>
                     </div>
                 </div>
 
@@ -1750,19 +1717,17 @@
                     <div class="experience-header">
                         <div>
                             <h3 class="experience-title">AWS Workshop</h3>
-                            <p class="experience-company"> Detailed Tech Stack & Abilities</p>
+                            <p class="experience-company">Ace Engineering College</p>
                         </div>
-                        <div class="experience-date">Feb 9 2026</div>
+                        <div class="experience-date">Feb 9, 2026</div>
                     </div>
                     <p class="experience-description">
-                        Completed a 2-days bootcamp focused on could server. Learned basics to create an account and
-                        deploy a simple web application. , which received recognition from faculty members.
+                        Completed a 2-day bootcamp focused on cloud servers. Learned the basics of creating an account and
+                        deploying a simple web application, which received recognition from faculty members.
                     </p>
                     <div class="experience-skills">
-                        <span class="experience-skill"></span>
-                        <span class="experience-skill"></span>
                         <span class="experience-skill">AWS</span>
-                        <span class="experience-skill"></span>
+                        <span class="experience-skill">Cloud Deployment</span>
                     </div>
                 </div>
 
@@ -1770,11 +1735,10 @@
                 <div class="experience-item">
                     <div class="experience-header">
                         <div>
-                            <h3 class="experience-title">Generative AIh3>
-                                <p class="experience-company">OutSkill Platform,vaibav Sisnity
-                                </p>
+                            <h3 class="experience-title">Generative AI Workshop</h3>
+                            <p class="experience-company">OutSkill Platform, Vaibhav Sisinty</p>
                         </div>
-                        <div class="experience-date">feb 7 2026</div>
+                        <div class="experience-date">Feb 7, 2026</div>
                     </div>
                     <p class="experience-description">
                         Attended a 2-day workshop on generative AI tools and techniques. Explored various AI models, and
@@ -1782,10 +1746,9 @@
                         understanding of the potential applications of generative AI.
                     </p>
                     <div class="experience-skills">
-                        <span class="experience-skill">online workshop</span>
-                        <span class="experience-skill">AI models</span>
-                        <span class="experience-skill">Use Of AI</span>
+                        <span class="experience-skill">AI Models</span>
                         <span class="experience-skill">Prompt Engineering</span>
+                        <span class="experience-skill">Generative AI Tools</span>
                     </div>
                 </div>
             </div>
@@ -2004,7 +1967,7 @@
 
                 <!-- Certificate 3 -->
                 <div class="certificate-card glass-card" data-certificate-id="3">
-                    <img src="cert_skill_competency.png" alt="Certificate 3" class="certificate-image">
+                    <img src="cert_cerebro_gemini.png" alt="CEREBRO, Gemini Ai Challenge" class="certificate-image">
                     <div class="certificate-badge">Verified</div>
                     <div class="certificate-overlay">
                         <div class="certificate-content">
@@ -2023,7 +1986,7 @@
 
                 <!-- Certificate 4 -->
                 <div class="certificate-card glass-card" data-certificate-id="4">
-                    <img src="cert_sih_hackathon.png" alt="Certificate 4" class="certificate-image">
+                    <img src="cert_sih_lexicon.png" alt="Smart India Hackathon - Lexicon Legends" class="certificate-image">
                     <div class="certificate-badge">Verified</div>
                     <div class="certificate-overlay">
                         <div class="certificate-content">
@@ -2042,7 +2005,7 @@
 
                 <!-- Certificate 5 -->
                 <div class="certificate-card glass-card" data-certificate-id="5">
-                    <img src="cert_claude_intro.png" alt="Certificate 5" class="certificate-image">
+                    <img src="cert_claude_intro_personal.png" alt="Introduction to Claude Certification" class="certificate-image">
                     <div class="certificate-badge">Verified</div>
                     <div class="certificate-overlay">
                         <div class="certificate-content">
@@ -2061,7 +2024,7 @@
 
                 <!-- Certificate 6 -->
                 <div class="certificate-card glass-card" data-certificate-id="6">
-                    <img src="cert_claude_101.png" alt="Certificate 6" class="certificate-image">
+                    <img src="cert_claude_101_personal.png" alt="Claude 101 Certification" class="certificate-image">
                     <div class="certificate-badge">Verified</div>
                     <div class="certificate-overlay">
                         <div class="certificate-content">
@@ -2080,7 +2043,7 @@
 
                 <!-- Certificate 7 -->
                 <div class="certificate-card glass-card" data-certificate-id="7">
-                    <img src="cert_ia_training.png" alt="Certificate 7" class="certificate-image">
+                    <img src="cert_ia_training_personal.png" alt="IA Online Training" class="certificate-image">
                     <div class="certificate-badge">Verified</div>
                     <div class="certificate-overlay">
                         <div class="certificate-content">
@@ -2099,7 +2062,7 @@
 
                 <!-- Certificate 8 -->
                 <div class="certificate-card glass-card" data-certificate-id="8">
-                    <img src="cert_journal_publication.png" alt="Certificate 8" class="certificate-image">
+                    <img src="cert_journal_publication_personal.png" alt="International Journal Publication" class="certificate-image">
                     <div class="certificate-badge">Verified</div>
                     <div class="certificate-overlay">
                         <div class="certificate-content">
@@ -2320,7 +2283,7 @@
                 <div class="footer-column">
                     <h3>Bhoompally Kalyan Reddy</h3>
                     <p>Computer Science Student</p>
-                    <p>Detailed Tech Stack & Abilities</p>
+                    <p>Ace Engineering College</p>
                 </div>
                 <div class="footer-column">
                     <h3>Quick Links</h3>
@@ -2647,7 +2610,7 @@
         // Certificate data
         const certificates = {
             1: {
-                title: "Generative AI Certification",
+                title: "Generative Ai Workshop",
                 issuer: "OutSkill",
                 date: "Feb 8 2026",
                 image: "Certification-React-Native.png",
@@ -2657,7 +2620,7 @@
             },
             2: {
                 title: "Basic Python Programming Workshop",
-                issuer: "IIT Bombay FOSSEE Platform",
+                issuer: "FOSSEE, IT Bombay",
                 date: "May 9 2025",
                 image: "Certification-Web-Development.png",
                 description: "Completed an intensive Python programming bootcamp. Gained hands-on experience with Python libraries, data manipulation, and worked on collaborative projects to build a strong foundation in Python development.",
@@ -2665,19 +2628,19 @@
                 downloadLink: "Certification-Web-Development.png"
             },
             3: {
-                title: "Skills and Competencies",
-                issuer: "Detailed Tech Stack & Abilities",
+                title: "CEREBRO, Gemini Ai Challenge",
+                issuer: "Ace Engineering College",
                 date: "Current Year",
-                image: "cert_skill_competency.png",
-                description: "Successfully participated in the CEREBRO Gemini AI Hackathon Challenge at Detailed Tech Stack & Abilities, demonstrating problem-solving skills and innovative usage of the Gemini AI model.",
-                viewLink: "Skills-and-Competencies.pdf",
-                downloadLink: "Skills-and-Competencies.pdf"
+                image: "cert_cerebro_gemini.png",
+                description: "Successfully participated in the CEREBRO Gemini AI Hackathon Challenge at Ace Engineering College, demonstrating problem-solving skills and innovative usage of the Gemini AI model.",
+                viewLink: "#",
+                downloadLink: "#"
             },
             4: {
                 title: "Smart India Hackathon - Lexicon Legends",
                 issuer: "SIH / Lexicon Legends",
                 date: "2026",
-                image: "cert_sih_hackathon.png",
+                image: "cert_sih_lexicon.png",
                 description: "Certificate of participation/achievement in the Smart India Hackathon as part of the Lexicon Legends team.",
                 viewLink: "Certificate-SIH-Hackathon.pdf",
                 downloadLink: "Certificate-SIH-Hackathon.pdf"
@@ -2686,7 +2649,7 @@
                 title: "Introduction to Claude Certification",
                 issuer: "Anthropic / AI Training",
                 date: "2026",
-                image: "cert_claude_intro.png",
+                image: "cert_claude_intro_personal.png",
                 description: "Successfully completed introductory training for Claude AI models and prompt engineering.",
                 viewLink: "Certificate-Claude-Intro.pdf",
                 downloadLink: "Certificate-Claude-Intro.pdf"
@@ -2695,7 +2658,7 @@
                 title: "Claude 101 Certification",
                 issuer: "Anthropic / AI Training",
                 date: "2026",
-                image: "cert_claude_101.png",
+                image: "cert_claude_101_personal.png",
                 description: "Advanced certification covering the fundamentals and specialized applications of Claude AI.",
                 viewLink: "Certificate-Claude-101.pdf",
                 downloadLink: "Certificate-Claude-101.pdf"
@@ -2704,7 +2667,7 @@
                 title: "IA Online Training",
                 issuer: "IA Online Course",
                 date: "2026",
-                image: "cert_ia_training.png",
+                image: "cert_ia_training_personal.png",
                 description: "Completion of the IA online training program focused on technical development.",
                 viewLink: "Certificate-IA-Online.pdf",
                 downloadLink: "Certificate-IA-Online.pdf"
@@ -2713,7 +2676,7 @@
                 title: "International Journal Publication",
                 issuer: "International Journal",
                 date: "2026",
-                image: "cert_journal_publication.png",
+                image: "cert_journal_publication_personal.png",
                 description: "Recognition for publishing a research paper in an international academic journal.",
                 viewLink: "Certificate-Journal-Publication.pdf",
                 downloadLink: "Certificate-Journal-Publication.pdf"
