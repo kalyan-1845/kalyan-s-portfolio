@@ -2162,6 +2162,101 @@
                 display: none;
             }
         }
+
+        /* ===== Shortcuts Modal & Toast ===== */
+        .shortcuts-modal {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(15, 12, 41, 0.9);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--primary-color);
+            border-radius: 15px;
+            padding: 20px;
+            color: #fff;
+            z-index: 99999;
+            transform: translateX(150%);
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 30px rgba(0, 242, 254, 0.2);
+        }
+        
+        body.light-theme .shortcuts-modal {
+            background: rgba(245, 247, 250, 0.95);
+            color: #333;
+        }
+
+        .shortcuts-modal.active {
+            transform: translateX(0);
+        }
+
+        .shortcuts-modal h3 {
+            margin: 0 0 15px 0;
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Orbitron', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .shortcut-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            gap: 30px;
+            font-size: 0.9rem;
+        }
+
+        .shortcut-key {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-family: monospace;
+            color: var(--accent-color);
+            font-weight: bold;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            min-width: 28px;
+            text-align: center;
+        }
+        
+        body.light-theme .shortcut-key {
+            background: rgba(0, 0, 0, 0.05);
+            border-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .shortcut-toast {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-100px);
+            background: rgba(0, 242, 254, 0.15);
+            border: 1px solid var(--primary-color);
+            color: #fff;
+            padding: 10px 25px;
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 100000;
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
+            pointer-events: none;
+        }
+        
+        body.light-theme .shortcut-toast {
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+        }
+
+        .shortcut-toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
     </style>
 </head>
 
@@ -4008,10 +4103,114 @@
             if (e.target === this) closeResumeModal();
         });
 
-        // Close on Escape key
+        // ===== Cinematic View Logic =====
+        let isCinematic = false;
+        function startCinematicView() {
+            if (isCinematic) return;
+            isCinematic = true;
+            
+            showToast("🎬 Cinematic Mode Activated");
+            
+            // Hide navbar and cursor for cinematic effect
+            const header = document.querySelector('header');
+            const originalHeaderTransition = header.style.transition;
+            header.style.transition = 'transform 0.5s ease';
+            header.style.transform = 'translateY(-100%)';
+            document.body.style.cursor = 'none';
+            document.documentElement.style.scrollBehavior = 'auto'; // Disable smooth scroll temporarily
+            
+            const targetPosition = document.body.scrollHeight - window.innerHeight;
+            const duration = 5000;
+            const startPosition = window.pageYOffset;
+            const distance = targetPosition - startPosition;
+            let startTime = null;
+
+            function animation(currentTime) {
+                if (startTime === null) startTime = currentTime;
+                const timeElapsed = currentTime - startTime;
+                const progress = Math.min(timeElapsed / duration, 1);
+                
+                // easeInOutQuad easing
+                const ease = progress < 0.5 ? 2 * progress * progress : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+                
+                window.scrollTo(0, startPosition + distance * ease);
+
+                if (timeElapsed < duration) {
+                    requestAnimationFrame(animation);
+                } else {
+                    // Restore original styles
+                    header.style.transform = 'none';
+                    setTimeout(() => { header.style.transition = originalHeaderTransition; }, 500);
+                    document.body.style.cursor = '';
+                    document.documentElement.style.scrollBehavior = 'smooth';
+                    isCinematic = false;
+                    showToast("🎬 Cinematic Tour Finished");
+                }
+            }
+
+            requestAnimationFrame(animation);
+        }
+
+        // ===== Keyboard Shortcuts & Toast Logic =====
+        let toastTimeout;
+        function showToast(message) {
+            const toast = document.getElementById('shortcut-toast');
+            if(!toast) return;
+            toast.textContent = message;
+            toast.classList.add('show');
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        function toggleShortcutsModal() {
+            const modal = document.getElementById('shortcuts-modal');
+            if(modal) modal.classList.toggle('active');
+        }
+
+        // Global Keyboard Shortcuts
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') closeResumeModal();
+            // Ignore shortcuts if typing in an input/textarea
+            if (e.target.tagName.toLowerCase() === 'input' || e.target.tagName.toLowerCase() === 'textarea') return;
+
+            const key = e.key.toLowerCase();
+
+            if (e.key === 'Escape') {
+                closeResumeModal();
+                const shortcutsModal = document.getElementById('shortcuts-modal');
+                if(shortcutsModal) shortcutsModal.classList.remove('active');
+            }
+            
+            if (key === 'r') {
+                e.preventDefault();
+                showToast("📄 Opening Resume");
+                openResumeModal();
+            }
+            
+            if (key === 'c') {
+                e.preventDefault();
+                startCinematicView();
+            }
+            
+            if (key === 't' || key === 'd') {
+                e.preventDefault();
+                const themeToggle = document.getElementById('theme-toggle');
+                if (themeToggle) {
+                    themeToggle.click();
+                    const isLight = document.body.classList.contains('light-theme');
+                    showToast(isLight ? "☀️ Light Theme Enabled" : "🌙 Dark Theme Enabled");
+                }
+            }
+            
+            if (e.key === '?') {
+                e.preventDefault();
+                toggleShortcutsModal();
+            }
         });
+        
+        // Show hint toast on first load
+        setTimeout(() => {
+            showToast("💡 Press '?' to view Secret Shortcuts!");
+        }, 3000);
     </script>
 
     <!-- Resume Modal -->
@@ -4038,6 +4237,29 @@
                     </a>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Shortcuts Modal & Toast -->
+    <div class="shortcut-toast" id="shortcut-toast">💡 Press '?' for Shortcuts</div>
+    
+    <div class="shortcuts-modal" id="shortcuts-modal">
+        <h3><i class="fas fa-keyboard"></i> Secret Shortcuts</h3>
+        <div class="shortcut-item">
+            <span>Toggle Theme</span>
+            <span class="shortcut-key">T</span>
+        </div>
+        <div class="shortcut-item">
+            <span>Cinematic View</span>
+            <span class="shortcut-key">C</span>
+        </div>
+        <div class="shortcut-item">
+            <span>Open Resume</span>
+            <span class="shortcut-key">R</span>
+        </div>
+        <div class="shortcut-item">
+            <span>Show/Hide Menu</span>
+            <span class="shortcut-key">?</span>
         </div>
     </div>
 
