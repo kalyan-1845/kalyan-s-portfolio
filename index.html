@@ -2297,6 +2297,69 @@
     <div class="cursor"></div>
     <div class="cursor-follower"></div>
 
+    <!-- Resume Modal -->
+    <div class="resume-modal-overlay" id="resume-modal-overlay">
+        <div class="resume-modal">
+            <div class="resume-modal-header">
+                <h3><i class="fas fa-file-pdf" style="margin-right: 8px;"></i> My Resume</h3>
+                <div class="resume-modal-actions">
+                    <a href="Kalyan_Software_Engineer_Resume.pdf" class="resume-modal-download" download>
+                        <i class="fas fa-download"></i> <span>Download</span>
+                    </a>
+                    <button class="resume-modal-close" onclick="closeResumeModal()" title="Close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="resume-modal-body">
+                <iframe id="resume-iframe" title="Resume Preview"></iframe>
+                <div class="resume-modal-fallback" id="resume-fallback">
+                    <i class="fas fa-file-pdf"></i>
+                    <p>PDF preview isn't supported on this device. Download to view the full resume.</p>
+                    <a href="Kalyan_Software_Engineer_Resume.pdf" class="resume-modal-download" download>
+                        <i class="fas fa-download"></i> <span>Download Resume</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Shortcuts Modal & Toast -->
+    <div class="shortcut-toast" id="shortcut-toast">💡 Press Alt + K for Shortcuts</div>
+    
+    <div class="shortcuts-modal" id="shortcuts-modal">
+        <h3><i class="fas fa-keyboard"></i> Pro Shortcuts</h3>
+        <div class="shortcut-item">
+            <span>Toggle Menu</span>
+            <span class="shortcut-key">Alt + K</span>
+        </div>
+        <div class="shortcut-item">
+            <span>Open Resume</span>
+            <span class="shortcut-key">Alt + R</span>
+        </div>
+        <div class="shortcut-item">
+            <span>Toggle Theme</span>
+            <span class="shortcut-key">Alt + S</span>
+        </div>
+        <div class="shortcut-item">
+            <span>Cinematic View</span>
+            <span class="shortcut-key">Alt + Z</span>
+        </div>
+        <div class="shortcut-item">
+            <span>Achievements</span>
+            <span class="shortcut-key">Alt + A</span>
+        </div>
+        <div class="shortcut-item">
+            <span>AI Road Map</span>
+            <span class="shortcut-key">Alt + B</span>
+        </div>
+    </div>
+
+    <!-- Visible Shortcuts Button -->
+    <button class="shortcuts-trigger-btn" onclick="toggleShortcutsModal()" title="View Keyboard Shortcuts">
+        <i class="fas fa-keyboard"></i>
+    </button>
+
     <!-- Header & Navigation -->
     <header>
         <div class="container">
@@ -4261,69 +4324,6 @@
             showToast("💡 Press Ctrl + K to view Shortcuts!");
         }, 3000);
     </script>
-
-    <!-- Resume Modal -->
-    <div class="resume-modal-overlay" id="resume-modal-overlay">
-        <div class="resume-modal">
-            <div class="resume-modal-header">
-                <h3><i class="fas fa-file-pdf" style="margin-right: 8px;"></i> My Resume</h3>
-                <div class="resume-modal-actions">
-                    <a href="Kalyan_Software_Engineer_Resume.pdf" class="resume-modal-download" download>
-                        <i class="fas fa-download"></i> <span>Download</span>
-                    </a>
-                    <button class="resume-modal-close" onclick="closeResumeModal()" title="Close">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="resume-modal-body">
-                <iframe id="resume-iframe" title="Resume Preview"></iframe>
-                <div class="resume-modal-fallback" id="resume-fallback">
-                    <i class="fas fa-file-pdf"></i>
-                    <p>PDF preview isn't supported on this device. Download to view the full resume.</p>
-                    <a href="Kalyan_Software_Engineer_Resume.pdf" class="resume-modal-download" download>
-                        <i class="fas fa-download"></i> <span>Download Resume</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Shortcuts Modal & Toast -->
-    <div class="shortcut-toast" id="shortcut-toast">💡 Press Alt + K for Shortcuts</div>
-    
-    <div class="shortcuts-modal" id="shortcuts-modal">
-        <h3><i class="fas fa-keyboard"></i> Pro Shortcuts</h3>
-        <div class="shortcut-item">
-            <span>Toggle Menu</span>
-            <span class="shortcut-key">Alt + K</span>
-        </div>
-        <div class="shortcut-item">
-            <span>Open Resume</span>
-            <span class="shortcut-key">Alt + R</span>
-        </div>
-        <div class="shortcut-item">
-            <span>Toggle Theme</span>
-            <span class="shortcut-key">Alt + S</span>
-        </div>
-        <div class="shortcut-item">
-            <span>Cinematic View</span>
-            <span class="shortcut-key">Alt + Z</span>
-        </div>
-        <div class="shortcut-item">
-            <span>Achievements</span>
-            <span class="shortcut-key">Alt + A</span>
-        </div>
-        <div class="shortcut-item">
-            <span>AI Road Map</span>
-            <span class="shortcut-key">Alt + B</span>
-        </div>
-    </div>
-
-    <!-- Visible Shortcuts Button -->
-    <button class="shortcuts-trigger-btn" onclick="toggleShortcutsModal()" title="View Keyboard Shortcuts">
-        <i class="fas fa-keyboard"></i>
-    </button>
 
 </body>
 
