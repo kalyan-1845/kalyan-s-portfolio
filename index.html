@@ -1968,6 +1968,186 @@
                 font-size: 0.85rem;
             }
         }
+
+        /* ===== Resume Modal ===== */
+        .resume-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+
+        .resume-modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .resume-modal {
+            position: relative;
+            width: 90%;
+            max-width: 900px;
+            height: 85vh;
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid rgba(0, 242, 254, 0.2);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(0, 242, 254, 0.1);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transform: scale(0.85) translateY(30px);
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .resume-modal-overlay.active .resume-modal {
+            transform: scale(1) translateY(0);
+        }
+
+        .resume-modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .resume-modal-header h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin: 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .resume-modal-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .resume-modal-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 8px 18px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .resume-modal-download:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 242, 254, 0.35);
+            color: #fff;
+        }
+
+        .resume-modal-close {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .resume-modal-close:hover {
+            background: rgba(255, 68, 68, 0.2);
+            border-color: rgba(255, 68, 68, 0.4);
+            color: #ff4444;
+            transform: rotate(90deg);
+        }
+
+        .resume-modal-body {
+            flex: 1;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .resume-modal-body iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Mobile fallback for PDF viewers */
+        .resume-modal-fallback {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            padding: 2rem;
+            text-align: center;
+            gap: 1.5rem;
+        }
+
+        .resume-modal-fallback i {
+            font-size: 4rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .resume-modal-fallback p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            max-width: 320px;
+        }
+
+        .resume-modal-fallback .resume-modal-download {
+            padding: 12px 28px;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .resume-modal {
+                width: 95%;
+                height: 90vh;
+                border-radius: 15px;
+            }
+
+            .resume-modal-header h3 {
+                font-size: 0.8rem;
+                letter-spacing: 1px;
+            }
+
+            .resume-modal-download span {
+                display: none;
+            }
+        }
     </style>
 </head>
 
@@ -1993,7 +2173,7 @@
                     <li><a href="#contact">Contact</a></li>
                 </ul>
                 <div style="display: flex; align-items: center; gap: 1rem;">
-                    <a href="Kalyan_Software_Engineer_Resume.pdf" class="resume-btn" download>Resume</a>
+                    <a href="javascript:void(0)" class="resume-btn" onclick="openResumeModal()" id="nav-resume-btn">Resume</a>
                     <button class="theme-toggle toggle-btn" id="theme-toggle">
                         <i class="fas fa-moon"></i>
                     </button>
@@ -2026,7 +2206,7 @@
                 </div>
                 <div class="hero-buttons">
                     <a href="#about" class="cta-button">Discover More</a>
-                    <a href="Kalyan_Software_Engineer_Resume.pdf" class="cta-secondary" download>Open Resume</a>
+                    <a href="javascript:void(0)" class="cta-secondary" onclick="openResumeModal()" id="hero-resume-btn">View Resume</a>
                 </div>
             </div>
         </div>
@@ -3768,7 +3948,76 @@
                 behavior: "smooth"
             });
         });
+
+        // ===== Resume Modal Logic =====
+        function openResumeModal() {
+            const overlay = document.getElementById('resume-modal-overlay');
+            const iframe = document.getElementById('resume-iframe');
+            const fallback = document.getElementById('resume-fallback');
+
+            // Check if mobile (most mobile browsers can't render PDF inline)
+            const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || window.innerWidth < 768;
+
+            if (isMobile) {
+                iframe.style.display = 'none';
+                fallback.style.display = 'flex';
+            } else {
+                iframe.style.display = 'block';
+                iframe.src = 'Kalyan_Software_Engineer_Resume.pdf';
+                fallback.style.display = 'none';
+            }
+
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeResumeModal() {
+            const overlay = document.getElementById('resume-modal-overlay');
+            const iframe = document.getElementById('resume-iframe');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+            // Clear iframe src after transition to free memory
+            setTimeout(() => { iframe.src = ''; }, 400);
+        }
+
+        // Close on overlay click (outside the modal)
+        document.getElementById('resume-modal-overlay').addEventListener('click', function(e) {
+            if (e.target === this) closeResumeModal();
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeResumeModal();
+        });
     </script>
+
+    <!-- Resume Modal -->
+    <div class="resume-modal-overlay" id="resume-modal-overlay">
+        <div class="resume-modal">
+            <div class="resume-modal-header">
+                <h3><i class="fas fa-file-pdf" style="margin-right: 8px;"></i> My Resume</h3>
+                <div class="resume-modal-actions">
+                    <a href="Kalyan_Software_Engineer_Resume.pdf" class="resume-modal-download" download>
+                        <i class="fas fa-download"></i> <span>Download</span>
+                    </a>
+                    <button class="resume-modal-close" onclick="closeResumeModal()" title="Close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="resume-modal-body">
+                <iframe id="resume-iframe" title="Resume Preview"></iframe>
+                <div class="resume-modal-fallback" id="resume-fallback">
+                    <i class="fas fa-file-pdf"></i>
+                    <p>PDF preview isn't supported on this device. Download to view the full resume.</p>
+                    <a href="Kalyan_Software_Engineer_Resume.pdf" class="resume-modal-download" download>
+                        <i class="fas fa-download"></i> <span>Download Resume</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 
 </html>
