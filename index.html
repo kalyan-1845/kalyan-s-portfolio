@@ -304,12 +304,13 @@
 
         /* Hero Section */
         .hero {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
             overflow: hidden;
+            padding: 100px 0 40px;
         }
 
         .hero-bg {
@@ -2199,9 +2200,9 @@
         <div class="hero-bg"></div>
         <div class="container">
             <div class="hero-content" style="display: flex; flex-direction: column; align-items: center;">
-                <div class="hero-avatar" style="margin-bottom: 2rem; position: relative; animation: float 4s ease-in-out infinite;">
-                    <img src="profile.jpg" alt="Kalyan Reddy" style="width: 180px; height: 180px; border-radius: 50%; object-fit: cover; border: 4px solid var(--primary-color); box-shadow: 0 0 30px rgba(0, 242, 254, 0.6); z-index: 2; position: relative;">
-                    <div style="position: absolute; top: -8px; left: -8px; right: -8px; bottom: -8px; border-radius: 50%; background: linear-gradient(45deg, var(--primary-color), var(--accent-color)); z-index: 1; animation: spin 5s linear infinite; opacity: 0.7; filter: blur(10px);"></div>
+                <div class="hero-avatar" style="margin-bottom: 1rem; position: relative; animation: float 4s ease-in-out infinite;">
+                    <img src="profile.jpg" alt="Kalyan Reddy" style="width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 4px solid var(--primary-color); box-shadow: 0 0 30px rgba(0, 242, 254, 0.6); z-index: 2; position: relative;">
+                    <div style="position: absolute; top: -6px; left: -6px; right: -6px; bottom: -6px; border-radius: 50%; background: linear-gradient(45deg, var(--primary-color), var(--accent-color)); z-index: 1; animation: spin 5s linear infinite; opacity: 0.7; filter: blur(10px);"></div>
                 </div>
                 <p style="font-family: 'Orbitron', sans-serif; font-size: 0.85rem; letter-spacing: 4px; text-transform: uppercase; color: var(--primary-color); margin-bottom: 0.5rem; opacity: 0.8; z-index: 2;">AI Engineer &bull; Full-Stack Developer</p>
                 <h1 class="hero-title" style="z-index: 2;">Bhoompally Kalyan Reddy</h1>
@@ -2217,9 +2218,9 @@
                     <a href="https://instagram.com/swag_suprem_4" target="_blank" class="social-icon"><i
                             class="fab fa-instagram"></i></a>
                 </div>
-                <div class="visitor-counter" style="margin-top: 2rem; animation: fadeInUp 1s ease 0.8s backwards; z-index: 2; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0, 242, 254, 0.2); border: 1px solid rgba(0, 242, 254, 0.3); background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(5px); padding: 5px 10px; display: inline-flex; align-items: center;">
-                    <a href="https://github.com/kalyan-1845/kalyan-s-portfolio" target="_blank" style="display: flex; align-items: center;">
-                        <img src="https://visitor-badge.laobi.icu/badge?page_id=kalyan-1845.kalyan-s-portfolio&left_color=0f0c29&right_color=00f2fe&left_text=Profile%20Viewers" alt="Profile Viewers" style="display: block; border-radius: 4px;">
+                <div class="visitor-counter" style="margin-top: 1rem; animation: fadeInUp 1s ease 0.8s backwards; z-index: 2;">
+                    <a href="https://github.com/kalyan-1845/kalyan-s-portfolio" target="_blank" style="display: inline-block; transition: transform 0.3s ease;">
+                        <img src="https://visitor-badge.laobi.icu/badge?page_id=kalyan-1845.kalyan-s-portfolio&left_color=0f0c29&right_color=00f2fe&left_text=Profile%20Viewers" alt="Profile Viewers" style="display: block; border-radius: 6px; box-shadow: 0 4px 15px rgba(0, 242, 254, 0.3);">
                     </a>
                 </div>
                 <div class="hero-buttons" style="z-index: 2; margin-top: 1.5rem;">
