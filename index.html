@@ -4203,9 +4203,9 @@
             if(modal) modal.classList.toggle('active');
         }
 
-        // Global Keyboard Shortcuts
+        // Global Keyboard Shortcuts (Supporting both Ctrl+Key and Single Keys)
         window.addEventListener('keydown', function(e) {
-            // Ignore shortcuts if typing in an input/textarea
+            // Ignore if typing in an input or textarea
             if (e.target && e.target.tagName) {
                 const tag = e.target.tagName.toLowerCase();
                 if (tag === 'input' || tag === 'textarea') return;
@@ -4213,7 +4213,9 @@
 
             if (!e.key) return;
             const key = e.key.toLowerCase();
+            const isCtrl = e.ctrlKey || e.metaKey;
 
+            // Escape to close all modals
             if (e.key === 'Escape') {
                 closeResumeModal();
                 const shortcutsModal = document.getElementById('shortcuts-modal');
@@ -4221,38 +4223,39 @@
                 return;
             }
 
-            // Ctrl-based shortcuts
-            if (e.ctrlKey || e.metaKey) {
-                if (key === 'k') {
-                    e.preventDefault();
-                    toggleShortcutsModal();
-                } else if (key === 'r') {
-                    e.preventDefault();
-                    showToast("📄 Opening Resume");
-                    openResumeModal();
-                } else if (key === 's') {
-                    e.preventDefault();
-                    const themeToggle = document.getElementById('theme-toggle');
-                    if (themeToggle) {
-                        themeToggle.click();
-                        const isLight = document.body.classList.contains('light-theme');
-                        showToast(isLight ? "☀️ Light Theme Enabled" : "🌙 Dark Theme Enabled");
-                    }
-                } else if (key === 'z') {
-                    e.preventDefault();
-                    startCinematicView();
-                } else if (key === 'a') {
-                    e.preventDefault();
-                    const target = document.getElementById('achievements');
-                    if(target) window.scrollTo({ top: target.offsetTop - 70, behavior: 'smooth' });
-                    showToast("🏆 Jumping to Achievements");
-                } else if (key === 'b') {
-                    e.preventDefault();
-                    const target = document.getElementById('ai-roadmap');
-                    if(target) window.scrollTo({ top: target.offsetTop - 70, behavior: 'smooth' });
-                    showToast("🗺️ Jumping to AI Road Map");
+            // Route shortcuts
+            if (key === 'k' || key === '?' || key === '/') {
+                e.preventDefault();
+                toggleShortcutsModal();
+            } else if (key === 'r') {
+                e.preventDefault();
+                showToast("📄 Opening Resume");
+                openResumeModal();
+            } else if (key === 's' || key === 't' || key === 'd') {
+                // If it's just 's' or 'Ctrl+S', toggle theme
+                e.preventDefault();
+                const themeToggle = document.getElementById('theme-toggle');
+                if (themeToggle) {
+                    themeToggle.click();
+                    const isLight = document.body.classList.contains('light-theme');
+                    showToast(isLight ? "☀️ Light Theme Enabled" : "🌙 Dark Theme Enabled");
                 }
-                // Intentionally allowing normal Ctrl+C to copy text
+            } else if (key === 'z' || key === 'c') {
+                // Ignore Ctrl+C so users can still copy text
+                if (isCtrl && key === 'c') return;
+                
+                e.preventDefault();
+                startCinematicView();
+            } else if (key === 'a') {
+                e.preventDefault();
+                const target = document.getElementById('achievements');
+                if(target) window.scrollTo({ top: target.offsetTop - 70, behavior: 'smooth' });
+                showToast("🏆 Jumping to Achievements");
+            } else if (key === 'b') {
+                e.preventDefault();
+                const target = document.getElementById('ai-roadmap');
+                if(target) window.scrollTo({ top: target.offsetTop - 70, behavior: 'smooth' });
+                showToast("🗺️ Jumping to AI Road Map");
             }
         });
         
