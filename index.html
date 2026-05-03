@@ -211,11 +211,12 @@
 
         .logo {
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 900;
             color: var(--primary-color);
             text-shadow: 0 0 10px var(--primary-color);
             animation: glow 2s ease-in-out infinite alternate;
+            white-space: nowrap;
         }
 
         @keyframes glow {
@@ -231,12 +232,13 @@
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 1.2rem;
         }
 
         .nav-links a {
             color: var(--text-color);
             font-weight: 500;
+            font-size: 0.9rem;
             position: relative;
             transition: var(--transition);
         }
@@ -306,11 +308,13 @@
         .hero {
             min-height: 100vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             position: relative;
             overflow: hidden;
-            padding: 100px 0 40px;
+            padding: 120px 0 60px;
+            box-sizing: border-box;
         }
 
         .hero-bg {
@@ -2199,10 +2203,10 @@
     <section id="home" class="hero">
         <div class="hero-bg"></div>
         <div class="container">
-            <div class="hero-content" style="display: flex; flex-direction: column; align-items: center;">
+            <div class="hero-content" style="display: flex; flex-direction: column; align-items: center; margin-top: 50px;">
                 <div class="hero-avatar" style="margin-bottom: 1rem; position: relative; animation: float 4s ease-in-out infinite;">
-                    <img src="profile.jpg" alt="Kalyan Reddy" style="width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 4px solid var(--primary-color); box-shadow: 0 0 30px rgba(0, 242, 254, 0.6); z-index: 2; position: relative;">
-                    <div style="position: absolute; top: -6px; left: -6px; right: -6px; bottom: -6px; border-radius: 50%; background: linear-gradient(45deg, var(--primary-color), var(--accent-color)); z-index: 1; animation: spin 5s linear infinite; opacity: 0.7; filter: blur(10px);"></div>
+                    <img src="profile.jpg" alt="Kalyan Reddy" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid var(--primary-color); box-shadow: 0 0 25px rgba(0, 242, 254, 0.6); z-index: 2; position: relative;">
+                    <div style="position: absolute; top: -5px; left: -5px; right: -5px; bottom: -5px; border-radius: 50%; background: linear-gradient(45deg, var(--primary-color), var(--accent-color)); z-index: 1; animation: spin 5s linear infinite; opacity: 0.7; filter: blur(10px);"></div>
                 </div>
                 <p style="font-family: 'Orbitron', sans-serif; font-size: 0.85rem; letter-spacing: 4px; text-transform: uppercase; color: var(--primary-color); margin-bottom: 0.5rem; opacity: 0.8; z-index: 2;">AI Engineer &bull; Full-Stack Developer</p>
                 <h1 class="hero-title" style="z-index: 2;">Bhoompally Kalyan Reddy</h1>
