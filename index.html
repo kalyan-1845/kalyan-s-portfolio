@@ -2257,6 +2257,38 @@
         .shortcut-toast.show {
             transform: translateX(-50%) translateY(0);
         }
+        
+        .shortcuts-trigger-btn {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(15, 12, 41, 0.8);
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 9999;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 15px rgba(0, 242, 254, 0.2);
+            transition: var(--transition);
+        }
+        
+        .shortcuts-trigger-btn:hover {
+            transform: translateY(-5px);
+            background: var(--primary-color);
+            color: #fff;
+            box-shadow: 0 8px 25px rgba(0, 242, 254, 0.4);
+        }
+        
+        body.light-theme .shortcuts-trigger-btn {
+            background: rgba(255, 255, 255, 0.9);
+        }
     </style>
 </head>
 
@@ -4172,7 +4204,10 @@
         }
 
         // Global Keyboard Shortcuts
-        document.addEventListener('keydown', function(e) {
+        window.addEventListener('keydown', function(e) {
+            // Ignore if modifier keys are pressed (like Ctrl+C for copy)
+            if (e.ctrlKey || e.metaKey || e.altKey) return;
+
             // Ignore shortcuts if typing in an input/textarea
             if (e.target && e.target.tagName) {
                 const tag = e.target.tagName.toLowerCase();
@@ -4209,7 +4244,7 @@
                 }
             }
             
-            if (e.key === '?') {
+            if (e.key === '?' || e.key === '/') {
                 e.preventDefault();
                 toggleShortcutsModal();
             }
@@ -4217,7 +4252,7 @@
         
         // Show hint toast on first load
         setTimeout(() => {
-            showToast("💡 Press '?' to view Secret Shortcuts!");
+            showToast("💡 Press '?' or '/' to view Secret Shortcuts!");
         }, 3000);
     </script>
 
@@ -4267,9 +4302,17 @@
         </div>
         <div class="shortcut-item">
             <span>Show/Hide Menu</span>
-            <span class="shortcut-key">?</span>
+            <div>
+                <span class="shortcut-key">?</span>
+                <span class="shortcut-key">/</span>
+            </div>
         </div>
     </div>
+
+    <!-- Visible Shortcuts Button -->
+    <button class="shortcuts-trigger-btn" onclick="toggleShortcutsModal()" title="View Keyboard Shortcuts">
+        <i class="fas fa-keyboard"></i>
+    </button>
 
 </body>
 
