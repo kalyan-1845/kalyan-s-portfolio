@@ -4174,8 +4174,12 @@
         // Global Keyboard Shortcuts
         document.addEventListener('keydown', function(e) {
             // Ignore shortcuts if typing in an input/textarea
-            if (e.target.tagName.toLowerCase() === 'input' || e.target.tagName.toLowerCase() === 'textarea') return;
+            if (e.target && e.target.tagName) {
+                const tag = e.target.tagName.toLowerCase();
+                if (tag === 'input' || tag === 'textarea') return;
+            }
 
+            if (!e.key) return;
             const key = e.key.toLowerCase();
 
             if (e.key === 'Escape') {
