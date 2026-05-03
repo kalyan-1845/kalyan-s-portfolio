@@ -3493,6 +3493,7 @@
         const roadmapNodes = document.querySelectorAll(".roadmap-node");
         const roadmapProgress = document.getElementById("roadmap-progress");
         const roadmapSection = document.getElementById("ai-roadmap");
+        const roadmapContainer = document.querySelector(".roadmap-container");
 
         window.addEventListener("scroll", () => {
             const trigger = window.innerHeight * 0.8;
@@ -3503,15 +3504,18 @@
             });
 
             // Roadmap Progress Animation
-            if (roadmapSection) {
-                const sectionRect = roadmapSection.getBoundingClientRect();
-                const sectionHeight = roadmapSection.offsetHeight;
-                const scrollPos = window.innerHeight - sectionRect.top;
+            if (roadmapContainer && roadmapProgress) {
+                const containerRect = roadmapContainer.getBoundingClientRect();
+                const containerHeight = roadmapContainer.offsetHeight;
+                // Sync progress line with the reveal trigger
+                const scrollPos = (window.innerHeight * 0.85) - containerRect.top;
                 
-                if (scrollPos > 0 && scrollPos < sectionHeight + window.innerHeight) {
-                    let progress = (scrollPos / (sectionHeight)) * 100;
+                if (scrollPos > 0) {
+                    let progress = (scrollPos / containerHeight) * 100;
                     progress = Math.min(Math.max(progress, 0), 100);
                     roadmapProgress.style.height = progress + "%";
+                } else {
+                    roadmapProgress.style.height = "0%";
                 }
             }
 
