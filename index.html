@@ -18,8 +18,8 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script type="text/javascript">
         (function () {
-            // Replace with your actual Public Key from EmailJS
-            emailjs.init("YOUR_PUBLIC_KEY");
+            // Initialize EmailJS with your Public Key
+            emailjs.init("0484pXmV7eXf4gJV4");
         })();
     </script>
 
@@ -4018,8 +4018,8 @@
                 to_email: 'your.email@example.com' // Add your email here
             };
 
-            // Note: You need to replace "YOUR_SERVICE_ID" and "YOUR_TEMPLATE_ID" with your actual EmailJS IDs
-            emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", templateParams)
+            // Note: You still need to replace "YOUR_TEMPLATE_ID" with your actual EmailJS Template ID
+            emailjs.send("service_2tm48xn", "YOUR_TEMPLATE_ID", templateParams)
                 .then(function(response) {
                     formMessage.textContent = 'Thank you for your message! I will get back to you soon.';
                     formMessage.className = 'form-message success';
