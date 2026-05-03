@@ -4208,7 +4208,7 @@
             if (isCinematic) return;
             isCinematic = true;
             
-            showToast("🎬 Cinematic Mode Activated");
+            showToast("🎬 Starting Guided Tour...");
             
             // Hide navbar and cursor for cinematic effect
             const header = document.querySelector('header');
@@ -4216,38 +4216,47 @@
             header.style.transition = 'transform 0.5s ease';
             header.style.transform = 'translateY(-100%)';
             document.body.style.cursor = 'none';
-            document.documentElement.style.scrollBehavior = 'auto'; // Disable smooth scroll temporarily
+            document.documentElement.style.scrollBehavior = 'smooth';
             
-            const targetPosition = document.body.scrollHeight - window.innerHeight;
-            const duration = 5000;
-            const startPosition = window.pageYOffset;
-            const distance = targetPosition - startPosition;
-            let startTime = null;
+            const sections = ['home', 'about', 'education', 'experience', 'ai-roadmap', 'achievements', 'projects', 'certificates', 'contact'];
+            let currentStep = 0;
 
-            function animation(currentTime) {
-                if (startTime === null) startTime = currentTime;
-                const timeElapsed = currentTime - startTime;
-                const progress = Math.min(timeElapsed / duration, 1);
-                
-                // easeInOutQuad easing
-                const ease = progress < 0.5 ? 2 * progress * progress : 1 - Math.pow(-2 * progress + 2, 2) / 2;
-                
-                window.scrollTo(0, startPosition + distance * ease);
+            function nextStep() {
+                if (!isCinematic) return; // Allow stopping if needed (future proofing)
 
-                if (timeElapsed < duration) {
-                    requestAnimationFrame(animation);
+                if (currentStep < sections.length) {
+                    const sectionId = sections[currentStep];
+                    const element = document.getElementById(sectionId);
+                    
+                    if (element) {
+                        const offset = sectionId === 'home' ? 0 : element.offsetTop - 70;
+                        window.scrollTo({
+                            top: offset,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Wait for scroll to finish then stay for 2 seconds
+                        setTimeout(() => {
+                            if (currentStep < sections.length) {
+                                currentStep++;
+                                nextStep();
+                            }
+                        }, 3000); // 1s scroll + 2s wait
+                    } else {
+                        currentStep++;
+                        nextStep();
+                    }
                 } else {
                     // Restore original styles
                     header.style.transform = 'none';
                     setTimeout(() => { header.style.transition = originalHeaderTransition; }, 500);
                     document.body.style.cursor = '';
-                    document.documentElement.style.scrollBehavior = 'smooth';
                     isCinematic = false;
                     showToast("🎬 Cinematic Tour Finished");
                 }
             }
 
-            requestAnimationFrame(animation);
+            nextStep();
         }
 
         // ===== Keyboard Shortcuts & Toast Logic =====
