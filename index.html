@@ -4205,9 +4205,6 @@
 
         // Global Keyboard Shortcuts
         window.addEventListener('keydown', function(e) {
-            // Ignore if modifier keys are pressed (like Ctrl+C for copy)
-            if (e.ctrlKey || e.metaKey || e.altKey) return;
-
             // Ignore shortcuts if typing in an input/textarea
             if (e.target && e.target.tagName) {
                 const tag = e.target.tagName.toLowerCase();
@@ -4221,38 +4218,47 @@
                 closeResumeModal();
                 const shortcutsModal = document.getElementById('shortcuts-modal');
                 if(shortcutsModal) shortcutsModal.classList.remove('active');
+                return;
             }
-            
-            if (key === 'r') {
-                e.preventDefault();
-                showToast("📄 Opening Resume");
-                openResumeModal();
-            }
-            
-            if (key === 'c') {
-                e.preventDefault();
-                startCinematicView();
-            }
-            
-            if (key === 't' || key === 'd') {
-                e.preventDefault();
-                const themeToggle = document.getElementById('theme-toggle');
-                if (themeToggle) {
-                    themeToggle.click();
-                    const isLight = document.body.classList.contains('light-theme');
-                    showToast(isLight ? "☀️ Light Theme Enabled" : "🌙 Dark Theme Enabled");
+
+            // Ctrl-based shortcuts
+            if (e.ctrlKey || e.metaKey) {
+                if (key === 'k') {
+                    e.preventDefault();
+                    toggleShortcutsModal();
+                } else if (key === 'r') {
+                    e.preventDefault();
+                    showToast("📄 Opening Resume");
+                    openResumeModal();
+                } else if (key === 's') {
+                    e.preventDefault();
+                    const themeToggle = document.getElementById('theme-toggle');
+                    if (themeToggle) {
+                        themeToggle.click();
+                        const isLight = document.body.classList.contains('light-theme');
+                        showToast(isLight ? "☀️ Light Theme Enabled" : "🌙 Dark Theme Enabled");
+                    }
+                } else if (key === 'z') {
+                    e.preventDefault();
+                    startCinematicView();
+                } else if (key === 'a') {
+                    e.preventDefault();
+                    const target = document.getElementById('achievements');
+                    if(target) window.scrollTo({ top: target.offsetTop - 70, behavior: 'smooth' });
+                    showToast("🏆 Jumping to Achievements");
+                } else if (key === 'b') {
+                    e.preventDefault();
+                    const target = document.getElementById('ai-roadmap');
+                    if(target) window.scrollTo({ top: target.offsetTop - 70, behavior: 'smooth' });
+                    showToast("🗺️ Jumping to AI Road Map");
                 }
-            }
-            
-            if (e.key === '?' || e.key === '/') {
-                e.preventDefault();
-                toggleShortcutsModal();
+                // Intentionally allowing normal Ctrl+C to copy text
             }
         });
         
         // Show hint toast on first load
         setTimeout(() => {
-            showToast("💡 Press '?' or '/' to view Secret Shortcuts!");
+            showToast("💡 Press Ctrl + K to view Shortcuts!");
         }, 3000);
     </script>
 
@@ -4284,28 +4290,33 @@
     </div>
 
     <!-- Shortcuts Modal & Toast -->
-    <div class="shortcut-toast" id="shortcut-toast">💡 Press '?' for Shortcuts</div>
+    <div class="shortcut-toast" id="shortcut-toast">💡 Press Ctrl + K for Shortcuts</div>
     
     <div class="shortcuts-modal" id="shortcuts-modal">
-        <h3><i class="fas fa-keyboard"></i> Secret Shortcuts</h3>
+        <h3><i class="fas fa-keyboard"></i> Pro Shortcuts</h3>
         <div class="shortcut-item">
-            <span>Toggle Theme</span>
-            <span class="shortcut-key">T</span>
-        </div>
-        <div class="shortcut-item">
-            <span>Cinematic View</span>
-            <span class="shortcut-key">C</span>
+            <span>Toggle Menu</span>
+            <span class="shortcut-key">Ctrl + K</span>
         </div>
         <div class="shortcut-item">
             <span>Open Resume</span>
-            <span class="shortcut-key">R</span>
+            <span class="shortcut-key">Ctrl + R</span>
         </div>
         <div class="shortcut-item">
-            <span>Show/Hide Menu</span>
-            <div>
-                <span class="shortcut-key">?</span>
-                <span class="shortcut-key">/</span>
-            </div>
+            <span>Toggle Theme</span>
+            <span class="shortcut-key">Ctrl + S</span>
+        </div>
+        <div class="shortcut-item">
+            <span>Cinematic View</span>
+            <span class="shortcut-key">Ctrl + Z</span>
+        </div>
+        <div class="shortcut-item">
+            <span>Achievements</span>
+            <span class="shortcut-key">Ctrl + A</span>
+        </div>
+        <div class="shortcut-item">
+            <span>AI Road Map</span>
+            <span class="shortcut-key">Ctrl + B</span>
         </div>
     </div>
 
