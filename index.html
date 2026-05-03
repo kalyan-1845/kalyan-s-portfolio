@@ -4203,7 +4203,7 @@
             if(modal) modal.classList.toggle('active');
         }
 
-        // Global Keyboard Shortcuts (Supporting both Ctrl+Key and Single Keys)
+        // Global Keyboard Shortcuts (Using Alt-based combinations for reliability)
         window.addEventListener('keydown', function(e) {
             // Ignore if typing in an input or textarea
             if (e.target && e.target.tagName) {
@@ -4211,51 +4211,48 @@
                 if (tag === 'input' || tag === 'textarea') return;
             }
 
-            if (!e.key) return;
-            const key = e.key.toLowerCase();
-            const isCtrl = e.ctrlKey || e.metaKey;
+            if (!e.code) return;
+            const isAlt = e.altKey;
 
             // Escape to close all modals
-            if (e.key === 'Escape') {
+            if (e.code === 'Escape') {
                 closeResumeModal();
                 const shortcutsModal = document.getElementById('shortcuts-modal');
                 if(shortcutsModal) shortcutsModal.classList.remove('active');
                 return;
             }
 
-            // Route shortcuts
-            if (key === 'k' || key === '?' || key === '/') {
-                e.preventDefault();
-                toggleShortcutsModal();
-            } else if (key === 'r') {
-                e.preventDefault();
-                showToast("📄 Opening Resume");
-                openResumeModal();
-            } else if (key === 's' || key === 't' || key === 'd') {
-                // If it's just 's' or 'Ctrl+S', toggle theme
-                e.preventDefault();
-                const themeToggle = document.getElementById('theme-toggle');
-                if (themeToggle) {
-                    themeToggle.click();
-                    const isLight = document.body.classList.contains('light-theme');
-                    showToast(isLight ? "☀️ Light Theme Enabled" : "🌙 Dark Theme Enabled");
+            // Only trigger if Alt is held down
+            if (isAlt) {
+                if (e.code === 'KeyK' || e.code === 'Slash') {
+                    e.preventDefault();
+                    toggleShortcutsModal();
+                } else if (e.code === 'KeyR') {
+                    e.preventDefault();
+                    showToast("📄 Opening Resume");
+                    openResumeModal();
+                } else if (e.code === 'KeyS') {
+                    e.preventDefault();
+                    const themeToggle = document.getElementById('theme-toggle');
+                    if (themeToggle) {
+                        themeToggle.click();
+                        const isLight = document.body.classList.contains('light-theme');
+                        showToast(isLight ? "☀️ Light Theme Enabled" : "🌙 Dark Theme Enabled");
+                    }
+                } else if (e.code === 'KeyZ') {
+                    e.preventDefault();
+                    startCinematicView();
+                } else if (e.code === 'KeyA') {
+                    e.preventDefault();
+                    const target = document.getElementById('achievements');
+                    if(target) window.scrollTo({ top: target.offsetTop - 70, behavior: 'smooth' });
+                    showToast("🏆 Jumping to Achievements");
+                } else if (e.code === 'KeyB') {
+                    e.preventDefault();
+                    const target = document.getElementById('ai-roadmap');
+                    if(target) window.scrollTo({ top: target.offsetTop - 70, behavior: 'smooth' });
+                    showToast("🗺️ Jumping to AI Road Map");
                 }
-            } else if (key === 'z' || key === 'c') {
-                // Ignore Ctrl+C so users can still copy text
-                if (isCtrl && key === 'c') return;
-                
-                e.preventDefault();
-                startCinematicView();
-            } else if (key === 'a') {
-                e.preventDefault();
-                const target = document.getElementById('achievements');
-                if(target) window.scrollTo({ top: target.offsetTop - 70, behavior: 'smooth' });
-                showToast("🏆 Jumping to Achievements");
-            } else if (key === 'b') {
-                e.preventDefault();
-                const target = document.getElementById('ai-roadmap');
-                if(target) window.scrollTo({ top: target.offsetTop - 70, behavior: 'smooth' });
-                showToast("🗺️ Jumping to AI Road Map");
             }
         });
         
@@ -4293,33 +4290,33 @@
     </div>
 
     <!-- Shortcuts Modal & Toast -->
-    <div class="shortcut-toast" id="shortcut-toast">💡 Press Ctrl + K for Shortcuts</div>
+    <div class="shortcut-toast" id="shortcut-toast">💡 Press Alt + K for Shortcuts</div>
     
     <div class="shortcuts-modal" id="shortcuts-modal">
         <h3><i class="fas fa-keyboard"></i> Pro Shortcuts</h3>
         <div class="shortcut-item">
             <span>Toggle Menu</span>
-            <span class="shortcut-key">Ctrl + K</span>
+            <span class="shortcut-key">Alt + K</span>
         </div>
         <div class="shortcut-item">
             <span>Open Resume</span>
-            <span class="shortcut-key">Ctrl + R</span>
+            <span class="shortcut-key">Alt + R</span>
         </div>
         <div class="shortcut-item">
             <span>Toggle Theme</span>
-            <span class="shortcut-key">Ctrl + S</span>
+            <span class="shortcut-key">Alt + S</span>
         </div>
         <div class="shortcut-item">
             <span>Cinematic View</span>
-            <span class="shortcut-key">Ctrl + Z</span>
+            <span class="shortcut-key">Alt + Z</span>
         </div>
         <div class="shortcut-item">
             <span>Achievements</span>
-            <span class="shortcut-key">Ctrl + A</span>
+            <span class="shortcut-key">Alt + A</span>
         </div>
         <div class="shortcut-item">
             <span>AI Road Map</span>
-            <span class="shortcut-key">Ctrl + B</span>
+            <span class="shortcut-key">Alt + B</span>
         </div>
     </div>
 
