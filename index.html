@@ -27,6 +27,9 @@
     <meta name="twitter:description" content="Founder of AuraCore AI • Published Researcher • 30+ Deployed Products">
     <meta name="twitter:image" content="https://kalyan-1845.github.io/profile.jpg">
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2300f2fe'/%3E%3Cstop offset='100%25' stop-color='%237209b5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='50' cy='50' r='48' fill='url(%23g)'/%3E%3Ctext x='50' y='65' font-family='Arial,sans-serif' font-size='45' font-weight='bold' fill='white' text-anchor='middle'%3EKR%3C/text%3E%3C/svg%3E">
+
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -80,6 +83,12 @@
             padding: 0;
             box-sizing: border-box;
             cursor: none;
+        }
+
+        /* Fix custom cursor on mobile/touch devices */
+        @media (pointer: coarse) {
+            * { cursor: auto !important; }
+            .cursor, .cursor-follower { display: none !important; }
         }
 
         html {
@@ -2428,8 +2437,8 @@
                             class="fab fa-github"></i></a>
                     <a href="https://www.linkedin.com/in/bhoompally-kalyanreddy" target="_blank"
                         class="social-icon"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" target="_blank" class="social-icon"><i
-                            class="fab fa-twitter"></i></a>
+                    <a href="mailto:prsnlkalyan@gmail.com" class="social-icon"><i
+                            class="fas fa-envelope"></i></a>
                     <a href="https://instagram.com/swag_suprem_4" target="_blank" class="social-icon"><i
                             class="fab fa-instagram"></i></a>
                 </div>
@@ -2441,6 +2450,30 @@
                 <div class="hero-buttons" style="z-index: 2; margin-top: 1.5rem;">
                     <a href="#about" class="cta-button">Discover More</a>
                     <a href="javascript:void(0)" class="cta-secondary" onclick="openResumeModal()" id="hero-resume-btn">View Resume</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Counter Section -->
+    <section id="stats" class="stats" style="padding: 40px 0; opacity: 1; transform: none;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; text-align: center;">
+                <div class="glass-card" style="padding: 2rem 1rem; animation: none;">
+                    <div style="font-family: 'Orbitron', sans-serif; font-size: 2.5rem; font-weight: 900; background: linear-gradient(135deg, #00f2fe, #4facfe); -webkit-background-clip: text; -webkit-text-fill-color: transparent;" class="stat-number" data-target="30">0</div>
+                    <div style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.5rem; text-transform: uppercase; letter-spacing: 2px;">Products Deployed</div>
+                </div>
+                <div class="glass-card" style="padding: 2rem 1rem; animation: none;">
+                    <div style="font-family: 'Orbitron', sans-serif; font-size: 2.5rem; font-weight: 900; background: linear-gradient(135deg, #f093fb, #f5576c); -webkit-background-clip: text; -webkit-text-fill-color: transparent;" class="stat-number" data-target="14">0</div>
+                    <div style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.5rem; text-transform: uppercase; letter-spacing: 2px;">Certifications</div>
+                </div>
+                <div class="glass-card" style="padding: 2rem 1rem; animation: none;">
+                    <div style="font-family: 'Orbitron', sans-serif; font-size: 2.5rem; font-weight: 900; background: linear-gradient(135deg, #43e97b, #38f9d7); -webkit-background-clip: text; -webkit-text-fill-color: transparent;" class="stat-number" data-target="98">0</div>
+                    <div style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.5rem; text-transform: uppercase; letter-spacing: 2px;">% Platform Uptime</div>
+                </div>
+                <div class="glass-card" style="padding: 2rem 1rem; animation: none;">
+                    <div style="font-family: 'Orbitron', sans-serif; font-size: 2.5rem; font-weight: 900; background: linear-gradient(135deg, #fa709a, #fee140); -webkit-background-clip: text; -webkit-text-fill-color: transparent;" class="stat-number" data-target="1">0</div>
+                    <div style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.5rem; text-transform: uppercase; letter-spacing: 2px;">Published Paper</div>
                 </div>
             </div>
         </div>
@@ -3515,7 +3548,6 @@
                         <!-- Replace these with your actual social media links -->
                         <li><a href="https://github.com/kalyan-1845" target="_blank">GitHub</a></li>
                         <li><a href="https://www.linkedin.com/in/bhoompally-kalyanreddy" target="_blank">LinkedIn</a></li>
-                        <li><a href="#" target="_blank">Twitter</a></li>
                         <li><a href="https://instagram.com/swag_suprem_4" target="_blank">Instagram</a></li>
                         <li><a href="mailto:prsnlkalyan@gmail.com" target="_blank">Email</a></li>
                     </ul>
@@ -4429,6 +4461,45 @@
             showToast("💡 Press Ctrl + K to view Shortcuts!");
         }, 3000);
     </script>
+
+    <!-- Stats Counter Animation + Responsive Stats Grid -->
+    <script>
+        const statNumbers = document.querySelectorAll('.stat-number');
+        let statsAnimated = false;
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !statsAnimated) {
+                    statsAnimated = true;
+                    statNumbers.forEach(num => {
+                        const target = parseInt(num.getAttribute('data-target'));
+                        const label = num.closest('.glass-card').querySelector('div:last-child').textContent;
+                        const suffix = label.startsWith('%') ? '%' : '+';
+                        let current = 0;
+                        const increment = target / 60;
+                        const timer = setInterval(() => {
+                            current += increment;
+                            if (current >= target) {
+                                current = target;
+                                clearInterval(timer);
+                            }
+                            num.textContent = Math.floor(current) + (current >= target ? suffix : '');
+                        }, 25);
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+        const statsSection = document.getElementById('stats');
+        if (statsSection) statsObserver.observe(statsSection);
+    </script>
+    <style>
+        @media (max-width: 768px) {
+            #stats .container > div { grid-template-columns: repeat(2, 1fr) !important; gap: 1rem !important; }
+            .stat-number { font-size: 2rem !important; }
+        }
+        @media (max-width: 400px) {
+            #stats .container > div { grid-template-columns: 1fr !important; }
+        }
+    </style>
 
 </body>
 
