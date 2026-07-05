@@ -4293,18 +4293,23 @@
 
     <script>
         // Preloader Logic
+        const hidePreloader = () => {
+            const preloader = document.getElementById('preloader');
+            if (preloader && preloader.style.display !== 'none') {
+                preloader.style.opacity = '0';
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                    document.body.classList.add('loaded');
+                }, 500);
+            }
+        };
+
         window.addEventListener('load', () => {
-            setTimeout(() => {
-                const preloader = document.getElementById('preloader');
-                if (preloader) {
-                    preloader.style.opacity = '0';
-                    setTimeout(() => {
-                        preloader.style.display = 'none';
-                        document.body.classList.add('loaded');
-                    }, 500);
-                }
-            }, 800); // Small delay to show the cool animation
+            setTimeout(hidePreloader, 800);
         });
+
+        // Safety fallback: always hide after 3 seconds if 'load' event hangs
+        setTimeout(hidePreloader, 3000);
 
         // Custom Cursor
         const cursor = document.querySelector('.cursor');
