@@ -4292,6 +4292,20 @@
     </div>
 
     <script>
+        // Preloader Logic
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const preloader = document.getElementById('preloader');
+                if (preloader) {
+                    preloader.style.opacity = '0';
+                    setTimeout(() => {
+                        preloader.style.display = 'none';
+                        document.body.classList.add('loaded');
+                    }, 500);
+                }
+            }, 800); // Small delay to show the cool animation
+        });
+
         // Custom Cursor
         const cursor = document.querySelector('.cursor');
         const cursorFollower = document.querySelector('.cursor-follower');
