@@ -587,9 +587,11 @@
         .about-image {
             position: relative;
             overflow: hidden;
-            border-radius: 250px;
+            border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             animation: float 4s ease-in-out infinite;
+            max-width: 300px;
+            margin: 0 auto;
         }
 
         .about-image img {
@@ -610,8 +612,13 @@
         }
 
         .about-text p {
-            margin-bottom: 1.5rem;
-            color: var(--text-secondary);
+            margin-bottom: 1.8rem;
+            color: #d1d5db;
+            line-height: 1.8;
+            font-size: 1.125rem;
+            letter-spacing: 0.01em;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 400;
         }
 
         /* AI Skills & Technological Arsenal - Liquid Style */
@@ -2434,16 +2441,16 @@
     </header>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
+    <section id="home" class="hero" style="min-height: unset; padding-top: 160px; padding-bottom: 20px;">
         <div class="hero-bg"></div>
         <div class="container">
             <div class="hero-content" style="display: flex; flex-direction: column; align-items: center; margin-top: 50px;">
-                <div class="hero-avatar" style="margin-bottom: 1rem; position: relative; animation: float 4s ease-in-out infinite;">
-                    <img src="profile.jpg" alt="Kalyan Reddy" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid var(--primary-color); box-shadow: 0 0 25px rgba(0, 242, 254, 0.6); z-index: 2; position: relative;">
-                    <div style="position: absolute; top: -5px; left: -5px; right: -5px; bottom: -5px; border-radius: 50%; background: linear-gradient(45deg, var(--primary-color), var(--accent-color)); z-index: 1; animation: spin 5s linear infinite; opacity: 0.7; filter: blur(10px);"></div>
+                <div class="hero-avatar" style="margin-bottom: 1.5rem; position: relative; animation: float 6s ease-in-out infinite;">
+                    <img src="profile.jpg" alt="Kalyan Reddy" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(0, 242, 254, 0.4); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); z-index: 2; position: relative;">
+                    <div style="position: absolute; top: -2px; left: -2px; right: -2px; bottom: -2px; border-radius: 50%; background: linear-gradient(45deg, var(--primary-color), var(--accent-color)); z-index: 1; animation: spin 8s linear infinite; opacity: 0.4; filter: blur(8px);"></div>
                 </div>
                 <p style="font-family: 'Orbitron', sans-serif; font-size: 0.85rem; letter-spacing: 4px; text-transform: uppercase; color: var(--primary-color); margin-bottom: 0.5rem; opacity: 0.8; z-index: 2;">AI Engineer &bull; Full-Stack Developer</p>
-                <h1 class="hero-title" style="z-index: 2;">Bhoompally Kalyan Reddy</h1>
+                <h1 class="hero-title" style="z-index: 2; background: linear-gradient(135deg, #00f2fe 0%, #4facfe 50%, #f093fb 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Bhoompally Kalyan Reddy</h1>
                 <p class="hero-subtitle" style="z-index: 2;">I'm a <span class="typing-text" id="typing"></span></p>
                 <div class="social-icons" style="z-index: 2;">
                     <!-- Replace these with your actual social media links -->
@@ -2502,18 +2509,18 @@
                     <img src="profile.jpg" alt="Profile Picture">
                 </div>
                 <div class="about-text">
-                    <h2>Hello, I'm Kalyan</h2>
-                    <p>I am a 3rd-year Computer Science and Engineering student at ACE Engineering College (JNTUH), Hyderabad, and the <strong>Founder of AuraCore AI</strong> — a multi-agent orchestration platform processing 100+ daily queries with 98% uptime. I specialize in building production-grade AI systems using Python, FastAPI, CrewAI, and Retrieval-Augmented Generation (RAG), as well as responsive full-stack web applications using React.js, Next.js, and Node.js.</p>
-                    <p>I am a <strong>published researcher</strong> in IJARSCT (DOI: 10.48175/IJARSCT-32733) and have deployed <strong>30+ products</strong> with 14 professional certifications. I am passionate about autonomous agentic workflows, offline LLM inference, and building innovative software solutions that create meaningful impact.</p>
+                    <h2 style="font-family: 'Inter', sans-serif; font-size: 2.75rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 1.25rem;">Hello, I'm Kalyan</h2>
+                    <p>I am a 3rd-year Computer Science and Engineering student at ACE Engineering College (JNTUH), Hyderabad, and the <strong style="color: #f3f4f6; font-weight: 600;">Founder of AuraCore AI</strong> — a multi-agent orchestration platform processing 100+ daily queries with 98% uptime. I specialize in building production-grade AI systems using Python, FastAPI, CrewAI, and Retrieval-Augmented Generation (RAG), as well as responsive full-stack web applications using React.js, Next.js, and Node.js.</p>
+                    <p>I am a <strong style="color: #f3f4f6; font-weight: 600;">published researcher</strong> in IJARSCT (DOI: 10.48175/IJARSCT-32733) and have deployed <strong style="color: #f3f4f6; font-weight: 600;">30+ products</strong> with 14 professional certifications. I am passionate about autonomous agentic workflows, offline LLM inference, and building innovative software solutions that create meaningful impact.</p>
 
                     <div class="skills-container" style="margin-top: 3rem;">
                         <h2 style="background: linear-gradient(45deg, #00f2fe, #4facfe); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-family: 'Orbitron', sans-serif; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1.5rem; display: inline-block;">Tech Stack</h2>
                         
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; align-items: stretch;">
                             <!-- AI & ML -->
-                            <div class="glass-card" style="padding: 1.5rem; animation: none;">
+                            <div class="glass-card" style="padding: 1.5rem; animation: none; display: flex; flex-direction: column; height: 100%;">
                                 <h3 style="color: var(--primary-color); font-family: 'Orbitron', sans-serif; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1rem;">🤖 AI & Machine Learning</h3>
-                                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                                <div style="display: flex; flex-wrap: wrap; gap: 0.8rem; flex-grow: 1; align-content: flex-start;">
                                     <span class="tech-tag" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">Python</span>
                                     <span class="tech-tag" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">CrewAI</span>
                                     <span class="tech-tag" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">RAG</span>
@@ -2526,9 +2533,9 @@
                             </div>
 
                             <!-- Frontend -->
-                            <div class="glass-card" style="padding: 1.5rem; animation: none;">
+                            <div class="glass-card" style="padding: 1.5rem; animation: none; display: flex; flex-direction: column; height: 100%;">
                                 <h3 style="color: var(--secondary-color); font-family: 'Orbitron', sans-serif; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1rem;">🎨 Frontend</h3>
-                                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                                <div style="display: flex; flex-wrap: wrap; gap: 0.8rem; flex-grow: 1; align-content: flex-start;">
                                     <span class="tech-tag" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">React.js</span>
                                     <span class="tech-tag" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">Next.js</span>
                                     <span class="tech-tag" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">TypeScript</span>
@@ -2540,9 +2547,9 @@
                             </div>
 
                             <!-- Backend -->
-                            <div class="glass-card" style="padding: 1.5rem; animation: none;">
+                            <div class="glass-card" style="padding: 1.5rem; animation: none; display: flex; flex-direction: column; height: 100%;">
                                 <h3 style="color: #43e97b; font-family: 'Orbitron', sans-serif; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1rem;">⚙️ Backend & APIs</h3>
-                                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                                <div style="display: flex; flex-wrap: wrap; gap: 0.8rem; flex-grow: 1; align-content: flex-start;">
                                     <span class="tech-tag" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">FastAPI</span>
                                     <span class="tech-tag" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">Node.js</span>
                                     <span class="tech-tag" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">Express.js</span>
@@ -2554,9 +2561,9 @@
                             </div>
 
                             <!-- Mobile & DevOps -->
-                            <div class="glass-card" style="padding: 1.5rem; animation: none;">
+                            <div class="glass-card" style="padding: 1.5rem; animation: none; display: flex; flex-direction: column; height: 100%;">
                                 <h3 style="color: #f093fb; font-family: 'Orbitron', sans-serif; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1rem;">📱 Mobile & DevOps</h3>
-                                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                                <div style="display: flex; flex-wrap: wrap; gap: 0.8rem; flex-grow: 1; align-content: flex-start;">
                                     <span class="tech-tag" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">Flutter</span>
                                     <span class="tech-tag" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">Dart</span>
                                     <span class="tech-tag" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">React Native</span>
