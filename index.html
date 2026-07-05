@@ -78,31 +78,7 @@
         }
 
         
-        /* Light Mode Variables */
-        body.light-mode {
-            --bg-color: #f8f9fa;
-            --text-color: #2b2b2b;
-            --text-secondary: #555555;
-            --card-bg: #ffffff;
-            --border-color: rgba(0, 0, 0, 0.1);
-            --nav-bg: rgba(255, 255, 255, 0.85);
-        }
-        body.light-mode .glass-card {
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
-            background: rgba(255, 255, 255, 0.95);
-        }
-        body.light-mode .timeline-content {
-            background: #ffffff;
-            border-color: rgba(0,0,0,0.1);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-        body.light-mode .roadmap-node::before {
-            border-color: #f8f9fa;
-        }
-        #theme-toggle {
-            background: none; border: none; color: var(--text-color); font-size: 1.2rem; cursor: pointer; transition: color 0.3s ease; margin-left: 20px;
-        }
-        #theme-toggle:hover { color: var(--primary-color); }
+
 
         /* Global Styles */
         * {
@@ -4873,6 +4849,7 @@
         // Add event listeners to certificate links
         certificateLinks.forEach(link => {
             link.addEventListener("click", (e) => {
+                e.preventDefault();
                 e.stopPropagation();
                 const certificateId = link.getAttribute("data-certificate-id");
                 const action = link.getAttribute("data-action");
@@ -4976,30 +4953,7 @@
             console.warn("Contact form element not found in DOM.");
         }
 
-        // Theme Toggle Logic
-        const themeToggleBtn = document.getElementById('theme-toggle');
-        const body = document.body;
-        const icon = themeToggleBtn.querySelector('i');
 
-        // Check Local Storage
-        if (localStorage.getItem('theme') === 'light') {
-            body.classList.add('light-mode');
-            icon.classList.remove('fa-sun');
-            icon.classList.add('fa-moon');
-        }
-
-        themeToggleBtn.addEventListener('click', () => {
-            body.classList.toggle('light-mode');
-            if (body.classList.contains('light-mode')) {
-                localStorage.setItem('theme', 'light');
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
-            } else {
-                localStorage.setItem('theme', 'dark');
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-            }
-        });
 
 
         // Smooth Scrolling for Navigation Links
@@ -5130,7 +5084,7 @@
                     const element = document.getElementById(sectionId);
                     
                     if (element) {
-                        const offset = sectionId === 'home' ? 0 : element.offsetTop - 70;
+                        const offset = sectionId === 'home' ? 0 : element.offsetTop + 30;
                         window.scrollTo({
                             top: offset,
                             behavior: 'smooth'
