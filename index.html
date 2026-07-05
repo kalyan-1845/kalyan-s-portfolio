@@ -19,13 +19,13 @@
     <meta property="og:url" content="https://kalyan-1845.github.io">
     <meta property="og:title" content="Bhoompally Kalyan Reddy | AI & Full-Stack Developer">
     <meta property="og:description" content="Founder of AuraCore AI • Published Researcher • 30+ Deployed Products • Python, React, Next.js, FastAPI, CrewAI, RAG">
-    <meta property="og:image" content="https://kalyan-1845.github.io/profile.jpg">
+    <meta property="og:image" content="https://kalyan-1845.github.io/kalyan-s-portfolio/profile.jpg">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Bhoompally Kalyan Reddy | AI & Full-Stack Developer">
-    <meta name="twitter:description" content="Founder of AuraCore AI • Published Researcher • 30+ Deployed Products">
-    <meta name="twitter:image" content="https://kalyan-1845.github.io/profile.jpg">
+    <meta name="twitter:description" content="Founder of AuraCore AI • Published Researcher • GSSoC & NSoC Contributor • 30+ Deployed Products">
+    <meta name="twitter:image" content="https://kalyan-1845.github.io/kalyan-s-portfolio/profile.jpg">
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2300f2fe'/%3E%3Cstop offset='100%25' stop-color='%237209b5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='50' cy='50' r='48' fill='url(%23g)'/%3E%3Ctext x='50' y='65' font-family='Arial,sans-serif' font-size='45' font-weight='bold' fill='white' text-anchor='middle'%3EKR%3C/text%3E%3C/svg%3E">
@@ -76,6 +76,33 @@
             --shadow-color: rgba(0, 102, 204, 0.15);
             --selection-color: rgba(0, 102, 204, 0.3);
         }
+
+        
+        /* Light Mode Variables */
+        body.light-mode {
+            --bg-color: #f8f9fa;
+            --text-color: #2b2b2b;
+            --text-secondary: #555555;
+            --card-bg: #ffffff;
+            --border-color: rgba(0, 0, 0, 0.1);
+            --nav-bg: rgba(255, 255, 255, 0.85);
+        }
+        body.light-mode .glass-card {
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.95);
+        }
+        body.light-mode .timeline-content {
+            background: #ffffff;
+            border-color: rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        body.light-mode .roadmap-node::before {
+            border-color: #f8f9fa;
+        }
+        #theme-toggle {
+            background: none; border: none; color: var(--text-color); font-size: 1.2rem; cursor: pointer; transition: color 0.3s ease; margin-left: 20px;
+        }
+        #theme-toggle:hover { color: var(--primary-color); }
 
         /* Global Styles */
         * {
@@ -2322,7 +2349,18 @@
     </style>
 </head>
 
-<body>
+<body style="overflow-y: hidden;">
+
+    <!-- Custom Preloader -->
+    <div id="preloader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #0f0c29; z-index: 9999; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.5s ease; color: #00f2fe; font-family: 'Orbitron', sans-serif;">
+        <div class="loader" style="width: 50px; height: 50px; border: 5px solid rgba(0, 242, 254, 0.2); border-top-color: #00f2fe; border-radius: 50%; animation: spin 1s linear infinite;"></div>
+        <h3 style="margin-top: 20px; letter-spacing: 2px;">INITIALIZING <span style="color:#ff00cc">AI</span>...</h3>
+        <style>
+            @keyframes spin { to { transform: rotate(360deg); } }
+            body.loaded { overflow-y: auto !important; }
+        </style>
+    </div>
+
     <!-- Custom Cursor -->
     <div class="cursor"></div>
     <div class="cursor-follower"></div>
@@ -2636,6 +2674,15 @@
             </div>
         </div>
     </section>
+
+    
+            <div class="github-stats-container" style="margin-top: 4rem; text-align: center;">
+                <h3 style="margin-bottom: 20px; font-family: 'Orbitron', sans-serif; color: var(--primary-color);">Live GitHub Activity</h3>
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px;">
+                    <img src="https://github-readme-stats.vercel.app/api?username=kalyan-1845&show_icons=true&theme=radical&hide_border=true&bg_color=0f0c29&text_color=ffffff&icon_color=00f2fe&title_color=ff00cc" alt="GitHub Stats" style="max-width: 100%; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+                    <img src="https://github-readme-streak-stats.herokuapp.com/?user=kalyan-1845&theme=radical&hide_border=true&background=0f0c29&ring=00f2fe&fire=ff00cc&currStreakLabel=ffffff" alt="GitHub Streak" style="max-width: 100%; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+                </div>
+            </div>
 
     <!-- Experience Section -->
     <section id="experience" class="experience">
@@ -4829,53 +4876,97 @@
             }
         });
 
-        // Contact Form Submission
+        // Contact Form Submission (Fixed & Stabilized)
         const contactForm = document.getElementById("contact-form");
         const formMessage = document.getElementById("form-message");
 
-        contactForm.addEventListener("submit", (e) => {
-            e.preventDefault();
+        if (contactForm) {
+            contactForm.addEventListener("submit", (e) => {
+                e.preventDefault();
 
-            // Change button state
-            const submitBtn = contactForm.querySelector('button[type="submit"]');
-            const originalBtnText = submitBtn.textContent;
-            submitBtn.textContent = "Sending...";
-            submitBtn.disabled = true;
+                // Change button state
+                const submitBtn = contactForm.querySelector('button[type="submit"]');
+                const originalBtnText = submitBtn.textContent;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                submitBtn.disabled = true;
 
-            // Get form values
-            const name = document.getElementById("name").value;
-            const email = document.getElementById("email").value;
-            const subject = document.getElementById("subject").value;
-            const message = document.getElementById("message").value;
+                // Get form values
+                const name = document.getElementById("name").value;
+                const email = document.getElementById("email").value;
+                const subject = document.getElementById("subject").value;
+                const message = document.getElementById("message").value;
 
-            // Prepare template parameters
-            const templateParams = {
-                from_name: name,
-                from_email: email,
-                subject: subject,
-                message: message,
-                to_email: 'prsnlkalyan@gmail.com'
-            };
+                // Prepare template parameters
+                const templateParams = {
+                    from_name: name,
+                    from_email: email,
+                    subject: subject,
+                    message: message,
+                    to_email: 'prsnlkalyan@gmail.com'
+                };
 
-            // EmailJS configuration complete
-            emailjs.send("service_2tm48xn", "template_amly5bi", templateParams)
-                .then(function(response) {
-                    formMessage.textContent = 'Thank you for your message! I will get back to you soon.';
-                    formMessage.className = 'form-message success';
-                    formMessage.style.display = 'block';
-                    
-                    // Reset form
-                    contactForm.reset();
-                    submitBtn.textContent = originalBtnText;
-                    submitBtn.disabled = false;
-                }, function(error) {
-                    formMessage.textContent = 'Oops! Something went wrong. Please try again later.';
-                    formMessage.className = 'form-message error';
-                    formMessage.style.display = 'block';
-                    submitBtn.textContent = originalBtnText;
-                    submitBtn.disabled = false;
-                });
+                // Add robust error logging
+                console.log("Attempting to send email via EmailJS...");
+
+                emailjs.send("service_2tm48xn", "template_amly5bi", templateParams)
+                    .then(function(response) {
+                        console.log("SUCCESS!", response.status, response.text);
+                        formMessage.textContent = '✅ Thank you for your message! I will get back to you soon.';
+                        formMessage.className = 'form-message success';
+                        formMessage.style.display = 'block';
+                        formMessage.style.color = '#00ff88';
+                        
+                        contactForm.reset();
+                        submitBtn.textContent = originalBtnText;
+                        submitBtn.disabled = false;
+                    }, function(error) {
+                        console.error("FAILED to send email via EmailJS...", error);
+                        
+                        // Detect 422 specifically
+                        if (error.status === 422) {
+                             formMessage.textContent = '❌ Configuration Error (422): EmailJS keys are invalid. Please check Service ID and Template ID.';
+                        } else {
+                             formMessage.textContent = '❌ Oops! Something went wrong. Please try again later.';
+                        }
+                        
+                        formMessage.className = 'form-message error';
+                        formMessage.style.display = 'block';
+                        formMessage.style.color = '#ff3366';
+                        submitBtn.textContent = originalBtnText;
+                        submitBtn.disabled = false;
+                    });
+            });
+        } else {
+            console.warn("Contact form element not found in DOM.");
+        }
         });
+
+        
+        // Theme Toggle Logic
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const body = document.body;
+        const icon = themeToggleBtn.querySelector('i');
+
+        // Check Local Storage
+        if (localStorage.getItem('theme') === 'light') {
+            body.classList.add('light-mode');
+            icon.classList.remove('fa-sun');
+            icon.classList.add('fa-moon');
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            if (body.classList.contains('light-mode')) {
+                localStorage.setItem('theme', 'light');
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            } else {
+                localStorage.setItem('theme', 'dark');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+        });
+
 
         // Smooth Scrolling for Navigation Links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
