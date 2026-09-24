@@ -2344,25 +2344,107 @@
 </head>
 
 <body style="overflow-y: hidden;">
-    <!-- DEPLOYMENT VERIFICATION MARKER & ERROR TRAP -->
-    <div id="nexus-live-test" style="position: fixed; top: 0; left: 0; width: 100vw; z-index: 999999; background: red; color: white; font-size: 20px; padding: 20px; font-weight: bold; border-bottom: 10px solid yellow; box-shadow: 0 10px 50px black; pointer-events: none; overflow-wrap: break-word;">
-        NEXUS LIVE TEST — BUILD 2365F73<br>
-        <span id="nexus-error-log" style="color: yellow; font-size: 16px;">Waiting for JS errors...</span>
+    <!-- MASSIVE CSS OVERRIDES FOR DIAGNOSTIC -->
+    <style>
+        html, body, section, #home, .hero, .hero-bg, main {
+            background: transparent !important;
+            background-color: transparent !important;
+            background-image: none !important;
+        }
+        .container, header, nav, .glass-card, footer {
+            z-index: 10 !important;
+            position: relative !important;
+        }
+        #nexus-canvas {
+            z-index: 0 !important;
+            background: transparent !important;
+        }
+    </style>
+    <!-- DEPLOYMENT VERIFICATION MARKER & RUNTIME DIAGNOSTIC -->
+    <div id="nexus-live-test" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 999999; background: rgba(0,0,0,0.85); color: #0f0; font-family: monospace; font-size: 14px; padding: 20px; box-sizing: border-box; overflow-y: auto; pointer-events: none;">
+        <h2 style="color: red;">NEXUS LIVE TEST — BUILD 2365F73</h2>
+        <div id="nexus-diagnostic-log">Evaluating runtime...</div>
     </div>
     <script>
+        setTimeout(() => {
+            const logEl = document.getElementById('nexus-diagnostic-log');
+            if (!logEl) return;
+            
+            try {
+                const canvas = document.getElementById('nexus-canvas');
+                let cx = window.innerWidth / 2;
+                let cy = window.innerHeight / 2;
+                
+                // Hide diagnostic overlay temporarily to hit-test what is actually covering the center
+                document.getElementById('nexus-live-test').style.display = 'none';
+                let elementOnTop = document.elementFromPoint(cx, cy);
+                let elementOnTopDetails = elementOnTop ? `${elementOnTop.tagName}#${elementOnTop.id}.${elementOnTop.className}` : 'none';
+                document.getElementById('nexus-live-test').style.display = 'block';
+
+                let output = "";
+                
+                if (!canvas) {
+                    output += "ERROR: CANVAS NOT FOUND IN DOM\n";
+                } else {
+                    const rect = canvas.getBoundingClientRect();
+                    const cStyle = getComputedStyle(canvas);
+                    const bStyle = getComputedStyle(document.body);
+                    const hStyle = getComputedStyle(document.documentElement);
+                    const homeEl = document.querySelector('#home');
+                    const homeStyle = homeEl ? getComputedStyle(homeEl) : null;
+                    
+                    output += `=== DOM DIAGNOSTICS ===\n`;
+                    output += `canvas.getBoundingClientRect(): width=${rect.width}, height=${rect.height}, x=${rect.x}, y=${rect.y}\n`;
+                    output += `canvas.width / height: ${canvas.width} x ${canvas.height}\n`;
+                    output += `getComputedStyle(canvas).position: ${cStyle.position}\n`;
+                    output += `getComputedStyle(canvas).zIndex: ${cStyle.zIndex}\n`;
+                    output += `getComputedStyle(canvas).opacity: ${cStyle.opacity}\n`;
+                    output += `getComputedStyle(canvas).display: ${cStyle.display}\n`;
+                    output += `getComputedStyle(canvas).visibility: ${cStyle.visibility}\n`;
+                    output += `getComputedStyle(document.body).background: ${bStyle.backgroundColor}\n`;
+                    output += `getComputedStyle(document.documentElement).background: ${hStyle.backgroundColor}\n`;
+                    if (homeStyle) {
+                        output += `getComputedStyle(#home).background: ${homeStyle.backgroundColor}\n`;
+                        output += `getComputedStyle(#home).zIndex: ${homeStyle.zIndex}\n`;
+                    }
+                    output += `Hit-Test at center of screen: ${elementOnTopDetails}\n\n`;
+                }
+                
+                output += `=== WEBGL DIAGNOSTICS ===\n`;
+                const nex = window.NEXUS_DIAGNOSTIC;
+                if (!nex) {
+                    output += "ERROR: window.NEXUS_DIAGNOSTIC NOT FOUND! main.js failed to load or crash before expose.\n";
+                } else {
+                    output += `renderer.domElement === #nexus-canvas: ${nex.renderer.domElement === canvas}\n`;
+                    output += `scene.children.length: ${nex.scene.children.length}\n`;
+                    output += `camera.position: x=${nex.camera.position.x}, y=${nex.camera.position.y}, z=${nex.camera.position.z}\n`;
+                    output += `camera.rotation: x=${nex.camera.rotation.x}, y=${nex.camera.rotation.y}, z=${nex.camera.rotation.z}\n`;
+                    output += `camera.near: ${nex.camera.near}, far: ${nex.camera.far}, fov: ${nex.camera.fov}\n`;
+                    if (nex.cube) {
+                        output += `cube.position: x=${nex.cube.position.x}, y=${nex.cube.position.y}, z=${nex.cube.position.z}\n`;
+                        output += `cube.scale: x=${nex.cube.scale.x}, y=${nex.cube.scale.y}, z=${nex.cube.scale.z}\n`;
+                        output += `cube.visible: ${nex.cube.visible}\n`;
+                        output += `cube.material.visible: ${nex.cube.material.visible}\n`;
+                        output += `cube.material.color: #${nex.cube.material.color.getHexString()}\n`;
+                    } else {
+                        output += `cube NOT FOUND in diagnostics.\n`;
+                    }
+                }
+                
+                logEl.innerText = output;
+                
+            } catch(e) {
+                logEl.innerHTML = `<span style="color:red">DIAGNOSTIC SCRIPT CRASHED: ${e.message}</span>`;
+            }
+        }, 1500);
+        
         window.onerror = function(msg, url, lineNo, columnNo, error) {
-            const logEl = document.getElementById('nexus-error-log');
+            const logEl = document.getElementById('nexus-diagnostic-log');
             if (logEl) {
-                logEl.innerHTML += `<br>ERROR: ${msg} <br> ${url}:${lineNo}:${columnNo}`;
+                logEl.innerHTML += `<br><span style="color:yellow">ERROR: ${msg} <br> ${url}:${lineNo}:${columnNo}</span>`;
             }
             return false;
         };
-        window.addEventListener('unhandledrejection', function(event) {
-            const logEl = document.getElementById('nexus-error-log');
-            if (logEl) {
-                logEl.innerHTML += `<br>PROMISE REJECTION: ${event.reason}`;
-            }
-        });
     </script>
     <!-- Custom Preloader -->
     <div id="preloader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #0f0c29; z-index: 9999; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.5s ease; color: #00f2fe; font-family: 'Orbitron', sans-serif;">

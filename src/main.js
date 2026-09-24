@@ -77,11 +77,21 @@ class NexusEngine {
         new THREE.BoxGeometry(10, 10, 10),
         new THREE.MeshBasicMaterial({ color: 0xff0000 })
       );
+      this.diagnosticCube.position.set(0, 0, 10);
+      this.diagnosticCube.scale.set(2, 2, 2);
       this.scene.add(this.diagnosticCube);
       
       // Force camera position for diagnostic
       this.camera.position.set(0, 0, 30);
       this.camera.lookAt(0, 0, 0);
+
+      // EXPOSE TO WINDOW FOR LIVE DOM DIAGNOSTIC
+      window.NEXUS_DIAGNOSTIC = {
+          renderer: this.renderer,
+          scene: this.scene,
+          camera: this.camera,
+          cube: this.diagnosticCube
+      };
 
       // 8. Reduced motion listener
       this.mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
