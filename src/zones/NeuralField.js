@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import { SpatialHash } from '../utils/SpatialHash.js';
 import { neuralVertex, neuralFragment, neuralLineVertex, neuralLineFragment } from '../shaders/neural.js';
 
-export default class NeuralField {
+export class NeuralField {
     constructor(scene, camera, renderer, tier) {
         this.scene = scene;
         this.camera = camera;

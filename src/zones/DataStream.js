@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import { streamVertex, streamFragment } from '../shaders/stream.js';
 import { simplex3D } from '../shaders/includes/noise.js';
 
-export default class DataStream {
+export class DataStream {
     constructor(scene, camera, renderer, tier) {
         this.scene = scene;
         this.camera = camera;
