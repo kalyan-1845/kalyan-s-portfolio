@@ -72,13 +72,16 @@ class NexusEngine {
       this.mouseController = new MouseController();
 
       // 7. Create scene manager
-      this.sceneManager = new SceneManager(
-        this.scene,
-        this.camera,
-        this.renderer,
-        tier
+      // DIAGNOSTIC CUBE
+      this.diagnosticCube = new THREE.Mesh(
+        new THREE.BoxGeometry(10, 10, 10),
+        new THREE.MeshBasicMaterial({ color: 0xff0000 })
       );
-      await this.sceneManager.init();
+      this.scene.add(this.diagnosticCube);
+      
+      // Force camera position for diagnostic
+      this.camera.position.set(0, 0, 30);
+      this.camera.lookAt(0, 0, 0);
 
       // 8. Reduced motion listener
       this.mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -97,7 +100,7 @@ class NexusEngine {
       this.clock.start();
       this._animate();
 
-      console.log('[NEXUS] Engine initialized successfully.');
+      console.log('[NEXUS] Engine initialized successfully. DIAGNOSTIC MODE ACTIVE.');
     } catch (error) {
       console.error('[NEXUS] Engine initialization failed:', error);
     }
@@ -111,27 +114,14 @@ class NexusEngine {
     const delta = elapsed - this.previousTime;
     this.previousTime = elapsed;
 
-    // Clamp delta to prevent huge jumps after tab switch
-    const clampedDelta = Math.min(delta, 0.1);
-    
-    // Scale motion if user prefers reduced motion
-    const timeScale = this.isReducedMotion ? 0.05 : 1.0;
-    const safeDelta = clampedDelta * timeScale;
-    this.simTime += safeDelta;
+    // Diagnostic Cube Animation
+    if (this.diagnosticCube) {
+      this.diagnosticCube.rotation.x += 0.02;
+      this.diagnosticCube.rotation.y += 0.02;
+    }
 
-    // Update controllers
-    this.scrollController.update(clampedDelta);
-    this.mouseController.update();
-
-    const progress = this.scrollController.getProgress();
-    const mouse = this.mouseController.getPosition();
-    
-    // Disable mouse parallax if reduced motion is on
-    const safeMouse = this.isReducedMotion ? { x: 0, y: 0 } : mouse;
-
-    // Update and render all zones
-    this.sceneManager.update(this.simTime, safeDelta, progress, safeMouse);
-    this.sceneManager.render();
+    // BYPASS SCENE MANAGER / POST-PROCESSING ENTIRELY FOR DIAGNOSTIC
+    this.renderer.render(this.scene, this.camera);
   }
 
   _onResize() {
