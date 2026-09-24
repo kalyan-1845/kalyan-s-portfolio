@@ -107,7 +107,7 @@ export class AICore {
             ambientGeo.setAttribute('position', new THREE.BufferAttribute(ambientPos, 3));
 
             const ambientMat = new THREE.ShaderMaterial({
-                vertexShader: /* glsl */\`
+                vertexShader: /* glsl */`
                     uniform float uOpacity;
                     varying float vAlpha;
                     void main() {
@@ -116,8 +116,8 @@ export class AICore {
                         gl_Position = projectionMatrix * mvPosition;
                         vAlpha = 1.0;
                     }
-                \`,
-                fragmentShader: /* glsl */\`
+                `,
+                fragmentShader: /* glsl */`
                     uniform float uOpacity;
                     varying float vAlpha;
                     void main() {
@@ -126,7 +126,7 @@ export class AICore {
                         if(r > 1.0) discard;
                         gl_FragColor = vec4(1.0, 1.0, 1.0, (1.0 - r) * 0.5 * uOpacity);
                     }
-                \`,
+                `,
                 uniforms: {
                     uOpacity: { value: 1.0 }
                 },
