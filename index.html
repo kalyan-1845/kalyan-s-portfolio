@@ -2366,6 +2366,18 @@
         <div id="nexus-diagnostic-log">Evaluating runtime...</div>
     </div>
     <script>
+        const oldConsoleError = console.error;
+        console.error = function(...args) {
+            const logEl = document.getElementById('nexus-diagnostic-log');
+            if (logEl) logEl.innerHTML += `<br><br><span style="color:yellow; font-weight:bold;">CONSOLE.ERROR CAUGHT:</span><br><span style="color:orange;">${args.join(' ')}</span><br>`;
+            oldConsoleError.apply(console, args);
+        };
+        
+        window.addEventListener('unhandledrejection', function(event) {
+            const logEl = document.getElementById('nexus-diagnostic-log');
+            if (logEl) logEl.innerHTML += `<br><span style="color:yellow">PROMISE REJECTION: ${event.reason}</span>`;
+        });
+        
         setTimeout(() => {
             const logEl = document.getElementById('nexus-diagnostic-log');
             if (!logEl) return;
