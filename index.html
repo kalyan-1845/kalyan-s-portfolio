@@ -106,11 +106,12 @@
 
         html {
             scroll-behavior: smooth;
+            background-color: var(--bg-color); /* Fallback if WebGL fails */
         }
 
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: var(--bg-color);
+            background-color: transparent; /* Allows NEXUS 3D canvas to be visible */
             color: var(--text-color);
             line-height: 1.6;
             overflow-x: hidden;

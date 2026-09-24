@@ -157,10 +157,10 @@ export default class NeuralField {
                 const py = positions[i * 3 + 1];
                 const pz = positions[i * 3 + 2];
 
-                const neighbors = this.spatialHash.query(px, py, pz);
+                const neighborCount = this.spatialHash.queryRadius(px, py, pz, 4.0, positions);
 
-                for (let j = 0; j < neighbors.length; j++) {
-                    const neighborIdx = neighbors[j];
+                for (let j = 0; j < neighborCount; j++) {
+                    const neighborIdx = this.spatialHash.queryResults[j];
                     if (neighborIdx <= i) continue;
 
                     if (connectionCount >= maxConns) break;
@@ -169,6 +169,7 @@ export default class NeuralField {
                     const ny = positions[neighborIdx * 3 + 1];
                     const nz = positions[neighborIdx * 3 + 2];
 
+                    // SpatialHash queryRadius already does distance check, but we do it again just to be safe
                     const dx = px - nx;
                     const dy = py - ny;
                     const dz = pz - nz;

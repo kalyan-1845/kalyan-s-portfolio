@@ -80,10 +80,18 @@ class NexusEngine {
       );
       await this.sceneManager.init();
 
-      // 8. Resize handler
+      // 8. Reduced motion listener
+      this.mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+      this.isReducedMotion = this.mediaQuery.matches;
+      this.mediaQuery.addEventListener('change', (e) => {
+        this.isReducedMotion = e.matches;
+      });
+      this.simTime = 0; // custom time tracker scaled by motion pref
+
+      // 9. Resize handler
       window.addEventListener('resize', this._onResize.bind(this));
 
-      // 9. Start animation loop
+      // 10. Start animation loop
       this.isRunning = true;
       this.previousTime = 0;
       this.clock.start();
@@ -105,6 +113,11 @@ class NexusEngine {
 
     // Clamp delta to prevent huge jumps after tab switch
     const clampedDelta = Math.min(delta, 0.1);
+    
+    // Scale motion if user prefers reduced motion
+    const timeScale = this.isReducedMotion ? 0.05 : 1.0;
+    const safeDelta = clampedDelta * timeScale;
+    this.simTime += safeDelta;
 
     // Update controllers
     this.scrollController.update(clampedDelta);
@@ -112,9 +125,12 @@ class NexusEngine {
 
     const progress = this.scrollController.getProgress();
     const mouse = this.mouseController.getPosition();
+    
+    // Disable mouse parallax if reduced motion is on
+    const safeMouse = this.isReducedMotion ? { x: 0, y: 0 } : mouse;
 
     // Update and render all zones
-    this.sceneManager.update(elapsed, clampedDelta, progress, mouse);
+    this.sceneManager.update(this.simTime, safeDelta, progress, safeMouse);
     this.sceneManager.render();
   }
 
