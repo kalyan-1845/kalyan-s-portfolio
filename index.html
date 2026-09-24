@@ -38,6 +38,16 @@
         href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Roboto:wght@300;400;500&display=swap"
         rel="stylesheet">
 
+    <!-- NEXUS 3D Engine — Three.js Import Map -->
+    <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+      }
+    }
+    </script>
+
     <!-- EmailJS SDK -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script type="text/javascript">
@@ -2410,6 +2420,9 @@
     <button class="shortcuts-trigger-btn" onclick="toggleShortcutsModal()" title="View Keyboard Shortcuts">
         <i class="fas fa-keyboard"></i>
     </button>
+
+    <!-- NEXUS 3D Canvas — renders behind all DOM content -->
+    <canvas id="nexus-canvas" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-1;pointer-events:none;"></canvas>
 
     <!-- Header & Navigation -->
     <header>
@@ -5212,6 +5225,9 @@
             #stats .container > div { grid-template-columns: 1fr !important; }
         }
     </style>
+
+    <!-- NEXUS 3D Engine -->
+    <script type="module" src="src/main.js"></script>
 
 </body>
 
