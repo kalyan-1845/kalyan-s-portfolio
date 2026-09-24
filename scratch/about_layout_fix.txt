@@ -1,0 +1,80 @@
+CSS Replacements:
+
+Replace the `.about-image` block (around line 587) with:
+
+```css
+        .about-image {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px; /* Premium rounded rectangle */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: float 4s ease-in-out infinite;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+```
+
+HTML Replacements:
+
+Replace the Tech Stack grid container (around line 2512) with the following to ensure perfect alignment and proper gaps. We added `gap: 2rem` to the grid container, and `display: flex; flex-direction: column; height: 100%;` to each `.glass-card` along with `flex-grow: 1; align-content: flex-start; gap: 0.8rem;` to the internal tags container:
+
+```html
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; align-items: stretch;">
+                            <!-- AI & ML -->
+                            <div class="glass-card" style="padding: 1.5rem; animation: none; display: flex; flex-direction: column; height: 100%;">
+                                <h3 style="color: var(--primary-color); font-family: 'Orbitron', sans-serif; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1rem;">🤖 AI & Machine Learning</h3>
+                                <div style="display: flex; flex-wrap: wrap; gap: 0.8rem; flex-grow: 1; align-content: flex-start;">
+                                    <span class="tech-tag" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">Python</span>
+                                    <span class="tech-tag" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">CrewAI</span>
+                                    <span class="tech-tag" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">RAG</span>
+                                    <span class="tech-tag" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">LangChain</span>
+                                    <span class="tech-tag" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">TensorFlow</span>
+                                    <span class="tech-tag" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">Ollama</span>
+                                    <span class="tech-tag" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">Computer Vision</span>
+                                    <span class="tech-tag" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">NLP</span>
+                                </div>
+                            </div>
+
+                            <!-- Frontend -->
+                            <div class="glass-card" style="padding: 1.5rem; animation: none; display: flex; flex-direction: column; height: 100%;">
+                                <h3 style="color: var(--secondary-color); font-family: 'Orbitron', sans-serif; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1rem;">🎨 Frontend</h3>
+                                <div style="display: flex; flex-wrap: wrap; gap: 0.8rem; flex-grow: 1; align-content: flex-start;">
+                                    <span class="tech-tag" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">React.js</span>
+                                    <span class="tech-tag" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">Next.js</span>
+                                    <span class="tech-tag" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">TypeScript</span>
+                                    <span class="tech-tag" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">Tailwind CSS</span>
+                                    <span class="tech-tag" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">HTML5 / CSS3</span>
+                                    <span class="tech-tag" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">JavaScript</span>
+                                    <span class="tech-tag" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">Three.js</span>
+                                </div>
+                            </div>
+
+                            <!-- Backend -->
+                            <div class="glass-card" style="padding: 1.5rem; animation: none; display: flex; flex-direction: column; height: 100%;">
+                                <h3 style="color: #43e97b; font-family: 'Orbitron', sans-serif; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1rem;">⚙️ Backend & APIs</h3>
+                                <div style="display: flex; flex-wrap: wrap; gap: 0.8rem; flex-grow: 1; align-content: flex-start;">
+                                    <span class="tech-tag" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">FastAPI</span>
+                                    <span class="tech-tag" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">Node.js</span>
+                                    <span class="tech-tag" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">Express.js</span>
+                                    <span class="tech-tag" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">Go (Golang)</span>
+                                    <span class="tech-tag" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">MongoDB</span>
+                                    <span class="tech-tag" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">SQLite</span>
+                                    <span class="tech-tag" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">Socket.io</span>
+                                </div>
+                            </div>
+
+                            <!-- Mobile & DevOps -->
+                            <div class="glass-card" style="padding: 1.5rem; animation: none; display: flex; flex-direction: column; height: 100%;">
+                                <h3 style="color: #f093fb; font-family: 'Orbitron', sans-serif; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1rem;">📱 Mobile & DevOps</h3>
+                                <div style="display: flex; flex-wrap: wrap; gap: 0.8rem; flex-grow: 1; align-content: flex-start;">
+                                    <span class="tech-tag" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">Flutter</span>
+                                    <span class="tech-tag" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">Dart</span>
+                                    <span class="tech-tag" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">React Native</span>
+                                    <span class="tech-tag" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">Docker</span>
+                                    <span class="tech-tag" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">Git & GitHub</span>
+                                    <span class="tech-tag" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">Java</span>
+                                    <span class="tech-tag" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">FFmpeg</span>
+                                </div>
+                            </div>
+                        </div>
+```

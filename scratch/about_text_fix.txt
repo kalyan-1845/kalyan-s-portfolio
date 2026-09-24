@@ -1,0 +1,32 @@
+=== CSS Replacement ===
+
+Target:
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+Replacement:
+        .about-text p {
+            margin-bottom: 1.8rem;
+            color: #d1d5db; /* Subtle gray tone */
+            line-height: 1.8;
+            font-size: 1.125rem;
+            letter-spacing: 0.01em;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 400;
+        }
+
+=== HTML Replacement ===
+
+Target:
+                <div class="about-text">
+                    <h2>Hello, I'm Kalyan</h2>
+                    <p>I am a 3rd-year Computer Science and Engineering student at ACE Engineering College (JNTUH), Hyderabad, and the <strong>Founder of AuraCore AI</strong> — a multi-agent orchestration platform processing 100+ daily queries with 98% uptime. I specialize in building production-grade AI systems using Python, FastAPI, CrewAI, and Retrieval-Augmented Generation (RAG), as well as responsive full-stack web applications using React.js, Next.js, and Node.js.</p>
+                    <p>I am a <strong>published researcher</strong> in IJARSCT (DOI: 10.48175/IJARSCT-32733) and have deployed <strong>30+ products</strong> with 14 professional certifications. I am passionate about autonomous agentic workflows, offline LLM inference, and building innovative software solutions that create meaningful impact.</p>
+
+Replacement:
+                <div class="about-text">
+                    <h2 style="font-family: 'Inter', sans-serif; font-size: 2.75rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 1.25rem;">Hello, I'm Kalyan</h2>
+                    <p>I am a 3rd-year Computer Science and Engineering student at ACE Engineering College (JNTUH), Hyderabad, and the <strong style="color: #f3f4f6; font-weight: 600;">Founder of AuraCore AI</strong> — a multi-agent orchestration platform processing 100+ daily queries with 98% uptime. I specialize in building production-grade AI systems using Python, FastAPI, CrewAI, and Retrieval-Augmented Generation (RAG), as well as responsive full-stack web applications using React.js, Next.js, and Node.js.</p>
+                    <p>I am a <strong style="color: #f3f4f6; font-weight: 600;">published researcher</strong> in IJARSCT (DOI: 10.48175/IJARSCT-32733) and have deployed <strong style="color: #f3f4f6; font-weight: 600;">30+ products</strong> with 14 professional certifications. I am passionate about autonomous agentic workflows, offline LLM inference, and building innovative software solutions that create meaningful impact.</p>
