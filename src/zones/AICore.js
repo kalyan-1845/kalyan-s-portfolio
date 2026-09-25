@@ -1,6 +1,10 @@
 import * as THREE from 'three';
 import { coreVertex, coreFragment, ringVertex, ringFragment } from '../shaders/core.js';
+import { sdfCoreVertex, sdfCoreFragment } from '../shaders/sdfCore.js';
 import { simplex3D } from '../shaders/includes/noise.js';
+
+// V3 Experimental Flag
+const RAYMARCH_CORE_ENABLED = true;
 
 export class AICore {
     constructor(scene, camera, renderer, tier = 'high') {
@@ -29,22 +33,48 @@ export class AICore {
                 ambientCount = 500;
             }
 
-            // CORE SPHERE
-            const sphereGeo = new THREE.IcosahedronGeometry(5, sphereDetail);
-            this.coreMaterial = new THREE.ShaderMaterial({
-                vertexShader: coreVertex,
-                fragmentShader: coreFragment,
-                uniforms: {
-                    uTime: { value: 0 },
-                    uMouse: { value: new THREE.Vector2(0, 0) },
-                    uZoneProgress: { value: 0 },
-                    uOpacity: { value: 1 },
-                    uPulse: { value: 0 }
-                },
-                side: THREE.FrontSide,
-                transparent: true
-            });
-            this.coreMesh = new THREE.Mesh(sphereGeo, this.coreMaterial);
+            // CORE (V3 Raymarched vs V2.1 Polygonal)
+            this.isV3 = RAYMARCH_CORE_ENABLED && (this.tier === 'high' || this.tier === 'medium');
+
+            if (this.isV3) {
+                // V3: Sentient Anomaly (SDF Raymarching)
+                // Use a BoxGeometry that perfectly bounds the raymarch area
+                const boxGeo = new THREE.BoxGeometry(25, 25, 25);
+                this.coreMaterial = new THREE.ShaderMaterial({
+                    vertexShader: sdfCoreVertex,
+                    fragmentShader: sdfCoreFragment,
+                    uniforms: {
+                        uTime: { value: 0 },
+                        uMouse: { value: new THREE.Vector2(0, 0) },
+                        uZoneProgress: { value: 0 },
+                        uOpacity: { value: 1 },
+                        uPulse: { value: 0 },
+                        uCameraPos: { value: this.camera.position },
+                        uMaxSteps: { value: this.tier === 'high' ? 100 : 50 }
+                    },
+                    side: THREE.FrontSide, // Render inside the bounding box
+                    transparent: true,
+                    depthWrite: false
+                });
+                this.coreMesh = new THREE.Mesh(boxGeo, this.coreMaterial);
+            } else {
+                // V2.1: Classic Polygonal Core (Low tier or Disabled)
+                const sphereGeo = new THREE.IcosahedronGeometry(5, sphereDetail);
+                this.coreMaterial = new THREE.ShaderMaterial({
+                    vertexShader: coreVertex,
+                    fragmentShader: coreFragment,
+                    uniforms: {
+                        uTime: { value: 0 },
+                        uMouse: { value: new THREE.Vector2(0, 0) },
+                        uZoneProgress: { value: 0 },
+                        uOpacity: { value: 1 },
+                        uPulse: { value: 0 }
+                    },
+                    side: THREE.FrontSide,
+                    transparent: true
+                });
+                this.coreMesh = new THREE.Mesh(sphereGeo, this.coreMaterial);
+            }
             this.group.add(this.coreMesh);
 
             // ENERGY RINGS
@@ -150,6 +180,10 @@ export class AICore {
         this.coreMaterial.uniforms.uMouse.value.copy(mouse);
         this.coreMaterial.uniforms.uZoneProgress.value = zoneProgress;
         this.coreMaterial.uniforms.uOpacity.value = opacity;
+        
+        if (this.isV3 && this.coreMaterial.uniforms.uCameraPos) {
+            this.coreMaterial.uniforms.uCameraPos.value.copy(this.camera.position);
+        }
 
         const mouseDist = Math.sqrt(mouse.x * mouse.x + mouse.y * mouse.y);
         const boost = Math.max(0, 1.0 - mouseDist);
@@ -189,7 +223,18 @@ export class AICore {
         this.ambientMesh.geometry.attributes.position.needsUpdate = true;
         this.ambientMesh.material.uniforms.uOpacity.value = opacity;
 
-        const scale = 0.3 + 0.7 * Math.min(1.0, Math.max(0.0, zoneProgress / 0.4));
+        // Base max scale for the zone
+        let maxScale = this.isV3 ? 0.6 : 1.0; 
+        
+        // Responsive scaling - Shrink further on tablets/mobile to avoid overlapping text
+        if (window.innerWidth < 1024) {
+            maxScale *= 0.8;
+        }
+        if (window.innerWidth < 768) {
+            maxScale *= 0.6;
+        }
+
+        const scale = 0.2 + (maxScale - 0.2) * Math.min(1.0, Math.max(0.0, zoneProgress / 0.4));
         this.group.scale.setScalar(scale);
     }
 
