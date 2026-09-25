@@ -17,11 +17,11 @@ export class PostFX {
     const renderPass = new RenderPass(scene, camera);
     this.composer.addPass(renderPass);
 
-    // Bloom configuration per tier
+    // Bloom configuration per tier - carefully tuned for cinematic feel, no blowout
     const bloomConfig = {
-      high:   { strength: 1.5, radius: 0.4, threshold: 0.1 },
-      medium: { strength: 1.0, radius: 0.3, threshold: 0.2 },
-      low:    { strength: 0.6, radius: 0.2, threshold: 0.3 }
+      high:   { strength: 0.6, radius: 0.6, threshold: 0.4 },
+      medium: { strength: 0.4, radius: 0.5, threshold: 0.5 },
+      low:    { strength: 0.3, radius: 0.4, threshold: 0.6 }
     };
 
     const config = bloomConfig[tier] || bloomConfig.medium;

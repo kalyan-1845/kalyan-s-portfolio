@@ -93,11 +93,11 @@ void main() {
     float detail = fbm(vUv * 10.0 + uTime * 0.1);
     
     vec3 finalColor = mix(coreColor, rimColor, fresnel + ring * 0.5);
-    finalColor += rimColor * ring * (1.0 + uPulse * 2.0);
+    finalColor += rimColor * ring * (0.6 + uPulse * 1.0); // Reduced additive ring brightness
     finalColor *= 1.0 + detail * 0.5;
-    finalColor *= (0.8 + uPulse * 0.4);
+    finalColor *= (0.5 + uPulse * 0.2); // Reduced overall multiplier
     
-    float alpha = clamp(fresnel + 0.3 + ring, 0.0, 1.0) * uOpacity;
+    float alpha = clamp(fresnel + 0.3 + ring, 0.0, 1.0) * uOpacity * 0.7; // Dim base alpha
     
     gl_FragColor = vec4(finalColor, alpha);
 }
@@ -114,8 +114,8 @@ varying float vAlpha;
 void main() {
     vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
     
-    // Attenuation
-    gl_PointSize = size * (300.0 / -mvPosition.z);
+    // Attenuation - Reduced point size multiplier
+    gl_PointSize = size * (180.0 / -mvPosition.z);
     
     gl_Position = projectionMatrix * mvPosition;
     
@@ -136,7 +136,7 @@ void main() {
         discard;
     }
     
-    float a = (1.0 - r) * uOpacity * vAlpha * 0.8;
+    float a = (1.0 - r) * uOpacity * vAlpha * 0.4; // Reduced from 0.8
     vec3 color = vec3(0.0, 0.95, 1.0);
     
     gl_FragColor = vec4(color, a);

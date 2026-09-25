@@ -34,8 +34,8 @@ void main() {
     vec4 mvPosition = modelViewMatrix * vec4(pos, 1.0);
     gl_Position = projectionMatrix * mvPosition;
 
-    // Size attenuation
-    gl_PointSize = aSize * (1.0 + noise * 0.5) * (100.0 / -mvPosition.z);
+    // Size attenuation (reduced multiplier from 100 to 40, clamped max size to prevent massive blowouts)
+    gl_PointSize = min(aSize * (1.0 + noise * 0.5) * (40.0 / -mvPosition.z), 12.0);
 
     // Color interpolation between cyan #00f2fe and pink #f093fb
     vec3 cyan = vec3(0.0, 0.949, 0.996);
@@ -93,6 +93,6 @@ void main() {
     // Distance fade
     float fade = 1.0 - smoothstep(10.0, 50.0, vDepth);
     
-    gl_FragColor = vec4(color, vOpacity * fade * 0.3);
+    gl_FragColor = vec4(color, vOpacity * fade * 0.08);
 }
 `;

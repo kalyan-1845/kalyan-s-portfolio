@@ -52,7 +52,7 @@ class NexusEngine {
       this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, tier === 'high' ? 2 : 1.5));
       this.renderer.setClearColor(0x0a0a0a, 1);
       this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
-      this.renderer.toneMappingExposure = 1.0;
+      this.renderer.toneMappingExposure = 0.6; // Darker, more cinematic base exposure
 
       // 4. Create scene
       this.scene = new THREE.Scene();

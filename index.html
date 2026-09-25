@@ -2340,6 +2340,22 @@
         body.light-theme .shortcuts-trigger-btn {
             background: rgba(255, 255, 255, 0.9);
         }
+
+        /* NEXUS 3D TRANSPARENCY OVERRIDES */
+        /* Forces all scrolling container sections to be transparent so the WebGL canvas shows through */
+        html, body, .hero-bg, .ai-roadmap, .projects, .experience, .achievements, section, footer {
+            background: transparent !important;
+            background-color: transparent !important;
+            background-image: none !important;
+        }
+        
+        /* Keep glass-cards semi-transparent to maintain readability without blocking the 3D background */
+        .glass-card, .roadmap-item, .project-card, .achievement-card {
+            background: rgba(15, 12, 41, 0.4) !important;
+            backdrop-filter: blur(8px) !important;
+            -webkit-backdrop-filter: blur(8px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
     </style>
 </head>
 

@@ -112,7 +112,7 @@ export class AICore {
                     varying float vAlpha;
                     void main() {
                         vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
-                        gl_PointSize = (100.0 / -mvPosition.z);
+                        gl_PointSize = (40.0 / -mvPosition.z);
                         gl_Position = projectionMatrix * mvPosition;
                         vAlpha = 1.0;
                     }
@@ -124,7 +124,7 @@ export class AICore {
                         vec2 cxy = 2.0 * gl_PointCoord - 1.0;
                         float r = dot(cxy, cxy);
                         if(r > 1.0) discard;
-                        gl_FragColor = vec4(1.0, 1.0, 1.0, (1.0 - r) * 0.5 * uOpacity);
+                        gl_FragColor = vec4(1.0, 1.0, 1.0, (1.0 - r) * 0.2 * uOpacity);
                     }
                 `,
                 uniforms: {
