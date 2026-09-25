@@ -2672,33 +2672,44 @@
     </div>
 
     <!-- Shortcuts Modal & Toast -->
-    <div class="shortcut-toast" id="shortcut-toast">💡 Press Alt + K for Shortcuts</div>
+    
+    <!-- Shortcuts Modal & Toast -->
+    <div class="shortcut-toast" id="shortcut-toast">💡 Press <span id="toast-modifier">Ctrl</span> + K for Shortcuts</div>
     
     <div class="shortcuts-modal" id="shortcuts-modal">
-        <h3><i class="fas fa-keyboard"></i> Pro Shortcuts</h3>
+        <h3><i class="fas fa-keyboard"></i> NEXUS Command Center</h3>
+        <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 15px;">Global shortcuts to navigate the portfolio.</p>
         <div class="shortcut-item">
-            <span>Toggle Menu</span>
-            <span class="shortcut-key">Alt + K</span>
+            <span>Toggle Command Center</span>
+            <span class="shortcut-key" id="modal-modifier-k">Ctrl + K</span>
         </div>
         <div class="shortcut-item">
             <span>Open Resume</span>
-            <span class="shortcut-key">Alt + R</span>
+            <span class="shortcut-key">R</span>
         </div>
         <div class="shortcut-item">
             <span>Toggle Theme</span>
-            <span class="shortcut-key">Alt + S</span>
+            <span class="shortcut-key">S</span>
         </div>
         <div class="shortcut-item">
-            <span>Cinematic View</span>
-            <span class="shortcut-key">Alt + Z</span>
+            <span>Jump to Projects</span>
+            <span class="shortcut-key">P</span>
         </div>
         <div class="shortcut-item">
-            <span>Achievements</span>
-            <span class="shortcut-key">Alt + A</span>
+            <span>Jump to Achievements</span>
+            <span class="shortcut-key">A</span>
         </div>
         <div class="shortcut-item">
-            <span>AI Road Map</span>
-            <span class="shortcut-key">Alt + B</span>
+            <span>Cinematic Mode</span>
+            <span class="shortcut-key">C</span>
+        </div>
+        <div class="shortcut-item">
+            <span>Back to Top (Home)</span>
+            <span class="shortcut-key">H</span>
+        </div>
+        <div class="shortcut-item">
+            <span>Close / Exit</span>
+            <span class="shortcut-key">ESC</span>
         </div>
     </div>
 
@@ -5440,8 +5451,20 @@
             nextStep();
         }
 
+        
         // ===== Keyboard Shortcuts & Toast Logic =====
         let toastTimeout;
+        const isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0 || navigator.userAgent.includes('Mac');
+        const modifierText = isMac ? '⌘' : 'Ctrl';
+
+        // Update UI Text for OS
+        document.addEventListener('DOMContentLoaded', () => {
+            const toastMod = document.getElementById('toast-modifier');
+            if (toastMod) toastMod.textContent = modifierText;
+            const modalModK = document.getElementById('modal-modifier-k');
+            if (modalModK) modalModK.textContent = modifierText + ' + K';
+        });
+
         function showToast(message) {
             const toast = document.getElementById('shortcut-toast');
             if(!toast) return;
@@ -5456,62 +5479,151 @@
             if(modal) modal.classList.toggle('active');
         }
 
-        // Global Keyboard Shortcuts (Using Alt-based combinations for reliability)
+        function closeAllActiveOverlays() {
+            let closedAny = false;
+            
+            // 1. Command Center
+            const shortcutsModal = document.getElementById('shortcuts-modal');
+            if(shortcutsModal && shortcutsModal.classList.contains('active')) {
+                shortcutsModal.classList.remove('active');
+                closedAny = true;
+            }
+            
+            // 2. Resume Modal
+            const resumeModal = document.getElementById('resume-modal');
+            if(resumeModal && resumeModal.style.display === 'flex') {
+                closeResumeModal();
+                closedAny = true;
+            }
+            
+            // 3. Mobile Navigation
+            const navLinks = document.querySelector('.nav-links');
+            const navOverlay = document.querySelector('.nav-overlay');
+            if(navLinks && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                if (navOverlay) navOverlay.classList.remove('active');
+                const menuToggle = document.getElementById('menu-toggle');
+                if (menuToggle) {
+                    const icon = menuToggle.querySelector('i');
+                    if (icon) {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                }
+                closedAny = true;
+            }
+            
+            // 4. Cinematic Mode
+            if (typeof isCinematic !== 'undefined' && isCinematic) {
+                const header = document.querySelector('header');
+                if (header) {
+                    header.style.opacity = '1';
+                    header.style.pointerEvents = 'auto';
+                }
+                document.body.style.cursor = '';
+                isCinematic = false;
+                showToast("🎬 Cinematic Mode Disabled");
+                closedAny = true;
+            }
+            
+            return closedAny;
+        }
+
+        // Global Keyboard Shortcuts (Cross-browser, accessible, non-intrusive)
         window.addEventListener('keydown', function(e) {
-            // Ignore if typing in an input or textarea
-            if (e.target && e.target.tagName) {
-                const tag = e.target.tagName.toLowerCase();
-                if (tag === 'input' || tag === 'textarea') return;
+            // 1. PREVENT FIRE IN INPUT FIELDS
+            const activeElement = document.activeElement;
+            if (activeElement) {
+                const tag = activeElement.tagName.toLowerCase();
+                const type = activeElement.type;
+                if (
+                    tag === 'input' || 
+                    tag === 'textarea' || 
+                    tag === 'select' || 
+                    activeElement.isContentEditable ||
+                    (tag === 'input' && type === 'search')
+                ) {
+                    // Let the user type normally, and let the browser handle ESC for native inputs
+                    return; 
+                }
             }
 
-            if (!e.code) return;
-            const isAlt = e.altKey;
-
-            // Escape to close all modals
-            if (e.code === 'Escape') {
-                closeResumeModal();
-                const shortcutsModal = document.getElementById('shortcuts-modal');
-                if(shortcutsModal) shortcutsModal.classList.remove('active');
+            if (!e.key) return;
+            const key = e.key.toLowerCase();
+            
+            // Allow default browser actions unless we explicitly intercept
+            
+            // --- ESCAPE ---
+            if (key === 'escape') {
+                if (closeAllActiveOverlays()) {
+                    e.preventDefault();
+                }
                 return;
             }
-
-            // Only trigger if Alt is held down
-            if (isAlt) {
-                if (e.code === 'KeyK' || e.code === 'Slash') {
-                    e.preventDefault();
-                    toggleShortcutsModal();
-                } else if (e.code === 'KeyR') {
-                    e.preventDefault();
-                    showToast("📄 Opening Resume");
-                    openResumeModal();
-                } else if (e.code === 'KeyS') {
-                    e.preventDefault();
-                    const themeToggle = document.getElementById('theme-toggle');
-                    if (themeToggle) {
-                        themeToggle.click();
-                        const isLight = document.body.classList.contains('light-theme');
-                        showToast(isLight ? "☀️ Light Theme Enabled" : "🌙 Dark Theme Enabled");
-                    }
-                } else if (e.code === 'KeyZ') {
-                    e.preventDefault();
-                    startCinematicView();
-                } else if (e.code === 'KeyA') {
-                    e.preventDefault();
-                    const target = document.getElementById('achievements');
-                    if(target) window.scrollTo({ top: target.offsetTop - 70, behavior: 'smooth' });
-                    showToast("🏆 Jumping to Achievements");
-                } else if (e.code === 'KeyB') {
-                    e.preventDefault();
-                    const target = document.getElementById('ai-roadmap');
-                    if(target) window.scrollTo({ top: target.offsetTop - 70, behavior: 'smooth' });
-                    showToast("🗺️ Jumping to AI Road Map");
+            
+            // --- MODIFIER COMMANDS (Ctrl+K / Cmd+K) ---
+            // Functionality relies on actual modifier states, not OS detection strings
+            if ((e.ctrlKey || e.metaKey) && key === 'k') {
+                e.preventDefault();
+                toggleShortcutsModal();
+                return;
+            }
+            
+            // --- SINGLE KEY COMMANDS ---
+            // Do NOT trigger if ANY modifier is held (Ctrl, Cmd, Alt, Shift) to prevent hijacking browser native shortcuts
+            if (e.ctrlKey || e.metaKey || e.altKey || e.shiftKey) return;
+            
+            // Do NOT trigger single keys if ANY modal is currently open (don't navigate if reading resume)
+            const isAnyModalOpen = (
+                (document.getElementById('shortcuts-modal') && document.getElementById('shortcuts-modal').classList.contains('active')) ||
+                (document.getElementById('resume-modal') && document.getElementById('resume-modal').style.display === 'flex') ||
+                (document.querySelector('.nav-links') && document.querySelector('.nav-links').classList.contains('active'))
+            );
+            
+            if (!isAnyModalOpen) {
+                switch(key) {
+                    case 'r':
+                        e.preventDefault();
+                        showToast("🚀 Opening Resume");
+                        if(typeof openResumeModal === 'function') openResumeModal();
+                        break;
+                    case 's':
+                        e.preventDefault();
+                        const themeToggle = document.getElementById('theme-toggle');
+                        if (themeToggle) {
+                            themeToggle.click();
+                            const isLight = document.body.classList.contains('light-theme');
+                            showToast(isLight ? "☀️ Light Theme Enabled" : "🌙 Dark Theme Enabled");
+                        }
+                        break;
+                    case 'p':
+                        e.preventDefault();
+                        const projTarget = document.getElementById('projects');
+                        if(projTarget) window.scrollTo({ top: projTarget.offsetTop - 70, behavior: 'smooth' });
+                        showToast("🚀 Jumping to Projects");
+                        break;
+                    case 'a':
+                        e.preventDefault();
+                        const achTarget = document.getElementById('achievements');
+                        if(achTarget) window.scrollTo({ top: achTarget.offsetTop - 70, behavior: 'smooth' });
+                        showToast("🏆 Jumping to Achievements");
+                        break;
+                    case 'c':
+                        e.preventDefault();
+                        if(typeof startCinematicView === 'function') startCinematicView();
+                        break;
+                    case 'h':
+                        e.preventDefault();
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                        showToast("🏠 Jumping to Home");
+                        break;
                 }
             }
         });
         
         // Show hint toast on first load
         setTimeout(() => {
-            showToast("💡 Press Ctrl + K to view Shortcuts!");
+            showToast(`💡 Press ${modifierText} + K to view Shortcuts!`);
         }, 3000);
     </script>
 
