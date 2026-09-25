@@ -14,6 +14,7 @@ varying vec3 vPosition;
 varying vec2 vUv;
 varying vec3 vViewPosition;
 
+uniform float uIsLight;
 void main() {
     vNormal = normalize(normalMatrix * normal);
     vUv = uv;
@@ -72,6 +73,7 @@ float fbm (vec2 st) {
     return value;
 }
 
+uniform float uIsLight;
 void main() {
     vec3 normal = normalize(vNormal);
     vec3 viewDir = normalize(vViewPosition);
@@ -100,6 +102,14 @@ void main() {
     float alpha = clamp(fresnel + 0.3 + ring, 0.0, 1.0) * uOpacity * 0.7; // Dim base alpha
     
     gl_FragColor = vec4(finalColor, alpha);
+    if (uIsLight > 0.5) {
+        vec3 darkColor = mix(gl_FragColor.rgb * 0.1, vec3(0.05, 0.15, 0.45), 0.9);
+        float newAlpha = min(1.0, gl_FragColor.a * 15.0);
+        if (gl_FragColor.a > 0.001 && gl_FragColor.a < 0.05) {
+            newAlpha = gl_FragColor.a * 8.0;
+        }
+        gl_FragColor = vec4(darkColor, newAlpha);
+    }
 }
 `;
 
@@ -111,6 +121,7 @@ attribute float size;
 
 varying float vAlpha;
 
+uniform float uIsLight;
 void main() {
     vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
     
@@ -128,6 +139,7 @@ uniform float uOpacity;
 
 varying float vAlpha;
 
+uniform float uIsLight;
 void main() {
     // Soft circle
     vec2 cxy = 2.0 * gl_PointCoord - 1.0;
@@ -140,5 +152,13 @@ void main() {
     vec3 color = vec3(0.0, 0.95, 1.0);
     
     gl_FragColor = vec4(color, a);
+    if (uIsLight > 0.5) {
+        vec3 darkColor = mix(gl_FragColor.rgb * 0.1, vec3(0.05, 0.15, 0.45), 0.9);
+        float newAlpha = min(1.0, gl_FragColor.a * 15.0);
+        if (gl_FragColor.a > 0.001 && gl_FragColor.a < 0.05) {
+            newAlpha = gl_FragColor.a * 8.0;
+        }
+        gl_FragColor = vec4(darkColor, newAlpha);
+    }
 }
 `;

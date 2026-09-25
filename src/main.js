@@ -159,8 +159,70 @@ class NexusEngine {
 // Boot the engine
 const nexus = new NexusEngine();
 
+
+// Listen for light-theme toggles to update the WebGL background color and uniforms
+const themeObserver = new MutationObserver((mutations) => {
+  mutations.forEach((mutation) => {
+    if (mutation.attributeName === 'class' && nexus.renderer) {
+      const isLight = document.body.classList.contains('light-theme');
+      
+      // Update WebGL clear color natively (soft near-white for light mode)
+      nexus.renderer.setClearColor(isLight ? 0xf6f9fc : 0x0a0a0a, 1);
+      nexus.renderer.toneMappingExposure = isLight ? 0.9 : 0.6;
+      
+      // Disable Bloom in Light Mode to prevent blowing out the white background
+      if (nexus.sceneManager && nexus.sceneManager.postfx && nexus.sceneManager.postfx.bloomPass) {
+        nexus.sceneManager.postfx.bloomPass.enabled = !isLight;
+      }
+      
+      // Pass uIsLight to all shaders so they natively render dark cyan/purple particles
+      if (nexus.scene) {
+        nexus.scene.traverse((child) => {
+          if (child.material) {
+            // Keep NormalBlending in Light Mode to preserve dark particle colors
+            child.material.blending = isLight ? THREE.NormalBlending : THREE.AdditiveBlending;
+            if (child.material.uniforms) {
+              if (!child.material.uniforms.uIsLight) {
+                child.material.uniforms.uIsLight = { value: 0.0 };
+              }
+              child.material.uniforms.uIsLight.value = isLight ? 1.0 : 0.0;
+            }
+            child.material.needsUpdate = true;
+          }
+        });
+      }
+    }
+  });
+});
+themeObserver.observe(document.body, { attributes: true });
+
+function applyInitialTheme() {
+    if (document.body.classList.contains('light-theme') && nexus.renderer) {
+      nexus.renderer.setClearColor(0xf6f9fc, 1);
+      nexus.renderer.toneMappingExposure = 0.9;
+      if (nexus.sceneManager && nexus.sceneManager.postfx && nexus.sceneManager.postfx.bloomPass) {
+        nexus.sceneManager.postfx.bloomPass.enabled = false;
+      }
+      if (nexus.scene) {
+        nexus.scene.traverse((child) => {
+          if (child.material) {
+            child.material.blending = THREE.NormalBlending;
+            if (child.material.uniforms) {
+              if (!child.material.uniforms.uIsLight) {
+                child.material.uniforms.uIsLight = { value: 0.0 };
+              }
+              child.material.uniforms.uIsLight.value = 1.0;
+            }
+            child.material.needsUpdate = true;
+          }
+        });
+      }
+    }
+}
+
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => nexus.init());
 } else {
   nexus.init();
+    applyInitialTheme();
 }

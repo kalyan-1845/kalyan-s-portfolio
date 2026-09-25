@@ -13,6 +13,7 @@ attribute vec2 aReference;
 
 varying vec3 vColor;
 
+uniform float uIsLight;
 void main() {
     vec4 positionData = texture2D(uPositions, aReference);
     vec3 pos = positionData.xyz;
@@ -40,6 +41,7 @@ export const quantumFragment = /* glsl */ `
 uniform float uOpacity;
 varying vec3 vColor;
 
+uniform float uIsLight;
 void main() {
     vec2 coord = gl_PointCoord - vec2(0.5);
     float dist = length(coord);
@@ -51,5 +53,13 @@ void main() {
     alpha = pow(alpha, 1.5);
     
     gl_FragColor = vec4(vColor, alpha * uOpacity);
+    if (uIsLight > 0.5) {
+        vec3 darkColor = mix(gl_FragColor.rgb * 0.1, vec3(0.05, 0.15, 0.45), 0.9);
+        float newAlpha = min(1.0, gl_FragColor.a * 15.0);
+        if (gl_FragColor.a > 0.001 && gl_FragColor.a < 0.05) {
+            newAlpha = gl_FragColor.a * 8.0;
+        }
+        gl_FragColor = vec4(darkColor, newAlpha);
+    }
 }
 `;

@@ -16,6 +16,7 @@ attribute float aOffset;
 varying vec3 vColor;
 varying float vAlpha;
 
+uniform float uIsLight;
 void main() {
     vec3 pos = position;
     
@@ -55,6 +56,7 @@ uniform float uOpacity;
 varying vec3 vColor;
 varying float vAlpha;
 
+uniform float uIsLight;
 void main() {
     // Render elongated vertical points (ellipse shape using gl_PointCoord) for motion blur
     vec2 coord = gl_PointCoord * 2.0 - 1.0;
@@ -68,5 +70,13 @@ void main() {
     float glow = exp(-dist * 2.0);
     
     gl_FragColor = vec4(vColor, vAlpha * uOpacity * glow);
+    if (uIsLight > 0.5) {
+        vec3 darkColor = mix(gl_FragColor.rgb * 0.1, vec3(0.05, 0.15, 0.45), 0.9);
+        float newAlpha = min(1.0, gl_FragColor.a * 15.0);
+        if (gl_FragColor.a > 0.001 && gl_FragColor.a < 0.05) {
+            newAlpha = gl_FragColor.a * 8.0;
+        }
+        gl_FragColor = vec4(darkColor, newAlpha);
+    }
 }
 `;

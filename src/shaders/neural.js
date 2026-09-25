@@ -14,6 +14,7 @@ attribute float aSize;
 varying vec3 vColor;
 varying float vOpacity;
 
+uniform float uIsLight;
 void main() {
     vec3 pos = position;
     
@@ -52,6 +53,7 @@ export const neuralFragment = /* glsl */ `
 varying vec3 vColor;
 varying float vOpacity;
 
+uniform float uIsLight;
 void main() {
     // Soft circular points
     vec2 coord = gl_PointCoord - vec2(0.5);
@@ -66,6 +68,14 @@ void main() {
     alpha = pow(alpha, 1.5); // Smoother falloff
     
     gl_FragColor = vec4(vColor, alpha * vOpacity);
+    if (uIsLight > 0.5) {
+        vec3 darkColor = mix(gl_FragColor.rgb * 0.1, vec3(0.05, 0.15, 0.45), 0.9);
+        float newAlpha = min(1.0, gl_FragColor.a * 15.0);
+        if (gl_FragColor.a > 0.001 && gl_FragColor.a < 0.05) {
+            newAlpha = gl_FragColor.a * 8.0;
+        }
+        gl_FragColor = vec4(darkColor, newAlpha);
+    }
 }
 `;
 
@@ -74,6 +84,7 @@ uniform float uOpacity;
 varying float vOpacity;
 varying float vDepth;
 
+uniform float uIsLight;
 void main() {
     vOpacity = uOpacity;
     vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
@@ -86,6 +97,7 @@ export const neuralLineFragment = /* glsl */ `
 varying float vOpacity;
 varying float vDepth;
 
+uniform float uIsLight;
 void main() {
     // Cyan #00f2fe
     vec3 color = vec3(0.0, 0.949, 0.996);
@@ -94,5 +106,13 @@ void main() {
     float fade = 1.0 - smoothstep(10.0, 50.0, vDepth);
     
     gl_FragColor = vec4(color, vOpacity * fade * 0.08);
+    if (uIsLight > 0.5) {
+        vec3 darkColor = mix(gl_FragColor.rgb * 0.1, vec3(0.05, 0.15, 0.45), 0.9);
+        float newAlpha = min(1.0, gl_FragColor.a * 15.0);
+        if (gl_FragColor.a > 0.001 && gl_FragColor.a < 0.05) {
+            newAlpha = gl_FragColor.a * 8.0;
+        }
+        gl_FragColor = vec4(darkColor, newAlpha);
+    }
 }
 `;
