@@ -2790,7 +2790,7 @@
     <!-- Shortcuts Modal & Toast -->
     
     <!-- Shortcuts Modal & Toast -->
-    <div class="shortcut-toast" id="shortcut-toast">💡 Press <span id="toast-modifier">Ctrl</span> + K for Shortcuts</div>
+    <div class="shortcut-toast" id="shortcut-toast"></div>
     
     <div class="shortcuts-modal" id="shortcuts-modal">
         <h3><i class="fas fa-keyboard"></i> NEXUS Command Center</h3>
@@ -5762,10 +5762,7 @@
             }
         });
         
-        // Show hint toast on first load
-        setTimeout(() => {
-            showToast(`💡 Press ${modifierText} + K to view Shortcuts!`);
-        }, 3000);
+
     </script>
 
     <!-- Stats Counter Animation + Responsive Stats Grid -->
