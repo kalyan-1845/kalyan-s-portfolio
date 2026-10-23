@@ -1692,33 +1692,6 @@
         }
 
         @media (max-width: 768px) {
-            .nav-links {
-                position: fixed;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                background: rgba(15, 12, 41, 0.95);
-                backdrop-filter: blur(10px);
-                -webkit-backdrop-filter: blur(10px);
-                flex-direction: column;
-                padding: 2rem;
-                gap: 1rem;
-                transform: translateX(-100%);
-                transition: transform 0.3s ease;
-                z-index: 999;
-            }
-
-            body.light-theme .nav-links {
-                background: rgba(245, 247, 250, 0.95);
-            }
-
-            .nav-links.active {
-                transform: translateX(0);
-            }
-
-            .menu-toggle {
-                display: block;
-            }
 
             .hero-title {
                 font-size: 2.5rem;
@@ -2228,7 +2201,10 @@
             color: #fff;
             z-index: 99999;
             transform: translateX(150%);
-            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            visibility: hidden;
+            opacity: 0;
+            pointer-events: none;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease, visibility 0.3s ease;
             box-shadow: 0 10px 30px rgba(0, 242, 254, 0.2);
         }
         
@@ -2239,6 +2215,9 @@
 
         .shortcuts-modal.active {
             transform: translateX(0);
+            visibility: visible;
+            opacity: 1;
+            pointer-events: auto;
         }
 
         .shortcuts-modal h3 {
@@ -2514,34 +2493,167 @@
             background: rgba(0, 242, 254, 0.05) !important;
         }
 
+        .mobile-drawer-close, .mobile-drawer-resume { display: none !important; }
         .menu-toggle { display: none !important; }
 
         @media (max-width: 1250px) {
             header nav .nav-links {
                 position: fixed !important;
                 top: 0 !important; right: -100% !important; left: auto !important;
-                width: 320px !important; height: 100vh !important;
-                background: rgba(10, 12, 18, 0.95) !important;
+                width: min(85vw, 320px) !important; height: 100vh !important;
+                background: rgba(10, 12, 18, 0.96) !important;
                 backdrop-filter: blur(25px) !important;
                 -webkit-backdrop-filter: blur(25px) !important;
                 border-left: 1px solid rgba(0, 242, 254, 0.15) !important;
-                flex-direction: column !important; justify-content: center !important; align-items: flex-start !important;
-                padding-left: 40px !important; gap: 32px !important;
-                transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
-                box-shadow: -10px 0 40px rgba(0,0,0,0.6) !important;
+                flex-direction: column !important; justify-content: flex-start !important; align-items: stretch !important;
+                padding: 85px 28px 40px 28px !important; gap: 12px !important;
+                overflow-y: auto !important; -webkit-overflow-scrolling: touch !important;
+                transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+                box-shadow: -10px 0 40px rgba(0,0,0,0.7) !important;
                 z-index: 1001 !important;
             }
-            header nav .nav-links.active { right: 0 !important; }
-            header nav .nav-links a { font-size: 1.15rem !important; letter-spacing: 2px !important; }
-            .menu-toggle { display: flex !important; background: transparent !important; border: 1px solid rgba(255,255,255,0.15) !important; border-radius: 8px !important; width: 40px !important; height: 40px !important; color: rgba(255,255,255,0.8) !important; align-items: center !important; justify-content: center !important; cursor: pointer !important; }
+            header nav .nav-links { visibility: hidden !important; pointer-events: none !important; }
+            header nav .nav-links.active { right: 0 !important; visibility: visible !important; pointer-events: auto !important; }
+            header nav .nav-links li { width: 100% !important; list-style: none !important; }
+            header nav .nav-links a {
+                display: block !important;
+                width: 100% !important;
+                padding: 10px 14px !important;
+                border-radius: 8px !important;
+                font-size: 1.05rem !important;
+                letter-spacing: 1.5px !important;
+                transition: all 0.25s ease !important;
+            }
+            header nav .nav-links a:hover, header nav .nav-links a.active {
+                background: rgba(0, 242, 254, 0.08) !important;
+                color: var(--primary-color) !important;
+            }
+            .mobile-drawer-close {
+                display: flex !important;
+                position: absolute !important;
+                top: 22px !important;
+                right: 22px !important;
+                width: 38px !important;
+                height: 38px !important;
+                border-radius: 50% !important;
+                align-items: center !important;
+                justify-content: center !important;
+                background: rgba(255, 255, 255, 0.08) !important;
+                border: 1px solid rgba(255, 255, 255, 0.15) !important;
+                color: var(--text-color) !important;
+                font-size: 1.1rem !important;
+                cursor: pointer !important;
+                z-index: 1002 !important;
+                transition: all 0.25s ease !important;
+            }
+            .mobile-drawer-close:hover {
+                background: rgba(255, 68, 68, 0.2) !important;
+                border-color: rgba(255, 68, 68, 0.4) !important;
+                color: #ff4444 !important;
+            }
+            .mobile-drawer-resume {
+                display: block !important;
+                margin-top: 15px !important;
+                width: 100% !important;
+            }
+            .mobile-drawer-resume .resume-btn {
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                gap: 8px !important;
+                width: 100% !important;
+                padding: 12px 20px !important;
+                border-radius: 8px !important;
+                background: rgba(0, 242, 254, 0.12) !important;
+                border: 1px solid var(--primary-color) !important;
+                color: var(--primary-color) !important;
+                font-family: 'Orbitron', sans-serif !important;
+                font-size: 0.95rem !important;
+                font-weight: 600 !important;
+                letter-spacing: 2px !important;
+                box-shadow: 0 0 15px rgba(0, 242, 254, 0.25) !important;
+                text-align: center !important;
+                cursor: pointer !important;
+                transition: all 0.3s ease !important;
+            }
+            .mobile-drawer-resume .resume-btn:hover {
+                background: var(--primary-color) !important;
+                color: #0b0c10 !important;
+                box-shadow: 0 0 25px rgba(0, 242, 254, 0.5) !important;
+            }
+            .menu-toggle {
+                display: flex !important;
+                background: rgba(255, 255, 255, 0.05) !important;
+                border: 1px solid rgba(0, 242, 254, 0.3) !important;
+                border-radius: 8px !important;
+                width: 40px !important;
+                height: 40px !important;
+                color: var(--primary-color) !important;
+                align-items: center !important;
+                justify-content: center !important;
+                cursor: pointer !important;
+                z-index: 1005 !important;
+                transition: all 0.3s ease !important;
+            }
+            .menu-toggle:hover {
+                background: rgba(0, 242, 254, 0.1) !important;
+                box-shadow: 0 0 15px rgba(0, 242, 254, 0.3) !important;
+            }
         }
         
         .nav-overlay {
             position: fixed !important; top: 0 !important; left: 0 !important; width: 100vw !important; height: 100vh !important;
-            background: rgba(0,0,0,0.4) !important; backdrop-filter: blur(4px) !important; z-index: 998 !important;
-            opacity: 0 !important; pointer-events: none !important; transition: opacity 0.4s ease !important;
+            background: rgba(0,0,0,0.5) !important; backdrop-filter: blur(5px) !important; -webkit-backdrop-filter: blur(5px) !important; z-index: 998 !important;
+            opacity: 0 !important; pointer-events: none !important; transition: opacity 0.35s ease !important;
         }
         .nav-overlay.active { opacity: 1 !important; pointer-events: auto !important; }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 0 16px !important;
+            }
+            header nav {
+                width: 100% !important;
+                max-width: 100% !important;
+                display: flex !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+            }
+            header nav .logo {
+                font-size: 1.15rem !important;
+                flex: 0 0 auto !important;
+            }
+            header nav .nav-actions-container #nav-resume-btn {
+                display: none !important;
+            }
+            header nav .nav-actions-container {
+                display: flex !important;
+                align-items: center !important;
+                gap: 8px !important;
+                margin-left: auto !important;
+                margin-right: 10px !important;
+            }
+            .shortcut-toast {
+                display: none !important;
+            }
+            .shortcuts-trigger-btn {
+                display: none !important;
+            }
+            .shortcuts-modal {
+                width: calc(100% - 32px) !important;
+                left: 16px !important;
+                right: 16px !important;
+                max-width: 380px !important;
+                margin: 0 auto !important;
+                bottom: 20px !important;
+            }
+            .form-control {
+                font-size: 16px !important;
+            }
+            html, body {
+                overflow-x: hidden !important;
+            }
+        }
 
         /* FIX TOAST OVERLAP */
         .shortcut-toast {
@@ -2596,7 +2708,11 @@
             color: #0284c7 !important; border-color: rgba(2, 132, 199, 0.2) !important;
         }
         @media (max-width: 1250px) {
-            body.light-theme header nav .nav-links { background: rgba(255, 255, 255, 0.98) !important; border-left: 1px solid rgba(2, 132, 199, 0.2) !important; }
+            body.light-theme header nav .nav-links { background: rgba(255, 255, 255, 0.98) !important; border-left: 1px solid rgba(2, 132, 199, 0.2) !important; box-shadow: -10px 0 40px rgba(0, 0, 0, 0.1) !important; }
+            body.light-theme .mobile-drawer-close { background: rgba(0, 0, 0, 0.05) !important; border-color: rgba(0, 0, 0, 0.1) !important; color: #0f172a !important; }
+            body.light-theme .mobile-drawer-close:hover { background: rgba(239, 68, 68, 0.15) !important; border-color: #ef4444 !important; color: #ef4444 !important; }
+            body.light-theme .mobile-drawer-resume .resume-btn { background: rgba(2, 132, 199, 0.1) !important; border-color: #0284c7 !important; color: #0284c7 !important; box-shadow: 0 0 15px rgba(2, 132, 199, 0.2) !important; }
+            body.light-theme .mobile-drawer-resume .resume-btn:hover { background: #0284c7 !important; color: #ffffff !important; }
         }
         body.light-theme .nav-overlay { background: rgba(255,255,255,0.5) !important; }
         
@@ -2727,6 +2843,9 @@
             <nav>
                 <div class="logo">&lt; KALYAN<span style="color: var(--accent-color)">.</span>DEV /&gt;</div>
                 <ul class="nav-links">
+                    <button class="mobile-drawer-close" onclick="closeMobileNav()" title="Close Navigation" aria-label="Close navigation menu">
+                        <i class="fas fa-times"></i>
+                    </button>
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#education">Education</a></li>
@@ -2736,6 +2855,11 @@
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#certificates">Certificates</a></li>
                     <li><a href="#contact">Contact</a></li>
+                    <li class="mobile-drawer-resume">
+                        <a href="javascript:void(0)" class="resume-btn" onclick="openResumeModal(); closeMobileNav();">
+                            <i class="fas fa-file-alt"></i> View Resume
+                        </a>
+                    </li>
                 </ul>
                 <div class="nav-actions-container">
                     <a href="javascript:void(0)" class="resume-btn" onclick="openResumeModal()" id="nav-resume-btn">Resume</a>
@@ -4733,20 +4857,7 @@
             btn.innerHTML = '<i class="fas fa-sun"></i>';
         }
 
-        // Mobile Menu Toggle
-        const menuToggle = document.getElementById("menu-toggle");
-        const navLinks = document.querySelector(".nav-links");
-
-        menuToggle.addEventListener("click", () => {
-            navLinks.classList.toggle("active");
-        });
-
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll(".nav-links a").forEach(link => {
-            link.addEventListener("click", () => {
-                navLinks.classList.remove("active");
-            });
-        });
+        // Mobile menu toggle logic unified in main navigation controller below
 
         // Skill Bars Animation
         const skillBars = document.querySelectorAll(".skill-progress");
@@ -5096,7 +5207,7 @@
 
                 const closeBtn = document.createElement("span");
                 closeBtn.innerHTML = "&times;";
-                closeBtn.style.cssText = "position:absolute; top:20px; right:40px; color:white; font-size:40px; cursor:pointer; font-weight:bold; z-index:100000; text-shadow:0 0 10px rgba(0,0,0,0.5);";
+                closeBtn.style.cssText = "position:absolute; top:16px; right:16px; width:44px; height:44px; border-radius:50%; background:rgba(0,0,0,0.65); border:1px solid rgba(255,255,255,0.25); color:white; font-size:26px; cursor:pointer; font-weight:bold; z-index:100000; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 15px rgba(0,0,0,0.4); transition:all 0.25s ease;";
 
                 const img = document.createElement("img");
                 img.id = "lightbox-img";
@@ -5267,32 +5378,62 @@
             }
         });
 
-        const overlay = document.getElementById("nav-overlay");
-        const menuBtn = document.getElementById("menu-toggle");
-        const navL = document.querySelector(".nav-links");
-
-        if(menuBtn && overlay && navL) {
-            menuBtn.addEventListener("click", () => {
-                overlay.classList.toggle("active");
-                navL.classList.toggle("active");
-            });
-            overlay.addEventListener("click", () => {
-                navL.classList.remove("active");
-                overlay.classList.remove("active");
-            });
-            document.querySelectorAll(".nav-links a").forEach(link => {
-                link.addEventListener("click", () => {
-                    overlay.classList.remove("active");
-                    navL.classList.remove("active");
-                });
-            });
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') {
-                    navL.classList.remove("active");
-                    overlay.classList.remove("active");
+        // ===== Unified Mobile Navigation Controller =====
+        function toggleMobileNav() {
+            const navLinks = document.querySelector('.nav-links');
+            const overlay = document.getElementById('nav-overlay');
+            const menuToggle = document.getElementById('menu-toggle');
+            if (!navLinks) return;
+            
+            const isOpen = navLinks.classList.toggle('active');
+            if (overlay) overlay.classList.toggle('active', isOpen);
+            if (menuToggle) {
+                menuToggle.classList.toggle('active', isOpen);
+                const icon = menuToggle.querySelector('i');
+                if (icon) {
+                    if (isOpen) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
                 }
-            });
+            }
+            document.body.style.overflow = isOpen ? 'hidden' : '';
         }
+
+        function closeMobileNav() {
+            const navLinks = document.querySelector('.nav-links');
+            const overlay = document.getElementById('nav-overlay');
+            const menuToggle = document.getElementById('menu-toggle');
+            if (navLinks && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+            }
+            if (overlay) overlay.classList.remove('active');
+            if (menuToggle) {
+                menuToggle.classList.remove('active');
+                const icon = menuToggle.querySelector('i');
+                if (icon) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            }
+            document.body.style.overflow = '';
+        }
+
+        const menuBtn = document.getElementById("menu-toggle");
+        if (menuBtn) {
+            menuBtn.addEventListener("click", toggleMobileNav);
+        }
+        const overlay = document.getElementById("nav-overlay");
+        if (overlay) {
+            overlay.addEventListener("click", closeMobileNav);
+        }
+        document.querySelectorAll(".nav-links a").forEach(link => {
+            link.addEventListener("click", closeMobileNav);
+        });
+
         // Smooth Scrolling for Navigation Links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener("click", function (e) {
@@ -5490,29 +5631,28 @@
             }
             
             // 2. Resume Modal
-            const resumeModal = document.getElementById('resume-modal');
-            if(resumeModal && resumeModal.style.display === 'flex') {
+            // 2. Resume Modal
+            const resumeModal = document.getElementById('resume-modal-overlay');
+            if(resumeModal && resumeModal.classList.contains('active')) {
                 closeResumeModal();
                 closedAny = true;
             }
             
             // 3. Mobile Navigation
             const navLinks = document.querySelector('.nav-links');
-            const navOverlay = document.querySelector('.nav-overlay');
             if(navLinks && navLinks.classList.contains('active')) {
-                navLinks.classList.remove('active');
-                if (navOverlay) navOverlay.classList.remove('active');
-                const menuToggle = document.getElementById('menu-toggle');
-                if (menuToggle) {
-                    const icon = menuToggle.querySelector('i');
-                    if (icon) {
-                        icon.classList.remove('fa-times');
-                        icon.classList.add('fa-bars');
-                    }
-                }
+                closeMobileNav();
                 closedAny = true;
             }
-            
+
+            // 4. Certificate Lightbox
+            const certLightbox = document.getElementById('certificate-lightbox');
+            if (certLightbox && certLightbox.style.display === 'flex') {
+                certLightbox.style.opacity = '0';
+                setTimeout(() => { certLightbox.style.display = 'none'; }, 300);
+                document.body.style.overflow = '';
+                closedAny = true;
+            }
             // 4. Cinematic Mode
             if (typeof isCinematic !== 'undefined' && isCinematic) {
                 const header = document.querySelector('header');
@@ -5576,8 +5716,9 @@
             // Do NOT trigger single keys if ANY modal is currently open (don't navigate if reading resume)
             const isAnyModalOpen = (
                 (document.getElementById('shortcuts-modal') && document.getElementById('shortcuts-modal').classList.contains('active')) ||
-                (document.getElementById('resume-modal') && document.getElementById('resume-modal').style.display === 'flex') ||
-                (document.querySelector('.nav-links') && document.querySelector('.nav-links').classList.contains('active'))
+                (document.getElementById('resume-modal-overlay') && document.getElementById('resume-modal-overlay').classList.contains('active')) ||
+                (document.querySelector('.nav-links') && document.querySelector('.nav-links').classList.contains('active')) ||
+                (document.getElementById('certificate-lightbox') && document.getElementById('certificate-lightbox').style.display === 'flex')
             );
             
             if (!isAnyModalOpen) {
