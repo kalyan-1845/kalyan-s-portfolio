@@ -35,7 +35,7 @@
 
     <!-- Google Fonts -->
     <link
-        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Roboto:wght@300;400;500&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Orbitron:wght@400;500;700;900&family=Roboto:wght@300;400;500&display=swap"
         rel="stylesheet">
 
     <!-- NEXUS 3D Engine — Three.js Import Map -->
@@ -2259,7 +2259,7 @@
             border-color: rgba(0, 0, 0, 0.1);
         }
 
-        .shortcut-toast {
+        .shortcut-toast { display: none !important;
             position: fixed;
             top: 20px;
             left: 50%;
@@ -2715,6 +2715,546 @@
         body.light-theme .experience-company { color: #334155 !important; }
         body.light-theme .experience-date { background: rgba(2, 132, 199, 0.08) !important; color: #0284c7 !important; }
         body.light-theme input, body.light-theme textarea { background: #ffffff !important; color: #0f172a !important; border: 1px solid rgba(2,132,199,0.2) !important; }
+    
+        /* =========================================================
+           EXTREME-LEVEL HERO SECTION STYLING (DARK & LIGHT THEME)
+           ========================================================= */
+        .hero {
+            position: relative;
+            min-height: 92vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 140px !important;
+            padding-bottom: 50px !important;
+            overflow: visible;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Avatar Container with Cyber Halo */
+        .hero-avatar-wrapper {
+            position: relative;
+            margin-bottom: 1.8rem;
+            animation: heroFloat 6s ease-in-out infinite;
+        }
+
+        @keyframes heroFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero-avatar-ring {
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            background: conic-gradient(from 180deg at 50% 50%, #00f2fe 0deg, #38bdf8 120deg, #a855f7 240deg, #00f2fe 360deg);
+            filter: blur(10px);
+            opacity: 0.65;
+            animation: avatarSpin 10s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes avatarSpin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .hero-avatar-img {
+            position: relative;
+            width: 142px;
+            height: 142px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(0, 242, 254, 0.3);
+            z-index: 2;
+            display: block;
+        }
+
+        /* Avatar Status Beacon */
+        .hero-avatar-status {
+            position: absolute;
+            bottom: 6px;
+            right: 6px;
+            z-index: 4;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            background: rgba(10, 15, 28, 0.85);
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            padding: 3px 8px 3px 6px;
+            border-radius: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .status-dot-pulse {
+            position: relative;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #10b981;
+        }
+
+        .status-dot-pulse::after {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border-radius: 50%;
+            background: #10b981;
+            opacity: 0.6;
+            animation: statusPing 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+        }
+
+        @keyframes statusPing {
+            0% { transform: scale(1); opacity: 0.8; }
+            75%, 100% { transform: scale(2.2); opacity: 0; }
+        }
+
+        .status-dot-text {
+            font-family: 'Orbitron', monospace;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #6ee7b7;
+        }
+
+        /* HUD Status Pill */
+        .hero-hud-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            background: rgba(0, 242, 254, 0.05);
+            border: 1px solid rgba(0, 242, 254, 0.22);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 7px 18px;
+            border-radius: 30px;
+            margin-bottom: 1.1rem;
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .hero-hud-pill:hover {
+            border-color: rgba(0, 242, 254, 0.45);
+            box-shadow: 0 0 28px rgba(0, 242, 254, 0.22);
+            transform: translateY(-1px);
+        }
+
+        .hud-pill-indicator {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #00f2fe;
+            box-shadow: 0 0 8px #00f2fe;
+        }
+
+        .hud-pill-text {
+            font-family: 'Orbitron', monospace;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: #00f2fe;
+        }
+
+        /* Extreme Hero Title */
+        .hero-title {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif !important;
+            font-size: clamp(2.4rem, 5.5vw, 4.2rem) !important;
+            font-weight: 800 !important;
+            line-height: 1.12 !important;
+            letter-spacing: -0.03em !important;
+            margin: 0 0 1.1rem 0 !important;
+            background: linear-gradient(180deg, #FFFFFF 0%, #D8F8FF 40%, #00f2fe 80%, #a855f7 100%) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
+            filter: drop-shadow(0 4px 30px rgba(0, 242, 254, 0.22));
+            text-align: center;
+        }
+
+        /* Hero Dynamic Subtitle */
+        .hero-subtitle {
+            font-family: 'Inter', -apple-system, sans-serif !important;
+            font-size: clamp(1rem, 2.2vw, 1.25rem) !important;
+            font-weight: 400 !important;
+            color: rgba(255, 255, 255, 0.8) !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 10px !important;
+            margin-bottom: 1.8rem !important;
+            min-height: 38px !important;
+            flex-wrap: wrap;
+        }
+
+        .hero-subtitle-prefix {
+            font-family: 'Orbitron', monospace;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: rgba(0, 242, 254, 0.7);
+            background: rgba(0, 242, 254, 0.08);
+            border: 1px solid rgba(0, 242, 254, 0.18);
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+
+        .typing-text {
+            display: inline-flex !important;
+            align-items: center !important;
+            color: #ffffff !important;
+            font-weight: 600 !important;
+            min-width: 280px !important;
+            text-align: left !important;
+            position: relative;
+        }
+
+        .typing-text::after {
+            content: '';
+            display: inline-block;
+            width: 2px;
+            height: 1.15em;
+            background: #00f2fe;
+            margin-left: 6px;
+            box-shadow: 0 0 10px #00f2fe;
+            animation: terminalCaret 0.85s infinite;
+        }
+
+        @keyframes terminalCaret {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Glass HUD Dock for Socials & Telemetry */
+        .hero-hud-dock {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            background: rgba(12, 16, 28, 0.65);
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            padding: 6px 16px;
+            border-radius: 40px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .hero-hud-dock .social-icons {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 0;
+        }
+
+        .hero-hud-dock .social-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.95rem;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            text-decoration: none;
+        }
+
+        .hero-hud-dock .social-icon:hover {
+            background: rgba(0, 242, 254, 0.15);
+            border-color: #00f2fe;
+            color: #00f2fe;
+            transform: translateY(-2px);
+            box-shadow: 0 0 16px rgba(0, 242, 254, 0.35);
+        }
+
+        .hud-dock-divider {
+            width: 1px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        /* Telemetry Badge */
+        .telemetry-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            padding: 4px 10px;
+            border-radius: 20px;
+            background: rgba(0, 242, 254, 0.06);
+            border: 1px solid rgba(0, 242, 254, 0.2);
+            transition: all 0.25s ease;
+        }
+
+        .telemetry-chip:hover {
+            background: rgba(0, 242, 254, 0.12);
+            border-color: rgba(0, 242, 254, 0.4);
+            transform: translateY(-1px);
+        }
+
+        .telemetry-label {
+            font-family: 'Orbitron', monospace;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            color: var(--text-secondary);
+        }
+
+        .telemetry-img {
+            height: 18px;
+            display: block;
+            border-radius: 4px;
+        }
+
+        /* Action Buttons: Extreme Level */
+        .hero-buttons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .cta-hero-primary {
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 10px !important;
+            padding: 14px 34px !important;
+            border-radius: 50px !important;
+            background: linear-gradient(135deg, #00f2fe 0%, #38bdf8 60%, #0284c7 100%) !important;
+            color: #030712 !important;
+            font-family: 'Outfit', sans-serif !important;
+            font-size: 1rem !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.5px !important;
+            text-decoration: none !important;
+            box-shadow: 0 4px 25px rgba(0, 242, 254, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.5) !important;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+            cursor: pointer !important;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-hero-primary:hover {
+            transform: translateY(-3px) scale(1.02) !important;
+            box-shadow: 0 8px 35px rgba(0, 242, 254, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.7) !important;
+            color: #000000 !important;
+        }
+
+        .cta-hero-primary i {
+            transition: transform 0.25s ease;
+        }
+
+        .cta-hero-primary:hover i {
+            transform: translateY(3px);
+        }
+
+        .cta-hero-secondary {
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 10px !important;
+            padding: 13px 32px !important;
+            border-radius: 50px !important;
+            background: rgba(12, 17, 30, 0.65) !important;
+            border: 1px solid rgba(0, 242, 254, 0.38) !important;
+            backdrop-filter: blur(14px) !important;
+            -webkit-backdrop-filter: blur(14px) !important;
+            color: #00f2fe !important;
+            font-family: 'Outfit', sans-serif !important;
+            font-size: 1rem !important;
+            font-weight: 600 !important;
+            letter-spacing: 0.5px !important;
+            text-decoration: none !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+            cursor: pointer !important;
+        }
+
+        .cta-hero-secondary:hover {
+            transform: translateY(-3px) scale(1.02) !important;
+            background: rgba(0, 242, 254, 0.12) !important;
+            border-color: #00f2fe !important;
+            color: #ffffff !important;
+            box-shadow: 0 8px 30px rgba(0, 242, 254, 0.35) !important;
+        }
+
+        /* =========================================================
+           LIGHT THEME OVERRIDES FOR EXTREME HERO
+           ========================================================= */
+        body.light-theme .hero-avatar-ring {
+            background: conic-gradient(from 180deg at 50% 50%, #0284c7 0deg, #38bdf8 120deg, #818cf8 240deg, #0284c7 360deg);
+            opacity: 0.45;
+        }
+
+        body.light-theme .hero-avatar-img {
+            border-color: rgba(2, 132, 199, 0.3);
+            box-shadow: 0 12px 35px rgba(2, 132, 199, 0.18);
+        }
+
+        body.light-theme .hero-avatar-status {
+            background: rgba(255, 255, 255, 0.95);
+            border-color: rgba(16, 185, 129, 0.4);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        body.light-theme .status-dot-text {
+            color: #059669;
+        }
+
+        body.light-theme .hero-hud-pill {
+            background: rgba(2, 132, 199, 0.07);
+            border-color: rgba(2, 132, 199, 0.25);
+            box-shadow: 0 4px 20px rgba(2, 132, 199, 0.08);
+        }
+
+        body.light-theme .hud-pill-indicator {
+            background: #0284c7;
+            box-shadow: 0 0 8px #0284c7;
+        }
+
+        body.light-theme .hud-pill-text {
+            color: #0284c7;
+        }
+
+        body.light-theme .hero-title {
+            background: linear-gradient(180deg, #0f172a 0%, #0369a1 55%, #6366f1 100%) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            filter: drop-shadow(0 4px 20px rgba(2, 132, 199, 0.15)) !important;
+        }
+
+        body.light-theme .hero-subtitle {
+            color: #334155 !important;
+        }
+
+        body.light-theme .hero-subtitle-prefix {
+            background: rgba(2, 132, 199, 0.08);
+            border-color: rgba(2, 132, 199, 0.2);
+            color: #0284c7;
+        }
+
+        body.light-theme .typing-text {
+            color: #0f172a !important;
+        }
+
+        body.light-theme .typing-text::after {
+            background: #0284c7;
+            box-shadow: 0 0 8px #0284c7;
+        }
+
+        body.light-theme .hero-hud-dock {
+            background: rgba(255, 255, 255, 0.85);
+            border-color: rgba(2, 132, 199, 0.15);
+            box-shadow: 0 8px 30px rgba(2, 132, 199, 0.08);
+        }
+
+        body.light-theme .hero-hud-dock .social-icon {
+            background: rgba(2, 132, 199, 0.05);
+            border-color: rgba(2, 132, 199, 0.12);
+            color: #334155;
+        }
+
+        body.light-theme .hero-hud-dock .social-icon:hover {
+            background: rgba(2, 132, 199, 0.12);
+            border-color: #0284c7;
+            color: #0284c7;
+            box-shadow: 0 0 16px rgba(2, 132, 199, 0.25);
+        }
+
+        body.light-theme .hud-dock-divider {
+            background: rgba(2, 132, 199, 0.15);
+        }
+
+        body.light-theme .telemetry-chip {
+            background: rgba(2, 132, 199, 0.06);
+            border-color: rgba(2, 132, 199, 0.2);
+        }
+
+        body.light-theme .telemetry-label {
+            color: #475569;
+        }
+
+        body.light-theme .cta-hero-primary {
+            background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%) !important;
+            color: #ffffff !important;
+            box-shadow: 0 6px 25px rgba(2, 132, 199, 0.35) !important;
+        }
+
+        body.light-theme .cta-hero-primary:hover {
+            box-shadow: 0 10px 35px rgba(2, 132, 199, 0.5) !important;
+            color: #ffffff !important;
+        }
+
+        body.light-theme .cta-hero-secondary {
+            background: rgba(255, 255, 255, 0.9) !important;
+            border-color: rgba(2, 132, 199, 0.4) !important;
+            color: #0284c7 !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04) !important;
+        }
+
+        body.light-theme .cta-hero-secondary:hover {
+            background: rgba(2, 132, 199, 0.08) !important;
+            border-color: #0284c7 !important;
+            color: #0369a1 !important;
+            box-shadow: 0 8px 30px rgba(2, 132, 199, 0.25) !important;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding-top: 110px !important;
+            }
+            .hero-avatar-img {
+                width: 120px;
+                height: 120px;
+            }
+            .hero-title {
+                font-size: 2.3rem !important;
+                letter-spacing: -0.02em !important;
+            }
+            .typing-text {
+                min-width: 220px !important;
+            }
+            .hero-buttons {
+                flex-direction: column !important;
+                width: 100%;
+                gap: 12px;
+            }
+            .cta-hero-primary, .cta-hero-secondary {
+                width: min(100%, 280px) !important;
+                text-align: center !important;
+            }
+            .hud-dock-divider {
+                display: none;
+            }
+            .hero-hud-dock {
+                flex-direction: column;
+                gap: 10px;
+                padding: 10px 18px;
+                border-radius: 20px;
+            }
+        }
+
     </style>
 
 </head>
@@ -2850,36 +3390,69 @@
     </header>
 
     <!-- Hero Section -->
-    <section id="home" class="hero" style="min-height: unset; padding-top: 160px; padding-bottom: 20px;">
+    <section id="home" class="hero">
         <div class="hero-bg"></div>
         <div class="container">
-            <div class="hero-content" style="display: flex; flex-direction: column; align-items: center; margin-top: 50px;">
-                <div class="hero-avatar" style="margin-bottom: 1.5rem; position: relative; animation: float 6s ease-in-out infinite;">
-                    <img src="profile.jpg" alt="Kalyan Reddy" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(0, 242, 254, 0.4); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); z-index: 2; position: relative;">
-                    <div style="position: absolute; top: -2px; left: -2px; right: -2px; bottom: -2px; border-radius: 50%; background: linear-gradient(45deg, var(--primary-color), var(--accent-color)); z-index: 1; animation: spin 8s linear infinite; opacity: 0.4; filter: blur(8px);"></div>
+            <div class="hero-content">
+                <!-- Avatar with Cyber Halo -->
+                <div class="hero-avatar-wrapper">
+                    <div class="hero-avatar-ring"></div>
+                    <img src="profile.jpg" alt="Bhoompally Kalyan Reddy" class="hero-avatar-img">
+                    <div class="hero-avatar-status" title="Status: Available for AI / Full-Stack Roles">
+                        <span class="status-dot-pulse"></span>
+                        <span class="status-dot-text">AVAILABLE</span>
+                    </div>
                 </div>
-                <p style="font-family: 'Orbitron', sans-serif; font-size: 0.85rem; letter-spacing: 4px; text-transform: uppercase; color: var(--primary-color); margin-bottom: 0.5rem; opacity: 0.8; z-index: 2;">AI Engineer &bull; Full-Stack Developer</p>
-                <h1 class="hero-title" style="z-index: 2; background: linear-gradient(135deg, #00f2fe 0%, #4facfe 50%, #f093fb 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Bhoompally Kalyan Reddy</h1>
-                <p class="hero-subtitle" style="z-index: 2;">I'm a <span class="typing-text" id="typing"></span></p>
-                <div class="social-icons" style="z-index: 2;">
-                    <!-- Replace these with your actual social media links -->
-                    <a href="https://github.com/kalyan-1845" target="_blank" class="social-icon"><i
-                            class="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/bhoompally-kalyanreddy" target="_blank"
-                        class="social-icon"><i class="fab fa-linkedin"></i></a>
-                    <a href="mailto:prsnlkalyan@gmail.com" class="social-icon"><i
-                            class="fas fa-envelope"></i></a>
-                    <a href="https://instagram.com/swag_suprem_4" target="_blank" class="social-icon"><i
-                            class="fab fa-instagram"></i></a>
+
+                <!-- HUD Role Chip -->
+                <div class="hero-hud-pill">
+                    <span class="hud-pill-indicator"></span>
+                    <span class="hud-pill-text">AI Systems &bull; Full-Stack Architect</span>
                 </div>
-                <div class="visitor-counter" style="margin-top: 1rem; animation: fadeInUp 1s ease 0.8s backwards; z-index: 2;">
-                    <a href="https://github.com/kalyan-1845/kalyan-s-portfolio" target="_blank" style="display: inline-block; transition: transform 0.3s ease;">
-                        <img src="https://visitor-badge.laobi.icu/badge?page_id=kalyan-1845.kalyan-s-portfolio&left_color=16213e&right_color=ff00cc&left_text=Profile%20Views" alt="Profile Viewers" style="display: block; border-radius: 6px; box-shadow: 0 4px 15px rgba(255, 0, 204, 0.4);">
+
+                <!-- Name Headline -->
+                <h1 class="hero-title">Bhoompally Kalyan Reddy</h1>
+
+                <!-- Typewriter Subtitle -->
+                <p class="hero-subtitle">
+                    <span class="hero-subtitle-prefix">FOCUS //</span>
+                    <span class="typing-text" id="typing"></span>
+                </p>
+
+                <!-- Unified Glass HUD Dock: Socials + Telemetry -->
+                <div class="hero-hud-dock">
+                    <div class="social-icons">
+                        <a href="https://github.com/kalyan-1845" target="_blank" class="social-icon" title="GitHub Profile" aria-label="GitHub Profile">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/bhoompally-kalyanreddy" target="_blank" class="social-icon" title="LinkedIn Profile" aria-label="LinkedIn Profile">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="mailto:prsnlkalyan@gmail.com" class="social-icon" title="Send Email" aria-label="Send Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="https://instagram.com/swag_suprem_4" target="_blank" class="social-icon" title="Instagram" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                    <div class="hud-dock-divider"></div>
+                    <a href="https://github.com/kalyan-1845/kalyan-s-portfolio" target="_blank" class="telemetry-chip" title="Live Profile Telemetry">
+                        <i class="fas fa-chart-line" style="color: #00f2fe; font-size: 0.75rem;"></i>
+                        <span class="telemetry-label">PROFILE VIEWS</span>
+                        <img src="https://visitor-badge.laobi.icu/badge?page_id=kalyan-1845.kalyan-s-portfolio&left_color=0a0e1a&right_color=00f2fe&left_text=" alt="Profile Views" class="telemetry-img">
                     </a>
                 </div>
-                <div class="hero-buttons" style="z-index: 2; margin-top: 1.5rem;">
-                    <a href="#about" class="cta-button">Discover More</a>
-                    <a href="javascript:void(0)" class="cta-secondary" onclick="openResumeModal()" id="hero-resume-btn">View Resume</a>
+
+                <!-- Next-Gen Action Buttons -->
+                <div class="hero-buttons">
+                    <a href="#about" class="cta-hero-primary">
+                        <span>Explore Portfolio</span>
+                        <i class="fas fa-arrow-down"></i>
+                    </a>
+                    <a href="javascript:void(0)" class="cta-hero-secondary" onclick="openResumeModal()" id="hero-resume-btn">
+                        <i class="fas fa-file-pdf"></i>
+                        <span>View Resume</span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -4734,7 +5307,13 @@
         });
 
         // Typing Effect - Multi-role Cycling
-        const roles = ["Founder of AuraCore AI 🚀", "AI & GenAI Engineer 🤖", "Full-Stack Developer 💻", "Published Researcher 📄", "Multi-Agent Architect 🧠"];
+        const roles = [
+            "Autonomous Multi-Agent Systems 🤖",
+            "Full-Stack AI-Powered Applications ⚡",
+            "Production GenAI & LLM Workflows 🧠",
+            "Founder of AuraCore AI 🚀",
+            "Published Academic Researcher 📄"
+        ];
         let roleIndex = 0, charIndex = 0, isDeleting = false;
         const typingEl = document.getElementById("typing");
         function typeRole() {
