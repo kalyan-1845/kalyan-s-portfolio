@@ -4822,6 +4822,560 @@
             }
         }
 
+    
+        /* =========================================================
+           EXTREME-LEVEL EDUCATION SECTION STYLING (DARK & LIGHT)
+           ========================================================= */
+        .education-section-epic {
+            position: relative;
+            padding: 100px 0 90px;
+            overflow: hidden;
+            z-index: 10;
+        }
+
+        /* Section HUD Header */
+        .education-header-hud {
+            text-align: center;
+            max-width: 860px;
+            margin: 0 auto 4rem;
+            position: relative;
+        }
+
+        .education-hud-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            background: rgba(0, 242, 254, 0.06);
+            border: 1px solid rgba(0, 242, 254, 0.26);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 7px 18px;
+            border-radius: 30px;
+            margin-bottom: 1.2rem;
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.12);
+            color: #00f2fe;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .education-hud-badge:hover {
+            border-color: rgba(0, 242, 254, 0.5);
+            box-shadow: 0 0 28px rgba(0, 242, 254, 0.25);
+            transform: translateY(-2px);
+        }
+
+        .education-hud-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #00f2fe;
+            box-shadow: 0 0 8px #00f2fe;
+            animation: pulse-beacon 2s infinite ease-in-out;
+        }
+
+        .education-headline {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: clamp(2rem, 3.8vw, 3rem);
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.025em;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 25px rgba(0, 242, 254, 0.15);
+        }
+
+        .education-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #94a3b8;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        /* Container & Cards */
+        .education-deck {
+            max-width: 1040px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        /* Common Card Base */
+        .edu-card {
+            background: rgba(15, 23, 42, 0.78);
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            border-radius: 22px;
+            padding: 2.25rem 2.5rem;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), 0 0 25px rgba(0, 242, 254, 0.05);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+        }
+
+        .edu-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--card-accent, #00f2fe), transparent);
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .edu-card:hover {
+            transform: translateY(-4px) scale(1.004);
+            border-color: rgba(255, 255, 255, 0.22);
+            box-shadow: 0 22px 55px rgba(0, 0, 0, 0.55), 0 0 35px rgba(0, 242, 254, 0.12);
+        }
+
+        .edu-card:hover::before {
+            opacity: 1;
+        }
+
+        .edu-card-flagship { --card-accent: #00f2fe; }
+        .edu-card-inter { --card-accent: #38bdf8; }
+        .edu-card-ssc { --card-accent: #a855f7; }
+
+        /* Card Top Telemetry Bar */
+        .edu-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding-bottom: 1.15rem;
+            margin-bottom: 1.4rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .edu-tag-group {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .edu-tag-sys {
+            font-family: 'Outfit', monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: var(--card-accent, #00f2fe);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.04);
+            padding: 4px 10px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .edu-status-beacon {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .edu-beacon-active {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: #10b981;
+        }
+
+        .edu-beacon-completed {
+            background: rgba(168, 85, 247, 0.1);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            color: #c084fc;
+        }
+
+        .edu-date-pill {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #94a3b8;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: rgba(255, 255, 255, 0.04);
+            padding: 5px 12px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .edu-date-pill i {
+            color: var(--card-accent, #00f2fe);
+        }
+
+        /* Institution & Degree Row */
+        .edu-institution-row {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .edu-crest-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            flex-shrink: 0;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--card-accent, #00f2fe);
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.15);
+        }
+
+        .crest-cyan { color: #00f2fe; box-shadow: 0 0 20px rgba(0, 242, 254, 0.2); }
+        .crest-blue { color: #38bdf8; box-shadow: 0 0 20px rgba(56, 189, 248, 0.2); }
+        .crest-purple { color: #a855f7; box-shadow: 0 0 20px rgba(168, 85, 247, 0.2); }
+
+        .edu-title-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .edu-institution-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(1.4rem, 2.4vw, 1.8rem);
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -0.015em;
+            margin: 0;
+            line-height: 1.2;
+            transition: color 0.3s ease;
+        }
+
+        .edu-card:hover .edu-institution-title {
+            color: var(--card-accent, #00f2fe);
+        }
+
+        .edu-degree-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.05rem;
+            color: #cbd5e1;
+            font-weight: 500;
+        }
+
+        .edu-affiliation {
+            color: #94a3b8;
+            font-size: 0.82rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* 3-Micro-KPI Strip */
+        .edu-kpi-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .edu-kpi-item {
+            background: rgba(11, 17, 32, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 0.9rem 1.1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .edu-kpi-item:hover {
+            border-color: var(--card-accent, #00f2fe);
+            transform: translateY(-2px);
+            background: rgba(11, 17, 32, 0.95);
+        }
+
+        .edu-kpi-val {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(1.2rem, 1.9vw, 1.55rem);
+            font-weight: 800;
+            letter-spacing: -0.01em;
+            line-height: 1.2;
+            margin-bottom: 2px;
+        }
+
+        .kpi-cyan { color: #00f2fe; }
+        .kpi-blue { color: #38bdf8; }
+        .kpi-emerald { color: #10b981; }
+        .kpi-purple { color: #c084fc; }
+
+        .edu-kpi-lbl {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.72rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Secondary Grid (Junior College & High School) */
+        .edu-secondary-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.75rem;
+        }
+
+        .edu-card-compact {
+            padding: 1.85rem 2rem;
+        }
+
+        .edu-card-compact .edu-crest-icon {
+            width: 48px;
+            height: 48px;
+            font-size: 1.35rem;
+        }
+
+        .edu-card-compact .edu-institution-title {
+            font-size: 1.35rem;
+        }
+
+        .edu-card-compact .edu-degree-subtitle {
+            font-size: 0.95rem;
+        }
+
+        .edu-card-compact .edu-kpi-row {
+            grid-template-columns: repeat(2, 1fr);
+            margin-bottom: 1.25rem;
+        }
+
+        /* Focus & Coursework Micro-Chips */
+        .edu-chips-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.55rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .edu-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 5px 12px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #e2e8f0;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .edu-chip i {
+            color: var(--card-accent, #00f2fe);
+            font-size: 0.85rem;
+            transition: transform 0.25s ease;
+        }
+
+        .edu-chip:hover {
+            transform: translateY(-2px) scale(1.02);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--card-accent, #00f2fe);
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3), 0 0 12px rgba(0, 242, 254, 0.15);
+        }
+
+        .edu-chip:hover i {
+            transform: scale(1.15);
+        }
+
+        /* =========================================================
+           LIGHT THEME OVERRIDES FOR EDUCATION SECTION
+           ========================================================= */
+        body.light-theme .education-section-epic {
+            background: transparent;
+        }
+
+        body.light-theme .education-hud-badge {
+            background: rgba(2, 132, 199, 0.08) !important;
+            border-color: rgba(2, 132, 199, 0.25) !important;
+            color: #0284c7 !important;
+            box-shadow: 0 4px 14px rgba(2, 132, 199, 0.08) !important;
+        }
+
+        body.light-theme .education-headline {
+            color: #0f172a !important;
+            text-shadow: none !important;
+        }
+
+        body.light-theme .education-subtitle {
+            color: #475569 !important;
+        }
+
+        body.light-theme .edu-card {
+            background: rgba(255, 255, 255, 0.94) !important;
+            border-color: rgba(0, 0, 0, 0.08) !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04) !important;
+        }
+
+        body.light-theme .edu-card:hover {
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08) !important;
+        }
+
+        body.light-theme .edu-card-header {
+            border-bottom-color: rgba(0, 0, 0, 0.07) !important;
+        }
+
+        body.light-theme .edu-tag-sys {
+            background: rgba(2, 132, 199, 0.06) !important;
+            border-color: rgba(2, 132, 199, 0.18) !important;
+            color: #0284c7 !important;
+        }
+
+        body.light-theme .edu-date-pill {
+            background: rgba(0, 0, 0, 0.04) !important;
+            border-color: rgba(0, 0, 0, 0.08) !important;
+            color: #475569 !important;
+        }
+
+        body.light-theme .edu-crest-icon {
+            background: rgba(2, 132, 199, 0.06) !important;
+            border-color: rgba(2, 132, 199, 0.15) !important;
+        }
+
+        body.light-theme .edu-institution-title {
+            color: #0f172a !important;
+        }
+
+        body.light-theme .edu-degree-subtitle {
+            color: #334155 !important;
+        }
+
+        body.light-theme .edu-affiliation {
+            color: #64748b !important;
+        }
+
+        body.light-theme .edu-kpi-item {
+            background: rgba(248, 250, 252, 0.9) !important;
+            border-color: rgba(0, 0, 0, 0.07) !important;
+        }
+
+        body.light-theme .edu-kpi-lbl {
+            color: #64748b !important;
+        }
+
+        body.light-theme .edu-chips-wrap {
+            border-top-color: rgba(0, 0, 0, 0.07) !important;
+        }
+
+        body.light-theme .edu-chip {
+            background: rgba(255, 255, 255, 0.95) !important;
+            border-color: rgba(0, 0, 0, 0.1) !important;
+            color: #1e293b !important;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02) !important;
+        }
+
+        body.light-theme .edu-chip:hover {
+            background: #0284c7 !important;
+            color: #ffffff !important;
+            border-color: #0284c7 !important;
+        }
+
+        body.light-theme .edu-chip:hover i {
+            color: #ffffff !important;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 992px) {
+            .edu-secondary-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .edu-card {
+                padding: 1.85rem 1.75rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .edu-card {
+                padding: 1.5rem 1.25rem;
+            }
+
+            .edu-institution-row {
+                gap: 1rem;
+            }
+
+            .edu-crest-icon {
+                width: 46px;
+                height: 46px;
+                font-size: 1.35rem;
+            }
+
+            .edu-kpi-row {
+                grid-template-columns: 1fr;
+                gap: 0.65rem;
+            }
+
+            .edu-kpi-item {
+                padding: 0.75rem 1rem;
+                text-align: left;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: center;
+                gap: 0.35rem;
+            }
+
+            .edu-kpi-val {
+                font-size: 1.25rem;
+                margin-bottom: 0;
+            }
+
+            .edu-kpi-lbl {
+                font-size: 0.75rem;
+                white-space: normal;
+                line-height: 1.3;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .edu-card {
+                padding: 1.25rem 1rem;
+                border-radius: 16px;
+            }
+
+            .edu-institution-title {
+                font-size: 1.25rem;
+            }
+
+            .edu-chip {
+                padding: 4px 9px;
+                font-size: 0.75rem;
+            }
+        }
+
     </style>
 
 </head>
@@ -5248,76 +5802,161 @@
     </section>
 
     <!-- Education Section -->
-    <section id="education" class="education">
+    <section id="education" class="education-section-epic">
         <div class="container">
-            <h2>My Education</h2>
-            <div class="education-container">
-                <!-- Education 1 -->
-                <div class="education-item">
-                    <div class="education-content">
-                        <h3 class="education-title">Ace Engineering College</h3>
-                        <p class="education-degree">Bachelor of Technology in Computer Science Engineering</p>
-                        <div class="education-details">
-                            <div class="education-detail">
-                                <i class="fas fa-calendar-alt"></i>
-                                <span>2024 - 2028 (Expected)</span>
-                            </div>
-                            <div class="education-detail">
-                                <i class="fas fa-star"></i>
-                                <span>CGPA: 8.5/10</span>
-                            </div>
-                            <div class="education-detail">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>Hyderabad, Telangana</span>
-                            </div>
-                            <div class="education-detail">
-                                <i class="fas fa-award"></i>
-                                <span>Third Year</span>
+            <!-- HUD Section Header -->
+            <div class="education-header-hud">
+                <div class="education-hud-badge">
+                    <span class="education-hud-dot"></span>
+                    <span>ACADEMIC FOUNDATION & SCHOLARSHIP</span>
+                </div>
+                <h2 class="education-headline">Academic Pedigree & Engineering Discipline</h2>
+                <p class="education-subtitle">Cultivating rigorous computer science fundamentals, mathematical depth, and applied engineering systems.</p>
+            </div>
+
+            <!-- Education Deck -->
+            <div class="education-deck">
+                <!-- Flagship Card: Ace Engineering College -->
+                <div class="edu-card edu-card-flagship">
+                    <div class="edu-card-header">
+                        <div class="edu-tag-group">
+                            <span class="edu-tag-sys"><i class="fas fa-graduation-cap"></i> UNDERGRADUATE // B.TECH CSE</span>
+                            <span class="edu-status-beacon edu-beacon-active"><span class="beacon-dot beacon-emerald"></span> CURRENTLY ENROLLED · 3RD YEAR</span>
+                        </div>
+                        <div class="edu-date-pill">
+                            <i class="fas fa-calendar-check"></i> 2024 – 2028 (Expected)
+                        </div>
+                    </div>
+
+                    <div class="edu-institution-row">
+                        <div class="edu-crest-icon crest-cyan">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <div class="edu-title-meta">
+                            <h3 class="edu-institution-title">Ace Engineering College</h3>
+                            <div class="edu-degree-subtitle">Bachelor of Technology in Computer Science & Engineering</div>
+                            <div class="edu-affiliation">
+                                <i class="fas fa-location-dot"></i> Hyderabad, Telangana · Affiliated to JNTUH
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Education 2 -->
-                <div class="education-item">
-                    <div class="education-content">
-                        <h3 class="education-title">Vijwala Junior College</h3>
-                        <p class="education-degree">Intermediate (MPC)</p>
-                        <div class="education-details">
-                            <div class="education-detail">
-                                <i class="fas fa-calendar-alt"></i>
-                                <span>2022-2024</span>
-                            </div>
-                            <div class="education-detail">
-                                <i class="fas fa-star"></i>
-                                <span>Percentage: 91.3%</span>
-                            </div>
-                            <div class="education-detail">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>Siddipet, Telangana</span>
-                            </div>
+                    <!-- 3 Micro-KPIs -->
+                    <div class="edu-kpi-row">
+                        <div class="edu-kpi-item">
+                            <div class="edu-kpi-val kpi-cyan">8.5 / 10.0</div>
+                            <div class="edu-kpi-lbl">Cumulative GPA (CGPA)</div>
                         </div>
+                        <div class="edu-kpi-item">
+                            <div class="edu-kpi-val kpi-emerald">3rd Year</div>
+                            <div class="edu-kpi-lbl">Current Academic Standing</div>
+                        </div>
+                        <div class="edu-kpi-item">
+                            <div class="edu-kpi-val kpi-purple">Autonomous AI</div>
+                            <div class="edu-kpi-lbl">Engineering Specialization</div>
+                        </div>
+                    </div>
+
+                    <!-- Coursework / Core Competency Micro-Chips -->
+                    <div class="edu-chips-wrap">
+                        <span class="edu-chip"><i class="fas fa-code"></i> Data Structures & Algorithms</span>
+                        <span class="edu-chip"><i class="fas fa-brain"></i> Artificial Intelligence & Agents</span>
+                        <span class="edu-chip"><i class="fas fa-server"></i> Operating Systems</span>
+                        <span class="edu-chip"><i class="fas fa-database"></i> Database Management (DBMS)</span>
+                        <span class="edu-chip"><i class="fas fa-network-wired"></i> Computer Networks</span>
+                        <span class="edu-chip"><i class="fas fa-shield-halved"></i> Software Engineering</span>
                     </div>
                 </div>
 
-                <!-- Education 3 -->
-                <div class="education-item">
-                    <div class="education-content">
-                        <h3 class="education-title">Vidya Nikethan High School</h3>
-                        <p class="education-degree">SSC</p>
-                        <div class="education-details">
-                            <div class="education-detail">
-                                <i class="fas fa-calendar-alt"></i>
-                                <span>2021-2022</span>
+                <!-- Secondary 2-Column Grid -->
+                <div class="edu-secondary-grid">
+                    <!-- Junior College -->
+                    <div class="edu-card edu-card-compact edu-card-inter">
+                        <div class="edu-card-header">
+                            <div class="edu-tag-group">
+                                <span class="edu-tag-sys"><i class="fas fa-atom"></i> HIGHER SECONDARY // MPC</span>
+                                <span class="edu-status-beacon edu-beacon-completed"><span class="beacon-dot beacon-purple"></span> DISTINCTION HONORS</span>
                             </div>
-                            <div class="education-detail">
-                                <i class="fas fa-star"></i>
-                                <span>GPA: 7.5/10</span>
+                            <div class="edu-date-pill">
+                                <i class="fas fa-calendar-alt"></i> 2022 – 2024
                             </div>
-                            <div class="education-detail">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>Hyderabad, Telangana</span>
+                        </div>
+
+                        <div class="edu-institution-row">
+                            <div class="edu-crest-icon crest-blue">
+                                <i class="fas fa-microscope"></i>
                             </div>
+                            <div class="edu-title-meta">
+                                <h3 class="edu-institution-title">Vijwala Junior College</h3>
+                                <div class="edu-degree-subtitle">Intermediate (MPC)</div>
+                                <div class="edu-affiliation">
+                                    <i class="fas fa-location-dot"></i> Siddipet, Telangana · TSBIE Board
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2 Micro-KPIs -->
+                        <div class="edu-kpi-row">
+                            <div class="edu-kpi-item">
+                                <div class="edu-kpi-val kpi-blue">91.3%</div>
+                                <div class="edu-kpi-lbl">Board Examination Score</div>
+                            </div>
+                            <div class="edu-kpi-item">
+                                <div class="edu-kpi-val kpi-emerald">Distinction</div>
+                                <div class="edu-kpi-lbl">First Class Standing</div>
+                            </div>
+                        </div>
+
+                        <!-- Focus Chips -->
+                        <div class="edu-chips-wrap">
+                            <span class="edu-chip"><i class="fas fa-calculator"></i> Mathematics & Calculus</span>
+                            <span class="edu-chip"><i class="fas fa-bolt"></i> Mechanics & Physics</span>
+                            <span class="edu-chip"><i class="fas fa-flask"></i> Organic Chemistry</span>
+                        </div>
+                    </div>
+
+                    <!-- High School -->
+                    <div class="edu-card edu-card-compact edu-card-ssc">
+                        <div class="edu-card-header">
+                            <div class="edu-tag-group">
+                                <span class="edu-tag-sys"><i class="fas fa-school"></i> SECONDARY SCHOOL // SSC</span>
+                                <span class="edu-status-beacon edu-beacon-completed"><span class="beacon-dot beacon-purple"></span> FIRST CLASS</span>
+                            </div>
+                            <div class="edu-date-pill">
+                                <i class="fas fa-calendar-alt"></i> 2021 – 2022
+                            </div>
+                        </div>
+
+                        <div class="edu-institution-row">
+                            <div class="edu-crest-icon crest-purple">
+                                <i class="fas fa-book-open"></i>
+                            </div>
+                            <div class="edu-title-meta">
+                                <h3 class="edu-institution-title">Vidya Nikethan High School</h3>
+                                <div class="edu-degree-subtitle">Secondary School Certificate (SSC)</div>
+                                <div class="edu-affiliation">
+                                    <i class="fas fa-location-dot"></i> Hyderabad, Telangana · State Board
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2 Micro-KPIs -->
+                        <div class="edu-kpi-row">
+                            <div class="edu-kpi-item">
+                                <div class="edu-kpi-val kpi-purple">7.5 / 10.0</div>
+                                <div class="edu-kpi-lbl">State Board GPA</div>
+                            </div>
+                            <div class="edu-kpi-item">
+                                <div class="edu-kpi-val kpi-cyan">Graduated</div>
+                                <div class="edu-kpi-lbl">Foundational STEM</div>
+                            </div>
+                        </div>
+
+                        <!-- Focus Chips -->
+                        <div class="edu-chips-wrap">
+                            <span class="edu-chip"><i class="fas fa-square-root-variable"></i> Mathematics</span>
+                            <span class="edu-chip"><i class="fas fa-dna"></i> General Sciences</span>
+                            <span class="edu-chip"><i class="fas fa-computer"></i> Computer Basics</span>
                         </div>
                     </div>
                 </div>
@@ -5325,16 +5964,7 @@
         </div>
     </section>
 
-    
-            <div class="github-stats-container" style="margin-top: 4rem; text-align: center;">
-                <h3 style="margin-bottom: 20px; font-family: 'Orbitron', sans-serif; color: var(--primary-color);">Live GitHub Activity</h3>
-                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px;">
-                    <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=kalyan-1845&theme=radical" alt="GitHub Stats" style="max-width: 100%; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
-                    <img src="https://github-readme-streak-stats.herokuapp.com/?user=kalyan-1845&theme=radical&hide_border=true&background=0f0c29&ring=00f2fe&fire=ff00cc&currStreakLabel=ffffff" alt="GitHub Streak" style="max-width: 100%; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
-                </div>
-            </div>
-
-    <!-- Experience Section -->
+        <!-- Experience Section -->
     <section id="experience" class="experience-section-epic">
         <div class="container">
             <!-- HUD Section Header -->
