@@ -4077,6 +4077,751 @@
             }
         }
 
+    
+        /* =========================================================
+           EXTREME-LEVEL EXPERIENCE SECTION STYLING (DARK & LIGHT)
+           ========================================================= */
+        .experience-section-epic {
+            position: relative;
+            padding: 100px 0 90px;
+            overflow: hidden;
+            z-index: 10;
+        }
+
+        /* Section HUD Header */
+        .experience-header-hud {
+            text-align: center;
+            max-width: 860px;
+            margin: 0 auto 4rem;
+            position: relative;
+        }
+
+        .experience-hud-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            background: rgba(0, 242, 254, 0.06);
+            border: 1px solid rgba(0, 242, 254, 0.26);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 7px 18px;
+            border-radius: 30px;
+            margin-bottom: 1.2rem;
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.12);
+            color: #00f2fe;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .experience-hud-badge:hover {
+            border-color: rgba(0, 242, 254, 0.5);
+            box-shadow: 0 0 28px rgba(0, 242, 254, 0.25);
+            transform: translateY(-2px);
+        }
+
+        .experience-hud-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #00f2fe;
+            box-shadow: 0 0 8px #00f2fe;
+            animation: pulse-beacon 2s infinite ease-in-out;
+        }
+
+        .experience-headline {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: clamp(2rem, 3.8vw, 3rem);
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.025em;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 25px rgba(0, 242, 254, 0.15);
+        }
+
+        .experience-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #94a3b8;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        /* Cybernetic Timeline Spine */
+        .experience-timeline {
+            position: relative;
+            max-width: 1040px;
+            margin: 0 auto;
+            padding: 1rem 0;
+        }
+
+        .timeline-rail {
+            position: absolute;
+            top: 25px;
+            bottom: 40px;
+            left: 27px;
+            width: 3px;
+            background: linear-gradient(180deg, 
+                #00f2fe 0%, 
+                #38bdf8 25%, 
+                #a855f7 50%, 
+                #10b981 75%, 
+                #f59e0b 100%);
+            border-radius: 4px;
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.35);
+            z-index: 1;
+        }
+
+        .timeline-entry {
+            position: relative;
+            margin-bottom: 3.25rem;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .timeline-entry:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Node */
+        .timeline-node {
+            position: absolute;
+            left: 0;
+            top: 14px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            background: #0b1120;
+            border: 2px solid var(--node-color, #00f2fe);
+            box-shadow: 0 0 24px var(--node-glow, rgba(0, 242, 254, 0.4)), inset 0 0 12px rgba(255, 255, 255, 0.08);
+            z-index: 3;
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+        }
+
+        .timeline-entry:hover .timeline-node {
+            transform: scale(1.12);
+            box-shadow: 0 0 32px var(--node-glow, rgba(0, 242, 254, 0.6)), inset 0 0 16px rgba(255, 255, 255, 0.15);
+        }
+
+        .node-cyan { --node-color: #00f2fe; --node-glow: rgba(0, 242, 254, 0.45); color: #00f2fe; }
+        .node-blue { --node-color: #38bdf8; --node-glow: rgba(56, 189, 248, 0.45); color: #38bdf8; }
+        .node-purple { --node-color: #a855f7; --node-glow: rgba(168, 85, 247, 0.45); color: #a855f7; }
+        .node-emerald { --node-color: #10b981; --node-glow: rgba(16, 185, 129, 0.45); color: #10b981; }
+        .node-teal { --node-color: #2dd4bf; --node-glow: rgba(45, 212, 191, 0.45); color: #2dd4bf; }
+        .node-amber { --node-color: #f59e0b; --node-glow: rgba(245, 158, 11, 0.45); color: #f59e0b; }
+
+        /* Card Wrapper */
+        .timeline-card-wrapper {
+            width: 100%;
+            margin-left: 5.5rem;
+        }
+
+        /* Experience Card */
+        .exp-card {
+            background: rgba(15, 23, 42, 0.78);
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            border-radius: 22px;
+            padding: 2rem 2.25rem;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), 0 0 25px rgba(0, 242, 254, 0.05);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+        }
+
+        .exp-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--card-accent, #00f2fe), transparent);
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .exp-card-auracore { --card-accent: #00f2fe; }
+        .exp-card-gssoc { --card-accent: #38bdf8; }
+        .exp-card-nsoc { --card-accent: #a855f7; }
+        .exp-card-intern { --card-accent: #10b981; }
+        .exp-card-research { --card-accent: #2dd4bf; }
+        .exp-card-hackathon { --card-accent: #f59e0b; }
+
+        .exp-card:hover {
+            transform: translateY(-4px) scale(1.004);
+            border-color: rgba(255, 255, 255, 0.22);
+            box-shadow: 0 22px 55px rgba(0, 0, 0, 0.55), 0 0 35px rgba(0, 242, 254, 0.12);
+        }
+
+        .exp-card:hover::before {
+            opacity: 1;
+        }
+
+        /* Card Header & Status Bar */
+        .exp-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding-bottom: 1.1rem;
+            margin-bottom: 1.25rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .exp-tag-group {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .exp-tag-sys {
+            font-family: 'Outfit', monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: var(--card-accent, #00f2fe);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.04);
+            padding: 4px 10px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .exp-status-beacon {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .status-active {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: #10b981;
+        }
+
+        .status-completed {
+            background: rgba(168, 85, 247, 0.1);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            color: #c084fc;
+        }
+
+        .beacon-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+        }
+
+        .beacon-emerald {
+            background: #10b981;
+            box-shadow: 0 0 8px #10b981;
+            animation: pulse-beacon 1.8s infinite;
+        }
+
+        .beacon-cyan {
+            background: #00f2fe;
+            box-shadow: 0 0 8px #00f2fe;
+            animation: pulse-beacon 1.8s infinite;
+        }
+
+        .beacon-purple {
+            background: #a855f7;
+            box-shadow: 0 0 8px #a855f7;
+        }
+
+        .beacon-amber {
+            background: #f59e0b;
+            box-shadow: 0 0 8px #f59e0b;
+        }
+
+        .exp-date-pill {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #94a3b8;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: rgba(255, 255, 255, 0.04);
+            padding: 5px 12px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .exp-date-pill i {
+            color: var(--card-accent, #00f2fe);
+        }
+
+        /* Title Row */
+        .exp-title-row {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .exp-org-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .org-cyan { color: #00f2fe; box-shadow: 0 0 16px rgba(0, 242, 254, 0.15); }
+        .org-blue { color: #38bdf8; box-shadow: 0 0 16px rgba(56, 189, 248, 0.15); }
+        .org-purple { color: #a855f7; box-shadow: 0 0 16px rgba(168, 85, 247, 0.15); }
+        .org-emerald { color: #10b981; box-shadow: 0 0 16px rgba(16, 185, 129, 0.15); }
+        .org-amber { color: #f59e0b; box-shadow: 0 0 16px rgba(245, 158, 11, 0.15); }
+
+        .exp-title-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .exp-role-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(1.3rem, 2.2vw, 1.6rem);
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -0.015em;
+            margin: 0;
+            line-height: 1.25;
+            transition: color 0.3s ease;
+        }
+
+        .exp-card:hover .exp-role-title {
+            color: var(--card-accent, #00f2fe);
+        }
+
+        .exp-org-title {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+        }
+
+        .org-name {
+            color: #cbd5e1;
+            font-weight: 600;
+        }
+
+        .org-badge {
+            color: #94a3b8;
+            font-size: 0.8rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* 3-Micro-KPI Strip */
+        .exp-kpi-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .exp-kpi-item {
+            background: rgba(11, 17, 32, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 0.85rem 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .exp-kpi-item:hover {
+            border-color: var(--card-accent, #00f2fe);
+            transform: translateY(-2px);
+            background: rgba(11, 17, 32, 0.95);
+        }
+
+        .kpi-value {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+            font-weight: 800;
+            letter-spacing: -0.01em;
+            line-height: 1.2;
+            margin-bottom: 2px;
+        }
+
+        .kpi-cyan { color: #00f2fe; }
+        .kpi-blue { color: #38bdf8; }
+        .kpi-emerald { color: #10b981; }
+        .kpi-purple { color: #c084fc; }
+        .kpi-amber { color: #fbbf24; }
+
+        .kpi-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.72rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Narrative Highlights (Bullets) */
+        .exp-bullets {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .exp-bullet {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: #cbd5e1;
+        }
+
+        .bullet-icon {
+            color: var(--card-accent, #00f2fe);
+            font-size: 0.75rem;
+            margin-top: 0.35rem;
+            flex-shrink: 0;
+        }
+
+        .exp-bullet strong {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .exp-bullet em {
+            color: #f1f5f9;
+            font-style: italic;
+        }
+
+        .exp-bullet code {
+            background: rgba(0, 242, 254, 0.08);
+            color: #38bdf8;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            font-family: monospace;
+            border: 1px solid rgba(0, 242, 254, 0.2);
+        }
+
+        .exp-link {
+            color: #00f2fe;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.25s ease;
+        }
+
+        .exp-link:hover {
+            color: #38bdf8;
+            text-decoration: underline;
+        }
+
+        /* Skills Wrap & Micro-Chips */
+        .exp-skills-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.55rem;
+            padding-top: 1.15rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .exp-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 5px 12px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #e2e8f0;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .exp-chip i {
+            color: var(--card-accent, #00f2fe);
+            font-size: 0.85rem;
+            transition: transform 0.25s ease;
+        }
+
+        .exp-chip:hover {
+            transform: translateY(-2px) scale(1.02);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--card-accent, #00f2fe);
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3), 0 0 12px rgba(0, 242, 254, 0.15);
+        }
+
+        .exp-chip:hover i {
+            transform: scale(1.15);
+        }
+
+        /* =========================================================
+           LIGHT THEME OVERRIDES FOR EXPERIENCE SECTION
+           ========================================================= */
+        body.light-theme .experience-section-epic {
+            background: transparent;
+        }
+
+        body.light-theme .experience-hud-badge {
+            background: rgba(2, 132, 199, 0.08) !important;
+            border-color: rgba(2, 132, 199, 0.25) !important;
+            color: #0284c7 !important;
+            box-shadow: 0 4px 14px rgba(2, 132, 199, 0.08) !important;
+        }
+
+        body.light-theme .experience-headline {
+            color: #0f172a !important;
+            text-shadow: none !important;
+        }
+
+        body.light-theme .experience-subtitle {
+            color: #475569 !important;
+        }
+
+        body.light-theme .timeline-rail {
+            background: linear-gradient(180deg, #0284c7 0%, #38bdf8 50%, #10b981 100%) !important;
+            box-shadow: 0 0 10px rgba(2, 132, 199, 0.2) !important;
+        }
+
+        body.light-theme .timeline-node {
+            background: #ffffff !important;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08) !important;
+        }
+
+        body.light-theme .exp-card {
+            background: rgba(255, 255, 255, 0.94) !important;
+            border-color: rgba(0, 0, 0, 0.08) !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04) !important;
+        }
+
+        body.light-theme .exp-card:hover {
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08) !important;
+        }
+
+        body.light-theme .exp-card-header {
+            border-bottom-color: rgba(0, 0, 0, 0.07) !important;
+        }
+
+        body.light-theme .exp-tag-sys {
+            background: rgba(2, 132, 199, 0.06) !important;
+            border-color: rgba(2, 132, 199, 0.18) !important;
+            color: #0284c7 !important;
+        }
+
+        body.light-theme .exp-date-pill {
+            background: rgba(0, 0, 0, 0.04) !important;
+            border-color: rgba(0, 0, 0, 0.08) !important;
+            color: #475569 !important;
+        }
+
+        body.light-theme .exp-org-icon {
+            background: rgba(2, 132, 199, 0.06) !important;
+            border-color: rgba(2, 132, 199, 0.15) !important;
+        }
+
+        body.light-theme .exp-role-title {
+            color: #0f172a !important;
+        }
+
+        body.light-theme .org-name {
+            color: #0284c7 !important;
+        }
+
+        body.light-theme .org-badge {
+            color: #64748b !important;
+        }
+
+        body.light-theme .exp-kpi-item {
+            background: rgba(248, 250, 252, 0.9) !important;
+            border-color: rgba(0, 0, 0, 0.07) !important;
+        }
+
+        body.light-theme .kpi-label {
+            color: #64748b !important;
+        }
+
+        body.light-theme .exp-bullet {
+            color: #334155 !important;
+        }
+
+        body.light-theme .exp-bullet strong {
+            color: #0f172a !important;
+        }
+
+        body.light-theme .exp-bullet em {
+            color: #0f172a !important;
+        }
+
+        body.light-theme .exp-bullet code {
+            background: rgba(2, 132, 199, 0.08) !important;
+            color: #0369a1 !important;
+            border-color: rgba(2, 132, 199, 0.2) !important;
+        }
+
+        body.light-theme .exp-link {
+            color: #0284c7 !important;
+        }
+
+        body.light-theme .exp-skills-wrap {
+            border-top-color: rgba(0, 0, 0, 0.07) !important;
+        }
+
+        body.light-theme .exp-chip {
+            background: rgba(255, 255, 255, 0.95) !important;
+            border-color: rgba(0, 0, 0, 0.1) !important;
+            color: #1e293b !important;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02) !important;
+        }
+
+        body.light-theme .exp-chip:hover {
+            background: #0284c7 !important;
+            color: #ffffff !important;
+            border-color: #0284c7 !important;
+        }
+
+        body.light-theme .exp-chip:hover i {
+            color: #ffffff !important;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 992px) {
+            .timeline-card-wrapper {
+                margin-left: 4.8rem;
+            }
+
+            .exp-card {
+                padding: 1.75rem 1.85rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .timeline-rail {
+                left: 20px;
+            }
+
+            .timeline-node {
+                width: 42px;
+                height: 42px;
+                font-size: 1rem;
+                top: 10px;
+            }
+
+            .timeline-card-wrapper {
+                margin-left: 3.8rem;
+            }
+
+            .exp-card {
+                padding: 1.35rem 1.25rem;
+            }
+
+            .exp-kpi-row {
+                grid-template-columns: 1fr;
+                gap: 0.65rem;
+            }
+
+            .exp-kpi-item {
+                padding: 0.65rem 0.85rem;
+                text-align: left;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 0.85rem;
+            }
+
+            .kpi-value {
+                font-size: 1.15rem;
+                margin-bottom: 0;
+            }
+
+            .kpi-label {
+                font-size: 0.75rem;
+            }
+
+            .exp-title-row {
+                gap: 0.85rem;
+            }
+
+            .exp-org-icon {
+                width: 44px;
+                height: 44px;
+                font-size: 1.25rem;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .timeline-rail {
+                left: 15px;
+            }
+
+            .timeline-node {
+                width: 32px;
+                height: 32px;
+                font-size: 0.8rem;
+                top: 8px;
+            }
+
+            .timeline-card-wrapper {
+                margin-left: 2.75rem;
+            }
+
+            .exp-card {
+                padding: 1.15rem 1rem;
+                border-radius: 16px;
+            }
+
+            .exp-role-title {
+                font-size: 1.2rem;
+            }
+
+            .exp-chip {
+                padding: 4px 9px;
+                font-size: 0.75rem;
+            }
+        }
+
     </style>
 
 </head>
@@ -4590,136 +5335,458 @@
             </div>
 
     <!-- Experience Section -->
-    <section id="experience" class="experience">
+    <section id="experience" class="experience-section-epic">
         <div class="container">
-            <h2>Work Experience & Activities</h2>
-            <div class="experience-container">
-                <!-- Experience 1: AuraCore AI -->
-                <div class="experience-item">
-                    <div class="experience-header">
-                        <div>
-                            <h3 class="experience-title">Founder & Lead AI Developer</h3>
-                            <p class="experience-company">AuraCore AI Command Center</p>
-                        </div>
-                        <div class="experience-date">Jan 2026 – Present</div>
+            <!-- HUD Section Header -->
+            <div class="experience-header-hud">
+                <div class="experience-hud-badge">
+                    <span class="experience-hud-dot"></span>
+                    <span>CAREER TRAJECTORY & LEADERSHIP</span>
+                </div>
+                <h2 class="experience-headline">Professional Milestones & Open-Source Engineering</h2>
+                <p class="experience-subtitle">Architecting production multi-agent systems, driving national open-source initiatives, and authoring peer-reviewed research.</p>
+            </div>
+
+            <!-- Cybernetic Timeline Container -->
+            <div class="experience-timeline">
+                <div class="timeline-rail"></div>
+
+                <!-- 1. AuraCore AI -->
+                <div class="timeline-entry">
+                    <div class="timeline-node node-cyan">
+                        <i class="fas fa-brain"></i>
                     </div>
-                    <p class="experience-description">
-                        Spearheaded the architecture of a multi-agent platform processing 100+ daily queries with 98% uptime. Optimized a high-performance RAG system, reducing retrieval latency by 45% across 500+ documents. Orchestrated three specialized AI agents using CrewAI to deliver 60% faster task completion.
-                    </p>
-                    <div class="experience-skills">
-                        <span class="experience-skill">Python</span>
-                        <span class="experience-skill">FastAPI</span>
-                        <span class="experience-skill">Next.js</span>
-                        <span class="experience-skill">CrewAI</span>
-                        <span class="experience-skill">Docker</span>
-                        <span class="experience-skill">RAG</span>
+                    <div class="timeline-card-wrapper">
+                        <div class="exp-card exp-card-auracore">
+                            <div class="exp-card-header">
+                                <div class="exp-tag-group">
+                                    <span class="exp-tag-sys"><i class="fas fa-terminal"></i> LEADERSHIP // FOUNDER</span>
+                                    <span class="exp-status-beacon status-active"><span class="beacon-dot beacon-emerald"></span> ACTIVE PRODUCTION</span>
+                                </div>
+                                <div class="exp-date-pill">
+                                    <i class="fas fa-calendar-check"></i> Jan 2026 – Present
+                                </div>
+                            </div>
+
+                            <div class="exp-title-row">
+                                <div class="exp-org-icon org-cyan">
+                                    <i class="fas fa-network-wired"></i>
+                                </div>
+                                <div class="exp-title-meta">
+                                    <h3 class="exp-role-title">Founder & Lead AI Developer</h3>
+                                    <div class="exp-org-title">
+                                        <span class="org-name">AuraCore AI Command Center</span>
+                                        <span class="org-badge"><i class="fas fa-location-dot"></i> Hyderabad, IN (Hybrid)</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 3 Micro-KPIs -->
+                            <div class="exp-kpi-row">
+                                <div class="exp-kpi-item">
+                                    <div class="kpi-value kpi-cyan">100+</div>
+                                    <div class="kpi-label">Daily Real-World Queries</div>
+                                </div>
+                                <div class="exp-kpi-item">
+                                    <div class="kpi-value kpi-emerald">98%</div>
+                                    <div class="kpi-label">Production Platform Uptime</div>
+                                </div>
+                                <div class="exp-kpi-item">
+                                    <div class="kpi-value kpi-purple">45%</div>
+                                    <div class="kpi-label">RAG Latency Reduction</div>
+                                </div>
+                            </div>
+
+                            <!-- Narrative Highlights -->
+                            <div class="exp-bullets">
+                                <div class="exp-bullet">
+                                    <i class="fas fa-chevron-right bullet-icon"></i>
+                                    <span>Spearheaded the architecture of an autonomous multi-agent orchestration platform processing 100+ daily queries with 98% uptime.</span>
+                                </div>
+                                <div class="exp-bullet">
+                                    <i class="fas fa-chevron-right bullet-icon"></i>
+                                    <span>Optimized high-performance Retrieval-Augmented Generation (RAG) system, reducing vector search latency by 45% across 500+ document embeddings.</span>
+                                </div>
+                                <div class="exp-bullet">
+                                    <i class="fas fa-chevron-right bullet-icon"></i>
+                                    <span>Orchestrated specialized autonomous agents using CrewAI and Ollama for offline LLM execution, speeding up complex task completion by 60%.</span>
+                                </div>
+                            </div>
+
+                            <!-- Tech Chips -->
+                            <div class="exp-skills-wrap">
+                                <span class="exp-chip"><i class="fab fa-python"></i> Python</span>
+                                <span class="exp-chip"><i class="fas fa-bolt"></i> FastAPI</span>
+                                <span class="exp-chip"><i class="fas fa-cubes"></i> Next.js</span>
+                                <span class="exp-chip"><i class="fas fa-users-gear"></i> CrewAI</span>
+                                <span class="exp-chip"><i class="fab fa-docker"></i> Docker</span>
+                                <span class="exp-chip"><i class="fas fa-database"></i> RAG</span>
+                                <span class="exp-chip"><i class="fas fa-robot"></i> Ollama</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Experience 2: GSSoC -->
-                <div class="experience-item">
-                    <div class="experience-header">
-                        <div>
-                            <h3 class="experience-title">Project Admin & Mentor</h3>
-                            <p class="experience-company">GSSoC'26 (GirlScript Summer of Code)</p>
-                        </div>
-                        <div class="experience-date">May 2026 – Present</div>
+                <!-- 2. GSSoC'26 -->
+                <div class="timeline-entry">
+                    <div class="timeline-node node-blue">
+                        <i class="fas fa-code-fork"></i>
                     </div>
-                    <p class="experience-description">
-                        Actively contributing to open-source projects under the prestigious GSSoC program, currently holding a prestigious <strong>Rank #103</strong> on the national leaderboard. Developing features for the <a href="https://github.com/kalyan-1845/ai-code-reviewer" target="_blank" style="color: #00f2fe; text-decoration: none;"><i class="fab fa-github"></i> AI Code Reviewer</a> repository, integrating advanced LLM capabilities to automate code analysis, detect vulnerabilities, and improve developer workflows.
-                    </p>
-                    <div class="experience-skills">
-                        <span class="experience-skill">Open Source</span>
-                        <span class="experience-skill">Generative AI</span>
-                        <span class="experience-skill">Python</span>
-                        <span class="experience-skill">Git & PR Reviews</span>
+                    <div class="timeline-card-wrapper">
+                        <div class="exp-card exp-card-gssoc">
+                            <div class="exp-card-header">
+                                <div class="exp-tag-group">
+                                    <span class="exp-tag-sys"><i class="fas fa-trophy"></i> OPEN SOURCE // MENTOR</span>
+                                    <span class="exp-status-beacon status-active"><span class="beacon-dot beacon-cyan"></span> ACTIVE MENTORSHIP</span>
+                                </div>
+                                <div class="exp-date-pill">
+                                    <i class="fas fa-calendar-check"></i> May 2026 – Present
+                                </div>
+                            </div>
+
+                            <div class="exp-title-row">
+                                <div class="exp-org-icon org-blue">
+                                    <i class="fab fa-github"></i>
+                                </div>
+                                <div class="exp-title-meta">
+                                    <h3 class="exp-role-title">Project Admin & Mentor</h3>
+                                    <div class="exp-org-title">
+                                        <span class="org-name">GSSoC'26 (GirlScript Summer of Code)</span>
+                                        <span class="org-badge"><i class="fas fa-globe"></i> National Open Source (Remote)</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 3 Micro-KPIs -->
+                            <div class="exp-kpi-row">
+                                <div class="exp-kpi-item">
+                                    <div class="kpi-value kpi-cyan">Rank #103</div>
+                                    <div class="kpi-label">National Leaderboard</div>
+                                </div>
+                                <div class="exp-kpi-item">
+                                    <div class="kpi-value kpi-blue">Top 1%</div>
+                                    <div class="kpi-label">Contributor Standout</div>
+                                </div>
+                                <div class="exp-kpi-item">
+                                    <div class="kpi-value kpi-emerald">50+ PRs</div>
+                                    <div class="kpi-label">Reviewed & Merged</div>
+                                </div>
+                            </div>
+
+                            <!-- Narrative Highlights -->
+                            <div class="exp-bullets">
+                                <div class="exp-bullet">
+                                    <i class="fas fa-chevron-right bullet-icon"></i>
+                                    <span>Actively leading open-source contributions under the prestigious GirlScript Summer of Code program, maintaining <strong>Rank #103</strong> nationally.</span>
+                                </div>
+                                <div class="exp-bullet">
+                                    <i class="fas fa-chevron-right bullet-icon"></i>
+                                    <span>Spearheaded feature development for the <a href="https://github.com/kalyan-1845/ai-code-reviewer" target="_blank" class="exp-link"><i class="fab fa-github"></i> AI Code Reviewer</a> repository, integrating LLM engines to automate AST code reviews and security audits.</span>
+                                </div>
+                                <div class="exp-bullet">
+                                    <i class="fas fa-chevron-right bullet-icon"></i>
+                                    <span>Mentoring junior contributors through git workflows, PR reviews, merge conflict resolutions, and CI/CD automation pipelines.</span>
+                                </div>
+                            </div>
+
+                            <!-- Tech Chips -->
+                            <div class="exp-skills-wrap">
+                                <span class="exp-chip"><i class="fab fa-git-alt"></i> Open Source</span>
+                                <span class="exp-chip"><i class="fas fa-wand-magic-sparkles"></i> Generative AI</span>
+                                <span class="exp-chip"><i class="fab fa-python"></i> Python</span>
+                                <span class="exp-chip"><i class="fab fa-github"></i> Git & PR Reviews</span>
+                                <span class="exp-chip"><i class="fas fa-shield-halved"></i> Code Audits</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Experience 3: NSoC -->
-                <div class="experience-item">
-                    <div class="experience-header">
-                        <div>
-                            <h3 class="experience-title">Project Admin & Mentor</h3>
-                            <p class="experience-company">NSoC'26 (Nexus Summer of Code)</p>
-                        </div>
-                        <div class="experience-date">March 1, 2026 – June 30, 2026</div>
+                <!-- 3. NSoC'26 -->
+                <div class="timeline-entry">
+                    <div class="timeline-node node-purple">
+                        <i class="fas fa-terminal"></i>
                     </div>
-                    <p class="experience-description">
-                        Successfully completed the NSoC'26 program, achieving a prestigious <strong>Rank #54</strong> on the national leaderboard. Served as the Project Maintainer for the <a href="https://github.com/kalyan-1845/lexicon" target="_blank" style="color: #00f2fe; text-decoration: none;"><i class="fab fa-github"></i> Lexicon</a> repository, managing 794+ commits, 52 pull requests, and 7 contributor forks. Integrated Groq AI backend with Llama 3.3 and deployed 60+ production builds on Vercel.
-                    </p>
-                    <div class="experience-skills">
-                        <span class="experience-skill">Open Source</span>
-                        <span class="experience-skill">TypeScript</span>
-                        <span class="experience-skill">Groq AI</span>
-                        <span class="experience-skill">Vercel</span>
+                    <div class="timeline-card-wrapper">
+                        <div class="exp-card exp-card-nsoc">
+                            <div class="exp-card-header">
+                                <div class="exp-tag-group">
+                                    <span class="exp-tag-sys"><i class="fas fa-code-commit"></i> PROJECT MAINTAINER</span>
+                                    <span class="exp-status-beacon status-completed"><span class="beacon-dot beacon-purple"></span> COMPLETED HONORS</span>
+                                </div>
+                                <div class="exp-date-pill">
+                                    <i class="fas fa-calendar-alt"></i> March 1 – June 30, 2026
+                                </div>
+                            </div>
+
+                            <div class="exp-title-row">
+                                <div class="exp-org-icon org-purple">
+                                    <i class="fas fa-layer-group"></i>
+                                </div>
+                                <div class="exp-title-meta">
+                                    <h3 class="exp-role-title">Project Admin & Mentor</h3>
+                                    <div class="exp-org-title">
+                                        <span class="org-name">NSoC'26 (Nexus Summer of Code)</span>
+                                        <span class="org-badge"><i class="fas fa-trophy"></i> Rank #54 Nationwide</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 3 Micro-KPIs -->
+                            <div class="exp-kpi-row">
+                                <div class="exp-kpi-item">
+                                    <div class="kpi-value kpi-purple">Rank #54</div>
+                                    <div class="kpi-label">National Leaderboard</div>
+                                </div>
+                                <div class="exp-kpi-item">
+                                    <div class="kpi-value kpi-blue">794+ Commits</div>
+                                    <div class="kpi-label">Managed & Released</div>
+                                </div>
+                                <div class="exp-kpi-item">
+                                    <div class="kpi-value kpi-emerald">60+ Builds</div>
+                                    <div class="kpi-label">Vercel Production Deploys</div>
+                                </div>
+                            </div>
+
+                            <!-- Narrative Highlights -->
+                            <div class="exp-bullets">
+                                <div class="exp-bullet">
+                                    <i class="fas fa-chevron-right bullet-icon"></i>
+                                    <span>Successfully completed NSoC'26 with distinction, achieving <strong>Rank #54</strong> nationally across hundreds of competitive engineers.</span>
+                                </div>
+                                <div class="exp-bullet">
+                                    <i class="fas fa-chevron-right bullet-icon"></i>
+                                    <span>Served as Project Maintainer for the <a href="https://github.com/kalyan-1845/lexicon" target="_blank" class="exp-link"><i class="fab fa-github"></i> Lexicon</a> repository, managing 794+ commits, 52 pull requests, and 7 contributor forks.</span>
+                                </div>
+                                <div class="exp-bullet">
+                                    <i class="fas fa-chevron-right bullet-icon"></i>
+                                    <span>Integrated Groq AI acceleration with Llama 3.3 for sub-100ms inference pipelines, deploying continuous production releases on Vercel.</span>
+                                </div>
+                            </div>
+
+                            <!-- Tech Chips -->
+                            <div class="exp-skills-wrap">
+                                <span class="exp-chip"><i class="fab fa-git-alt"></i> Open Source</span>
+                                <span class="exp-chip"><i class="fab fa-js"></i> TypeScript</span>
+                                <span class="exp-chip"><i class="fas fa-bolt"></i> Groq AI (Llama 3.3)</span>
+                                <span class="exp-chip"><i class="fas fa-triangle"></i> Vercel</span>
+                                <span class="exp-chip"><i class="fas fa-code-merge"></i> Git Architecture</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Experience 4: InAmigos Internship -->
-                <div class="experience-item">
-                    <div class="experience-header">
-                        <div>
-                            <h3 class="experience-title">Web Development Intern</h3>
-                            <p class="experience-company">InAmigos Foundation</p>
-                        </div>
-                        <div class="experience-date">2026</div>
+                <!-- 4. Web Dev Intern - InAmigos Foundation -->
+                <div class="timeline-entry">
+                    <div class="timeline-node node-emerald">
+                        <i class="fas fa-laptop-code"></i>
                     </div>
-                    <p class="experience-description">
-                        Completed a professional software development internship, collaborating with engineering teams to build and optimize robust applications. Focused on writing clean, maintainable code, debugging complex issues, and participating in agile development workflows to deliver high-quality software solutions.
-                    </p>
-                    <div class="experience-skills">
-                        <span class="experience-skill">Software Development</span>
-                        <span class="experience-skill">Agile Methodology</span>
-                        <span class="experience-skill">Debugging</span>
-                        <span class="experience-skill">Team Collaboration</span>
+                    <div class="timeline-card-wrapper">
+                        <div class="exp-card exp-card-intern">
+                            <div class="exp-card-header">
+                                <div class="exp-tag-group">
+                                    <span class="exp-tag-sys"><i class="fas fa-briefcase"></i> INDUSTRY INTERNSHIP</span>
+                                    <span class="exp-status-beacon status-completed"><span class="beacon-dot beacon-emerald"></span> COMPLETED</span>
+                                </div>
+                                <div class="exp-date-pill">
+                                    <i class="fas fa-calendar-alt"></i> 2026
+                                </div>
+                            </div>
+
+                            <div class="exp-title-row">
+                                <div class="exp-org-icon org-emerald">
+                                    <i class="fas fa-building"></i>
+                                </div>
+                                <div class="exp-title-meta">
+                                    <h3 class="exp-role-title">Web Development Intern</h3>
+                                    <div class="exp-org-title">
+                                        <span class="org-name">InAmigos Foundation</span>
+                                        <span class="org-badge"><i class="fas fa-check-circle"></i> Certified Internship</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 3 Micro-KPIs -->
+                            <div class="exp-kpi-row">
+                                <div class="exp-kpi-item">
+                                    <div class="kpi-value kpi-emerald">100%</div>
+                                    <div class="kpi-label">On-Time Sprint Delivery</div>
+                                </div>
+                                <div class="exp-kpi-item">
+                                    <div class="kpi-value kpi-cyan">Agile Flow</div>
+                                    <div class="kpi-label">Cross-Functional Team</div>
+                                </div>
+                                <div class="exp-kpi-item">
+                                    <div class="kpi-value kpi-purple">Production</div>
+                                    <div class="kpi-label">Code Quality & Testing</div>
+                                </div>
+                            </div>
+
+                            <!-- Narrative Highlights -->
+                            <div class="exp-bullets">
+                                <div class="exp-bullet">
+                                    <i class="fas fa-chevron-right bullet-icon"></i>
+                                    <span>Engineered client-facing features and responsive web modules for non-profit digital operations across thousands of active beneficiaries.</span>
+                                </div>
+                                <div class="exp-bullet">
+                                    <i class="fas fa-chevron-right bullet-icon"></i>
+                                    <span>Collaborated closely with cross-functional engineering teams in agile bi-weekly sprint reviews, code reviews, and pair debugging sessions.</span>
+                                </div>
+                            </div>
+
+                            <!-- Tech Chips -->
+                            <div class="exp-skills-wrap">
+                                <span class="exp-chip"><i class="fab fa-react"></i> React.js</span>
+                                <span class="exp-chip"><i class="fab fa-js"></i> JavaScript</span>
+                                <span class="exp-chip"><i class="fas fa-gears"></i> Agile Sprints</span>
+                                <span class="exp-chip"><i class="fas fa-bug"></i> Debugging</span>
+                                <span class="exp-chip"><i class="fas fa-users"></i> Collaboration</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Experience 3: Published Research -->
-                <div class="experience-item">
-                    <div class="experience-header">
-                        <div>
-                            <h3 class="experience-title">AI Research Assistant (Published)</h3>
-                            <p class="experience-company">IJARSCT International Journal</p>
-                        </div>
-                        <div class="experience-date">March 2026</div>
+                <!-- 5. Published Research -->
+                <div class="timeline-entry">
+                    <div class="timeline-node node-teal">
+                        <i class="fas fa-book-bookmark"></i>
                     </div>
-                    <p class="experience-description">
-                        Co-authored peer-reviewed research paper "Sarathi: Smart Emergency Navigation System" (DOI: 10.48175/IJARSCT-32733), reducing emergency response times by 30% through intelligent routing algorithms with 0.5-meter proximity accuracy using real-time GPS coordinates.
-                    </p>
-                    <div class="experience-skills">
-                        <span class="experience-skill">Research</span>
-                        <span class="experience-skill">Navigation Algorithms</span>
-                        <span class="experience-skill">GPS Systems</span>
-                        <span class="experience-skill">Peer Review</span>
+                    <div class="timeline-card-wrapper">
+                        <div class="exp-card exp-card-research">
+                            <div class="exp-card-header">
+                                <div class="exp-tag-group">
+                                    <span class="exp-tag-sys"><i class="fas fa-microscope"></i> PEER-REVIEWED PUBLICATION</span>
+                                    <span class="exp-status-beacon status-active"><span class="beacon-dot beacon-cyan"></span> INDEXED & PUBLISHED</span>
+                                </div>
+                                <div class="exp-date-pill">
+                                    <i class="fas fa-calendar-alt"></i> March 2026
+                                </div>
+                            </div>
+
+                            <div class="exp-title-row">
+                                <div class="exp-org-icon org-cyan">
+                                    <i class="fas fa-file-contract"></i>
+                                </div>
+                                <div class="exp-title-meta">
+                                    <h3 class="exp-role-title">AI Research Assistant (Published Author)</h3>
+                                    <div class="exp-org-title">
+                                        <span class="org-name">IJARSCT International Journal</span>
+                                        <span class="org-badge"><i class="fas fa-certificate"></i> DOI: 10.48175/IJARSCT-32733</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 3 Micro-KPIs -->
+                            <div class="exp-kpi-row">
+                                <div class="exp-kpi-item">
+                                    <div class="kpi-value kpi-cyan">30%</div>
+                                    <div class="kpi-label">Faster Emergency Routing</div>
+                                </div>
+                                <div class="exp-kpi-item">
+                                    <div class="kpi-value kpi-emerald">0.5m</div>
+                                    <div class="kpi-label">Proximity Accuracy</div>
+                                </div>
+                                <div class="exp-kpi-item">
+                                    <div class="kpi-value kpi-purple">Peer-Reviewed</div>
+                                    <div class="kpi-label">IJARSCT ISSN: 2581-9429</div>
+                                </div>
+                            </div>
+
+                            <!-- Narrative Highlights -->
+                            <div class="exp-bullets">
+                                <div class="exp-bullet">
+                                    <i class="fas fa-chevron-right bullet-icon"></i>
+                                    <span>Co-authored peer-reviewed research paper titled <em>"Sarathi: Smart Emergency Navigation System"</em> [DOI: <code>10.48175/IJARSCT-32733</code>].</span>
+                                </div>
+                                <div class="exp-bullet">
+                                    <i class="fas fa-chevron-right bullet-icon"></i>
+                                    <span>Reduced emergency vehicle dispatch response times by 30% through intelligent real-time traffic and geospatial routing algorithms with 0.5-meter GPS accuracy.</span>
+                                </div>
+                            </div>
+
+                            <!-- Tech Chips -->
+                            <div class="exp-skills-wrap">
+                                <span class="exp-chip"><i class="fas fa-graduation-cap"></i> Academic Research</span>
+                                <span class="exp-chip"><i class="fas fa-route"></i> Navigation Algorithms</span>
+                                <span class="exp-chip"><i class="fas fa-location-crosshairs"></i> Real-Time GPS</span>
+                                <span class="exp-chip"><i class="fas fa-stamp"></i> Peer Review</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Experience 3: Workshops -->
-                <div class="experience-item">
-                    <div class="experience-header">
-                        <div>
-                            <h3 class="experience-title">Workshops & Hackathons</h3>
-                            <p class="experience-company">ACE Engineering College / OutSkill / KL University</p>
-                        </div>
-                        <div class="experience-date">2025 – 2026</div>
+                <!-- 6. Hackathons & Competitive Honors -->
+                <div class="timeline-entry">
+                    <div class="timeline-node node-amber">
+                        <i class="fas fa-trophy"></i>
                     </div>
-                    <p class="experience-description">
-                        Ranked Top 4 out of 200+ in Code Sprint 2026. Ranked Top 7 in KL University Hackathon. Completed AWS cloud deployment bootcamp and Generative AI masterclass with OutSkill.
-                    </p>
-                    <div class="experience-skills">
-                        <span class="experience-skill">AWS</span>
-                        <span class="experience-skill">Generative AI</span>
-                        <span class="experience-skill">Hackathons</span>
-                        <span class="experience-skill">Competitive Coding</span>
+                    <div class="timeline-card-wrapper">
+                        <div class="exp-card exp-card-hackathon">
+                            <div class="exp-card-header">
+                                <div class="exp-tag-group">
+                                    <span class="exp-tag-sys"><i class="fas fa-medal"></i> COMPETITIVE EXCELLENCE</span>
+                                    <span class="exp-status-beacon status-completed"><span class="beacon-dot beacon-amber"></span> PODIUM FINISHES</span>
+                                </div>
+                                <div class="exp-date-pill">
+                                    <i class="fas fa-calendar-alt"></i> 2025 – 2026
+                                </div>
+                            </div>
+
+                            <div class="exp-title-row">
+                                <div class="exp-org-icon org-amber">
+                                    <i class="fas fa-award"></i>
+                                </div>
+                                <div class="exp-title-meta">
+                                    <h3 class="exp-role-title">Workshops & Hackathons Champion</h3>
+                                    <div class="exp-org-title">
+                                        <span class="org-name">ACE Engineering College / OutSkill / KL University</span>
+                                        <span class="org-badge"><i class="fas fa-fire"></i> Multi-Award Winner</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 3 Micro-KPIs -->
+                            <div class="exp-kpi-row">
+                                <div class="exp-kpi-item">
+                                    <div class="kpi-value kpi-amber">Top 4</div>
+                                    <div class="kpi-label">Code Sprint (200+ Engineers)</div>
+                                </div>
+                                <div class="exp-kpi-item">
+                                    <div class="kpi-value kpi-purple">Top 7</div>
+                                    <div class="kpi-label">KL University Hackathon</div>
+                                </div>
+                                <div class="exp-kpi-item">
+                                    <div class="kpi-value kpi-cyan">AWS Cloud</div>
+                                    <div class="kpi-label">Bootcamp Certified</div>
+                                </div>
+                            </div>
+
+                            <!-- Narrative Highlights -->
+                            <div class="exp-bullets">
+                                <div class="exp-bullet">
+                                    <i class="fas fa-chevron-right bullet-icon"></i>
+                                    <span>Secured Top 4 rank out of 200+ participants in the Code Sprint 2026 competitive programming challenge.</span>
+                                </div>
+                                <div class="exp-bullet">
+                                    <i class="fas fa-chevron-right bullet-icon"></i>
+                                    <span>Placed Top 7 in KL University national-level hackathon with an autonomous edge solution. Completed intensive AWS cloud deployment bootcamps and OutSkill Generative AI masterclasses.</span>
+                                </div>
+                            </div>
+
+                            <!-- Tech Chips -->
+                            <div class="exp-skills-wrap">
+                                <span class="exp-chip"><i class="fab fa-aws"></i> AWS Cloud</span>
+                                <span class="exp-chip"><i class="fas fa-brain"></i> Generative AI</span>
+                                <span class="exp-chip"><i class="fas fa-code"></i> Competitive Coding</span>
+                                <span class="exp-chip"><i class="fas fa-stopwatch"></i> Hackathons</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- AI Road Map Section -->
+        <!-- AI Road Map Section -->
     <section id="ai-roadmap" class="ai-roadmap">
         <div class="container">
             <h2 class="section-title" style="background: linear-gradient(135deg, #00f2fe, #7209b5); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-family: 'Orbitron', sans-serif; letter-spacing: 3px; display: inline-block;">AI Road Map & Evolution</h2>
