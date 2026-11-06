@@ -6122,6 +6122,67 @@
             }
         }
 
+
+        /* ── IIC Card: 4-KPI Grid Modifier ── */
+        .lead-kpi-row-quad {
+            grid-template-columns: repeat(4, 1fr) !important;
+        }
+
+        .kpi-amber { color: #fbbf24; }
+        .kpi-rose { color: #fb7185; }
+
+        .lead-card-iic .lead-core-summary {
+            border-left-color: #f59e0b;
+        }
+
+        .lead-card-iic .lead-status-beacon .lead-beacon-dot {
+            background: #f59e0b;
+            box-shadow: 0 0 8px #f59e0b, 0 0 20px rgba(245, 158, 11, 0.4);
+        }
+
+        .lead-card-iic .lead-badge-highlight {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(251, 191, 36, 0.1));
+            border-color: rgba(245, 158, 11, 0.4);
+            color: #fbbf24;
+        }
+
+        .lead-card-iic .lead-crest-icon {
+            background: linear-gradient(135deg, #f59e0b, #fb923c);
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.3), 0 0 40px rgba(245, 158, 11, 0.1);
+        }
+
+        /* Light theme IIC overrides */
+        body.light-theme .lead-card-iic .lead-core-summary {
+            border-left-color: #d97706 !important;
+        }
+        body.light-theme .lead-card-iic .lead-badge-highlight {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.12), rgba(251, 191, 36, 0.08)) !important;
+            border-color: rgba(217, 119, 6, 0.35) !important;
+            color: #b45309 !important;
+        }
+        body.light-theme .lead-card-iic .lead-crest-icon {
+            background: linear-gradient(135deg, #d97706, #ea580c) !important;
+        }
+        body.light-theme .lead-card-iic .lead-status-beacon .lead-beacon-dot {
+            background: #d97706 !important;
+            box-shadow: 0 0 6px #d97706 !important;
+        }
+        body.light-theme .kpi-amber { color: #b45309 !important; }
+        body.light-theme .kpi-rose { color: #be123c !important; }
+
+        /* Responsive: 4-KPI to 2x2 on tablet */
+        @media (max-width: 768px) {
+            .lead-kpi-row-quad {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+        }
+        /* Responsive: 4-KPI to 1-col on small mobile */
+        @media (max-width: 500px) {
+            .lead-kpi-row-quad {
+                grid-template-columns: 1fr !important;
+            }
+        }
+
     </style>
 
 </head>
@@ -6847,6 +6908,117 @@
                         <span class="lead-badge"><i class="fas fa-users-gear"></i> Team Leadership</span>
                         <span class="lead-badge"><i class="fas fa-cubes-stacked"></i> Ecosystem Building</span>
                         <span class="lead-badge"><i class="fas fa-chart-line"></i> Venture Pitching</span>
+                    </div>
+                </div>
+
+                <!-- IIC Presidential Council Card -->
+                <div class="lead-card lead-card-iic">
+                    <!-- Top Telemetry Bar -->
+                    <div class="lead-card-header">
+                        <div class="lead-tag-group">
+                            <span class="lead-tag-sys"><i class="fas fa-landmark-dome"></i> INSTITUTIONAL GOVERNANCE // MOE-IIC</span>
+                            <span class="lead-badge-highlight"><i class="fas fa-building-columns"></i> Ministry of Education's Innovation Cell</span>
+                            <span class="lead-status-beacon"><span class="lead-beacon-dot"></span> TENURE COMPLETED + CONTINUING</span>
+                        </div>
+                        <div class="lead-date-pill">
+                            <i class="fas fa-calendar-check"></i> 2025 – 2026 & Continuing
+                        </div>
+                    </div>
+
+                    <!-- Role & Institution Meta -->
+                    <div class="lead-title-row">
+                        <div class="lead-crest-icon">
+                            <i class="fas fa-landmark-dome"></i>
+                        </div>
+                        <div class="lead-title-meta">
+                            <div class="lead-role-badge">PRESIDENT – INSTITUTION'S INNOVATION COUNCIL (IIC)</div>
+                            <h3 class="lead-initiative-title">IIC Presidential Council</h3>
+                            <div class="lead-institution-line">
+                                <span class="lead-institution-name"><i class="fas fa-university"></i> ACE Engineering College (Autonomous)</span>
+                                <span class="lead-collab-tag"><i class="fas fa-landmark-flag"></i> Ministry of Education's Innovation Cell (MIC), Govt. of India</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Core Summary Callout -->
+                    <div class="lead-core-summary">
+                        <p>Serving as the <strong>President of the Institution's Innovation Council (IIC)</strong> established under the aegis of the Ministry of Education's Innovation Cell (MoE) and AICTE. Successfully completed a full 1-year leadership tenure and continuing to direct the college's flagship innovation, startup, and pre-incubation initiatives. Responsible for governing council activities, ensuring institutional compliance across <strong>50+ annual activities</strong>, and fostering a multidisciplinary culture of ideation, technology readiness, and entrepreneurship.</p>
+                    </div>
+
+                    <!-- 4-Metric KPI Strip -->
+                    <div class="lead-kpi-row lead-kpi-row-quad">
+                        <div class="lead-kpi-item">
+                            <div class="lead-kpi-val kpi-cyan">50+</div>
+                            <div class="lead-kpi-lbl">MoE Innovation Cell Activities Executed</div>
+                        </div>
+                        <div class="lead-kpi-item">
+                            <div class="lead-kpi-val kpi-amber">1 Year</div>
+                            <div class="lead-kpi-lbl">Full Presidential Tenure Completed</div>
+                        </div>
+                        <div class="lead-kpi-item">
+                            <div class="lead-kpi-val kpi-emerald">80+</div>
+                            <div class="lead-kpi-lbl">Multi-College Sprint Participants</div>
+                        </div>
+                        <div class="lead-kpi-item">
+                            <div class="lead-kpi-val kpi-rose">100%</div>
+                            <div class="lead-kpi-lbl">Human-Centered Design Focus</div>
+                        </div>
+                    </div>
+
+                    <!-- Strategic Initiatives & Key Responsibilities -->
+                    <div class="lead-initiatives-block">
+                        <div class="lead-initiatives-title">
+                            <i class="fas fa-chess-king"></i>
+                            <span>KEY RESPONSIBILITIES & STRATEGIC IMPACT</span>
+                        </div>
+                        <div class="lead-bullets-list">
+                            <!-- Responsibility 1 -->
+                            <div class="lead-bullet-card">
+                                <div class="bullet-lead-icon icon-cyan"><i class="fas fa-gavel"></i></div>
+                                <div class="bullet-content">
+                                    <h4 class="bullet-heading">Council Governance & Strategic Planning</h4>
+                                    <p class="bullet-text">Lead a council comprising senior faculty coordinators (R&D, IPR, Start-up, Incubation) and student teams to execute the MoE's IIC Calendar across Quarters I–IV. Maintain institutional compliance, quarterly reporting, and star-rating benchmarks on the official National IIC Portal.</p>
+                                </div>
+                            </div>
+
+                            <!-- Responsibility 2 -->
+                            <div class="lead-bullet-card">
+                                <div class="bullet-lead-icon icon-indigo"><i class="fas fa-flask-vial"></i></div>
+                                <div class="bullet-content">
+                                    <h4 class="bullet-heading">Innovation Pipeline & Prototype Acceleration</h4>
+                                    <p class="bullet-text">Drive programs from early ideation (TRL 1–3) to prototype design and Technology Readiness Level validation (TRL 4–6). Facilitated institutional submissions and deposition of high-potential student innovations into the National YUKTI Innovation Repository.</p>
+                                </div>
+                            </div>
+
+                            <!-- Responsibility 3 -->
+                            <div class="lead-bullet-card">
+                                <div class="bullet-lead-icon icon-emerald"><i class="fas fa-people-group"></i></div>
+                                <div class="bullet-content">
+                                    <h4 class="bullet-heading">High-Impact Events & Cross-College Collaboration</h4>
+                                    <p class="bullet-text">Directed inter-college hackathons, business plan competitions, and hands-on Design Thinking sprints. Spearheaded cross-institutional collaborations including the regional PALS Tinkathon — hosting 80+ participants from 5+ engineering colleges in structured, physical problem-solving challenges.</p>
+                                </div>
+                            </div>
+
+                            <!-- Responsibility 4 -->
+                            <div class="lead-bullet-card">
+                                <div class="bullet-lead-icon icon-purple"><i class="fas fa-lightbulb"></i></div>
+                                <div class="bullet-content">
+                                    <h4 class="bullet-heading">Startup Ecosystem & IPR Enablement</h4>
+                                    <p class="bullet-text">Organized workshops on Intellectual Property Rights (IPRs), patent filing pathways, Business Model Canvas (BMC), and early-stage angel investment/VC readiness. Bridged academic engineering with industry via expert talks on tech-transfer, commercialization, and incubation access.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Leadership Badges -->
+                    <div class="lead-badges-wrap">
+                        <span class="lead-badge"><i class="fas fa-chess-king"></i> Strategic Leadership & Governance</span>
+                        <span class="lead-badge"><i class="fas fa-clipboard-check"></i> Innovation Management & MoE/IIC Compliance</span>
+                        <span class="lead-badge"><i class="fas fa-compass-drafting"></i> Design Thinking & Rapid Prototyping</span>
+                        <span class="lead-badge"><i class="fas fa-rocket"></i> Startup Mentorship & Pre-Incubation</span>
+                        <span class="lead-badge"><i class="fas fa-users-gear"></i> Cross-Functional Team Coordination</span>
+                        <span class="lead-badge"><i class="fas fa-database"></i> YUKTI Repository & TRL Mapping</span>
+                        <span class="lead-badge"><i class="fas fa-calendar-days"></i> Event Architecture & Operations</span>
                     </div>
                 </div>
             </div>
