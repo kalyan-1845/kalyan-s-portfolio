@@ -5376,6 +5376,752 @@
             }
         }
 
+    
+        /* =========================================================
+           EXTREME-LEVEL LEADERSHIP & VENTURE BUILDING (DARK & LIGHT)
+           ========================================================= */
+        .leadership-section-epic {
+            position: relative;
+            padding: 100px 0 90px;
+            overflow: hidden;
+            z-index: 10;
+        }
+
+        /* Section HUD Header */
+        .leadership-header-hud {
+            text-align: center;
+            max-width: 880px;
+            margin: 0 auto 4rem;
+            position: relative;
+        }
+
+        .leadership-hud-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            background: rgba(99, 102, 241, 0.08);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 7px 18px;
+            border-radius: 30px;
+            margin-bottom: 1.2rem;
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.15);
+            color: #818cf8;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .leadership-hud-badge:hover {
+            border-color: rgba(99, 102, 241, 0.6);
+            box-shadow: 0 0 28px rgba(99, 102, 241, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .leadership-hud-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #818cf8;
+            box-shadow: 0 0 8px #818cf8;
+            animation: pulse-beacon 2s infinite ease-in-out;
+        }
+
+        .leadership-headline {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: clamp(2rem, 3.8vw, 3rem);
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.025em;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 25px rgba(99, 102, 241, 0.2);
+        }
+
+        .leadership-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #94a3b8;
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        /* Deck & Card Base */
+        .leadership-deck {
+            max-width: 1040px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        .lead-card {
+            background: rgba(15, 23, 42, 0.78);
+            border: 1px solid rgba(0, 242, 254, 0.18);
+            border-radius: 24px;
+            padding: 2.5rem 2.75rem;
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.45), 0 0 30px rgba(99, 102, 241, 0.08);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+        }
+
+        .lead-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #00f2fe 30%, #6366f1 70%, transparent);
+            opacity: 0.85;
+            transition: opacity 0.3s ease;
+        }
+
+        .lead-card:hover {
+            transform: translateY(-4px) scale(1.004);
+            border-color: rgba(99, 102, 241, 0.45);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(0, 242, 254, 0.15);
+        }
+
+        .lead-card:hover::before {
+            opacity: 1;
+        }
+
+        /* Top Header Bar */
+        .lead-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding-bottom: 1.25rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .lead-tag-group {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .lead-tag-sys {
+            font-family: 'Outfit', monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: #00f2fe;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(0, 242, 254, 0.06);
+            padding: 4px 10px;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 242, 254, 0.2);
+        }
+
+        .lead-badge-highlight {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            color: #a5b4fc;
+            background: rgba(99, 102, 241, 0.14);
+            padding: 4px 12px;
+            border-radius: 20px;
+            border: 1px solid rgba(99, 102, 241, 0.35);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 0 14px rgba(99, 102, 241, 0.2);
+        }
+
+        .lead-status-beacon {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: #10b981;
+        }
+
+        .lead-beacon-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #10b981;
+            box-shadow: 0 0 8px #10b981;
+            animation: pulse-beacon 1.8s infinite;
+        }
+
+        .lead-date-pill {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #94a3b8;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: rgba(255, 255, 255, 0.04);
+            padding: 5px 12px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .lead-date-pill i {
+            color: #00f2fe;
+        }
+
+        /* Title & Meta Row */
+        .lead-title-row {
+            display: flex;
+            align-items: center;
+            gap: 1.35rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .lead-crest-icon {
+            width: 58px;
+            height: 58px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.65rem;
+            flex-shrink: 0;
+            background: linear-gradient(135deg, rgba(0, 242, 254, 0.12), rgba(99, 102, 241, 0.18));
+            border: 1px solid rgba(0, 242, 254, 0.25);
+            color: #00f2fe;
+            box-shadow: 0 0 25px rgba(0, 242, 254, 0.18);
+        }
+
+        .lead-title-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .lead-role-badge {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            color: #38bdf8;
+            text-transform: uppercase;
+        }
+
+        .lead-initiative-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -0.015em;
+            margin: 0;
+            line-height: 1.2;
+            background: linear-gradient(135deg, #ffffff 40%, #a5b4fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .lead-institution-line {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.85rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            margin-top: 2px;
+        }
+
+        .lead-institution-name {
+            color: #cbd5e1;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .lead-collab-tag {
+            color: #a5b4fc;
+            font-size: 0.84rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Core Summary Callout */
+        .lead-core-summary {
+            background: rgba(11, 17, 32, 0.65);
+            border-left: 3px solid #6366f1;
+            border-radius: 0 12px 12px 0;
+            padding: 1.15rem 1.4rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .lead-core-summary p {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.02rem;
+            line-height: 1.75;
+            color: #e2e8f0;
+            margin: 0;
+        }
+
+        .lead-core-summary strong {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        /* 3-Metric Quick-Stats Strip */
+        .lead-kpi-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.15rem;
+            margin-bottom: 2rem;
+        }
+
+        .lead-kpi-item {
+            background: rgba(11, 17, 32, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            padding: 1.1rem 1.25rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .lead-kpi-item:hover {
+            border-color: #6366f1;
+            transform: translateY(-2px);
+            background: rgba(11, 17, 32, 0.95);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.15);
+        }
+
+        .lead-kpi-val {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(1.5rem, 2.4vw, 2rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+            margin-bottom: 4px;
+        }
+
+        .kpi-cyan { color: #00f2fe; }
+        .kpi-indigo { color: #818cf8; }
+        .kpi-emerald { color: #10b981; }
+
+        .lead-kpi-lbl {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.74rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            font-weight: 600;
+            line-height: 1.35;
+        }
+
+        /* Strategic Initiatives Block */
+        .lead-initiatives-block {
+            margin-bottom: 2rem;
+        }
+
+        .lead-initiatives-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            color: #818cf8;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 1.15rem;
+        }
+
+        .lead-bullets-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.15rem;
+        }
+
+        .lead-bullet-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 14px;
+            padding: 1.25rem 1.4rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1.15rem;
+            transition: all 0.3s ease;
+        }
+
+        .lead-bullet-card:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(99, 102, 241, 0.3);
+            transform: translateX(4px);
+        }
+
+        .bullet-lead-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.15rem;
+            flex-shrink: 0;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .icon-cyan { color: #00f2fe; }
+        .icon-indigo { color: #818cf8; }
+        .icon-emerald { color: #10b981; }
+        .icon-purple { color: #c084fc; }
+
+        .bullet-content {
+            flex-grow: 1;
+        }
+
+        .bullet-heading {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.35rem;
+            letter-spacing: -0.01em;
+        }
+
+        .bullet-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            line-height: 1.65;
+            color: #cbd5e1;
+            margin: 0;
+        }
+
+        /* 4-Club Governance Sub-Grid */
+        .lead-subclubs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+            margin-top: 0.85rem;
+        }
+
+        .subclub-pill {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 10px;
+            padding: 0.75rem 0.9rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            color: #cbd5e1;
+        }
+
+        .subclub-pill strong {
+            color: #38bdf8;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .subclub-pill em {
+            color: #f472b6;
+            font-style: normal;
+            font-weight: 600;
+        }
+
+        /* Leadership Badges */
+        .lead-badges-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            padding-top: 1.35rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .lead-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 6px 14px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #e2e8f0;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .lead-badge i {
+            color: #818cf8;
+            font-size: 0.85rem;
+            transition: transform 0.25s ease;
+        }
+
+        .lead-badge:hover {
+            transform: translateY(-2px) scale(1.02);
+            background: rgba(99, 102, 241, 0.15);
+            border-color: #818cf8;
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3), 0 0 14px rgba(99, 102, 241, 0.25);
+        }
+
+        .lead-badge:hover i {
+            transform: scale(1.15);
+        }
+
+        /* =========================================================
+           LIGHT THEME OVERRIDES FOR LEADERSHIP SECTION
+           ========================================================= */
+        body.light-theme .leadership-section-epic {
+            background: transparent;
+        }
+
+        body.light-theme .leadership-hud-badge {
+            background: rgba(99, 102, 241, 0.08) !important;
+            border-color: rgba(99, 102, 241, 0.25) !important;
+            color: #4f46e5 !important;
+            box-shadow: 0 4px 14px rgba(99, 102, 241, 0.08) !important;
+        }
+
+        body.light-theme .leadership-headline {
+            color: #0f172a !important;
+            text-shadow: none !important;
+        }
+
+        body.light-theme .leadership-subtitle {
+            color: #475569 !important;
+        }
+
+        body.light-theme .lead-card {
+            background: rgba(255, 255, 255, 0.94) !important;
+            border-color: rgba(99, 102, 241, 0.2) !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04) !important;
+        }
+
+        body.light-theme .lead-card:hover {
+            box-shadow: 0 18px 45px rgba(99, 102, 241, 0.12) !important;
+        }
+
+        body.light-theme .lead-card-header {
+            border-bottom-color: rgba(0, 0, 0, 0.07) !important;
+        }
+
+        body.light-theme .lead-tag-sys {
+            background: rgba(2, 132, 199, 0.06) !important;
+            border-color: rgba(2, 132, 199, 0.18) !important;
+            color: #0284c7 !important;
+        }
+
+        body.light-theme .lead-badge-highlight {
+            background: rgba(99, 102, 241, 0.1) !important;
+            border-color: rgba(99, 102, 241, 0.25) !important;
+            color: #4338ca !important;
+        }
+
+        body.light-theme .lead-date-pill {
+            background: rgba(0, 0, 0, 0.04) !important;
+            border-color: rgba(0, 0, 0, 0.08) !important;
+            color: #475569 !important;
+        }
+
+        body.light-theme .lead-crest-icon {
+            background: rgba(99, 102, 241, 0.08) !important;
+            border-color: rgba(99, 102, 241, 0.2) !important;
+            color: #4f46e5 !important;
+        }
+
+        body.light-theme .lead-role-badge {
+            color: #0284c7 !important;
+        }
+
+        body.light-theme .lead-initiative-title {
+            color: #0f172a !important;
+            background: none !important;
+            -webkit-text-fill-color: #0f172a !important;
+        }
+
+        body.light-theme .lead-institution-name {
+            color: #0f172a !important;
+        }
+
+        body.light-theme .lead-collab-tag {
+            color: #4f46e5 !important;
+        }
+
+        body.light-theme .lead-core-summary {
+            background: rgba(248, 250, 252, 0.95) !important;
+            border-left-color: #4f46e5 !important;
+        }
+
+        body.light-theme .lead-core-summary p {
+            color: #334155 !important;
+        }
+
+        body.light-theme .lead-core-summary strong {
+            color: #0f172a !important;
+        }
+
+        body.light-theme .lead-kpi-item {
+            background: rgba(248, 250, 252, 0.9) !important;
+            border-color: rgba(0, 0, 0, 0.07) !important;
+        }
+
+        body.light-theme .lead-kpi-lbl {
+            color: #64748b !important;
+        }
+
+        body.light-theme .lead-bullet-card {
+            background: rgba(248, 250, 252, 0.75) !important;
+            border-color: rgba(0, 0, 0, 0.06) !important;
+        }
+
+        body.light-theme .bullet-lead-icon {
+            background: #ffffff !important;
+            border-color: rgba(0, 0, 0, 0.08) !important;
+        }
+
+        body.light-theme .bullet-heading {
+            color: #0f172a !important;
+        }
+
+        body.light-theme .bullet-text {
+            color: #334155 !important;
+        }
+
+        body.light-theme .subclub-pill {
+            background: #ffffff !important;
+            border-color: rgba(99, 102, 241, 0.2) !important;
+            color: #334155 !important;
+        }
+
+        body.light-theme .subclub-pill strong {
+            color: #0369a1 !important;
+        }
+
+        body.light-theme .lead-badges-wrap {
+            border-top-color: rgba(0, 0, 0, 0.07) !important;
+        }
+
+        body.light-theme .lead-badge {
+            background: rgba(255, 255, 255, 0.95) !important;
+            border-color: rgba(0, 0, 0, 0.1) !important;
+            color: #1e293b !important;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02) !important;
+        }
+
+        body.light-theme .lead-badge:hover {
+            background: #4f46e5 !important;
+            color: #ffffff !important;
+            border-color: #4f46e5 !important;
+        }
+
+        body.light-theme .lead-badge:hover i {
+            color: #ffffff !important;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 992px) {
+            .lead-card {
+                padding: 2rem 2rem;
+            }
+
+            .lead-subclubs-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .leadership-section-epic {
+                padding: 60px 0 50px;
+            }
+
+            .lead-card {
+                padding: 1.5rem 1.25rem;
+                border-radius: 18px;
+            }
+
+            .lead-title-row {
+                gap: 1rem;
+            }
+
+            .lead-crest-icon {
+                width: 48px;
+                height: 48px;
+                font-size: 1.35rem;
+            }
+
+            .lead-kpi-row {
+                grid-template-columns: 1fr;
+                gap: 0.65rem;
+            }
+
+            .lead-kpi-item {
+                padding: 0.85rem 1rem;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                text-align: left;
+                gap: 1rem;
+            }
+
+            .lead-kpi-val {
+                font-size: 1.5rem;
+                margin-bottom: 0;
+            }
+
+            .lead-kpi-lbl {
+                font-size: 0.72rem;
+            }
+
+            .lead-bullet-card {
+                padding: 1rem 1.1rem;
+                gap: 0.85rem;
+            }
+
+            .bullet-lead-icon {
+                width: 36px;
+                height: 36px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .lead-card {
+                padding: 1.25rem 1rem;
+            }
+
+            .lead-initiative-title {
+                font-size: 1.45rem;
+            }
+
+            .lead-badge {
+                padding: 5px 10px;
+                font-size: 0.75rem;
+            }
+        }
+
     </style>
 
 </head>
@@ -5482,6 +6228,7 @@
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#education">Education</a></li>
+                    <li><a href="#leadership">Leadership</a></li>
                     <li><a href="#experience">Experience</a></li>
                     <li><a href="#ai-roadmap">AI Road Map</a></li>
                     <li><a href="#achievements">Achievements</a></li>
@@ -5964,7 +6711,149 @@
         </div>
     </section>
 
-        <!-- Experience Section -->
+        <!-- Leadership & Venture Building Section -->
+    <section id="leadership" class="leadership-section-epic">
+        <div class="container">
+            <!-- HUD Section Header -->
+            <div class="leadership-header-hud">
+                <div class="leadership-hud-badge">
+                    <span class="leadership-hud-dot"></span>
+                    <span>EXECUTIVE GOVERNANCE & VENTURE INCUBATION</span>
+                </div>
+                <h2 class="leadership-headline">Leadership & Venture Building</h2>
+                <p class="leadership-subtitle">Architecting startup incubation frameworks, stewarding campus innovation hubs, and spearheading entrepreneurial ecosystems.</p>
+            </div>
+
+            <!-- Leadership Grid / Cards Deck -->
+            <div class="leadership-deck">
+                <!-- Card 1: ACE VentureX -->
+                <div class="lead-card lead-card-venturex">
+                    <!-- Top Telemetry Bar -->
+                    <div class="lead-card-header">
+                        <div class="lead-tag-group">
+                            <span class="lead-tag-sys"><i class="fas fa-crown"></i> EXECUTIVE LEADERSHIP</span>
+                            <span class="lead-badge-highlight"><i class="fas fa-rocket"></i> Founders Lab & Incubation Center</span>
+                            <span class="lead-status-beacon"><span class="lead-beacon-dot"></span> ACTIVE INCUBATION LEAD</span>
+                        </div>
+                        <div class="lead-date-pill">
+                            <i class="fas fa-calendar-check"></i> 2026 – Present
+                        </div>
+                    </div>
+
+                    <!-- Role & Institution Meta -->
+                    <div class="lead-title-row">
+                        <div class="lead-crest-icon crest-cyan-indigo">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <div class="lead-title-meta">
+                            <div class="lead-role-badge">PRESIDENT & OVERALL STUDENT LEADER</div>
+                            <h3 class="lead-initiative-title">ACE VentureX</h3>
+                            <div class="lead-institution-line">
+                                <span class="lead-institution-name"><i class="fas fa-university"></i> ACE Engineering College</span>
+                                <span class="lead-collab-tag"><i class="fas fa-handshake"></i> In Partnership with Founders Lab</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Core Summary Callout -->
+                    <div class="lead-core-summary">
+                        <p>Appointed as <strong>President of ACE VentureX</strong>, the official student innovation and incubation center at ACE Engineering College in partnership with Founders Lab. Architected the 4-pillar operational governance framework, leading 25+ core student coordinators and bridging student startup founders with college leadership, seed funding, and executive incubation mentorship.</p>
+                    </div>
+
+                    <!-- 3-Metric Quick-Stats Strip -->
+                    <div class="lead-kpi-row">
+                        <div class="lead-kpi-item">
+                            <div class="lead-kpi-val kpi-cyan">4</div>
+                            <div class="lead-kpi-lbl">Specialized Autonomous Clubs</div>
+                        </div>
+                        <div class="lead-kpi-item">
+                            <div class="lead-kpi-val kpi-indigo">25+</div>
+                            <div class="lead-kpi-lbl">Core Student Leads Under Direct Command</div>
+                        </div>
+                        <div class="lead-kpi-item">
+                            <div class="lead-kpi-val kpi-emerald">2,000+</div>
+                            <div class="lead-kpi-lbl">Campus Student Ecosystem Reach</div>
+                        </div>
+                    </div>
+
+                    <!-- Strategic Initiatives & Key Accomplishments -->
+                    <div class="lead-initiatives-block">
+                        <div class="lead-initiatives-title">
+                            <i class="fas fa-shield-halved"></i>
+                            <span>STRATEGIC INITIATIVES & GOVERNANCE EXECUTION</span>
+                        </div>
+                        <div class="lead-bullets-list">
+                            <!-- Initiative 1 -->
+                            <div class="lead-bullet-card">
+                                <div class="bullet-lead-icon icon-cyan"><i class="fas fa-landmark"></i></div>
+                                <div class="bullet-content">
+                                    <h4 class="bullet-heading">Chaired & Spearheaded Official Launch</h4>
+                                    <p class="bullet-text">Conducted the high-profile ACE VentureX Oath-Taking Ceremony, endorsed by the Principal, Vice Principal, Director of FoundersLab, CEO-Founder, and Engineering HODs to officially inaugurate campus startup operations.</p>
+                                </div>
+                            </div>
+
+                            <!-- Initiative 2: 4-Club Governance -->
+                            <div class="lead-bullet-card">
+                                <div class="bullet-lead-icon icon-indigo"><i class="fas fa-sitemap"></i></div>
+                                <div class="bullet-content">
+                                    <h4 class="bullet-heading">Architected 4-Club Governance Framework</h4>
+                                    <p class="bullet-text">Structured campus operations into 4 autonomous, specialized student clubs with single-point-of-contact reporting:</p>
+                                    <div class="lead-subclubs-grid">
+                                        <div class="subclub-pill">
+                                            <strong>Innovation & Outreach Club</strong>
+                                            Scouting campus IP, problem curation & mentor alignment.
+                                        </div>
+                                        <div class="subclub-pill">
+                                            <strong>Events & Activities Club</strong>
+                                            Bootcamps, workshops & hackathon logistics.
+                                        </div>
+                                        <div class="subclub-pill">
+                                            <strong>PR & Communications Club</strong>
+                                            Institutional relations, guest founders & sponsorships.
+                                        </div>
+                                        <div class="subclub-pill">
+                                            <strong>Digital & Social Media Club</strong>
+                                            Branding, campaign reels & campus storytelling (Dedicated Media Wing: <em>CampusOne TV</em>).
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Initiative 3: IGNITE 2026 -->
+                            <div class="lead-bullet-card">
+                                <div class="bullet-lead-icon icon-emerald"><i class="fas fa-fire-flame-curved"></i></div>
+                                <div class="bullet-content">
+                                    <h4 class="bullet-heading">Designed 'IGNITE 2026' Campus Ideation Challenge</h4>
+                                    <p class="bullet-text">Authored the 36-hour venture challenge blueprint covering 5 problem tracks (<em>AI/GenAI, IoT/Robotics, CleanTech, MedTech, Open Innovation</em>) featuring a ₹37K+ budget and fast-track incubation entry for top teams.</p>
+                                </div>
+                            </div>
+
+                            <!-- Initiative 4: Mentorship & Cohort Pipeline -->
+                            <div class="lead-bullet-card">
+                                <div class="bullet-lead-icon icon-purple"><i class="fas fa-users-viewfinder"></i></div>
+                                <div class="bullet-content">
+                                    <h4 class="bullet-heading">Mentorship & Cohort Pipeline</h4>
+                                    <p class="bullet-text">Managing startup scouting and project incubation for 2,000+ engineering students on campus, creating an active pipeline between technical prototypes and venture creation.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Leadership Badges -->
+                    <div class="lead-badges-wrap">
+                        <span class="lead-badge"><i class="fas fa-rocket"></i> Startup Incubation</span>
+                        <span class="lead-badge"><i class="fas fa-network-wired"></i> Organizational Governance</span>
+                        <span class="lead-badge"><i class="fas fa-diagram-project"></i> Program Management</span>
+                        <span class="lead-badge"><i class="fas fa-users-gear"></i> Team Leadership</span>
+                        <span class="lead-badge"><i class="fas fa-cubes-stacked"></i> Ecosystem Building</span>
+                        <span class="lead-badge"><i class="fas fa-chart-line"></i> Venture Pitching</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
     <section id="experience" class="experience-section-epic">
         <div class="container">
             <!-- HUD Section Header -->
