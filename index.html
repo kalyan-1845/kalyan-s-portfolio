@@ -6578,38 +6578,7 @@
             opacity: 0.15;
         }
 
-        .chassis-particle-hud {
-            position: absolute;
-            bottom: 12px;
-            left: 12px;
-            z-index: 6;
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            background: rgba(3, 7, 18, 0.85);
-            border: 1px solid rgba(0, 242, 254, 0.35);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-family: 'Orbitron', monospace;
-            font-size: 0.68rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            color: #00f2fe;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
-            pointer-events: none;
-            transition: all 0.3s ease;
-        }
-
-        .hud-pulse-dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: #00f2fe;
-            box-shadow: 0 0 8px #00f2fe;
-            animation: pulse-beacon 1.5s infinite ease-in-out;
-        }
+        
 
         /* Hero Avatar Multi-Ring Cybernetic System */
         .hero-avatar-wrapper {
@@ -6678,17 +6647,7 @@
             box-shadow: 0 16px 40px rgba(0, 150, 199, 0.15);
         }
 
-        body.light-theme .chassis-particle-hud {
-            background: rgba(255, 255, 255, 0.92) !important;
-            border-color: rgba(0, 150, 199, 0.4) !important;
-            color: #0077b6 !important;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08) !important;
-        }
-
-        body.light-theme .hud-pulse-dot {
-            background: #0077b6 !important;
-            box-shadow: 0 0 6px #0077b6 !important;
-        }
+        
 
         body.light-theme .hero-avatar-outer-ring {
             border-color: rgba(2, 132, 199, 0.45);
@@ -7131,10 +7090,6 @@
             <div class="about-grid">
                 <!-- Left: Cybernetic Portrait Chassis -->
                 <div class="about-avatar-chassis">
-                    <div class="chassis-header">
-                        <span class="chassis-id"><i class="fas fa-terminal"></i> KR-SYS // 0x1845</span>
-                        <span class="chassis-status"><span class="status-live-dot"></span> ACTIVE</span>
-                    </div>
                     <div class="chassis-image-wrapper" id="chassis-interactive-frame">
                         <canvas id="chassis-particle-canvas" class="chassis-particle-canvas"></canvas>
                         <img src="profile.jpg" alt="Bhoompally Kalyan Reddy - AI & Full-Stack Architect" class="chassis-img" id="chassis-profile-img">
@@ -7143,11 +7098,7 @@
                         <div class="chassis-corner chassis-top-right"></div>
                         <div class="chassis-corner chassis-bottom-left"></div>
                         <div class="chassis-corner chassis-bottom-right"></div>
-                        <div class="chassis-particle-hud" id="chassis-particle-hud">
-                            <span class="hud-pulse-dot"></span>
-                            <span class="hud-status-text">6,400 QUANTUM PARTICLES</span>
                         </div>
-                    </div>
                     <div class="chassis-footer">
                         <h4 class="chassis-name">Bhoompally Kalyan Reddy</h4>
                         <div class="chassis-role">AI Systems & Full-Stack Architect</div>
