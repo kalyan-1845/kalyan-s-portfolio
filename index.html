@@ -874,7 +874,7 @@
             font-size: 0.8rem;
         }
 
-                .projects, .certificates {
+                .hero, section.hero, .about-section-epic, .projects, .certificates {
             opacity: 1 !important;
             transform: none !important;
             position: relative;
@@ -6520,6 +6520,184 @@
             }
         }
 
+    
+        /* =========================================================
+           6K+ QUANTUM PARTICLE CHASSIS & CYBERNETIC HERO AVATAR
+           ========================================================= */
+
+        /* About Section Particle Canvas */
+        .chassis-image-wrapper {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            aspect-ratio: 1 / 1.08;
+            background: #060913;
+            box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.8), 0 16px 40px rgba(0, 242, 254, 0.15);
+            cursor: crosshair;
+        }
+
+        .chassis-particle-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+            display: block;
+            transition: opacity 0.8s ease;
+            opacity: 1;
+        }
+
+        .chassis-particle-canvas.assembled {
+            opacity: 0;
+        }
+
+        .chassis-image-wrapper:hover .chassis-particle-canvas.assembled {
+            opacity: 1;
+        }
+
+        .chassis-img {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+            z-index: 1;
+            filter: contrast(1.05) saturate(1.05);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 0;
+        }
+
+        .chassis-img.assembled {
+            opacity: 1;
+        }
+
+        .chassis-image-wrapper:hover .chassis-img.assembled {
+            opacity: 0.15;
+        }
+
+        .chassis-particle-hud {
+            position: absolute;
+            bottom: 12px;
+            left: 12px;
+            z-index: 6;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: rgba(3, 7, 18, 0.85);
+            border: 1px solid rgba(0, 242, 254, 0.35);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-family: 'Orbitron', monospace;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: #00f2fe;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+
+        .hud-pulse-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #00f2fe;
+            box-shadow: 0 0 8px #00f2fe;
+            animation: pulse-beacon 1.5s infinite ease-in-out;
+        }
+
+        /* Hero Avatar Multi-Ring Cybernetic System */
+        .hero-avatar-wrapper {
+            position: relative;
+            margin-bottom: 1.8rem;
+            perspective: 800px;
+            display: inline-block;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .hero-avatar-outer-ring {
+            position: absolute;
+            inset: -14px;
+            border-radius: 50%;
+            border: 1.5px dashed rgba(0, 242, 254, 0.45);
+            animation: avatarSpinClockwise 18s linear infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .hero-avatar-inner-ring {
+            position: absolute;
+            inset: -7px;
+            border-radius: 50%;
+            border: 1px solid rgba(168, 85, 247, 0.4);
+            animation: avatarSpinCounter 12s linear infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .hero-avatar-scanline {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, rgba(0, 242, 254, 0.9), transparent);
+            box-shadow: 0 0 12px #00f2fe;
+            border-radius: 50%;
+            z-index: 3;
+            pointer-events: none;
+            animation: heroScanSweep 3.5s ease-in-out infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes avatarSpinClockwise {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes avatarSpinCounter {
+            0% { transform: rotate(360deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+        @keyframes heroScanSweep {
+            0%, 100% { top: 0%; opacity: 0; }
+            15% { opacity: 0.8; }
+            85% { opacity: 0.8; }
+            90%, 100% { top: 96%; opacity: 0; }
+        }
+
+        /* Light Theme Overrides */
+        body.light-theme .chassis-image-wrapper {
+            background: #e2e8f0;
+            box-shadow: 0 16px 40px rgba(0, 150, 199, 0.15);
+        }
+
+        body.light-theme .chassis-particle-hud {
+            background: rgba(255, 255, 255, 0.92) !important;
+            border-color: rgba(0, 150, 199, 0.4) !important;
+            color: #0077b6 !important;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08) !important;
+        }
+
+        body.light-theme .hud-pulse-dot {
+            background: #0077b6 !important;
+            box-shadow: 0 0 6px #0077b6 !important;
+        }
+
+        body.light-theme .hero-avatar-outer-ring {
+            border-color: rgba(2, 132, 199, 0.45);
+        }
+
+        body.light-theme .hero-avatar-inner-ring {
+            border-color: rgba(129, 140, 248, 0.4);
+        }
+
     </style>
 
 </head>
@@ -6661,9 +6839,12 @@
         <div class="container">
             <div class="hero-content">
                 <!-- Avatar with Cyber Halo -->
-                <div class="hero-avatar-wrapper">
+                <div class="hero-avatar-wrapper" id="hero-avatar-3d">
+                    <div class="hero-avatar-outer-ring"></div>
+                    <div class="hero-avatar-inner-ring"></div>
                     <div class="hero-avatar-ring"></div>
                     <img src="profile.jpg" alt="Bhoompally Kalyan Reddy" class="hero-avatar-img">
+                    <div class="hero-avatar-scanline"></div>
                     <div class="hero-avatar-status" title="Status: Available for AI / Full-Stack Roles">
                         <span class="status-dot-pulse"></span>
                         <span class="status-dot-text">AVAILABLE</span>
@@ -6745,13 +6926,18 @@
                         <span class="chassis-id"><i class="fas fa-terminal"></i> KR-SYS // 0x1845</span>
                         <span class="chassis-status"><span class="status-live-dot"></span> ACTIVE</span>
                     </div>
-                    <div class="chassis-image-wrapper">
-                        <img src="profile.jpg" alt="Bhoompally Kalyan Reddy - AI & Full-Stack Architect" class="chassis-img">
+                    <div class="chassis-image-wrapper" id="chassis-interactive-frame">
+                        <canvas id="chassis-particle-canvas" class="chassis-particle-canvas"></canvas>
+                        <img src="profile.jpg" alt="Bhoompally Kalyan Reddy - AI & Full-Stack Architect" class="chassis-img" id="chassis-profile-img">
                         <div class="chassis-scanline"></div>
                         <div class="chassis-corner chassis-top-left"></div>
                         <div class="chassis-corner chassis-top-right"></div>
                         <div class="chassis-corner chassis-bottom-left"></div>
                         <div class="chassis-corner chassis-bottom-right"></div>
+                        <div class="chassis-particle-hud" id="chassis-particle-hud">
+                            <span class="hud-pulse-dot"></span>
+                            <span class="hud-status-text">6,400 QUANTUM PARTICLES</span>
+                        </div>
                     </div>
                     <div class="chassis-footer">
                         <h4 class="chassis-name">Bhoompally Kalyan Reddy</h4>
@@ -10735,6 +10921,298 @@
     <!-- NEXUS 3D Engine -->
     <script type="module" src="src/main.js"></script>
 
+    <script>
+
+    // =========================================================
+    // 6,400 QUANTUM PARTICLES PHOTO REASSEMBLY ENGINE
+    // =========================================================
+    (function initQuantumParticlePhoto() {
+        const frame = document.getElementById('chassis-interactive-frame');
+        const canvas = document.getElementById('chassis-particle-canvas');
+        const highResImg = document.getElementById('chassis-profile-img');
+        const hudText = document.getElementById('chassis-particle-hud');
+        if (!frame || !canvas || !highResImg) return;
+
+        const ctx = canvas.getContext('2d', { alpha: true });
+        let particles = [];
+        const GRID_SIZE = 80; // 80x80 = 6,400 particles!
+        let width = 0;
+        let height = 0;
+        let isAssembled = false;
+        let isCoalescing = false;
+        let animId = null;
+        let mouse = { x: -9999, y: -9999, isHovering: false };
+
+        const offCanvas = document.createElement('canvas');
+        offCanvas.width = GRID_SIZE;
+        offCanvas.height = GRID_SIZE;
+        const offCtx = offCanvas.getContext('2d', { willReadFrequently: true });
+
+        const photo = new Image();
+        photo.crossOrigin = 'anonymous';
+        photo.src = 'profile.jpg';
+
+        function resizeCanvas() {
+            const rect = frame.getBoundingClientRect();
+            width = rect.width || 340;
+            height = rect.height || 367;
+            const dpr = Math.min(window.devicePixelRatio || 1, 2);
+            canvas.width = width * dpr;
+            canvas.height = height * dpr;
+            ctx.setTransform(1, 0, 0, 1, 0, 0);
+            ctx.scale(dpr, dpr);
+
+            if (particles.length > 0) {
+                const stepX = width / GRID_SIZE;
+                const stepY = height / GRID_SIZE;
+                for (let i = 0; i < particles.length; i++) {
+                    const p = particles[i];
+                    p.targetX = (p.gx + 0.5) * stepX;
+                    p.targetY = (p.gy + 0.5) * stepY;
+                    p.size = Math.max(stepX, stepY) * 1.15;
+                }
+            }
+        }
+
+        photo.onload = () => {
+            offCtx.drawImage(photo, 0, 0, GRID_SIZE, GRID_SIZE);
+            const imgData = offCtx.getImageData(0, 0, GRID_SIZE, GRID_SIZE).data;
+
+            resizeCanvas();
+            const stepX = width / GRID_SIZE;
+            const stepY = height / GRID_SIZE;
+
+            particles = [];
+            for (let gy = 0; gy < GRID_SIZE; gy++) {
+                for (let gx = 0; gx < GRID_SIZE; gx++) {
+                    const idx = (gy * GRID_SIZE + gx) * 4;
+                    const r = imgData[idx];
+                    const g = imgData[idx + 1];
+                    const b = imgData[idx + 2];
+                    const a = imgData[idx + 3] / 255;
+
+                    const targetX = (gx + 0.5) * stepX;
+                    const targetY = (gy + 0.5) * stepY;
+
+                    // Cosmic drift incoming from Hero constellation
+                    const angle = Math.random() * Math.PI * 2;
+                    const dist = 280 + Math.random() * 450;
+                    const startX = targetX + Math.cos(angle) * dist;
+                    const startY = targetY + Math.sin(angle) * dist - 180;
+
+                    particles.push({
+                        gx,
+                        gy,
+                        x: startX,
+                        y: startY,
+                        vx: 0,
+                        vy: 0,
+                        targetX,
+                        targetY,
+                        r, g, b, a,
+                        color: `rgba(${r},${g},${b},${a})`,
+                        size: Math.max(stepX, stepY) * 1.15,
+                        friction: 0.84 + Math.random() * 0.06,
+                        spring: 0.045 + Math.random() * 0.03,
+                        coalesceDelay: (gy / GRID_SIZE) * 0.45 + Math.random() * 0.35
+                    });
+                }
+            }
+
+            startLoop();
+        };
+
+        // Fallback if image already cached
+        if (photo.complete && photo.naturalWidth) {
+            photo.onload();
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+
+        let scrollTriggered = false;
+        const aboutSection = document.getElementById('about');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !scrollTriggered) {
+                    triggerCoalesce();
+                    scrollTriggered = true;
+                }
+            });
+        }, { threshold: 0.15 });
+
+        if (aboutSection) {
+            observer.observe(aboutSection);
+        }
+
+        window.addEventListener('scroll', () => {
+            if (!scrollTriggered && aboutSection) {
+                const rect = aboutSection.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.85) {
+                    triggerCoalesce();
+                    scrollTriggered = true;
+                }
+            }
+        });
+
+        let coalesceStartTime = 0;
+        function triggerCoalesce() {
+            isCoalescing = true;
+            coalesceStartTime = performance.now();
+            if (hudText) {
+                hudText.innerHTML = '<span class="hud-pulse-dot"></span><span class="hud-status-text">6,400 PARTICLES // COALESCING...</span>';
+            }
+        }
+
+        frame.addEventListener('mousemove', (e) => {
+            const rect = frame.getBoundingClientRect();
+            mouse.x = e.clientX - rect.left;
+            mouse.y = e.clientY - rect.top;
+            mouse.isHovering = true;
+        });
+
+        frame.addEventListener('mouseleave', () => {
+            mouse.x = -9999;
+            mouse.y = -9999;
+            mouse.isHovering = false;
+            if (isAssembled && highResImg) {
+                setTimeout(() => {
+                    if (!mouse.isHovering) highResImg.classList.add('assembled');
+                }, 400);
+            }
+        });
+
+        frame.addEventListener('touchmove', (e) => {
+            if (e.touches.length > 0) {
+                const rect = frame.getBoundingClientRect();
+                mouse.x = e.touches[0].clientX - rect.left;
+                mouse.y = e.touches[0].clientY - rect.top;
+                mouse.isHovering = true;
+            }
+        }, { passive: true });
+
+        frame.addEventListener('touchend', () => {
+            mouse.x = -9999;
+            mouse.y = -9999;
+            mouse.isHovering = false;
+        });
+
+        frame.addEventListener('click', (e) => {
+            const rect = frame.getBoundingClientRect();
+            const clickX = e.clientX - rect.left;
+            const clickY = e.clientY - rect.top;
+            for (let i = 0; i < particles.length; i++) {
+                const p = particles[i];
+                const dx = p.x - clickX;
+                const dy = p.y - clickY;
+                const d = Math.sqrt(dx * dx + dy * dy);
+                if (d < 160) {
+                    const force = (160 - d) / 160 * 18;
+                    p.vx += (dx / (d || 1)) * force;
+                    p.vy += (dy / (d || 1)) * force;
+                }
+            }
+            if (highResImg) {
+                highResImg.classList.remove('assembled');
+                setTimeout(() => {
+                    if (!mouse.isHovering) highResImg.classList.add('assembled');
+                }, 1000);
+            }
+        });
+
+        function startLoop() {
+            if (animId) cancelAnimationFrame(animId);
+
+            function render(now) {
+                ctx.clearRect(0, 0, width, height);
+
+                let allSettled = true;
+                const coalesceElapsed = isCoalescing ? (now - coalesceStartTime) / 1000 : 0;
+
+                for (let i = 0; i < particles.length; i++) {
+                    const p = particles[i];
+
+                    if (isCoalescing) {
+                        if (coalesceElapsed > p.coalesceDelay) {
+                            const dx = p.targetX - p.x;
+                            const dy = p.targetY - p.y;
+                            p.vx += dx * p.spring;
+                            p.vy += dy * p.spring;
+                            if (Math.abs(dx) > 1.2 || Math.abs(dy) > 1.2) {
+                                allSettled = false;
+                            }
+                        } else {
+                            p.vx += (Math.random() - 0.5) * 0.3;
+                            p.vy += (Math.random() - 0.5) * 0.3;
+                            allSettled = false;
+                        }
+                    } else {
+                        p.vx += (Math.random() - 0.5) * 0.15;
+                        p.vy += (Math.random() - 0.5) * 0.15;
+                        allSettled = false;
+                    }
+
+                    if (mouse.isHovering) {
+                        const mdx = p.x - mouse.x;
+                        const mdy = p.y - mouse.y;
+                        const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
+                        const REPEL_RADIUS = 75;
+                        if (mdist < REPEL_RADIUS && mdist > 0) {
+                            const mforce = ((REPEL_RADIUS - mdist) / REPEL_RADIUS) * 7;
+                            p.vx += (mdx / mdist) * mforce;
+                            p.vy += (mdy / mdist) * mforce;
+                            allSettled = false;
+                        }
+                    }
+
+                    p.vx *= p.friction;
+                    p.vy *= p.friction;
+                    p.x += p.vx;
+                    p.y += p.vy;
+
+                    ctx.fillStyle = p.color;
+                    ctx.fillRect(p.x - p.size * 0.5, p.y - p.size * 0.5, p.size, p.size);
+                }
+
+                if (isCoalescing && (allSettled || coalesceElapsed > 1.6) && !isAssembled) {
+                    isAssembled = true;
+                    if (highResImg) {
+                        highResImg.classList.add('assembled');
+                    }
+                    if (canvas) {
+                        canvas.classList.add('assembled');
+                    }
+                    if (hudText) {
+                        hudText.innerHTML = '<span class="hud-pulse-dot" style="background:#10b981;box-shadow:0 0 8px #10b981;"></span><span class="hud-status-text">6,400 QUANTUM PARTICLES // COALESCED</span>';
+                    }
+                }
+
+                animId = requestAnimationFrame(render);
+            }
+
+            animId = requestAnimationFrame(render);
+        }
+    })();
+
+    // Hero Avatar 3D Interactive Tilt
+    (function initHeroAvatar3DTilt() {
+        const avatar = document.getElementById('hero-avatar-3d');
+        if (!avatar) return;
+
+        avatar.addEventListener('mousemove', (e) => {
+            const rect = avatar.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            const rotateX = (-y / rect.height) * 18;
+            const rotateY = (x / rect.width) * 18;
+            avatar.style.transform = `perspective(600px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.06)`;
+        });
+
+        avatar.addEventListener('mouseleave', () => {
+            avatar.style.transform = 'perspective(600px) rotateX(0deg) rotateY(0deg) scale(1)';
+        });
+    })();
+
+    </script>
 </body>
 
 </html>
