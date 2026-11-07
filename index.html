@@ -6930,6 +6930,482 @@
             cursor: pointer !important;
         }
 
+    
+        /* =========================================================
+           CONTACT & COLLABORATION HUB (PREMIUM CYBERNETIC CONSOLE)
+           ========================================================= */
+        .contact {
+            position: relative;
+            padding: 120px 0 140px;
+            overflow: hidden;
+            z-index: 10;
+        }
+
+        .contact-container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* HUD Section Header */
+        .contact-header-hud {
+            text-align: center;
+            max-width: 860px;
+            margin: 0 auto 3.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-hud-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            background: rgba(0, 242, 254, 0.08);
+            border: 1px solid rgba(0, 242, 254, 0.35);
+            border-radius: 30px;
+            padding: 7px 18px;
+            font-family: 'Space Grotesk', 'Orbitron', monospace;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            color: #00f2fe;
+            margin-bottom: 1.15rem;
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.12);
+            transition: all 0.3s ease;
+        }
+
+        .contact-hud-badge:hover {
+            border-color: rgba(0, 242, 254, 0.6);
+            box-shadow: 0 0 28px rgba(0, 242, 254, 0.28);
+            transform: translateY(-2px);
+        }
+
+        .contact-hud-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #00f2fe;
+            box-shadow: 0 0 10px #00f2fe, 0 0 18px #00f2fe;
+            animation: pulseDot 2s infinite ease-in-out;
+        }
+
+        .contact-headline {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif !important;
+            font-size: clamp(2.2rem, 4vw, 3.2rem) !important;
+            font-weight: 800 !important;
+            color: #ffffff !important;
+            letter-spacing: -0.025em !important;
+            line-height: 1.2 !important;
+            margin-bottom: 1.25rem !important;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.6) !important;
+        }
+
+        .contact-subtitle {
+            font-family: 'Inter', sans-serif !important;
+            font-size: 1.05rem !important;
+            line-height: 1.7 !important;
+            color: #94a3b8 !important;
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        /* 2-Column Balanced Grid */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 420px 1fr;
+            gap: 3rem;
+            align-items: start;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Left Column: Direct Communication Channels & Status Console */
+        .contact-channel-card {
+            background: linear-gradient(180deg, rgba(13, 22, 42, 0.92) 0%, rgba(8, 14, 28, 0.96) 100%);
+            border: 1px solid rgba(0, 242, 254, 0.28);
+            border-radius: 24px;
+            padding: 2.2rem;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 35px rgba(0, 242, 254, 0.12), inset 0 0 20px rgba(0, 242, 254, 0.05);
+            display: flex;
+            flex-direction: column;
+            gap: 1.8rem;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .contact-channel-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(0, 242, 254, 0.55);
+            box-shadow: 0 35px 80px rgba(0, 0, 0, 0.7), 0 0 45px rgba(0, 242, 254, 0.22);
+        }
+
+        .channel-header {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding-bottom: 1.4rem;
+        }
+
+        .channel-sys-tag {
+            font-family: 'Space Grotesk', monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            color: #00f2fe;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-transform: uppercase;
+        }
+
+        .channel-title {
+            font-family: 'Outfit', sans-serif !important;
+            font-size: 1.45rem !important;
+            font-weight: 800 !important;
+            color: #ffffff !important;
+            letter-spacing: -0.01em !important;
+            margin: 0 !important;
+        }
+
+        .channel-desc {
+            font-family: 'Inter', sans-serif !important;
+            font-size: 0.92rem !important;
+            line-height: 1.65 !important;
+            color: #94a3b8 !important;
+            margin: 0 !important;
+        }
+
+        /* Direct Info Tiles */
+        .channel-items {
+            display: flex;
+            flex-direction: column;
+            gap: 1.15rem;
+        }
+
+        .channel-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 1.1rem 1.25rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .channel-item:hover {
+            transform: translateX(4px);
+            background: rgba(0, 242, 254, 0.08);
+            border-color: rgba(0, 242, 254, 0.45);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4), 0 0 15px rgba(0, 242, 254, 0.15);
+        }
+
+        .channel-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.15rem;
+            flex-shrink: 0;
+            background: rgba(0, 242, 254, 0.1);
+            border: 1px solid rgba(0, 242, 254, 0.3);
+            color: #00f2fe;
+            box-shadow: 0 0 12px rgba(0, 242, 254, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .channel-item:hover .channel-icon {
+            transform: scale(1.08);
+            background: rgba(0, 242, 254, 0.2);
+            box-shadow: 0 0 18px rgba(0, 242, 254, 0.4);
+        }
+
+        .channel-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            overflow: hidden;
+        }
+
+        .channel-label {
+            font-family: 'Space Grotesk', monospace;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #64748b;
+        }
+
+        .channel-val {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #ffffff;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Social / External Connect Buttons */
+        .channel-socials {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-top: 1.25rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .channel-social-btn {
+            flex: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 11px 14px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: #cbd5e1;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.25s ease;
+        }
+
+        .channel-social-btn i {
+            font-size: 0.95rem;
+            color: #00f2fe;
+        }
+
+        .channel-social-btn:hover {
+            background: rgba(0, 242, 254, 0.12);
+            border-color: rgba(0, 242, 254, 0.45);
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(0, 242, 254, 0.2);
+        }
+
+        /* Right Column: Dispatch Form */
+        .contact-form-glass-card {
+            background: linear-gradient(180deg, rgba(13, 22, 42, 0.92) 0%, rgba(8, 14, 28, 0.96) 100%);
+            border: 1px solid rgba(0, 242, 254, 0.28);
+            border-radius: 24px;
+            padding: 2.4rem;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 35px rgba(0, 242, 254, 0.12), inset 0 0 20px rgba(0, 242, 254, 0.05);
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .contact-form-glass-card:hover {
+            border-color: rgba(0, 242, 254, 0.45);
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.7), 0 0 40px rgba(0, 242, 254, 0.18);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.35rem;
+        }
+
+        .form-row-duo {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+        }
+
+        .form-field-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            position: relative;
+        }
+
+        .form-field-label {
+            font-family: 'Space Grotesk', monospace;
+            font-size: 0.76rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #cbd5e1;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .form-field-label i {
+            color: #00f2fe;
+            font-size: 0.8rem;
+        }
+
+        .form-field-input {
+            width: 100%;
+            padding: 14px 18px;
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 12px;
+            color: #ffffff !important;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            outline: none;
+            box-sizing: border-box;
+        }
+
+        .form-field-input:focus {
+            background: rgba(15, 23, 42, 0.98);
+            border-color: #00f2fe;
+            box-shadow: 0 0 0 3px rgba(0, 242, 254, 0.18), 0 0 20px rgba(0, 242, 254, 0.25);
+            transform: translateY(-1px);
+        }
+
+        .form-field-input::placeholder {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        .form-field-textarea {
+            width: 100%;
+            min-height: 140px;
+            padding: 14px 18px;
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 12px;
+            color: #ffffff !important;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            resize: vertical;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            outline: none;
+            box-sizing: border-box;
+        }
+
+        .form-field-textarea:focus {
+            background: rgba(15, 23, 42, 0.98);
+            border-color: #00f2fe;
+            box-shadow: 0 0 0 3px rgba(0, 242, 254, 0.18), 0 0 20px rgba(0, 242, 254, 0.25);
+            transform: translateY(-1px);
+        }
+
+        .form-field-textarea::placeholder {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        /* Submit Button */
+        .contact-submit-btn {
+            width: 100%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px 28px;
+            background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+            border: 1px solid #00f2fe;
+            border-radius: 12px;
+            color: #060b19;
+            font-family: 'Space Grotesk', 'Orbitron', monospace;
+            font-size: 0.92rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 10px 25px rgba(0, 242, 254, 0.35), 0 0 20px rgba(0, 242, 254, 0.2);
+            margin-top: 0.5rem;
+        }
+
+        .contact-submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(0, 242, 254, 0.5), 0 0 30px rgba(0, 242, 254, 0.35);
+            filter: brightness(1.08);
+        }
+
+        .contact-submit-btn:active {
+            transform: translateY(1px);
+        }
+
+        .contact-submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            filter: grayscale(0.5);
+        }
+
+        /* Feedback Box */
+        .form-message {
+            display: none;
+            padding: 14px 20px;
+            border-radius: 12px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.92rem;
+            font-weight: 600;
+            text-align: center;
+            margin-top: 0.75rem;
+            line-height: 1.5;
+            animation: fadeInUp 0.3s ease;
+        }
+
+        .form-message.success {
+            display: block;
+            background: rgba(16, 185, 129, 0.12);
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            color: #10b981 !important;
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.15);
+        }
+
+        .form-message.error {
+            display: block;
+            background: rgba(239, 68, 68, 0.12);
+            border: 1px solid rgba(239, 68, 68, 0.4);
+            color: #ef4444 !important;
+            box-shadow: 0 0 20px rgba(239, 68, 68, 0.15);
+        }
+
+        @media (max-width: 1024px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .contact-channel-card,
+            .contact-form-glass-card {
+                max-width: 650px;
+                margin: 0 auto;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .contact {
+                padding: 80px 0 120px;
+            }
+
+            .form-row-duo {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-channel-card,
+            .contact-form-glass-card {
+                padding: 1.6rem;
+            }
+
+            .channel-socials {
+                flex-wrap: wrap;
+            }
+        }
+
     </style>
 
 </head>
@@ -9499,29 +9975,102 @@
     </section>
 
 <section id="contact" class="contact">
-        <div class="container">
-            <h2>Get In Touch</h2>
-            <div class="glass-card">
-                <form id="contact-form" class="contact-form">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" class="form-control" required>
+        <div class="contact-container">
+            <!-- HUD Section Header -->
+            <div class="contact-header-hud">
+                <div class="contact-hud-badge">
+                    <span class="contact-hud-dot"></span>
+                    <span>SECURE TRANSMISSION CHANNEL</span>
+                </div>
+                <h2 class="contact-headline">Initiate Connection &amp; Collaboration</h2>
+                <p class="contact-subtitle">Available for autonomous AI architecture roles, high-throughput systems, and open-source technical leadership. Transmit a direct dispatch below.</p>
+            </div>
+
+            <!-- Balanced 2-Column Cybernetic Grid -->
+            <div class="contact-grid">
+                <!-- Left: Direct Communication Channels & Status Console -->
+                <div class="contact-channel-card">
+                    <div class="channel-header">
+                        <span class="channel-sys-tag"><i class="fas fa-terminal"></i> COMM-LINK // DIRECT</span>
+                        <h3 class="channel-title">Let's Build Something Exceptional</h3>
+                        <p class="channel-desc">Whether architecting autonomous multi-agent ecosystems, deploying local offline LLM pipelines, or scaling mission-critical web architectures—let's connect.</p>
                     </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" class="form-control" required>
+
+                    <div class="channel-items">
+                        <a href="mailto:prsnlkalyan@gmail.com" class="channel-item" title="Send Email Direct">
+                            <div class="channel-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="channel-text">
+                                <span class="channel-label">PRIMARY DIRECT DISPATCH</span>
+                                <span class="channel-val">prsnlkalyan@gmail.com</span>
+                            </div>
+                        </a>
+
+                        <div class="channel-item">
+                            <div class="channel-icon" style="color: #38bdf8; border-color: rgba(56, 189, 248, 0.3); background: rgba(56, 189, 248, 0.1);">
+                                <i class="fas fa-location-dot"></i>
+                            </div>
+                            <div class="channel-text">
+                                <span class="channel-label">OPERATIONAL BASE</span>
+                                <span class="channel-val">Hyderabad, India &bull; Global Remote</span>
+                            </div>
+                        </div>
+
+                        <div class="channel-item">
+                            <div class="channel-icon" style="color: #10b981; border-color: rgba(16, 185, 129, 0.3); background: rgba(16, 185, 129, 0.1);">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <div class="channel-text">
+                                <span class="channel-label">RESPONSE GUARANTEE</span>
+                                <span class="channel-val">&lt; 24 Hours &bull; Priority AI Direct</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <input type="text" id="subject" class="form-control" required>
+
+                    <div class="channel-socials">
+                        <a href="https://github.com/kalyan-1845" target="_blank" class="channel-social-btn" title="GitHub Profile">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                        <a href="https://www.linkedin.com/in/bhoompally-kalyanreddy" target="_blank" class="channel-social-btn" title="LinkedIn Profile">
+                            <i class="fab fa-linkedin"></i> LinkedIn
+                        </a>
+                        <a href="javascript:void(0)" onclick="openResumeModal()" class="channel-social-btn" title="View Resume">
+                            <i class="fas fa-file-pdf"></i> Resume
+                        </a>
                     </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" class="form-control" required></textarea>
-                    </div>
-                    <button type="submit" class="cta-button">Send Message</button>
-                    <div id="form-message" class="form-message"></div>
-                </form>
+                </div>
+
+                <!-- Right: High-Performance Glass Dispatch Form -->
+                <div class="contact-form-glass-card">
+                    <form id="contact-form" class="contact-form">
+                        <div class="form-row-duo">
+                            <div class="form-field-group">
+                                <label for="name" class="form-field-label"><i class="fas fa-user"></i> Full Name</label>
+                                <input type="text" id="name" class="form-field-input" placeholder="e.g., Alex Vance" required>
+                            </div>
+                            <div class="form-field-group">
+                                <label for="email" class="form-field-label"><i class="fas fa-envelope"></i> Email Address</label>
+                                <input type="email" id="email" class="form-field-input" placeholder="e.g., alex@company.com" required>
+                            </div>
+                        </div>
+
+                        <div class="form-field-group">
+                            <label for="subject" class="form-field-label"><i class="fas fa-tag"></i> Transmission Subject</label>
+                            <input type="text" id="subject" class="form-field-input" placeholder="e.g., Autonomous AI Architecture / Lead Role Opportunity" required>
+                        </div>
+
+                        <div class="form-field-group">
+                            <label for="message" class="form-field-label"><i class="fas fa-comment-dots"></i> Project Brief / Message</label>
+                            <textarea id="message" class="form-field-textarea" placeholder="Detail your project scope, system goals, or collaboration timeline..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="contact-submit-btn">
+                            <i class="fas fa-paper-plane"></i> Transmit Secure Message
+                        </button>
+                        <div id="form-message" class="form-message"></div>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
@@ -10502,7 +11051,7 @@
                 // Change button state
                 const submitBtn = contactForm.querySelector('button[type="submit"]');
                 const originalBtnText = submitBtn.textContent;
-                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Transmitting Dispatch...';
                 submitBtn.disabled = true;
 
                 // Get form values
@@ -10526,7 +11075,7 @@
                 emailjs.send("service_2tm48xn", "template_amly5bi", templateParams)
                     .then(function(response) {
                         console.log("SUCCESS!", response.status, response.text);
-                        formMessage.textContent = '✅ Thank you for your message! I will get back to you soon.';
+                        formMessage.textContent = '✓ Transmission Received! Thank you for reaching out. I will respond to your dispatch within 24 hours.';
                         formMessage.className = 'form-message success';
                         formMessage.style.display = 'block';
                         formMessage.style.color = '#00ff88';
