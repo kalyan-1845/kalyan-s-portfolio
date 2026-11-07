@@ -2764,7 +2764,7 @@
             background: rgba(0, 242, 254, 0.05) !important;
         }
 
-        .mobile-drawer-resume { display: none !important; }
+        .mobile-drawer-resume, .mobile-drawer-theme { display: none !important; }
         .menu-toggle { display: none !important; }
 
         @media (max-width: 1250px) {
@@ -2802,6 +2802,11 @@
             .mobile-drawer-resume {
                 display: block !important;
                 margin-top: 15px !important;
+                width: 100% !important;
+            }
+            .mobile-drawer-theme {
+                display: block !important;
+                margin-top: 10px !important;
                 width: 100% !important;
             }
             .mobile-drawer-resume .resume-btn {
@@ -7406,6 +7411,509 @@
             }
         }
 
+    
+        /* =========================================================
+           MOBILE DARK & LIGHT THEME COMPREHENSIVE SYSTEM FIXES
+           ========================================================= */
+
+        /* 1. Canvas Light Mode Opacity & Clarity */
+        body.light-theme #nexus-canvas {
+            opacity: 0.12 !important;
+            filter: saturate(1.2);
+        }
+
+        /* 2. AI Roadmap Typography & Light Theme */
+        .ai-roadmap {
+            font-family: 'Inter', -apple-system, sans-serif !important;
+        }
+
+        .ai-roadmap .section-title {
+            font-family: 'Outfit', sans-serif !important;
+            font-size: clamp(2rem, 3.8vw, 3rem) !important;
+            letter-spacing: -0.02em !important;
+            font-weight: 800 !important;
+            line-height: 1.2 !important;
+        }
+
+        .ai-roadmap .section-subtitle {
+            font-family: 'Inter', sans-serif !important;
+            color: #94a3b8 !important;
+            font-size: 1.05rem !important;
+            max-width: 720px !important;
+            margin: 0 auto 3.5rem !important;
+            line-height: 1.65 !important;
+        }
+
+        .node-content {
+            font-family: 'Inter', sans-serif !important;
+        }
+
+        .node-title {
+            font-family: 'Outfit', sans-serif !important;
+            font-weight: 700 !important;
+            color: #ffffff !important;
+        }
+
+        .node-category {
+            font-family: 'Space Grotesk', monospace !important;
+            font-weight: 700 !important;
+            color: #00f2fe !important;
+        }
+
+        .node-content p {
+            font-family: 'Inter', sans-serif !important;
+            color: #cbd5e1 !important;
+            line-height: 1.65 !important;
+        }
+
+        body.light-theme .ai-roadmap .section-title {
+            color: #0f172a !important;
+            background: none !important;
+            -webkit-text-fill-color: initial !important;
+        }
+
+        body.light-theme .ai-roadmap .section-subtitle {
+            color: #475569 !important;
+        }
+
+        body.light-theme .roadmap-node .node-content {
+            background: rgba(255, 255, 255, 0.94) !important;
+            border-color: rgba(2, 132, 199, 0.25) !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
+        }
+
+        body.light-theme .node-title {
+            color: #0f172a !important;
+        }
+
+        body.light-theme .node-category {
+            color: #0284c7 !important;
+        }
+
+        body.light-theme .node-content p {
+            color: #475569 !important;
+        }
+
+        body.light-theme .node-marker {
+            background: #ffffff !important;
+            border-color: #0284c7 !important;
+        }
+
+        body.light-theme .roadmap-node.tool .node-category {
+            color: #9333ea !important;
+        }
+
+        body.light-theme .roadmap-node.tool .node-title {
+            color: #9333ea !important;
+        }
+
+        body.light-theme .roadmap-node.tool .node-marker {
+            border-color: #9333ea !important;
+        }
+
+        /* 3. Achievements & Badges Typography & Light Theme */
+        .achievements {
+            font-family: 'Inter', sans-serif !important;
+        }
+
+        .ach-title {
+            font-family: 'Outfit', sans-serif !important;
+            font-weight: 700 !important;
+            color: #ffffff !important;
+        }
+
+        .ach-institution {
+            font-family: 'Space Grotesk', monospace !important;
+            font-weight: 700 !important;
+        }
+
+        .ach-description {
+            font-family: 'Inter', sans-serif !important;
+            color: #94a3b8 !important;
+        }
+
+        .ach-date {
+            font-family: 'Space Grotesk', monospace !important;
+            color: #64748b !important;
+        }
+
+        .badge-item {
+            font-family: 'Inter', sans-serif !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .badge-item p {
+            font-family: 'Outfit', sans-serif !important;
+            font-weight: 700 !important;
+            color: #ffffff !important;
+            margin-top: 8px !important;
+            font-size: 0.95rem !important;
+        }
+
+        body.light-theme #achievements .section-title,
+        body.light-theme #badges .section-title {
+            color: #0f172a !important;
+            background: none !important;
+            -webkit-text-fill-color: initial !important;
+            border-bottom-color: rgba(2, 132, 199, 0.3) !important;
+        }
+
+        body.light-theme .achievement-card,
+        body.light-theme .badge-item {
+            background: rgba(255, 255, 255, 0.92) !important;
+            border-color: rgba(2, 132, 199, 0.22) !important;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05) !important;
+        }
+
+        body.light-theme .ach-title {
+            color: #0f172a !important;
+        }
+
+        body.light-theme .ach-description {
+            color: #475569 !important;
+        }
+
+        body.light-theme .badge-item p {
+            color: #0f172a !important;
+        }
+
+        /* 4. Projects & Certificates Taskbar Docks in Light Mode */
+        body.light-theme .proj-taskbar-dock,
+        body.light-theme .cert-taskbar-dock {
+            background: rgba(255, 255, 255, 0.95) !important;
+            border-color: rgba(2, 132, 199, 0.35) !important;
+            box-shadow: 0 14px 40px rgba(0, 0, 0, 0.07), 0 0 25px rgba(2, 132, 199, 0.12) !important;
+        }
+
+        body.light-theme .proj-dock-tab,
+        body.light-theme .cert-dock-tab {
+            background: rgba(0, 0, 0, 0.04) !important;
+            border-color: rgba(0, 0, 0, 0.08) !important;
+            color: #475569 !important;
+        }
+
+        body.light-theme .proj-dock-tab .dock-tab-text,
+        body.light-theme .cert-dock-tab .dock-tab-text {
+            color: #334155 !important;
+        }
+
+        body.light-theme .proj-dock-tab:hover,
+        body.light-theme .cert-dock-tab:hover {
+            background: rgba(2, 132, 199, 0.08) !important;
+            border-color: rgba(2, 132, 199, 0.3) !important;
+        }
+
+        body.light-theme .proj-dock-tab:hover .dock-tab-text,
+        body.light-theme .cert-dock-tab:hover .dock-tab-text {
+            color: #0284c7 !important;
+        }
+
+        body.light-theme .proj-dock-tab.active,
+        body.light-theme .cert-dock-tab.active {
+            background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%) !important;
+            border-color: #0284c7 !important;
+            box-shadow: 0 4px 18px rgba(2, 132, 199, 0.35) !important;
+        }
+
+        body.light-theme .proj-dock-tab.active .dock-tab-text,
+        body.light-theme .cert-dock-tab.active .dock-tab-text {
+            color: #ffffff !important;
+        }
+
+        body.light-theme .proj-dock-tab.active .dock-tab-dot,
+        body.light-theme .cert-dock-tab.active .dock-tab-dot {
+            background: #ffffff !important;
+            box-shadow: 0 0 8px #ffffff !important;
+        }
+
+        body.light-theme .proj-dock-tab.active .dock-tab-count,
+        body.light-theme .cert-dock-tab.active .dock-tab-count {
+            background: rgba(255, 255, 255, 0.25) !important;
+            color: #ffffff !important;
+        }
+
+        body.light-theme .proj-dock-tab .dock-tab-count,
+        body.light-theme .cert-dock-tab .dock-tab-count {
+            background: rgba(0, 0, 0, 0.06) !important;
+            color: #64748b !important;
+        }
+
+        /* 5. Contact Section in Light Mode */
+        body.light-theme .contact-channel-card,
+        body.light-theme .contact-form-glass-card {
+            background: rgba(255, 255, 255, 0.94) !important;
+            border-color: rgba(2, 132, 199, 0.25) !important;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.05), 0 0 25px rgba(2, 132, 199, 0.08) !important;
+        }
+
+        body.light-theme .channel-title {
+            color: #0f172a !important;
+        }
+
+        body.light-theme .channel-desc {
+            color: #475569 !important;
+        }
+
+        body.light-theme .channel-item {
+            background: rgba(2, 132, 199, 0.04) !important;
+            border-color: rgba(2, 132, 199, 0.15) !important;
+            color: #0f172a !important;
+        }
+
+        body.light-theme .channel-item:hover {
+            background: rgba(2, 132, 199, 0.08) !important;
+            border-color: #0284c7 !important;
+        }
+
+        body.light-theme .channel-label {
+            color: #64748b !important;
+        }
+
+        body.light-theme .channel-val {
+            color: #0f172a !important;
+        }
+
+        body.light-theme .channel-social-btn {
+            background: rgba(2, 132, 199, 0.06) !important;
+            border-color: rgba(2, 132, 199, 0.2) !important;
+            color: #0284c7 !important;
+        }
+
+        body.light-theme .channel-social-btn:hover {
+            background: #0284c7 !important;
+            color: #ffffff !important;
+        }
+
+        body.light-theme .form-field-label {
+            color: #1e293b !important;
+        }
+
+        body.light-theme .form-field-input,
+        body.light-theme .form-field-textarea {
+            background: #ffffff !important;
+            border-color: rgba(2, 132, 199, 0.25) !important;
+            color: #0f172a !important;
+        }
+
+        body.light-theme .form-field-input:focus,
+        body.light-theme .form-field-textarea:focus {
+            border-color: #0284c7 !important;
+            box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.18) !important;
+        }
+
+        body.light-theme .form-field-input::placeholder,
+        body.light-theme .form-field-textarea::placeholder {
+            color: #94a3b8 !important;
+        }
+
+        body.light-theme .contact-headline {
+            color: #0f172a !important;
+            text-shadow: none !important;
+        }
+
+        body.light-theme .contact-subtitle {
+            color: #475569 !important;
+        }
+
+        body.light-theme .contact-hud-badge {
+            background: rgba(255, 255, 255, 0.9) !important;
+            border-color: rgba(2, 132, 199, 0.4) !important;
+            color: #0284c7 !important;
+        }
+
+        body.light-theme .contact-hud-dot {
+            background: #0284c7 !important;
+            box-shadow: 0 0 8px #0284c7 !important;
+        }
+
+        /* 6. Premium Cybernetic Footer (Dark & Light) */
+        footer {
+            position: relative !important;
+            background: linear-gradient(180deg, rgba(8, 14, 28, 0.96) 0%, rgba(5, 9, 18, 0.98) 100%) !important;
+            border-top: 1px solid rgba(0, 242, 254, 0.25) !important;
+            backdrop-filter: blur(20px) !important;
+            -webkit-backdrop-filter: blur(20px) !important;
+            padding: 4rem 0 2rem !important;
+            font-family: 'Inter', sans-serif !important;
+            z-index: 10 !important;
+            overflow: hidden;
+        }
+
+        .footer-content {
+            display: grid !important;
+            grid-template-columns: 1.5fr repeat(3, 1fr) !important;
+            gap: 2.5rem !important;
+            margin-bottom: 2.5rem !important;
+        }
+
+        .footer-column h3 {
+            font-family: 'Outfit', sans-serif !important;
+            font-size: 1.15rem !important;
+            font-weight: 700 !important;
+            color: #00f2fe !important;
+            letter-spacing: -0.01em !important;
+            margin-bottom: 1.15rem !important;
+        }
+
+        .footer-column p {
+            font-family: 'Inter', sans-serif !important;
+            font-size: 0.92rem !important;
+            color: #94a3b8 !important;
+            line-height: 1.65 !important;
+            margin-bottom: 0.5rem !important;
+        }
+
+        .footer-links {
+            list-style: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.65rem !important;
+        }
+
+        .footer-links a {
+            font-family: 'Inter', sans-serif !important;
+            font-size: 0.92rem !important;
+            color: #cbd5e1 !important;
+            text-decoration: none !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 6px !important;
+            transition: all 0.25s ease !important;
+        }
+
+        .footer-links a:hover {
+            color: #00f2fe !important;
+            transform: translateX(4px) !important;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+            padding-top: 1.5rem !important;
+            text-align: center !important;
+        }
+
+        .footer-bottom p {
+            font-family: 'Space Grotesk', monospace !important;
+            font-size: 0.82rem !important;
+            color: #64748b !important;
+            letter-spacing: 0.04em !important;
+        }
+
+        /* Light Theme Footer */
+        body.light-theme footer {
+            background: linear-gradient(180deg, rgba(248, 250, 252, 0.96) 0%, rgba(241, 245, 249, 0.98) 100%) !important;
+            border-top: 1px solid rgba(2, 132, 199, 0.2) !important;
+            box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.03) !important;
+        }
+
+        body.light-theme .footer-column h3 {
+            color: #0284c7 !important;
+        }
+
+        body.light-theme .footer-column p {
+            color: #475569 !important;
+        }
+
+        body.light-theme .footer-links a {
+            color: #334155 !important;
+        }
+
+        body.light-theme .footer-links a:hover {
+            color: #0284c7 !important;
+        }
+
+        body.light-theme .footer-bottom {
+            border-top-color: rgba(2, 132, 199, 0.12) !important;
+        }
+
+        body.light-theme .footer-bottom p {
+            color: #64748b !important;
+        }
+
+        @media (max-width: 900px) {
+            .footer-content {
+                grid-template-columns: 1fr 1fr !important;
+                gap: 2rem !important;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .footer-content {
+                grid-template-columns: 1fr !important;
+                gap: 1.8rem !important;
+            }
+        }
+
+        /* 7. Mobile Navigation & Drawer Theme Toggle */
+        .mobile-drawer-theme {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            width: 100%;
+        }
+
+        .mobile-theme-btn {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 18px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            color: #cbd5e1;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-theme-btn i {
+            color: #00f2fe;
+            font-size: 1rem;
+        }
+
+        .mobile-theme-btn:hover {
+            background: rgba(0, 242, 254, 0.1);
+            border-color: rgba(0, 242, 254, 0.4);
+            color: #ffffff;
+        }
+
+        body.light-theme .mobile-drawer-theme {
+            border-top-color: rgba(2, 132, 199, 0.15);
+        }
+
+        body.light-theme .mobile-theme-btn {
+            background: rgba(2, 132, 199, 0.08);
+            border-color: rgba(2, 132, 199, 0.25);
+            color: #0284c7;
+        }
+
+        body.light-theme .mobile-theme-btn i {
+            color: #0284c7;
+        }
+
+        body.light-theme .mobile-theme-btn:hover {
+            background: #0284c7;
+            color: #ffffff;
+        }
+
+        body.light-theme .mobile-theme-btn:hover i {
+            color: #ffffff;
+        }
+
+        @media (max-width: 768px) {
+            .theme-toggle {
+                width: 40px !important;
+                height: 40px !important;
+            }
+        }
+
     </style>
 
 </head>
@@ -7523,6 +8031,11 @@
                         <a href="javascript:void(0)" class="resume-btn" onclick="openResumeModal(); closeMobileNav();">
                             <i class="fas fa-file-alt"></i> View Resume
                         </a>
+                    </li>
+                    <li class="mobile-drawer-theme">
+                        <button class="mobile-theme-btn" id="mobile-drawer-theme-btn" onclick="toggleTheme()" aria-label="Toggle Theme">
+                            <i class="fas fa-moon"></i> <span id="mobile-theme-label">Switch to Light Mode</span>
+                        </button>
                     </li>
                 </ul>
                 <div class="nav-actions-container">
@@ -8731,7 +9244,7 @@
     <section id="ai-roadmap" class="ai-roadmap">
         <div class="container">
             <h2 class="section-title" style="background: linear-gradient(135deg, #00f2fe, #7209b5); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-family: 'Orbitron', sans-serif; letter-spacing: 3px; display: inline-block;">AI Road Map & Evolution</h2>
-            <p class="section-subtitle" style="text-align:center; color: rgba(255,255,255,0.5); margin-bottom: 3rem; font-size: 1rem; letter-spacing: 1px;">Tracing my journey through the models, tools, and agents that define my engineering path.</p>
+            <p class="section-subtitle" style="text-align:center; margin-bottom: 3rem;">Tracing my journey through the models, tools, and agents that define my engineering path.</p>
 
             <div class="roadmap-container">
                 <div class="roadmap-path">
@@ -10285,21 +10798,22 @@
         // Dark Mode Toggle
         function toggleTheme() {
             document.body.classList.toggle("light-theme");
-            const btn = document.querySelector(".toggle-btn");
-            const icon = btn.querySelector("i");
+            const isLight = document.body.classList.contains("light-theme");
+            localStorage.setItem('theme', isLight ? 'light' : 'dark');
 
-            if (document.body.classList.contains("light-theme")) {
-                icon.classList.remove("fa-moon");
-                icon.classList.add("fa-sun");
-                btn.innerHTML = '<i class="fas fa-sun"></i>';
-            } else {
-                icon.classList.remove("fa-sun");
-                icon.classList.add("fa-moon");
-                btn.innerHTML = '<i class="fas fa-moon"></i>';
+            // Synchronize all theme toggle buttons and icons
+            document.querySelectorAll('.theme-toggle i, #mobile-drawer-theme-btn i').forEach(icon => {
+                if (isLight) {
+                    icon.className = "fas fa-sun";
+                } else {
+                    icon.className = "fas fa-moon";
+                }
+            });
+
+            const mobileThemeLabel = document.getElementById('mobile-theme-label');
+            if (mobileThemeLabel) {
+                mobileThemeLabel.textContent = isLight ? "Switch to Dark Mode" : "Switch to Light Mode";
             }
-
-            // Save theme preference to localStorage
-            localStorage.setItem('theme', document.body.classList.contains("light-theme") ? 'light' : 'dark');
         }
 
         // Theme Toggle Button
@@ -10308,8 +10822,13 @@
         // Check for saved theme preference
         if (localStorage.getItem('theme') === 'light') {
             document.body.classList.add("light-theme");
-            const btn = document.querySelector(".toggle-btn");
-            btn.innerHTML = '<i class="fas fa-sun"></i>';
+            document.querySelectorAll('.theme-toggle i, #mobile-drawer-theme-btn i').forEach(icon => {
+                icon.className = "fas fa-sun";
+            });
+            const mobileThemeLabel = document.getElementById('mobile-theme-label');
+            if (mobileThemeLabel) {
+                mobileThemeLabel.textContent = "Switch to Dark Mode";
+            }
         }
 
         // Mobile menu toggle logic unified in main navigation controller below
