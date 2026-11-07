@@ -6587,6 +6587,100 @@
            ========================================================= */
 
         /* Centered Taskbar Dock Container */
+        
+        /* Projects Taskbar / OS Category Filter Dock */
+        .proj-taskbar-dock-wrapper {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 2rem 0 3.5rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .proj-taskbar-dock {
+            display: inline-flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin: 0;
+            padding: 8px 14px;
+            background: rgba(6, 11, 25, 0.9);
+            border: 1px solid rgba(0, 242, 254, 0.35);
+            border-radius: 50px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 14px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 242, 254, 0.12), inset 0 0 15px rgba(0, 242, 254, 0.08);
+            position: relative;
+            max-width: 100%;
+        }
+
+        .proj-dock-tab {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 18px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 40px;
+            color: #94a3b8;
+            font-family: 'Space Grotesk', 'Orbitron', monospace;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            user-select: none;
+            white-space: nowrap;
+        }
+
+        .proj-dock-tab:hover {
+            color: #ffffff;
+            background: rgba(0, 242, 254, 0.1);
+            border-color: rgba(0, 242, 254, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 242, 254, 0.2);
+        }
+
+        .proj-dock-tab.active {
+            color: #060b19;
+            background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+            border-color: #00f2fe;
+            font-weight: 800;
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.5), 0 4px 15px rgba(0, 242, 254, 0.3);
+            transform: translateY(-1px);
+        }
+
+        .proj-dock-tab .dock-tab-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #00f2fe;
+            box-shadow: 0 0 8px #00f2fe;
+        }
+
+        .proj-dock-tab.active .dock-tab-dot {
+            background: #060b19;
+            box-shadow: none;
+        }
+
+        .proj-dock-tab .dock-tab-count {
+            display: inline-block;
+            padding: 2px 7px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            background: rgba(255, 255, 255, 0.1);
+            color: inherit;
+        }
+
+        .proj-dock-tab.active .dock-tab-count {
+            background: rgba(6, 11, 25, 0.25);
+            color: #060b19;
+            font-weight: 900;
+        }
+
         .cert-taskbar-dock-wrapper {
             width: 100%;
             display: flex;
@@ -8277,110 +8371,7 @@
 
 
 
-            <!-- Projects Milestone Gallery -->
-            <div style="margin-top: 6rem;">
-                <h2 class="section-title">Major AI Milestones</h2>
-                <div class="projects-grid">
-                    <!-- Project 1: Sarathi -->
-                    <div class="project-card glass-card" style="height: auto; padding: 2.5rem; border: 1px solid gold;">
-                        <div style="display:flex; justify-content: space-between; align-items: flex-start;">
-                            <h3 class="node-title" style="color: gold;">📍 SARATHI Navigation</h3>
-                            <span class="arena-trend" style="font-size: 0.7rem; background: rgba(255, 215, 0, 0.1); color: gold;">PUBLISHED 2026</span>
-                        </div>
-                        <p style="font-size: 0.95rem; margin: 1.5rem 0; line-height: 1.6;">Research project (IJARSCT 2026) for a smart emergency location sharing and intelligent routing system using real-time GPS integration.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Routing Algorithms</span>
-                            <span class="tech-tag">GPS Integration</span>
-                        </div>
-                        <a href="https://github.com/kalyan-1845/sarathi-emergency" target="_blank" class="milestone-link"><i class="fab fa-github"></i> View Repository</a>
                     </div>
-
-                    <!-- Project 2: Omni Agent Android -->
-                    <div class="project-card glass-card" style="height: auto; padding: 2.5rem; border: 1px solid var(--primary-color);">
-                        <div style="display:flex; justify-content: space-between; align-items: flex-start;">
-                            <h3 class="node-title">🤖 Omni Agent Android</h3>
-                            <span class="arena-trend" style="font-size: 0.7rem;">MIT LICENSE</span>
-                        </div>
-                        <p style="font-size: 0.95rem; margin: 1.5rem 0; line-height: 1.6;">A versatile Android-based AI agent repository for automated system interaction, task conductor logic, and mobile automation.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Android UI</span>
-                            <span class="tech-tag">Autonomous Agent</span>
-                        </div>
-                        <a href="https://github.com/kalyan-1845/android" target="_blank" class="milestone-link"><i class="fab fa-github"></i> View Repository</a>
-                    </div>
-
-                    <!-- Project 3: Kovixa -->
-                    <div class="project-card glass-card" style="height: auto; padding: 2.5rem;">
-                        <h3 class="node-title">🛡️ Kovixa</h3>
-                        <p style="font-size: 0.95rem; margin: 1.5rem 0; line-height: 1.6;">Advanced system security and verification framework utilizing AI-integrated threat analysis for secure digital environments.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Cybersecurity</span>
-                            <span class="tech-tag">AI Verification</span>
-                        </div>
-                        <a href="https://github.com/kalyan-1845/kovixa" target="_blank" class="milestone-link"><i class="fab fa-github"></i> View Repository</a>
-                    </div>
-
-                    <!-- Project 4: Data Processing System -->
-                    <div class="project-card glass-card" style="height: auto; padding: 2.5rem;">
-                        <h3 class="node-title">📊 Data Processing System</h3>
-                        <p style="font-size: 0.95rem; margin: 1.5rem 0; line-height: 1.6;">High-performance pipeline for automated cleaning, processing, and transformation of large-scale AI datasets and LLM training data.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">ELT/ETL</span>
-                            <span class="tech-tag">Data Engineering</span>
-                        </div>
-                        <a href="https://github.com/kalyan-1845/Data-Processing-System" target="_blank" class="milestone-link"><i class="fab fa-github"></i> View Repository</a>
-                    </div>
-
-                    <!-- Project 5: 3D-King-PPT -->
-                    <div class="project-card glass-card" style="height: auto; padding: 2.5rem;">
-                        <h3 class="node-title">👑 3D-King-PPT</h3>
-                        <p style="font-size: 0.95rem; margin: 1.5rem 0; line-height: 1.6;">AI-powered presentation engine designed for immersive 3D visual storytelling and dynamic slide deck generation.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Three.js</span>
-                            <span class="tech-tag">Generative Slides</span>
-                        </div>
-                        <a href="https://github.com/kalyan-1845/3d-king-ppt" target="_blank" class="milestone-link"><i class="fab fa-github"></i> View Repository</a>
-                    </div>
-
-                    <!-- Project 6: AI Avatar Studio -->
-                    <div class="project-card glass-card" style="height: auto; padding: 2.5rem;">
-                        <h3 class="node-title">👤 AI Avatar Studio</h3>
-                        <p style="font-size: 0.95rem; margin: 1.5rem 0; line-height: 1.6;">Generative media platform focused on high-fidelity AI avatar creation and real-time vision processing (Veo Vision Engine).</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Computer Vision</span>
-                            <span class="tech-tag">Generative AI</span>
-                        </div>
-                        <a href="https://github.com/kalyan-1845/ai-avatar-studio" target="_blank" class="milestone-link"><i class="fab fa-github"></i> View Repository</a>
-                    </div>
-
-                    <!-- Project 7: Frnd AI -->
-                    <div class="project-card glass-card" style="height: auto; padding: 2.5rem;">
-                        <h3 class="node-title">💬 Frnd AI</h3>
-                        <p style="font-size: 0.95rem; margin: 1.5rem 0; line-height: 1.6;">A conversational AI agent specialized in natural language interaction, emotional intelligence, and user companionship.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">NLP</span>
-                            <span class="tech-tag">Emotional AI</span>
-                        </div>
-                        <a href="https://github.com/kalyan-1845/frnd.ai" target="_blank" class="milestone-link"><i class="fab fa-github"></i> View Repository</a>
-                    </div>
-
-                    <!-- Project 8: Flutter POS -->
-                    <div class="project-card glass-card" style="height: auto; padding: 2.5rem; border: 1px solid var(--primary-color);">
-                        <div style="display:flex; justify-content: space-between; align-items: flex-start;">
-                            <h3 class="node-title">🏬 Flutter POS</h3>
-                            <span class="arena-trend" style="font-size: 0.7rem;">MIT LICENSE</span>
-                        </div>
-                        <p style="font-size: 0.95rem; margin: 1.5rem 0; line-height: 1.6;">Robust, cross-platform Point of Sale application built with Flutter, featuring offline-first persistence and license management.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Flutter</span>
-                            <span class="tech-tag">MIT License</span>
-                        </div>
-                        <a href="https://github.com/kalyan-1845/Flutter-POS-System" target="_blank" class="milestone-link"><i class="fab fa-github"></i> View Repository</a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
     </section>
 
     <!-- Achievements Section -->
@@ -8522,315 +8513,286 @@
                     <span>FEATURED ENGINEERING PORTFOLIO</span>
                 </div>
                 <h2 class="proj-headline">Full-Stack & Autonomous AI Systems</h2>
-                <p class="proj-subtitle">Production-grade multilingual voice agents, browser-based media studios, computer vision pipelines, and scalable web architectures.</p>
+                <p class="proj-subtitle">Production-grade multi-agent frameworks, peer-reviewed spatial AI research, offline edge neural assistants, and client-side computer vision engines.</p>
+            </div>
+
+            <!-- Projects Taskbar / OS Dock Filter Switcher -->
+            <div class="proj-taskbar-dock-wrapper">
+                <div class="proj-taskbar-dock" id="proj-taskbar-dock">
+                    <button class="proj-dock-tab active" data-filter="all" title="View All Flagship AI Systems">
+                        <span class="dock-tab-dot"></span>
+                        <span class="dock-tab-text">ALL SYSTEMS</span>
+                        <span class="dock-tab-count">8</span>
+                    </button>
+                    <button class="proj-dock-tab" data-filter="agents" title="Autonomous Multi-Agent & LLM Systems">
+                        <i class="fas fa-robot"></i>
+                        <span class="dock-tab-text">AUTONOMOUS AGENTS</span>
+                        <span class="dock-tab-count">3</span>
+                    </button>
+                    <button class="proj-dock-tab" data-filter="vision" title="Computer Vision & Generative Media">
+                        <i class="fas fa-eye"></i>
+                        <span class="dock-tab-text">VISION & MEDIA</span>
+                        <span class="dock-tab-count">2</span>
+                    </button>
+                    <button class="proj-dock-tab" data-filter="research" title="Published Research & Cybersecurity ML">
+                        <i class="fas fa-microchip"></i>
+                        <span class="dock-tab-text">RESEARCH & CYBER ML</span>
+                        <span class="dock-tab-count">3</span>
+                    </button>
+                </div>
             </div>
 
             <div class="projects-grid">
-                <!-- Project 1: Aurora AI Pro -->
-                <div class="project-card glass-card" data-project-id="1">
+                <!-- Project 1: AuraCore AI Ecosystem -->
+                <div class="project-card glass-card" data-project-id="1" data-category="agents">
                     <div class="project-card-header">
-                        <div class="proj-icon-box">
-                            <i class="fas fa-language"></i>
+                        <div class="proj-icon-box" style="background: rgba(0, 242, 254, 0.12); color: #00f2fe; border: 1px solid rgba(0, 242, 254, 0.3);">
+                            <i class="fas fa-network-wired"></i>
                         </div>
-                        <span class="proj-category-badge">VOICE AI // NLP</span>
-                        <a href="https://aurora-ai-pro.netlify.app/" class="proj-external-btn" target="_blank" title="Live Demo" aria-label="Live Demo">
-                            <i class="fas fa-external-link-alt"></i>
-                        </a>
-                    </div>
-                    <div class="project-card-body">
-                        <h3 class="project-card-title">Aurora AI Pro</h3>
-                        <p class="project-card-description">A real-time multilingual neural translator supporting cross-language voice and text streams with automated speech recognition and dynamic synthesis.</p>
-                        <div class="project-card-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">SpeechRecognition</span>
-                            <span class="tech-tag">gTTS</span>
-                            <span class="tech-tag">Tkinter</span>
-                        </div>
-                    </div>
-                    <div class="project-card-footer">
-                        <a href="https://aurora-ai-pro.netlify.app/" class="proj-btn proj-btn-primary" target="_blank">
-                            <i class="fas fa-play"></i> Live App
-                        </a>
-                        <button class="proj-btn proj-btn-secondary" onclick="openProjectModal(1)">
-                            <i class="fas fa-info-circle"></i> Details
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Project 2: Deccan Fresh -->
-                <div class="project-card glass-card" data-project-id="2">
-                    <div class="project-card-header">
-                        <div class="proj-icon-box">
-                            <i class="fas fa-shopping-cart"></i>
-                        </div>
-                        <span class="proj-category-badge">FULL-STACK // COMMERCE</span>
-                        <a href="https://hyddeccanfresh.netlify.app/" class="proj-external-btn" target="_blank" title="Live Demo" aria-label="Live Demo">
-                            <i class="fas fa-external-link-alt"></i>
-                        </a>
-                    </div>
-                    <div class="project-card-body">
-                        <h3 class="project-card-title">Deccan Fresh E-Commerce</h3>
-                        <p class="project-card-description">Responsive farm-to-door grocery commerce web application featuring stateful cart architecture, category filtering, and optimized checkout UX.</p>
-                        <div class="project-card-tech">
-                            <span class="tech-tag">HTML5</span>
-                            <span class="tech-tag">CSS3</span>
-                            <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">Responsive UI</span>
-                        </div>
-                    </div>
-                    <div class="project-card-footer">
-                        <a href="https://hyddeccanfresh.netlify.app/" class="proj-btn proj-btn-primary" target="_blank">
-                            <i class="fas fa-play"></i> Live App
-                        </a>
-                        <button class="proj-btn proj-btn-secondary" onclick="openProjectModal(2)">
-                            <i class="fas fa-info-circle"></i> Details
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Project 3: Scanify v2 -->
-                <div class="project-card glass-card" data-project-id="3">
-                    <div class="project-card-header">
-                        <div class="proj-icon-box">
-                            <i class="fas fa-qrcode"></i>
-                        </div>
-                        <span class="proj-category-badge">DEV TOOL // UTILITY</span>
-                        <a href="https://github.com/kalyan-1845/Scanify-v2" class="proj-external-btn" target="_blank" title="GitHub Repo" aria-label="GitHub Repo">
+                        <span class="proj-category-badge" style="color: #00f2fe; background: rgba(0, 242, 254, 0.08); border-color: rgba(0, 242, 254, 0.3);">FLAGSHIP // MULTI-AGENT</span>
+                        <a href="https://github.com/kalyan-1845/AuraCore-AI" class="proj-external-btn" target="_blank" title="GitHub Repo" aria-label="GitHub Repo" onclick="event.stopPropagation();">
                             <i class="fab fa-github"></i>
                         </a>
                     </div>
                     <div class="project-card-body">
-                        <h3 class="project-card-title">Scanify v2 QR Generator</h3>
-                        <p class="project-card-description">High-speed dynamic QR code generator with live vector preview, color customizations, multi-payload formatting, and instant SVG/PNG download.</p>
+                        <h3 class="project-card-title">AuraCore AI Ecosystem</h3>
+                        <p class="project-card-description">Autonomous multi-agent orchestration architecture engineered with LangGraph, local Ollama LLMs, and persistent vector memory. Powers resilient task routing with 98% uptime and real-time WebSocket telemetry.</p>
                         <div class="project-card-tech">
-                            <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">QR API</span>
+                            <span class="tech-tag">LangGraph</span>
                             <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Canvas</span>
+                            <span class="tech-tag">Ollama LLM</span>
+                            <span class="tech-tag">FastAPI</span>
+                            <span class="tech-tag">WebSockets</span>
                         </div>
                     </div>
                     <div class="project-card-footer">
-                        <a href="https://github.com/kalyan-1845/Scanify-v2" class="proj-btn proj-btn-primary" target="_blank">
+                        <a href="https://github.com/kalyan-1845/AuraCore-AI" class="proj-btn proj-btn-primary" target="_blank" onclick="event.stopPropagation();">
                             <i class="fab fa-github"></i> Repository
                         </a>
-                        <button class="proj-btn proj-btn-secondary" onclick="openProjectModal(3)">
+                        <button class="proj-btn proj-btn-secondary" onclick="event.stopPropagation(); openProjectModal(1)">
                             <i class="fas fa-info-circle"></i> Details
                         </button>
                     </div>
                 </div>
 
-                <!-- Project 4: BKR 2.0 Assistant -->
-                <div class="project-card glass-card" data-project-id="4">
+                <!-- Project 2: Sarathi Smart Emergency Navigation -->
+                <div class="project-card glass-card" data-project-id="2" data-category="research" style="border: 1px solid rgba(251, 191, 36, 0.35);">
                     <div class="project-card-header">
-                        <div class="proj-icon-box">
-                            <i class="fas fa-robot"></i>
+                        <div class="proj-icon-box" style="background: rgba(251, 191, 36, 0.12); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.3);">
+                            <i class="fas fa-map-location-dot"></i>
                         </div>
-                        <span class="proj-category-badge">LOCAL LLM // EDGE AI</span>
-                        <a href="https://github.com/kalyan-1845/BKR-2.0-Offline-Voice-Assistant" class="proj-external-btn" target="_blank" title="GitHub Repo" aria-label="GitHub Repo">
+                        <span class="proj-category-badge" style="color: #fbbf24; background: rgba(251, 191, 36, 0.1); border-color: rgba(251, 191, 36, 0.4);">PUBLISHED // IJARSCT 2026</span>
+                        <a href="https://github.com/kalyan-1845/sarathi-emergency" class="proj-external-btn" target="_blank" title="GitHub Repo" aria-label="GitHub Repo" onclick="event.stopPropagation();">
                             <i class="fab fa-github"></i>
                         </a>
                     </div>
                     <div class="project-card-body">
-                        <h3 class="project-card-title">BKR 2.0 Multilingual AI Assistant</h3>
-                        <p class="project-card-description">100% offline edge neural assistant supporting English, Hindi & Telugu. Built with Ollama LLM runtime, Vosk STT, Piper TTS, and zero cloud API latency.</p>
+                        <h3 class="project-card-title" style="color: #fef08a;">Sarathi Emergency Navigation</h3>
+                        <p class="project-card-description">Peer-reviewed published research system (IJARSCT 2026) for smart emergency location sharing and intelligent route optimization with real-time GPS integration, traffic preemption, and sub-second rerouting.</p>
+                        <div class="project-card-tech">
+                            <span class="tech-tag" style="border-color: rgba(251, 191, 36, 0.3);">Spatial ML</span>
+                            <span class="tech-tag" style="border-color: rgba(251, 191, 36, 0.3);">GPS Routing</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Flutter</span>
+                            <span class="tech-tag" style="color: #fbbf24; border-color: rgba(251, 191, 36, 0.4);">IJARSCT 2026</span>
+                        </div>
+                    </div>
+                    <div class="project-card-footer">
+                        <a href="https://github.com/kalyan-1845/sarathi-emergency" class="proj-btn proj-btn-primary" target="_blank" onclick="event.stopPropagation();">
+                            <i class="fab fa-github"></i> Repository
+                        </a>
+                        <button class="proj-btn proj-btn-secondary" onclick="event.stopPropagation(); openProjectModal(2)">
+                            <i class="fas fa-info-circle"></i> Details
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project 3: BKR 2.0 Offline Edge Neural Assistant -->
+                <div class="project-card glass-card" data-project-id="3" data-category="agents">
+                    <div class="project-card-header">
+                        <div class="proj-icon-box" style="background: rgba(14, 165, 233, 0.12); color: #38bdf8; border: 1px solid rgba(14, 165, 233, 0.3);">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <span class="proj-category-badge" style="color: #38bdf8; background: rgba(14, 165, 233, 0.08); border-color: rgba(14, 165, 233, 0.3);">EDGE AI // ZERO LATENCY</span>
+                        <a href="https://github.com/kalyan-1845/BKR-2.0-Offline-Voice-Assistant" class="proj-external-btn" target="_blank" title="GitHub Repo" aria-label="GitHub Repo" onclick="event.stopPropagation();">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                    <div class="project-card-body">
+                        <h3 class="project-card-title">BKR 2.0 Offline Neural Assistant</h3>
+                        <p class="project-card-description">Completely offline, privacy-first edge intelligence assistant supporting English, Hindi, and Telugu. Integrates local Ollama models, Vosk speech-to-text, and Piper neural TTS with zero cloud latency and private execution.</p>
                         <div class="project-card-tech">
                             <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Ollama</span>
+                            <span class="tech-tag">Ollama LLM</span>
                             <span class="tech-tag">Vosk STT</span>
                             <span class="tech-tag">Piper TTS</span>
+                            <span class="tech-tag">Edge AI</span>
                         </div>
                     </div>
                     <div class="project-card-footer">
-                        <a href="https://github.com/kalyan-1845/BKR-2.0-Offline-Voice-Assistant" class="proj-btn proj-btn-primary" target="_blank">
+                        <a href="https://github.com/kalyan-1845/BKR-2.0-Offline-Voice-Assistant" class="proj-btn proj-btn-primary" target="_blank" onclick="event.stopPropagation();">
                             <i class="fab fa-github"></i> Repository
                         </a>
-                        <button class="proj-btn proj-btn-secondary" onclick="openProjectModal(4)">
+                        <button class="proj-btn proj-btn-secondary" onclick="event.stopPropagation(); openProjectModal(3)">
                             <i class="fas fa-info-circle"></i> Details
                         </button>
                     </div>
                 </div>
 
-                <!-- Project 5: Avatar Stream Studio -->
-                <div class="project-card glass-card" data-project-id="5">
+                <!-- Project 4: Avatar Stream Studio -->
+                <div class="project-card glass-card" data-project-id="4" data-category="vision">
                     <div class="project-card-header">
-                        <div class="proj-icon-box">
-                            <i class="fas fa-microphone-lines"></i>
+                        <div class="proj-icon-box" style="background: rgba(236, 72, 153, 0.12); color: #ec4899; border: 1px solid rgba(236, 72, 153, 0.3);">
+                            <i class="fas fa-film"></i>
                         </div>
-                        <span class="proj-category-badge">AUDIO AI // CREATIVE</span>
-                        <a href="https://github.com/kalyan-1845/ai-avatar-studio" class="proj-external-btn" target="_blank" title="GitHub Repo" aria-label="GitHub Repo">
+                        <span class="proj-category-badge" style="color: #ec4899; background: rgba(236, 72, 153, 0.08); border-color: rgba(236, 72, 153, 0.3);">BROWSER CV // AUDIO DSP</span>
+                        <a href="https://github.com/kalyan-1845/ai-avatar-studio" class="proj-external-btn" target="_blank" title="GitHub Repo" aria-label="GitHub Repo" onclick="event.stopPropagation();">
                             <i class="fab fa-github"></i>
                         </a>
                     </div>
                     <div class="project-card-body">
                         <h3 class="project-card-title">Avatar Stream Studio</h3>
-                        <p class="project-card-description">Browser-based AI avatar engine with real-time phoneme-driven lip sync, multi-band frequency analysis, facial emotion shaders, and WebM/MP4 export.</p>
+                        <p class="project-card-description">High-performance browser generative media studio delivering 60fps phoneme-driven lip sync, multi-band audio spectrum shaders, emotion-aware facial rigs, and client-side WebM/MP4 hardware encoding.</p>
                         <div class="project-card-tech">
                             <span class="tech-tag">JavaScript</span>
                             <span class="tech-tag">Web Audio API</span>
+                            <span class="tech-tag">WebGL Shaders</span>
                             <span class="tech-tag">Canvas API</span>
                             <span class="tech-tag">Vite</span>
                         </div>
                     </div>
                     <div class="project-card-footer">
-                        <a href="https://github.com/kalyan-1845/ai-avatar-studio" class="proj-btn proj-btn-primary" target="_blank">
+                        <a href="https://github.com/kalyan-1845/ai-avatar-studio" class="proj-btn proj-btn-primary" target="_blank" onclick="event.stopPropagation();">
                             <i class="fab fa-github"></i> Repository
                         </a>
-                        <button class="proj-btn proj-btn-secondary" onclick="openProjectModal(5)">
+                        <button class="proj-btn proj-btn-secondary" onclick="event.stopPropagation(); openProjectModal(4)">
                             <i class="fas fa-info-circle"></i> Details
                         </button>
                     </div>
                 </div>
 
-                <!-- Project 6: DocuShrink AI -->
-                <div class="project-card glass-card" data-project-id="6">
+                <!-- Project 5: NeuralGuard Cyber Framework -->
+                <div class="project-card glass-card" data-project-id="5" data-category="research">
                     <div class="project-card-header">
-                        <div class="proj-icon-box">
-                            <i class="fas fa-file-contract"></i>
-                        </div>
-                        <span class="proj-category-badge">DOCUMENT AI // OCR</span>
-                        <a href="https://github.com/kalyan-1845/DocuShrink" class="proj-external-btn" target="_blank" title="GitHub Repo" aria-label="GitHub Repo">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </div>
-                    <div class="project-card-body">
-                        <h3 class="project-card-title">DocuShrink AI Suite</h3>
-                        <p class="project-card-description">Client-side document intelligence PWA with 10 tools: 13-language OCR text extraction, PDF optimization, AI summarizer, and automated QA generation.</p>
-                        <div class="project-card-tech">
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">TypeScript</span>
-                            <span class="tech-tag">Tesseract.js</span>
-                            <span class="tech-tag">pdf-lib</span>
-                        </div>
-                    </div>
-                    <div class="project-card-footer">
-                        <a href="https://github.com/kalyan-1845/DocuShrink" class="proj-btn proj-btn-primary" target="_blank">
-                            <i class="fab fa-github"></i> Repository
-                        </a>
-                        <button class="proj-btn proj-btn-secondary" onclick="openProjectModal(6)">
-                            <i class="fas fa-info-circle"></i> Details
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Project 7: AI Video Learning Platform -->
-                <div class="project-card glass-card" data-project-id="7">
-                    <div class="project-card-header">
-                        <div class="proj-icon-box">
-                            <i class="fas fa-video"></i>
-                        </div>
-                        <span class="proj-category-badge">EDTECH // VIDEO AI</span>
-                        <a href="https://github.com/kalyan-1845/veovision_-ai-video-studio---V1" class="proj-external-btn" target="_blank" title="GitHub Repo" aria-label="GitHub Repo">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </div>
-                    <div class="project-card-body">
-                        <h3 class="project-card-title">AI Video Learning Platform</h3>
-                        <p class="project-card-description">Cross-platform mobile application generating dynamic educational video streams from topic prompts with LLM script generation, TTS narration, and FFmpeg.</p>
-                        <div class="project-card-tech">
-                            <span class="tech-tag">React Native</span>
-                            <span class="tech-tag">FastAPI</span>
-                            <span class="tech-tag">Ollama</span>
-                            <span class="tech-tag">FFmpeg</span>
-                        </div>
-                    </div>
-                    <div class="project-card-footer">
-                        <a href="https://github.com/kalyan-1845/veovision_-ai-video-studio---V1" class="proj-btn proj-btn-primary" target="_blank">
-                            <i class="fab fa-github"></i> Repository
-                        </a>
-                        <button class="proj-btn proj-btn-secondary" onclick="openProjectModal(7)">
-                            <i class="fas fa-info-circle"></i> Details
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Project 8: FlutterPOS -->
-                <div class="project-card glass-card" data-project-id="8">
-                    <div class="project-card-header">
-                        <div class="proj-icon-box">
-                            <i class="fas fa-cash-register"></i>
-                        </div>
-                        <span class="proj-category-badge">FINTECH // COMMERCE</span>
-                        <a href="https://github.com/kalyan-1845/Flutter-POS-System" class="proj-external-btn" target="_blank" title="GitHub Repo" aria-label="GitHub Repo">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </div>
-                    <div class="project-card-body">
-                        <h3 class="project-card-title">FlutterPOS Retail System</h3>
-                        <p class="project-card-description">Full-featured cross-platform Point of Sale application featuring catalog indexing, order management, thermal receipt generation, and multi-rail payments.</p>
-                        <div class="project-card-tech">
-                            <span class="tech-tag">Flutter</span>
-                            <span class="tech-tag">Dart</span>
-                            <span class="tech-tag">Material 3</span>
-                            <span class="tech-tag">Cross-Platform</span>
-                        </div>
-                    </div>
-                    <div class="project-card-footer">
-                        <a href="https://github.com/kalyan-1845/Flutter-POS-System" class="proj-btn proj-btn-primary" target="_blank">
-                            <i class="fab fa-github"></i> Repository
-                        </a>
-                        <button class="proj-btn proj-btn-secondary" onclick="openProjectModal(8)">
-                            <i class="fas fa-info-circle"></i> Details
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Project 10: NutriScan AI -->
-                <div class="project-card glass-card" data-project-id="10">
-                    <div class="project-card-header">
-                        <div class="proj-icon-box">
-                            <i class="fas fa-apple-whole"></i>
-                        </div>
-                        <span class="proj-category-badge">DEEP LEARNING // CV</span>
-                        <a href="https://github.com/kalyan-1845/NutriScan-AI" class="proj-external-btn" target="_blank" title="GitHub Repo" aria-label="GitHub Repo">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </div>
-                    <div class="project-card-body">
-                        <h3 class="project-card-title">NutriScan AI Health Analyzer</h3>
-                        <p class="project-card-description">Convolutional neural network model trained on 10,000+ food images delivering real-time dietary item identification, caloric estimation, and macronutrient analytics.</p>
-                        <div class="project-card-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">TensorFlow</span>
-                            <span class="tech-tag">CNN</span>
-                            <span class="tech-tag">Computer Vision</span>
-                        </div>
-                    </div>
-                    <div class="project-card-footer">
-                        <a href="https://github.com/kalyan-1845/NutriScan-AI" class="proj-btn proj-btn-primary" target="_blank">
-                            <i class="fab fa-github"></i> Repository
-                        </a>
-                        <button class="proj-btn proj-btn-secondary" onclick="openProjectModal(10)">
-                            <i class="fas fa-info-circle"></i> Details
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Project 11: NeuralGuard -->
-                <div class="project-card glass-card" data-project-id="11">
-                    <div class="project-card-header">
-                        <div class="proj-icon-box">
+                        <div class="proj-icon-box" style="background: rgba(16, 185, 129, 0.12); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3);">
                             <i class="fas fa-shield-halved"></i>
                         </div>
-                        <span class="proj-category-badge">SECURITY // ENSEMBLE ML</span>
-                        <a href="https://github.com/kalyan-1845/NeuralGuard" class="proj-external-btn" target="_blank" title="GitHub Repo" aria-label="GitHub Repo">
+                        <span class="proj-category-badge" style="color: #10b981; background: rgba(16, 185, 129, 0.08); border-color: rgba(16, 185, 129, 0.3);">SECURITY ML // 95% PRECISION</span>
+                        <a href="https://github.com/kalyan-1845/NeuralGuard" class="proj-external-btn" target="_blank" title="GitHub Repo" aria-label="GitHub Repo" onclick="event.stopPropagation();">
                             <i class="fab fa-github"></i>
                         </a>
                     </div>
                     <div class="project-card-body">
                         <h3 class="project-card-title">NeuralGuard Cyber Framework</h3>
-                        <p class="project-card-description">Intrusion detection ML pipeline classifying malicious network packet telemetry with 95% precision using ensemble Random Forest and XGBoost classifiers.</p>
+                        <p class="project-card-description">High-throughput intrusion detection machine learning pipeline classifying live packet telemetry with 95% precision using ensemble Random Forest and XGBoost classifiers against 50+ exploit vectors.</p>
                         <div class="project-card-tech">
                             <span class="tech-tag">Python</span>
                             <span class="tech-tag">Scikit-learn</span>
                             <span class="tech-tag">XGBoost</span>
-                            <span class="tech-tag">Cybersecurity</span>
+                            <span class="tech-tag">Telemetry</span>
+                            <span class="tech-tag">FastAPI</span>
                         </div>
                     </div>
                     <div class="project-card-footer">
-                        <a href="https://github.com/kalyan-1845/NeuralGuard" class="proj-btn proj-btn-primary" target="_blank">
+                        <a href="https://github.com/kalyan-1845/NeuralGuard" class="proj-btn proj-btn-primary" target="_blank" onclick="event.stopPropagation();">
                             <i class="fab fa-github"></i> Repository
                         </a>
-                        <button class="proj-btn proj-btn-secondary" onclick="openProjectModal(11)">
+                        <button class="proj-btn proj-btn-secondary" onclick="event.stopPropagation(); openProjectModal(5)">
+                            <i class="fas fa-info-circle"></i> Details
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project 6: NutriScan AI Health Analyzer -->
+                <div class="project-card glass-card" data-project-id="6" data-category="vision">
+                    <div class="project-card-header">
+                        <div class="proj-icon-box" style="background: rgba(245, 158, 11, 0.12); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.3);">
+                            <i class="fas fa-apple-whole"></i>
+                        </div>
+                        <span class="proj-category-badge" style="color: #f59e0b; background: rgba(245, 158, 11, 0.08); border-color: rgba(245, 158, 11, 0.3);">DEEP LEARNING // 92% ACCURACY</span>
+                        <a href="https://github.com/kalyan-1845/NutriScan-AI" class="proj-external-btn" target="_blank" title="GitHub Repo" aria-label="GitHub Repo" onclick="event.stopPropagation();">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                    <div class="project-card-body">
+                        <h3 class="project-card-title">NutriScan AI Health Analyzer</h3>
+                        <p class="project-card-description">Convolutional neural network model trained on 10,000+ categorized dietary images delivering real-time food recognition, volumetric estimation, and automated macronutrient analytics with 92% accuracy.</p>
+                        <div class="project-card-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">TensorFlow</span>
+                            <span class="tech-tag">CNN</span>
+                            <span class="tech-tag">Computer Vision</span>
+                            <span class="tech-tag">OpenCV</span>
+                        </div>
+                    </div>
+                    <div class="project-card-footer">
+                        <a href="https://github.com/kalyan-1845/NutriScan-AI" class="proj-btn proj-btn-primary" target="_blank" onclick="event.stopPropagation();">
+                            <i class="fab fa-github"></i> Repository
+                        </a>
+                        <button class="proj-btn proj-btn-secondary" onclick="event.stopPropagation(); openProjectModal(6)">
+                            <i class="fas fa-info-circle"></i> Details
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project 7: Omni Agent Android -->
+                <div class="project-card glass-card" data-project-id="7" data-category="agents">
+                    <div class="project-card-header">
+                        <div class="proj-icon-box" style="background: rgba(99, 102, 241, 0.12); color: #818cf8; border: 1px solid rgba(99, 102, 241, 0.3);">
+                            <i class="fas fa-mobile-screen-button"></i>
+                        </div>
+                        <span class="proj-category-badge" style="color: #818cf8; background: rgba(99, 102, 241, 0.08); border-color: rgba(99, 102, 241, 0.3);">AUTONOMOUS AGENT // ANDROID</span>
+                        <a href="https://github.com/kalyan-1845/android" class="proj-external-btn" target="_blank" title="GitHub Repo" aria-label="GitHub Repo" onclick="event.stopPropagation();">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                    <div class="project-card-body">
+                        <h3 class="project-card-title">Omni Agent Android</h3>
+                        <p class="project-card-description">Autonomous mobile task conductor that parses and interacts with native Android Accessibility trees. Uses lightweight local LLM reasoning to execute complex multi-app mobile workflows without cloud reliance.</p>
+                        <div class="project-card-tech">
+                            <span class="tech-tag">Android Kotlin</span>
+                            <span class="tech-tag">Accessibility Service</span>
+                            <span class="tech-tag">Local LLM</span>
+                            <span class="tech-tag">Automation</span>
+                        </div>
+                    </div>
+                    <div class="project-card-footer">
+                        <a href="https://github.com/kalyan-1845/android" class="proj-btn proj-btn-primary" target="_blank" onclick="event.stopPropagation();">
+                            <i class="fab fa-github"></i> Repository
+                        </a>
+                        <button class="proj-btn proj-btn-secondary" onclick="event.stopPropagation(); openProjectModal(7)">
+                            <i class="fas fa-info-circle"></i> Details
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project 8: DocuShrink AI Suite -->
+                <div class="project-card glass-card" data-project-id="8" data-category="research">
+                    <div class="project-card-header">
+                        <div class="proj-icon-box" style="background: rgba(168, 85, 247, 0.12); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3);">
+                            <i class="fas fa-file-contract"></i>
+                        </div>
+                        <span class="proj-category-badge" style="color: #c084fc; background: rgba(168, 85, 247, 0.08); border-color: rgba(168, 85, 247, 0.3);">EDGE PWA // 13 LANGUAGES</span>
+                        <a href="https://github.com/kalyan-1845/DocuShrink" class="proj-external-btn" target="_blank" title="GitHub Repo" aria-label="GitHub Repo" onclick="event.stopPropagation();">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                    <div class="project-card-body">
+                        <h3 class="project-card-title">DocuShrink AI Suite</h3>
+                        <p class="project-card-description">Client-side progressive web application featuring 13-language offline OCR with Tesseract WebAssembly, neural text summarization, up to 80% lossless PDF vector compression, and zero-server bandwidth privacy.</p>
+                        <div class="project-card-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">Tesseract.js</span>
+                            <span class="tech-tag">pdf-lib</span>
+                            <span class="tech-tag">WASM</span>
+                        </div>
+                    </div>
+                    <div class="project-card-footer">
+                        <a href="https://github.com/kalyan-1845/DocuShrink" class="proj-btn proj-btn-primary" target="_blank" onclick="event.stopPropagation();">
+                            <i class="fab fa-github"></i> Repository
+                        </a>
+                        <button class="proj-btn proj-btn-secondary" onclick="event.stopPropagation(); openProjectModal(8)">
                             <i class="fas fa-info-circle"></i> Details
                         </button>
                     </div>
@@ -9807,79 +9769,63 @@
         // Project data
         const projects = {
             1: {
-                title: "Aurora AI Pro",
-                image: "https://picsum.photos/seed/project1/1200/800.jpg",
-                description: "A multilingual voice/text translator built using Python, SpeechRecognition, and gTTS. Supports real-time translation between multiple languages with both voice and text input. Features a clean, responsive UI.",
-                tech: ["Python", "SpeechRecognition", "gTTS", "Tkinter"],
-                link: "https://aurora-ai-pro.netlify.app/"
+                title: "AuraCore AI Ecosystem",
+                image: "project-ai-assistant.png",
+                description: "AuraCore AI is a production-grade multi-agent orchestration architecture that coordinates specialized autonomous agents in real time. Built with LangGraph, Python, FastAPI, and local Ollama inference, it features persistent agent memory, task conductors, fault-tolerant failovers, sub-120ms agent routing, and end-to-end WebSocket telemetry streams.",
+                tech: ["LangGraph", "Python", "Ollama LLM", "FastAPI", "WebSockets"],
+                link: "https://github.com/kalyan-1845/AuraCore-AI"
             },
             2: {
-                title: "Deccan Fresh E-Commerce",
-                image: "https://picsum.photos/seed/project2/1200/800.jpg",
-                description: "A responsive e-commerce website for Deccan Fresh Hyderabad featuring product listings, cart functionality, and user authentication. Built with modern frontend technologies for a seamless shopping experience.",
-                tech: ["HTML", "CSS", "JavaScript"],
-                link: "https://hyddeccanfresh.netlify.app/"
+                title: "Sarathi — Smart Emergency Navigation System",
+                image: "ACE_Research_Certificate.png",
+                description: "Published in the peer-reviewed International Journal of Advanced Research in Science, Communication and Technology (IJARSCT 2026), Sarathi is an intelligent emergency navigation platform. It utilizes real-time GPS telemetry, priority routing algorithms, and dynamic traffic avoidance to ensure emergency medical services and first responders reach critical destinations in minimum time.",
+                tech: ["Spatial ML", "GPS Routing", "Python", "Flutter", "IJARSCT 2026"],
+                link: "https://github.com/kalyan-1845/sarathi-emergency"
             },
             3: {
-                title: "Scanify v2 — QR Generator",
-                image: "https://picsum.photos/seed/project3/1200/800.jpg",
-                description: "A QR code generator with customizable options and real-time preview. Supports dynamic content types including URLs, text, and contact information.",
-                tech: ["JavaScript", "QR API", "Python"],
-                link: "https://github.com/kalyan-1845/Scanify-v2"
-            },
-            4: {
-                title: "BKR 2.0 — Multilingual AI Assistant",
+                title: "BKR 2.0 — Offline Trilingual Neural Assistant",
                 image: "project-ai-assistant.png",
-                description: "A local-first multilingual voice & text AI assistant supporting English, Hindi & Telugu. Features Ollama LLM runtime, Vosk speech-to-text, Piper text-to-speech, adaptive tutoring, and world-knowledge grounding with complete offline capability.",
-                tech: ["Python", "Ollama", "Vosk STT", "Piper TTS"],
+                description: "A local-first multilingual voice & text AI assistant supporting English, Hindi, and Telugu. Operates completely air-gapped without external cloud API dependencies. Features quantized local Ollama LLMs, real-time Vosk speech-to-text, Piper neural speech synthesis, adaptive memory, and 0ms cloud latency.",
+                tech: ["Python", "Ollama LLM", "Vosk STT", "Piper TTS", "Edge AI"],
                 link: "https://github.com/kalyan-1845/BKR-2.0-Offline-Voice-Assistant"
             },
-            5: {
+            4: {
                 title: "Avatar Stream Studio",
                 image: "project-avatar-studio.png",
-                description: "A browser-based AI avatar studio with realistic phoneme-driven lip sync, emotion-aware expressions, multi-band audio analysis, and one-click video export in WebM/MP4. Supports YouTube upload flow.",
-                tech: ["JavaScript", "Web Audio API", "Canvas API", "Vite"],
+                description: "A client-side generative media studio that renders realistic phoneme-accurate lip-synchronized avatars directly in the web browser. Employs the Web Audio API for fast Fourier transform frequency decomposition, WebGL fragment shaders for particle spectrum visualization, and MediaStream recording for client-side HD video rendering.",
+                tech: ["JavaScript", "Web Audio API", "WebGL", "Canvas API", "Vite"],
                 link: "https://github.com/kalyan-1845/ai-avatar-studio"
             },
+            5: {
+                title: "NeuralGuard — Cybersecurity ML Framework",
+                image: "cert_cybersecurity_thetechnique.jpg",
+                description: "An AI-driven cybersecurity detection framework that classifies high-frequency network traffic as benign or anomalous. Built with Scikit-learn, XGBoost, and FastAPI, it delivers 95% precision across 50+ exploit vectors, port scanning signatures, and denial-of-service anomalies tested in isolated virtual environments.",
+                tech: ["Python", "Scikit-learn", "XGBoost", "Telemetry", "Cybersecurity"],
+                link: "https://github.com/kalyan-1845/NeuralGuard"
+            },
             6: {
-                title: "DocuShrink AI — Smart Document Suite",
-                image: "project-docushrink.png",
-                description: "A 100% browser-based AI document processing PWA with 10 tools: PDF compress/merge/split, image compression, OCR (13 languages), AI summarizer, keyword extractor, and question generator. Zero server bandwidth costs.",
-                tech: ["React", "TypeScript", "Tesseract.js", "pdf-lib"],
-                link: "https://github.com/kalyan-1845/DocuShrink"
-            },
-            7: {
-                title: "AI Video Learning Platform",
-                image: "project-video-platform.png",
-                description: "A cross-platform mobile app that converts any topic into an educational video — script generation, TTS narration, AI image generation, and FFmpeg rendering. Supports English, Telugu & Hindi.",
-                tech: ["React Native", "Python FastAPI", "Ollama", "FFmpeg"],
-                link: "https://github.com/kalyan-1845/veovision_-ai-video-studio---V1"
-            },
-            8: {
-                title: "FlutterPOS — Point of Sale System",
-                image: "project-flutter-pos.png",
-                description: "A full-featured cross-platform Point of Sale application built with Flutter. Supports product catalogue, order management, billing & receipt generation, and multiple payment methods (Cash, Card, UPI). Runs on Android, iOS & Web.",
-                tech: ["Flutter", "Dart", "Material Design"],
-                link: "https://github.com/kalyan-1845/Flutter-POS-System"
-            },
-
-            10: {
-                title: "NutriScan AI — Health & Nutrition Analyzer",
+                title: "NutriScan AI — Deep Learning Health Analyzer",
                 image: "project-ai-assistant.png",
-                description: "A CNN-based deep learning model trained on 10,000+ food images that analyzes food items via camera or upload and returns detailed nutritional information including calories, macronutrients, and personalized health recommendations. Achieves 92% classification accuracy using TensorFlow and computer vision.",
-                tech: ["Python", "TensorFlow", "CNN", "Computer Vision"],
+                description: "A computer vision dietary analysis system powered by convolutional neural networks trained on over 10,000 food images. Users capture meals via mobile camera or file upload, receiving instant food segmentation, calorie estimation, macronutrient breakdowns (protein, carbs, fats), and personalized nutritional recommendations.",
+                tech: ["Python", "TensorFlow", "CNN", "Computer Vision", "OpenCV"],
                 link: "https://github.com/kalyan-1845/NutriScan-AI"
             },
-            11: {
-                title: "NeuralGuard — Cybersecurity Framework",
-                image: "project-ai-assistant.png",
-                description: "An AI-driven cybersecurity detection framework that classifies network traffic as benign or malicious using ensemble machine learning models (Random Forest, XGBoost, SVM). Achieves 95% precision in detecting threats, tested against 50+ threat vectors in simulated sandbox environments.",
-                tech: ["Python", "Scikit-learn", "XGBoost", "Cybersecurity"],
-                link: "https://github.com/kalyan-1845/NeuralGuard"
+            7: {
+                title: "Omni Agent Android — Autonomous Mobile Conductor",
+                image: "project-flutter-pos.png",
+                description: "An autonomous on-device mobile AI agent that interprets the Android Accessibility hierarchy to execute end-to-end device actions. Leverages lightweight localized language models to automate application navigation, dynamic form completion, notifications triage, and inter-app data piping without manual user intervention.",
+                tech: ["Android Kotlin", "Accessibility Service", "Local LLM", "Automation"],
+                link: "https://github.com/kalyan-1845/android"
+            },
+            8: {
+                title: "DocuShrink AI — Neural Document PWA",
+                image: "project-docushrink.png",
+                description: "A 100% browser-based AI document processing PWA equipped with 10 tools including lossless PDF compression, vector document merging, 13-language offline optical character recognition powered by Tesseract WebAssembly, extractive neural summarization, and automated document Q&A—all operating with zero server data transit.",
+                tech: ["React", "TypeScript", "Tesseract.js", "pdf-lib", "WASM"],
+                link: "https://github.com/kalyan-1845/DocuShrink"
             }
         };
 
-        // Function to open project modal
         function openProjectModal(projectId) {
             const project = projects[projectId];
 
@@ -9939,6 +9885,43 @@
                 document.body.style.overflow = "auto";
             }
         });
+
+        // Close Project Modal on Escape key
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && modal && modal.classList.contains("show")) {
+                modal.classList.remove("show");
+                setTimeout(() => {
+                    modal.style.display = "none";
+                }, 300);
+                document.body.style.overflow = "auto";
+            }
+        });
+
+        // Project Taskbar OS Dock Category Filter
+        const projDockTabs = document.querySelectorAll('.proj-dock-tab');
+        const projCardsList = document.querySelectorAll('#projects .project-card');
+
+        projDockTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const filter = tab.getAttribute('data-filter');
+
+                projDockTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                projCardsList.forEach(card => {
+                    const cardCategory = card.getAttribute('data-category');
+                    if (filter === 'all' || cardCategory === filter) {
+                        card.style.display = 'flex';
+                        card.style.animation = 'none';
+                        card.offsetHeight; // trigger reflow
+                        card.style.animation = 'fadeInUp 0.4s ease forwards';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
 
         // Certificate Modal
         const certificateCards = document.querySelectorAll(".certificate-card");
