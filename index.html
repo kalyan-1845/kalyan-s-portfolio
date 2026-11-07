@@ -1474,46 +1474,100 @@
             padding-left: 5px;
         }
 
-        /* Certificates Banner */
-        .certificates-header {
+        /* Certificates Cybernetic HUD Header */
+        .certificates-header-hud {
+            text-align: center;
+            max-width: 880px;
+            margin: 0 auto 3.5rem;
             position: relative;
-            margin-bottom: 3rem;
-            border-radius: 15px;
-            overflow: hidden;
-            height: 250px;
-            display: flex;
+        }
+
+        .cert-hud-badge {
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-            background: url('certificates_banner.png') center/cover no-repeat;
+            gap: 9px;
+            background: rgba(0, 242, 254, 0.08);
+            border: 1px solid rgba(0, 242, 254, 0.3);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 7px 18px;
+            border-radius: 30px;
+            margin-bottom: 1.2rem;
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.15);
+            color: #00f2fe;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
         }
 
-        .certificates-header::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(15, 12, 41, 0.2), rgba(15, 12, 41, 0.8));
+        .cert-hud-badge:hover {
+            border-color: rgba(0, 242, 254, 0.6);
+            box-shadow: 0 0 28px rgba(0, 242, 254, 0.3);
+            transform: translateY(-2px);
         }
 
-        .certificates-header h2 {
-            position: relative;
-            z-index: 1;
-            font-size: 3rem;
-            margin-bottom: 0;
-            text-shadow: 0 0 20px rgba(0, 242, 254, 0.8);
-            letter-spacing: 5px;
+        .cert-hud-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #00f2fe;
+            box-shadow: 0 0 8px #00f2fe;
+            animation: pulse-beacon 2s infinite ease-in-out;
+        }
+
+        .cert-headline {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: clamp(2rem, 3.8vw, 3rem);
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.025em;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 25px rgba(0, 242, 254, 0.2);
+        }
+
+        .cert-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #94a3b8;
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        /* Light Theme Overrides for Certificates Header */
+        body.light-theme .cert-hud-badge {
+            background: rgba(255, 255, 255, 0.88) !important;
+            border-color: rgba(0, 180, 216, 0.3) !important;
+            color: #0077b6 !important;
+            box-shadow: 0 4px 14px rgba(0, 180, 216, 0.08) !important;
+        }
+        body.light-theme .cert-hud-dot {
+            background: #0077b6 !important;
+            box-shadow: 0 0 6px #0077b6 !important;
+        }
+        body.light-theme .cert-headline {
+            color: #0f172a !important;
+            text-shadow: 0 1px 3px rgba(255, 255, 255, 0.9) !important;
+        }
+        body.light-theme .cert-subtitle {
+            color: #1e293b !important;
+            font-weight: 500;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8) !important;
         }
 
         @media (max-width: 768px) {
-            .certificates-header {
-                height: 150px;
+            .certificates-header-hud {
+                margin-bottom: 2.5rem;
             }
-            .certificates-header h2 {
-                font-size: 1.8rem;
-                letter-spacing: 2px;
+            .cert-headline {
+                font-size: 1.85rem;
+            }
+            .cert-subtitle {
+                font-size: 0.95rem;
             }
         }
 
@@ -8056,8 +8110,14 @@
     <!-- Certificates Section -->
     <section id="certificates" class="certificates">
         <div class="container">
-            <div class="certificates-header">
-                <h2>Certifications</h2>
+            <!-- HUD Section Header -->
+            <div class="certificates-header-hud">
+                <div class="cert-hud-badge">
+                    <span class="cert-hud-dot"></span>
+                    <span>VERIFIED CREDENTIALS & HONORS</span>
+                </div>
+                <h2 class="cert-headline">Professional Certifications & Accreditations</h2>
+                <p class="cert-subtitle">National hackathon final selections, industry-grade AI & machine learning credentials, and institutional leadership honors.</p>
             </div>
             <div class="certificates-grid">
                 <!-- Certificate: Smart India Hackathon 2026 Grand Finale -->
