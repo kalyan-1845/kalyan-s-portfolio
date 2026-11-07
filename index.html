@@ -6754,116 +6754,134 @@
             font-weight: 800;
         }
 
-        /* Fast & Smooth Aero Peek Focus (GPU Accelerated, No Heavy Blur) */
+        /* Ultra-Clean Modern Certificate Cards (Zero Blur, No Clunky Buttons) */
         .certificates-grid {
             position: relative;
         }
 
-        .certificates-grid.has-active-peek .certificate-card:not(.is-peeking) {
-            opacity: 0.35 !important;
-            transform: scale(0.98) translateZ(0) !important;
-            transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
-            pointer-events: auto;
-        }
-
         .certificate-card {
             position: relative;
-            z-index: 2;
-            will-change: transform, box-shadow, opacity;
-            transform: translateZ(0);
-            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
-                        box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1),
-                        border-color 0.2s ease,
-                        opacity 0.2s ease;
-            transform-origin: center center;
-            overflow: visible !important;
+            border-radius: 18px;
+            background: rgba(11, 17, 32, 0.92);
+            border: 1px solid rgba(0, 242, 254, 0.18);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            padding: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            cursor: pointer;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+            transition: transform 0.24s cubic-bezier(0.16, 1, 0.3, 1),
+                        box-shadow 0.24s cubic-bezier(0.16, 1, 0.3, 1),
+                        border-color 0.24s ease;
         }
 
-        .certificate-card.is-peeking {
-            z-index: 100 !important;
+        .certificate-card:hover {
+            transform: translateY(-8px);
             border-color: #00f2fe !important;
-            box-shadow: 0 24px 60px rgba(0, 242, 254, 0.45),
-                        0 0 35px rgba(168, 85, 247, 0.35),
-                        inset 0 0 20px rgba(0, 242, 254, 0.15) !important;
+            box-shadow: 0 20px 50px rgba(0, 242, 254, 0.3), 0 0 25px rgba(0, 242, 254, 0.15) !important;
+        }
+
+        .certificate-thumb-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 11;
+            background: rgba(6, 11, 25, 0.6);
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: border-color 0.25s ease;
+        }
+
+        .certificate-card:hover .certificate-thumb-wrapper {
+            border-color: rgba(0, 242, 254, 0.4);
+        }
+
+        .certificate-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            border-radius: 12px;
+            display: block;
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .certificate-card:hover .certificate-image {
+            transform: scale(1.04);
+        }
+
+        .cert-hover-hint {
+            position: absolute;
+            inset: 0;
+            background: rgba(3, 7, 18, 0.4);
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            border-radius: 12px;
+            transition: opacity 0.22s ease;
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        .certificate-card:hover .cert-hover-hint {
+            opacity: 1;
+        }
+
+        .cert-hover-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 8px 18px;
+            border-radius: 30px;
+            background: #00f2fe;
+            color: #030712;
+            font-family: 'Orbitron', monospace;
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            box-shadow: 0 4px 20px rgba(0, 242, 254, 0.5);
+            transform: translateY(6px);
+            transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .certificate-card:hover .cert-hover-pill {
+            transform: translateY(0);
         }
 
         .certificate-card.is-hidden {
             display: none !important;
         }
 
-        /* Quick-Preview Holographic HUD */
-        .cert-taskbar-preview-hud {
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%) translateY(6px);
-            z-index: 10;
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            background: rgba(3, 7, 18, 0.95);
-            border: 1px solid #00f2fe;
-            padding: 5px 14px;
-            border-radius: 20px;
-            font-family: 'Orbitron', monospace;
-            font-size: 0.65rem;
-            font-weight: 800;
-            letter-spacing: 0.1em;
-            color: #00f2fe;
-            box-shadow: 0 6px 20px rgba(0, 242, 254, 0.45);
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.18s ease, transform 0.18s cubic-bezier(0.16, 1, 0.3, 1);
-            white-space: nowrap;
+        /* Light Theme Overrides */
+        body.light-theme .certificate-card {
+            background: rgba(255, 255, 255, 0.92) !important;
+            border-color: rgba(0, 150, 199, 0.25) !important;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06) !important;
         }
 
-        .certificate-card.is-peeking .cert-taskbar-preview-hud {
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
-        }
-
-        .cert-taskbar-preview-hud .hud-live-dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: #10b981;
-            box-shadow: 0 0 8px #10b981;
-            animation: pulse-beacon 1.4s infinite ease-in-out;
-        }
-
-        /* Light Theme Overrides for Taskbar Dock */
-        body.light-theme .cert-taskbar-dock {
-            background: rgba(255, 255, 255, 0.95);
-            border-color: rgba(0, 150, 199, 0.35);
-            box-shadow: 0 14px 35px rgba(0, 0, 0, 0.08);
-        }
-
-        body.light-theme .cert-dock-tab {
-            color: #475569;
-        }
-
-        body.light-theme .cert-dock-tab:hover {
-            color: #0369a1;
-            background: rgba(0, 150, 199, 0.1);
-        }
-
-        body.light-theme .cert-dock-tab.active {
-            color: #0284c7;
-            background: rgba(0, 150, 199, 0.15);
-            border-color: #0284c7;
-            box-shadow: 0 0 15px rgba(2, 132, 199, 0.25);
-        }
-
-        body.light-theme .certificate-card.is-peeking {
+        body.light-theme .certificate-card:hover {
             border-color: #0284c7 !important;
-            box-shadow: 0 25px 60px rgba(2, 132, 199, 0.3) !important;
+            box-shadow: 0 20px 45px rgba(2, 132, 199, 0.25) !important;
         }
 
-        body.light-theme .cert-taskbar-preview-hud {
-            background: rgba(255, 255, 255, 0.96);
-            border-color: #0284c7;
-            color: #0284c7;
-            box-shadow: 0 6px 20px rgba(2, 132, 199, 0.25);
+        body.light-theme .certificate-thumb-wrapper {
+            background: rgba(241, 245, 249, 0.8);
+            border-color: rgba(0, 0, 0, 0.08);
+        }
+
+        body.light-theme .cert-hover-pill {
+            background: #0284c7;
+            color: #ffffff;
+            box-shadow: 0 4px 18px rgba(2, 132, 199, 0.4);
         }
 
     </style>
@@ -8930,953 +8948,611 @@
             <div class="certificates-grid">
                 <!-- Certificate 1: Smart India Hackathon 2026 -->
                 <div class="certificate-card glass-card" data-certificate-id="sih-2026" data-category="hackathons">
-                    <div class="cert-taskbar-preview-hud">
-                        <span class="hud-live-dot"></span>
-                        <span class="hud-text">ACTIVE INSPECT // PREVIEW OPEN</span>
-                    </div>
                     <div class="certificate-thumb-wrapper">
-                        <img src="cert_sih_2026_grand_finale.jpg" alt="Smart India Hackathon 2026" class="certificate-image" loading="lazy">
+                        <img src="cert_sih_2026_grand_finale.jpg" alt="Smart India Hackathon 2026" class="certificate-image">
                         <div class="certificate-badge">National Finalist</div>
+                        <div class="cert-hover-hint">
+                        <span class="cert-hover-pill"><i class="fas fa-expand"></i> OPEN CREDENTIAL</span>
                     </div>
+                </div>
                     <div class="certificate-info-box">
                         <h3 class="certificate-title">Smart India Hackathon 2026</h3>
                         <p class="certificate-issuer"><i class="fas fa-university"></i> Ministry of Education & ACEEC</p>
                         <p class="certificate-date"><i class="far fa-calendar-alt"></i> October 28, 2026</p>
                     </div>
-                    <div class="certificate-actions">
-                        <a href="#" class="cert-action-btn cert-action-view" data-certificate-id="sih-2026" data-action="view">
-                            <i class="fas fa-expand"></i> View Credential
-                        </a>
-                        <a href="#" class="cert-action-btn cert-action-download" data-certificate-id="sih-2026" data-action="download">
-                            <i class="fas fa-download"></i> Save
-                        </a>
                     </div>
-                </div>
 
                 <!-- Certificate 2: AI Fluency Internship Program -->
                 <div class="certificate-card glass-card" data-certificate-id="flyrank-ai" data-category="ai-ml">
-                    <div class="cert-taskbar-preview-hud">
-                        <span class="hud-live-dot"></span>
-                        <span class="hud-text">ACTIVE INSPECT // PREVIEW OPEN</span>
-                    </div>
                     <div class="certificate-thumb-wrapper">
-                        <img src="cert_flyrank_ai_internship.jpg" alt="AI Fluency Internship Program" class="certificate-image" loading="lazy">
+                        <img src="cert_flyrank_ai_internship.jpg" alt="AI Fluency Internship Program" class="certificate-image">
                         <div class="certificate-badge">AI Internship</div>
+                        <div class="cert-hover-hint">
+                        <span class="cert-hover-pill"><i class="fas fa-expand"></i> OPEN CREDENTIAL</span>
                     </div>
+                </div>
                     <div class="certificate-info-box">
                         <h3 class="certificate-title">AI Fluency Internship Program</h3>
                         <p class="certificate-issuer"><i class="fas fa-university"></i> FlyRank.ai Corp (Wyoming, USA)</p>
                         <p class="certificate-date"><i class="far fa-calendar-alt"></i> September 26, 2026</p>
                     </div>
-                    <div class="certificate-actions">
-                        <a href="#" class="cert-action-btn cert-action-view" data-certificate-id="flyrank-ai" data-action="view">
-                            <i class="fas fa-expand"></i> View Credential
-                        </a>
-                        <a href="#" class="cert-action-btn cert-action-download" data-certificate-id="flyrank-ai" data-action="download">
-                            <i class="fas fa-download"></i> Save
-                        </a>
                     </div>
-                </div>
 
                 <!-- Certificate 3: GirlScript Summer of Code '26 -->
                 <div class="certificate-card glass-card" data-certificate-id="gssoc-2026" data-category="leadership">
-                    <div class="cert-taskbar-preview-hud">
-                        <span class="hud-live-dot"></span>
-                        <span class="hud-text">ACTIVE INSPECT // PREVIEW OPEN</span>
-                    </div>
                     <div class="certificate-thumb-wrapper">
-                        <img src="cert_gssoc_2026.jpg" alt="GirlScript Summer of Code '26" class="certificate-image" loading="lazy">
+                        <img src="cert_gssoc_2026.jpg" alt="GirlScript Summer of Code '26" class="certificate-image">
                         <div class="certificate-badge">Open Source Mentor</div>
+                        <div class="cert-hover-hint">
+                        <span class="cert-hover-pill"><i class="fas fa-expand"></i> OPEN CREDENTIAL</span>
                     </div>
+                </div>
                     <div class="certificate-info-box">
                         <h3 class="certificate-title">GirlScript Summer of Code '26</h3>
                         <p class="certificate-issuer"><i class="fas fa-university"></i> GirlScript Foundation</p>
                         <p class="certificate-date"><i class="far fa-calendar-alt"></i> August 2026</p>
                     </div>
-                    <div class="certificate-actions">
-                        <a href="#" class="cert-action-btn cert-action-view" data-certificate-id="gssoc-2026" data-action="view">
-                            <i class="fas fa-expand"></i> View Credential
-                        </a>
-                        <a href="#" class="cert-action-btn cert-action-download" data-certificate-id="gssoc-2026" data-action="download">
-                            <i class="fas fa-download"></i> Save
-                        </a>
                     </div>
-                </div>
 
                 <!-- Certificate 4: Adobe University Hackathon -->
                 <div class="certificate-card glass-card" data-certificate-id="adobe-hackathon" data-category="hackathons">
-                    <div class="cert-taskbar-preview-hud">
-                        <span class="hud-live-dot"></span>
-                        <span class="hud-text">ACTIVE INSPECT // PREVIEW OPEN</span>
-                    </div>
                     <div class="certificate-thumb-wrapper">
-                        <img src="cert_adobe_university_hackathon.jpg" alt="Adobe University Hackathon" class="certificate-image" loading="lazy">
+                        <img src="cert_adobe_university_hackathon.jpg" alt="Adobe University Hackathon" class="certificate-image">
                         <div class="certificate-badge">National Hackathon</div>
+                        <div class="cert-hover-hint">
+                        <span class="cert-hover-pill"><i class="fas fa-expand"></i> OPEN CREDENTIAL</span>
                     </div>
+                </div>
                     <div class="certificate-info-box">
                         <h3 class="certificate-title">Adobe University Hackathon</h3>
                         <p class="certificate-issuer"><i class="fas fa-university"></i> Adobe & Unstop</p>
                         <p class="certificate-date"><i class="far fa-calendar-alt"></i> August 9, 2026</p>
                     </div>
-                    <div class="certificate-actions">
-                        <a href="#" class="cert-action-btn cert-action-view" data-certificate-id="adobe-hackathon" data-action="view">
-                            <i class="fas fa-expand"></i> View Credential
-                        </a>
-                        <a href="#" class="cert-action-btn cert-action-download" data-certificate-id="adobe-hackathon" data-action="download">
-                            <i class="fas fa-download"></i> Save
-                        </a>
                     </div>
-                </div>
 
                 <!-- Certificate 5: Cyber Security Workshop Certification -->
                 <div class="certificate-card glass-card" data-certificate-id="cybersecurity-thetechnique" data-category="technical">
-                    <div class="cert-taskbar-preview-hud">
-                        <span class="hud-live-dot"></span>
-                        <span class="hud-text">ACTIVE INSPECT // PREVIEW OPEN</span>
-                    </div>
                     <div class="certificate-thumb-wrapper">
-                        <img src="cert_cybersecurity_thetechnique.jpg" alt="Cyber Security Workshop Certification" class="certificate-image" loading="lazy">
+                        <img src="cert_cybersecurity_thetechnique.jpg" alt="Cyber Security Workshop Certification" class="certificate-image">
                         <div class="certificate-badge">Cybersecurity</div>
+                        <div class="cert-hover-hint">
+                        <span class="cert-hover-pill"><i class="fas fa-expand"></i> OPEN CREDENTIAL</span>
                     </div>
+                </div>
                     <div class="certificate-info-box">
                         <h3 class="certificate-title">Cyber Security Workshop Certification</h3>
                         <p class="certificate-issuer"><i class="fas fa-university"></i> Thetechnique Academy (ISO 9001)</p>
                         <p class="certificate-date"><i class="far fa-calendar-alt"></i> September 23, 2026</p>
                     </div>
-                    <div class="certificate-actions">
-                        <a href="#" class="cert-action-btn cert-action-view" data-certificate-id="cybersecurity-thetechnique" data-action="view">
-                            <i class="fas fa-expand"></i> View Credential
-                        </a>
-                        <a href="#" class="cert-action-btn cert-action-download" data-certificate-id="cybersecurity-thetechnique" data-action="download">
-                            <i class="fas fa-download"></i> Save
-                        </a>
                     </div>
-                </div>
 
                 <!-- Certificate 6: IIC Student Convener (1-Year Tenure) -->
                 <div class="certificate-card glass-card" data-certificate-id="iic-convener-tenure" data-category="leadership">
-                    <div class="cert-taskbar-preview-hud">
-                        <span class="hud-live-dot"></span>
-                        <span class="hud-text">ACTIVE INSPECT // PREVIEW OPEN</span>
-                    </div>
                     <div class="certificate-thumb-wrapper">
-                        <img src="cert_iic_student_convener_tenure.jpg" alt="IIC Student Convener (1-Year Tenure)" class="certificate-image" loading="lazy">
+                        <img src="cert_iic_student_convener_tenure.jpg" alt="IIC Student Convener (1-Year Tenure)" class="certificate-image">
                         <div class="certificate-badge">Executive Leadership</div>
+                        <div class="cert-hover-hint">
+                        <span class="cert-hover-pill"><i class="fas fa-expand"></i> OPEN CREDENTIAL</span>
                     </div>
+                </div>
                     <div class="certificate-info-box">
                         <h3 class="certificate-title">IIC Student Convener (1-Year Tenure)</h3>
                         <p class="certificate-issuer"><i class="fas fa-university"></i> ACEEC & MoE's Innovation Cell</p>
                         <p class="certificate-date"><i class="far fa-calendar-alt"></i> 2025 – 2026</p>
                     </div>
-                    <div class="certificate-actions">
-                        <a href="#" class="cert-action-btn cert-action-view" data-certificate-id="iic-convener-tenure" data-action="view">
-                            <i class="fas fa-expand"></i> View Credential
-                        </a>
-                        <a href="#" class="cert-action-btn cert-action-download" data-certificate-id="iic-convener-tenure" data-action="download">
-                            <i class="fas fa-download"></i> Save
-                        </a>
                     </div>
-                </div>
 
                 <!-- Certificate 7: ElevateX Ideathon Coordinator -->
                 <div class="certificate-card glass-card" data-certificate-id="elevatex-iit-bombay" data-category="hackathons">
-                    <div class="cert-taskbar-preview-hud">
-                        <span class="hud-live-dot"></span>
-                        <span class="hud-text">ACTIVE INSPECT // PREVIEW OPEN</span>
-                    </div>
                     <div class="certificate-thumb-wrapper">
-                        <img src="cert_elevatex_ideathon_iit_bombay.jpg" alt="ElevateX Ideathon Coordinator" class="certificate-image" loading="lazy">
+                        <img src="cert_elevatex_ideathon_iit_bombay.jpg" alt="ElevateX Ideathon Coordinator" class="certificate-image">
                         <div class="certificate-badge">IIT Bombay E-Cell</div>
+                        <div class="cert-hover-hint">
+                        <span class="cert-hover-pill"><i class="fas fa-expand"></i> OPEN CREDENTIAL</span>
                     </div>
+                </div>
                     <div class="certificate-info-box">
                         <h3 class="certificate-title">ElevateX Ideathon Coordinator</h3>
                         <p class="certificate-issuer"><i class="fas fa-university"></i> E-Cell IIT Bombay & ACEEC</p>
                         <p class="certificate-date"><i class="far fa-calendar-alt"></i> August 25, 2026</p>
                     </div>
-                    <div class="certificate-actions">
-                        <a href="#" class="cert-action-btn cert-action-view" data-certificate-id="elevatex-iit-bombay" data-action="view">
-                            <i class="fas fa-expand"></i> View Credential
-                        </a>
-                        <a href="#" class="cert-action-btn cert-action-download" data-certificate-id="elevatex-iit-bombay" data-action="download">
-                            <i class="fas fa-download"></i> Save
-                        </a>
                     </div>
-                </div>
 
                 <!-- Certificate 8: AI Startup Buildathon 2026 -->
                 <div class="certificate-card glass-card" data-certificate-id="superxgen-buildathon" data-category="hackathons">
-                    <div class="cert-taskbar-preview-hud">
-                        <span class="hud-live-dot"></span>
-                        <span class="hud-text">ACTIVE INSPECT // PREVIEW OPEN</span>
-                    </div>
                     <div class="certificate-thumb-wrapper">
-                        <img src="cert_superxgen_ai_startup_buildathon.png" alt="AI Startup Buildathon 2026" class="certificate-image" loading="lazy">
+                        <img src="cert_superxgen_ai_startup_buildathon.png" alt="AI Startup Buildathon 2026" class="certificate-image">
                         <div class="certificate-badge">AI Buildathon</div>
+                        <div class="cert-hover-hint">
+                        <span class="cert-hover-pill"><i class="fas fa-expand"></i> OPEN CREDENTIAL</span>
                     </div>
+                </div>
                     <div class="certificate-info-box">
                         <h3 class="certificate-title">AI Startup Buildathon 2026</h3>
                         <p class="certificate-issuer"><i class="fas fa-university"></i> SuperXgen & Unstop</p>
                         <p class="certificate-date"><i class="far fa-calendar-alt"></i> 2026</p>
                     </div>
-                    <div class="certificate-actions">
-                        <a href="#" class="cert-action-btn cert-action-view" data-certificate-id="superxgen-buildathon" data-action="view">
-                            <i class="fas fa-expand"></i> View Credential
-                        </a>
-                        <a href="#" class="cert-action-btn cert-action-download" data-certificate-id="superxgen-buildathon" data-action="download">
-                            <i class="fas fa-download"></i> Save
-                        </a>
                     </div>
-                </div>
 
                 <!-- Certificate 9: 100K Milestone Honor -->
                 <div class="certificate-card glass-card" data-certificate-id="campuscrew-100k" data-category="leadership">
-                    <div class="cert-taskbar-preview-hud">
-                        <span class="hud-live-dot"></span>
-                        <span class="hud-text">ACTIVE INSPECT // PREVIEW OPEN</span>
-                    </div>
                     <div class="certificate-thumb-wrapper">
-                        <img src="cert_campuscrew_100k_milestone.jpg" alt="100K Milestone Honor" class="certificate-image" loading="lazy">
+                        <img src="cert_campuscrew_100k_milestone.jpg" alt="100K Milestone Honor" class="certificate-image">
                         <div class="certificate-badge">100K Honor</div>
+                        <div class="cert-hover-hint">
+                        <span class="cert-hover-pill"><i class="fas fa-expand"></i> OPEN CREDENTIAL</span>
                     </div>
+                </div>
                     <div class="certificate-info-box">
                         <h3 class="certificate-title">100K Milestone Honor</h3>
                         <p class="certificate-issuer"><i class="fas fa-university"></i> CampusCrew Worldwide</p>
                         <p class="certificate-date"><i class="far fa-calendar-alt"></i> 2026</p>
                     </div>
-                    <div class="certificate-actions">
-                        <a href="#" class="cert-action-btn cert-action-view" data-certificate-id="campuscrew-100k" data-action="view">
-                            <i class="fas fa-expand"></i> View Credential
-                        </a>
-                        <a href="#" class="cert-action-btn cert-action-download" data-certificate-id="campuscrew-100k" data-action="download">
-                            <i class="fas fa-download"></i> Save
-                        </a>
                     </div>
-                </div>
 
                 <!-- Certificate 10: Machine Learning Internship -->
                 <div class="certificate-card glass-card" data-certificate-id="flyrank-ml" data-category="ai-ml">
-                    <div class="cert-taskbar-preview-hud">
-                        <span class="hud-live-dot"></span>
-                        <span class="hud-text">ACTIVE INSPECT // PREVIEW OPEN</span>
-                    </div>
                     <div class="certificate-thumb-wrapper">
-                        <img src="cert_flyrank_ml_internship.jpg" alt="Machine Learning Internship" class="certificate-image" loading="lazy">
+                        <img src="cert_flyrank_ml_internship.jpg" alt="Machine Learning Internship" class="certificate-image">
                         <div class="certificate-badge">ML Internship</div>
+                        <div class="cert-hover-hint">
+                        <span class="cert-hover-pill"><i class="fas fa-expand"></i> OPEN CREDENTIAL</span>
                     </div>
+                </div>
                     <div class="certificate-info-box">
                         <h3 class="certificate-title">Machine Learning Internship</h3>
                         <p class="certificate-issuer"><i class="fas fa-university"></i> FlyRank.ai Corp (Wyoming, USA)</p>
                         <p class="certificate-date"><i class="far fa-calendar-alt"></i> September 26, 2026</p>
                     </div>
-                    <div class="certificate-actions">
-                        <a href="#" class="cert-action-btn cert-action-view" data-certificate-id="flyrank-ml" data-action="view">
-                            <i class="fas fa-expand"></i> View Credential
-                        </a>
-                        <a href="#" class="cert-action-btn cert-action-download" data-certificate-id="flyrank-ml" data-action="download">
-                            <i class="fas fa-download"></i> Save
-                        </a>
                     </div>
-                </div>
 
                 <!-- Certificate 11: Getting Started with Docker -->
                 <div class="certificate-card glass-card" data-certificate-id="simplilearn-docker" data-category="ai-ml">
-                    <div class="cert-taskbar-preview-hud">
-                        <span class="hud-live-dot"></span>
-                        <span class="hud-text">ACTIVE INSPECT // PREVIEW OPEN</span>
-                    </div>
                     <div class="certificate-thumb-wrapper">
-                        <img src="cert_simplilearn_docker.jpg" alt="Getting Started with Docker" class="certificate-image" loading="lazy">
+                        <img src="cert_simplilearn_docker.jpg" alt="Getting Started with Docker" class="certificate-image">
                         <div class="certificate-badge">Cloud & DevOps</div>
+                        <div class="cert-hover-hint">
+                        <span class="cert-hover-pill"><i class="fas fa-expand"></i> OPEN CREDENTIAL</span>
                     </div>
+                </div>
                     <div class="certificate-info-box">
                         <h3 class="certificate-title">Getting Started with Docker</h3>
                         <p class="certificate-issuer"><i class="fas fa-university"></i> Simplilearn SkillUp</p>
                         <p class="certificate-date"><i class="far fa-calendar-alt"></i> September 17, 2026</p>
                     </div>
-                    <div class="certificate-actions">
-                        <a href="#" class="cert-action-btn cert-action-view" data-certificate-id="simplilearn-docker" data-action="view">
-                            <i class="fas fa-expand"></i> View Credential
-                        </a>
-                        <a href="#" class="cert-action-btn cert-action-download" data-certificate-id="simplilearn-docker" data-action="download">
-                            <i class="fas fa-download"></i> Save
-                        </a>
                     </div>
-                </div>
 
                 <!-- Certificate 12: Data Science Explorer Intern -->
                 <div class="certificate-card glass-card" data-certificate-id="yuvaintern-datascience" data-category="ai-ml">
-                    <div class="cert-taskbar-preview-hud">
-                        <span class="hud-live-dot"></span>
-                        <span class="hud-text">ACTIVE INSPECT // PREVIEW OPEN</span>
-                    </div>
                     <div class="certificate-thumb-wrapper">
-                        <img src="cert_yuvaintern_data_science.png" alt="Data Science Explorer Intern" class="certificate-image" loading="lazy">
+                        <img src="cert_yuvaintern_data_science.png" alt="Data Science Explorer Intern" class="certificate-image">
                         <div class="certificate-badge">Data Science</div>
+                        <div class="cert-hover-hint">
+                        <span class="cert-hover-pill"><i class="fas fa-expand"></i> OPEN CREDENTIAL</span>
                     </div>
+                </div>
                     <div class="certificate-info-box">
                         <h3 class="certificate-title">Data Science Explorer Intern</h3>
                         <p class="certificate-issuer"><i class="fas fa-university"></i> YuvaIntern & NSDC</p>
                         <p class="certificate-date"><i class="far fa-calendar-alt"></i> August 2026</p>
                     </div>
-                    <div class="certificate-actions">
-                        <a href="#" class="cert-action-btn cert-action-view" data-certificate-id="yuvaintern-datascience" data-action="view">
-                            <i class="fas fa-expand"></i> View Credential
-                        </a>
-                        <a href="#" class="cert-action-btn cert-action-download" data-certificate-id="yuvaintern-datascience" data-action="download">
-                            <i class="fas fa-download"></i> Save
-                        </a>
                     </div>
-                </div>
 
                 <!-- Certificate 13: The Hawkins Files Challenge -->
                 <div class="certificate-card glass-card" data-certificate-id="outthinkx-hawkins-files" data-category="hackathons">
-                    <div class="cert-taskbar-preview-hud">
-                        <span class="hud-live-dot"></span>
-                        <span class="hud-text">ACTIVE INSPECT // PREVIEW OPEN</span>
-                    </div>
                     <div class="certificate-thumb-wrapper">
-                        <img src="cert_unstop_hawkins_files.jpg" alt="The Hawkins Files Challenge" class="certificate-image" loading="lazy">
+                        <img src="cert_unstop_hawkins_files.jpg" alt="The Hawkins Files Challenge" class="certificate-image">
                         <div class="certificate-badge">National Challenge</div>
+                        <div class="cert-hover-hint">
+                        <span class="cert-hover-pill"><i class="fas fa-expand"></i> OPEN CREDENTIAL</span>
                     </div>
+                </div>
                     <div class="certificate-info-box">
                         <h3 class="certificate-title">The Hawkins Files Challenge</h3>
                         <p class="certificate-issuer"><i class="fas fa-university"></i> OutThinkX & Unstop</p>
                         <p class="certificate-date"><i class="far fa-calendar-alt"></i> 2026</p>
                     </div>
-                    <div class="certificate-actions">
-                        <a href="#" class="cert-action-btn cert-action-view" data-certificate-id="outthinkx-hawkins-files" data-action="view">
-                            <i class="fas fa-expand"></i> View Credential
-                        </a>
-                        <a href="#" class="cert-action-btn cert-action-download" data-certificate-id="outthinkx-hawkins-files" data-action="download">
-                            <i class="fas fa-download"></i> Save
-                        </a>
                     </div>
-                </div>
 
                 <!-- Certificate 14: The First Clue – Hawkins Files -->
                 <div class="certificate-card glass-card" data-certificate-id="outthinkx-first-clue" data-category="hackathons">
-                    <div class="cert-taskbar-preview-hud">
-                        <span class="hud-live-dot"></span>
-                        <span class="hud-text">ACTIVE INSPECT // PREVIEW OPEN</span>
-                    </div>
                     <div class="certificate-thumb-wrapper">
-                        <img src="cert_unstop_first_clue.jpg" alt="The First Clue – Hawkins Files" class="certificate-image" loading="lazy">
+                        <img src="cert_unstop_first_clue.jpg" alt="The First Clue – Hawkins Files" class="certificate-image">
                         <div class="certificate-badge">Problem Solving</div>
+                        <div class="cert-hover-hint">
+                        <span class="cert-hover-pill"><i class="fas fa-expand"></i> OPEN CREDENTIAL</span>
                     </div>
+                </div>
                     <div class="certificate-info-box">
                         <h3 class="certificate-title">The First Clue – Hawkins Files</h3>
                         <p class="certificate-issuer"><i class="fas fa-university"></i> OutThinkX & Unstop</p>
                         <p class="certificate-date"><i class="far fa-calendar-alt"></i> 2026</p>
                     </div>
-                    <div class="certificate-actions">
-                        <a href="#" class="cert-action-btn cert-action-view" data-certificate-id="outthinkx-first-clue" data-action="view">
-                            <i class="fas fa-expand"></i> View Credential
-                        </a>
-                        <a href="#" class="cert-action-btn cert-action-download" data-certificate-id="outthinkx-first-clue" data-action="download">
-                            <i class="fas fa-download"></i> Save
-                        </a>
                     </div>
-                </div>
 
                 <!-- Certificate 15: Basic Python Programming Workshop -->
                 <div class="certificate-card glass-card" data-certificate-id="fossee-python" data-category="technical">
-                    <div class="cert-taskbar-preview-hud">
-                        <span class="hud-live-dot"></span>
-                        <span class="hud-text">ACTIVE INSPECT // PREVIEW OPEN</span>
-                    </div>
                     <div class="certificate-thumb-wrapper">
-                        <img src="Certification-Web-Development.png" alt="Basic Python Programming Workshop" class="certificate-image" loading="lazy">
+                        <img src="Certification-Web-Development.png" alt="Basic Python Programming Workshop" class="certificate-image">
                         <div class="certificate-badge">IIT Bombay FOSSEE</div>
+                        <div class="cert-hover-hint">
+                        <span class="cert-hover-pill"><i class="fas fa-expand"></i> OPEN CREDENTIAL</span>
                     </div>
+                </div>
                     <div class="certificate-info-box">
                         <h3 class="certificate-title">Basic Python Programming Workshop</h3>
                         <p class="certificate-issuer"><i class="fas fa-university"></i> FOSSEE, IIT Bombay</p>
                         <p class="certificate-date"><i class="far fa-calendar-alt"></i> 2026</p>
                     </div>
-                    <div class="certificate-actions">
-                        <a href="#" class="cert-action-btn cert-action-view" data-certificate-id="fossee-python" data-action="view">
-                            <i class="fas fa-expand"></i> View Credential
-                        </a>
-                        <a href="#" class="cert-action-btn cert-action-download" data-certificate-id="fossee-python" data-action="download">
-                            <i class="fas fa-download"></i> Save
-                        </a>
                     </div>
-                </div>
 
                 <!-- Certificate 16: Generative AI Workshop -->
                 <div class="certificate-card glass-card" data-certificate-id="outskill-genai" data-category="ai-ml">
-                    <div class="cert-taskbar-preview-hud">
-                        <span class="hud-live-dot"></span>
-                        <span class="hud-text">ACTIVE INSPECT // PREVIEW OPEN</span>
-                    </div>
                     <div class="certificate-thumb-wrapper">
-                        <img src="Certification-React-Native.png" alt="Generative AI Workshop" class="certificate-image" loading="lazy">
+                        <img src="Certification-React-Native.png" alt="Generative AI Workshop" class="certificate-image">
                         <div class="certificate-badge">GenAI Certified</div>
+                        <div class="cert-hover-hint">
+                        <span class="cert-hover-pill"><i class="fas fa-expand"></i> OPEN CREDENTIAL</span>
                     </div>
+                </div>
                     <div class="certificate-info-box">
                         <h3 class="certificate-title">Generative AI Workshop</h3>
                         <p class="certificate-issuer"><i class="fas fa-university"></i> OutSkill</p>
                         <p class="certificate-date"><i class="far fa-calendar-alt"></i> 2026</p>
                     </div>
-                    <div class="certificate-actions">
-                        <a href="#" class="cert-action-btn cert-action-view" data-certificate-id="outskill-genai" data-action="view">
-                            <i class="fas fa-expand"></i> View Credential
-                        </a>
-                        <a href="#" class="cert-action-btn cert-action-download" data-certificate-id="outskill-genai" data-action="download">
-                            <i class="fas fa-download"></i> Save
-                        </a>
                     </div>
-                </div>
 
                 <!-- Certificate 17: CodeSprint Hackathon 2026 -->
                 <div class="certificate-card glass-card" data-certificate-id="vbit-hackathon" data-category="hackathons">
-                    <div class="cert-taskbar-preview-hud">
-                        <span class="hud-live-dot"></span>
-                        <span class="hud-text">ACTIVE INSPECT // PREVIEW OPEN</span>
-                    </div>
                     <div class="certificate-thumb-wrapper">
-                        <img src="VBIT_Certificate.png" alt="CodeSprint Hackathon 2026" class="certificate-image" loading="lazy">
+                        <img src="VBIT_Certificate.png" alt="CodeSprint Hackathon 2026" class="certificate-image">
                         <div class="certificate-badge">Top 4 Finalist</div>
+                        <div class="cert-hover-hint">
+                        <span class="cert-hover-pill"><i class="fas fa-expand"></i> OPEN CREDENTIAL</span>
                     </div>
+                </div>
                     <div class="certificate-info-box">
                         <h3 class="certificate-title">CodeSprint Hackathon 2026</h3>
                         <p class="certificate-issuer"><i class="fas fa-university"></i> Vignana Bharathi Inst. of Tech (VBIT)</p>
                         <p class="certificate-date"><i class="far fa-calendar-alt"></i> February 2026</p>
                     </div>
-                    <div class="certificate-actions">
-                        <a href="#" class="cert-action-btn cert-action-view" data-certificate-id="vbit-hackathon" data-action="view">
-                            <i class="fas fa-expand"></i> View Credential
-                        </a>
-                        <a href="#" class="cert-action-btn cert-action-download" data-certificate-id="vbit-hackathon" data-action="download">
-                            <i class="fas fa-download"></i> Save
-                        </a>
                     </div>
-                </div>
 
                 <!-- Certificate 18: NCASCTT Research Participation -->
                 <div class="certificate-card glass-card" data-certificate-id="ace-research" data-category="technical">
-                    <div class="cert-taskbar-preview-hud">
-                        <span class="hud-live-dot"></span>
-                        <span class="hud-text">ACTIVE INSPECT // PREVIEW OPEN</span>
-                    </div>
                     <div class="certificate-thumb-wrapper">
-                        <img src="ACE_Research_Certificate.png" alt="NCASCTT Research Participation" class="certificate-image" loading="lazy">
+                        <img src="ACE_Research_Certificate.png" alt="NCASCTT Research Participation" class="certificate-image">
                         <div class="certificate-badge">Academic Research</div>
+                        <div class="cert-hover-hint">
+                        <span class="cert-hover-pill"><i class="fas fa-expand"></i> OPEN CREDENTIAL</span>
                     </div>
+                </div>
                     <div class="certificate-info-box">
                         <h3 class="certificate-title">NCASCTT Research Participation</h3>
                         <p class="certificate-issuer"><i class="fas fa-university"></i> ACE Engineering College</p>
                         <p class="certificate-date"><i class="far fa-calendar-alt"></i> March 2026</p>
                     </div>
-                    <div class="certificate-actions">
-                        <a href="#" class="cert-action-btn cert-action-view" data-certificate-id="ace-research" data-action="view">
-                            <i class="fas fa-expand"></i> View Credential
-                        </a>
-                        <a href="#" class="cert-action-btn cert-action-download" data-certificate-id="ace-research" data-action="download">
-                            <i class="fas fa-download"></i> Save
-                        </a>
                     </div>
-                </div>
 
                 <!-- Certificate 19: Verified Technical Credential #1 -->
                 <div class="certificate-card glass-card" data-certificate-id="wa-1" data-category="technical">
-                    <div class="cert-taskbar-preview-hud">
-                        <span class="hud-live-dot"></span>
-                        <span class="hud-text">ACTIVE INSPECT // PREVIEW OPEN</span>
-                    </div>
                     <div class="certificate-thumb-wrapper">
-                        <img src="whatsapp_certs/WhatsApp Image 2026-07-02 at 6.38.15 PM.jpeg" alt="Verified Technical Credential #1" class="certificate-image" loading="lazy">
+                        <img src="whatsapp_certs/WhatsApp Image 2026-07-02 at 6.38.15 PM.jpeg" alt="Verified Technical Credential #1" class="certificate-image">
                         <div class="certificate-badge">Verified Honor</div>
+                        <div class="cert-hover-hint">
+                        <span class="cert-hover-pill"><i class="fas fa-expand"></i> OPEN CREDENTIAL</span>
                     </div>
+                </div>
                     <div class="certificate-info-box">
                         <h3 class="certificate-title">Verified Technical Credential #1</h3>
                         <p class="certificate-issuer"><i class="fas fa-university"></i> Technical Verification Authority</p>
                         <p class="certificate-date"><i class="far fa-calendar-alt"></i> 2025 – 2026</p>
                     </div>
-                    <div class="certificate-actions">
-                        <a href="#" class="cert-action-btn cert-action-view" data-certificate-id="wa-1" data-action="view">
-                            <i class="fas fa-expand"></i> View Credential
-                        </a>
-                        <a href="#" class="cert-action-btn cert-action-download" data-certificate-id="wa-1" data-action="download">
-                            <i class="fas fa-download"></i> Save
-                        </a>
                     </div>
-                </div>
 
                 <!-- Certificate 20: Verified Technical Credential #2 -->
                 <div class="certificate-card glass-card" data-certificate-id="wa-2" data-category="technical">
-                    <div class="cert-taskbar-preview-hud">
-                        <span class="hud-live-dot"></span>
-                        <span class="hud-text">ACTIVE INSPECT // PREVIEW OPEN</span>
-                    </div>
                     <div class="certificate-thumb-wrapper">
-                        <img src="whatsapp_certs/WhatsApp Image 2026-07-02 at 6.38.31 PM.jpeg" alt="Verified Technical Credential #2" class="certificate-image" loading="lazy">
+                        <img src="whatsapp_certs/WhatsApp Image 2026-07-02 at 6.38.31 PM.jpeg" alt="Verified Technical Credential #2" class="certificate-image">
                         <div class="certificate-badge">Verified Honor</div>
+                        <div class="cert-hover-hint">
+                        <span class="cert-hover-pill"><i class="fas fa-expand"></i> OPEN CREDENTIAL</span>
                     </div>
+                </div>
                     <div class="certificate-info-box">
                         <h3 class="certificate-title">Verified Technical Credential #2</h3>
                         <p class="certificate-issuer"><i class="fas fa-university"></i> Technical Verification Authority</p>
                         <p class="certificate-date"><i class="far fa-calendar-alt"></i> 2025 – 2026</p>
                     </div>
-                    <div class="certificate-actions">
-                        <a href="#" class="cert-action-btn cert-action-view" data-certificate-id="wa-2" data-action="view">
-                            <i class="fas fa-expand"></i> View Credential
-                        </a>
-                        <a href="#" class="cert-action-btn cert-action-download" data-certificate-id="wa-2" data-action="download">
-                            <i class="fas fa-download"></i> Save
-                        </a>
                     </div>
-                </div>
 
                 <!-- Certificate 21: Verified Technical Credential #3 -->
                 <div class="certificate-card glass-card" data-certificate-id="wa-3" data-category="technical">
-                    <div class="cert-taskbar-preview-hud">
-                        <span class="hud-live-dot"></span>
-                        <span class="hud-text">ACTIVE INSPECT // PREVIEW OPEN</span>
-                    </div>
                     <div class="certificate-thumb-wrapper">
-                        <img src="whatsapp_certs/WhatsApp Image 2026-07-02 at 6.38.49 PM.jpeg" alt="Verified Technical Credential #3" class="certificate-image" loading="lazy">
+                        <img src="whatsapp_certs/WhatsApp Image 2026-07-02 at 6.38.49 PM.jpeg" alt="Verified Technical Credential #3" class="certificate-image">
                         <div class="certificate-badge">Verified Honor</div>
+                        <div class="cert-hover-hint">
+                        <span class="cert-hover-pill"><i class="fas fa-expand"></i> OPEN CREDENTIAL</span>
                     </div>
+                </div>
                     <div class="certificate-info-box">
                         <h3 class="certificate-title">Verified Technical Credential #3</h3>
                         <p class="certificate-issuer"><i class="fas fa-university"></i> Technical Verification Authority</p>
                         <p class="certificate-date"><i class="far fa-calendar-alt"></i> 2025 – 2026</p>
                     </div>
-                    <div class="certificate-actions">
-                        <a href="#" class="cert-action-btn cert-action-view" data-certificate-id="wa-3" data-action="view">
-                            <i class="fas fa-expand"></i> View Credential
-                        </a>
-                        <a href="#" class="cert-action-btn cert-action-download" data-certificate-id="wa-3" data-action="download">
-                            <i class="fas fa-download"></i> Save
-                        </a>
                     </div>
-                </div>
 
                 <!-- Certificate 22: Verified Technical Credential #4 -->
                 <div class="certificate-card glass-card" data-certificate-id="wa-4" data-category="technical">
-                    <div class="cert-taskbar-preview-hud">
-                        <span class="hud-live-dot"></span>
-                        <span class="hud-text">ACTIVE INSPECT // PREVIEW OPEN</span>
-                    </div>
                     <div class="certificate-thumb-wrapper">
-                        <img src="whatsapp_certs/WhatsApp Image 2026-07-02 at 6.39.04 PM.jpeg" alt="Verified Technical Credential #4" class="certificate-image" loading="lazy">
+                        <img src="whatsapp_certs/WhatsApp Image 2026-07-02 at 6.39.04 PM.jpeg" alt="Verified Technical Credential #4" class="certificate-image">
                         <div class="certificate-badge">Verified Honor</div>
+                        <div class="cert-hover-hint">
+                        <span class="cert-hover-pill"><i class="fas fa-expand"></i> OPEN CREDENTIAL</span>
                     </div>
+                </div>
                     <div class="certificate-info-box">
                         <h3 class="certificate-title">Verified Technical Credential #4</h3>
                         <p class="certificate-issuer"><i class="fas fa-university"></i> Technical Verification Authority</p>
                         <p class="certificate-date"><i class="far fa-calendar-alt"></i> 2025 – 2026</p>
                     </div>
-                    <div class="certificate-actions">
-                        <a href="#" class="cert-action-btn cert-action-view" data-certificate-id="wa-4" data-action="view">
-                            <i class="fas fa-expand"></i> View Credential
-                        </a>
-                        <a href="#" class="cert-action-btn cert-action-download" data-certificate-id="wa-4" data-action="download">
-                            <i class="fas fa-download"></i> Save
-                        </a>
                     </div>
-                </div>
 
                 <!-- Certificate 23: Verified Technical Credential #5 -->
                 <div class="certificate-card glass-card" data-certificate-id="wa-5" data-category="technical">
-                    <div class="cert-taskbar-preview-hud">
-                        <span class="hud-live-dot"></span>
-                        <span class="hud-text">ACTIVE INSPECT // PREVIEW OPEN</span>
-                    </div>
                     <div class="certificate-thumb-wrapper">
-                        <img src="whatsapp_certs/WhatsApp Image 2026-07-02 at 6.39.14 PM.jpeg" alt="Verified Technical Credential #5" class="certificate-image" loading="lazy">
+                        <img src="whatsapp_certs/WhatsApp Image 2026-07-02 at 6.39.14 PM.jpeg" alt="Verified Technical Credential #5" class="certificate-image">
                         <div class="certificate-badge">Verified Honor</div>
+                        <div class="cert-hover-hint">
+                        <span class="cert-hover-pill"><i class="fas fa-expand"></i> OPEN CREDENTIAL</span>
                     </div>
+                </div>
                     <div class="certificate-info-box">
                         <h3 class="certificate-title">Verified Technical Credential #5</h3>
                         <p class="certificate-issuer"><i class="fas fa-university"></i> Technical Verification Authority</p>
                         <p class="certificate-date"><i class="far fa-calendar-alt"></i> 2025 – 2026</p>
                     </div>
-                    <div class="certificate-actions">
-                        <a href="#" class="cert-action-btn cert-action-view" data-certificate-id="wa-5" data-action="view">
-                            <i class="fas fa-expand"></i> View Credential
-                        </a>
-                        <a href="#" class="cert-action-btn cert-action-download" data-certificate-id="wa-5" data-action="download">
-                            <i class="fas fa-download"></i> Save
-                        </a>
                     </div>
-                </div>
 
                 <!-- Certificate 24: Verified Technical Credential #6 -->
                 <div class="certificate-card glass-card" data-certificate-id="wa-6" data-category="technical">
-                    <div class="cert-taskbar-preview-hud">
-                        <span class="hud-live-dot"></span>
-                        <span class="hud-text">ACTIVE INSPECT // PREVIEW OPEN</span>
-                    </div>
                     <div class="certificate-thumb-wrapper">
-                        <img src="whatsapp_certs/WhatsApp Image 2026-07-02 at 6.39.20 PM.jpeg" alt="Verified Technical Credential #6" class="certificate-image" loading="lazy">
+                        <img src="whatsapp_certs/WhatsApp Image 2026-07-02 at 6.39.20 PM.jpeg" alt="Verified Technical Credential #6" class="certificate-image">
                         <div class="certificate-badge">Verified Honor</div>
+                        <div class="cert-hover-hint">
+                        <span class="cert-hover-pill"><i class="fas fa-expand"></i> OPEN CREDENTIAL</span>
                     </div>
+                </div>
                     <div class="certificate-info-box">
                         <h3 class="certificate-title">Verified Technical Credential #6</h3>
                         <p class="certificate-issuer"><i class="fas fa-university"></i> Technical Verification Authority</p>
                         <p class="certificate-date"><i class="far fa-calendar-alt"></i> 2025 – 2026</p>
                     </div>
-                    <div class="certificate-actions">
-                        <a href="#" class="cert-action-btn cert-action-view" data-certificate-id="wa-6" data-action="view">
-                            <i class="fas fa-expand"></i> View Credential
-                        </a>
-                        <a href="#" class="cert-action-btn cert-action-download" data-certificate-id="wa-6" data-action="download">
-                            <i class="fas fa-download"></i> Save
-                        </a>
                     </div>
-                </div>
 
                 <!-- Certificate 25: Verified Technical Credential #7 -->
                 <div class="certificate-card glass-card" data-certificate-id="wa-7" data-category="technical">
-                    <div class="cert-taskbar-preview-hud">
-                        <span class="hud-live-dot"></span>
-                        <span class="hud-text">ACTIVE INSPECT // PREVIEW OPEN</span>
-                    </div>
                     <div class="certificate-thumb-wrapper">
-                        <img src="whatsapp_certs/WhatsApp Image 2026-07-02 at 6.39.30 PM.jpeg" alt="Verified Technical Credential #7" class="certificate-image" loading="lazy">
+                        <img src="whatsapp_certs/WhatsApp Image 2026-07-02 at 6.39.30 PM.jpeg" alt="Verified Technical Credential #7" class="certificate-image">
                         <div class="certificate-badge">Verified Honor</div>
+                        <div class="cert-hover-hint">
+                        <span class="cert-hover-pill"><i class="fas fa-expand"></i> OPEN CREDENTIAL</span>
                     </div>
+                </div>
                     <div class="certificate-info-box">
                         <h3 class="certificate-title">Verified Technical Credential #7</h3>
                         <p class="certificate-issuer"><i class="fas fa-university"></i> Technical Verification Authority</p>
                         <p class="certificate-date"><i class="far fa-calendar-alt"></i> 2025 – 2026</p>
                     </div>
-                    <div class="certificate-actions">
-                        <a href="#" class="cert-action-btn cert-action-view" data-certificate-id="wa-7" data-action="view">
-                            <i class="fas fa-expand"></i> View Credential
-                        </a>
-                        <a href="#" class="cert-action-btn cert-action-download" data-certificate-id="wa-7" data-action="download">
-                            <i class="fas fa-download"></i> Save
-                        </a>
                     </div>
-                </div>
 
                 <!-- Certificate 26: Verified Technical Credential #8 -->
                 <div class="certificate-card glass-card" data-certificate-id="wa-8" data-category="technical">
-                    <div class="cert-taskbar-preview-hud">
-                        <span class="hud-live-dot"></span>
-                        <span class="hud-text">ACTIVE INSPECT // PREVIEW OPEN</span>
-                    </div>
                     <div class="certificate-thumb-wrapper">
-                        <img src="whatsapp_certs/WhatsApp Image 2026-07-02 at 6.39.59 PM.jpeg" alt="Verified Technical Credential #8" class="certificate-image" loading="lazy">
+                        <img src="whatsapp_certs/WhatsApp Image 2026-07-02 at 6.39.59 PM.jpeg" alt="Verified Technical Credential #8" class="certificate-image">
                         <div class="certificate-badge">Verified Honor</div>
+                        <div class="cert-hover-hint">
+                        <span class="cert-hover-pill"><i class="fas fa-expand"></i> OPEN CREDENTIAL</span>
                     </div>
+                </div>
                     <div class="certificate-info-box">
                         <h3 class="certificate-title">Verified Technical Credential #8</h3>
                         <p class="certificate-issuer"><i class="fas fa-university"></i> Technical Verification Authority</p>
                         <p class="certificate-date"><i class="far fa-calendar-alt"></i> 2025 – 2026</p>
                     </div>
-                    <div class="certificate-actions">
-                        <a href="#" class="cert-action-btn cert-action-view" data-certificate-id="wa-8" data-action="view">
-                            <i class="fas fa-expand"></i> View Credential
-                        </a>
-                        <a href="#" class="cert-action-btn cert-action-download" data-certificate-id="wa-8" data-action="download">
-                            <i class="fas fa-download"></i> Save
-                        </a>
                     </div>
-                </div>
 
                 <!-- Certificate 27: Verified Technical Credential #9 -->
                 <div class="certificate-card glass-card" data-certificate-id="wa-9" data-category="technical">
-                    <div class="cert-taskbar-preview-hud">
-                        <span class="hud-live-dot"></span>
-                        <span class="hud-text">ACTIVE INSPECT // PREVIEW OPEN</span>
-                    </div>
                     <div class="certificate-thumb-wrapper">
-                        <img src="whatsapp_certs/WhatsApp Image 2026-07-02 at 6.40.26 PM.jpeg" alt="Verified Technical Credential #9" class="certificate-image" loading="lazy">
+                        <img src="whatsapp_certs/WhatsApp Image 2026-07-02 at 6.40.26 PM.jpeg" alt="Verified Technical Credential #9" class="certificate-image">
                         <div class="certificate-badge">Verified Honor</div>
+                        <div class="cert-hover-hint">
+                        <span class="cert-hover-pill"><i class="fas fa-expand"></i> OPEN CREDENTIAL</span>
                     </div>
+                </div>
                     <div class="certificate-info-box">
                         <h3 class="certificate-title">Verified Technical Credential #9</h3>
                         <p class="certificate-issuer"><i class="fas fa-university"></i> Technical Verification Authority</p>
                         <p class="certificate-date"><i class="far fa-calendar-alt"></i> 2025 – 2026</p>
                     </div>
-                    <div class="certificate-actions">
-                        <a href="#" class="cert-action-btn cert-action-view" data-certificate-id="wa-9" data-action="view">
-                            <i class="fas fa-expand"></i> View Credential
-                        </a>
-                        <a href="#" class="cert-action-btn cert-action-download" data-certificate-id="wa-9" data-action="download">
-                            <i class="fas fa-download"></i> Save
-                        </a>
                     </div>
-                </div>
 
                 <!-- Certificate 28: Verified Technical Credential #10 -->
                 <div class="certificate-card glass-card" data-certificate-id="wa-10" data-category="technical">
-                    <div class="cert-taskbar-preview-hud">
-                        <span class="hud-live-dot"></span>
-                        <span class="hud-text">ACTIVE INSPECT // PREVIEW OPEN</span>
-                    </div>
                     <div class="certificate-thumb-wrapper">
-                        <img src="whatsapp_certs/WhatsApp Image 2026-07-02 at 6.40.31 PM.jpeg" alt="Verified Technical Credential #10" class="certificate-image" loading="lazy">
+                        <img src="whatsapp_certs/WhatsApp Image 2026-07-02 at 6.40.31 PM.jpeg" alt="Verified Technical Credential #10" class="certificate-image">
                         <div class="certificate-badge">Verified Honor</div>
+                        <div class="cert-hover-hint">
+                        <span class="cert-hover-pill"><i class="fas fa-expand"></i> OPEN CREDENTIAL</span>
                     </div>
+                </div>
                     <div class="certificate-info-box">
                         <h3 class="certificate-title">Verified Technical Credential #10</h3>
                         <p class="certificate-issuer"><i class="fas fa-university"></i> Technical Verification Authority</p>
                         <p class="certificate-date"><i class="far fa-calendar-alt"></i> 2025 – 2026</p>
                     </div>
-                    <div class="certificate-actions">
-                        <a href="#" class="cert-action-btn cert-action-view" data-certificate-id="wa-10" data-action="view">
-                            <i class="fas fa-expand"></i> View Credential
-                        </a>
-                        <a href="#" class="cert-action-btn cert-action-download" data-certificate-id="wa-10" data-action="download">
-                            <i class="fas fa-download"></i> Save
-                        </a>
                     </div>
-                </div>
 
                 <!-- Certificate 29: Verified Technical Credential #11 -->
                 <div class="certificate-card glass-card" data-certificate-id="wa-11" data-category="technical">
-                    <div class="cert-taskbar-preview-hud">
-                        <span class="hud-live-dot"></span>
-                        <span class="hud-text">ACTIVE INSPECT // PREVIEW OPEN</span>
-                    </div>
                     <div class="certificate-thumb-wrapper">
-                        <img src="whatsapp_certs/WhatsApp Image 2026-07-02 at 6.40.41 PM.jpeg" alt="Verified Technical Credential #11" class="certificate-image" loading="lazy">
+                        <img src="whatsapp_certs/WhatsApp Image 2026-07-02 at 6.40.41 PM.jpeg" alt="Verified Technical Credential #11" class="certificate-image">
                         <div class="certificate-badge">Verified Honor</div>
+                        <div class="cert-hover-hint">
+                        <span class="cert-hover-pill"><i class="fas fa-expand"></i> OPEN CREDENTIAL</span>
                     </div>
+                </div>
                     <div class="certificate-info-box">
                         <h3 class="certificate-title">Verified Technical Credential #11</h3>
                         <p class="certificate-issuer"><i class="fas fa-university"></i> Technical Verification Authority</p>
                         <p class="certificate-date"><i class="far fa-calendar-alt"></i> 2025 – 2026</p>
                     </div>
-                    <div class="certificate-actions">
-                        <a href="#" class="cert-action-btn cert-action-view" data-certificate-id="wa-11" data-action="view">
-                            <i class="fas fa-expand"></i> View Credential
-                        </a>
-                        <a href="#" class="cert-action-btn cert-action-download" data-certificate-id="wa-11" data-action="download">
-                            <i class="fas fa-download"></i> Save
-                        </a>
                     </div>
-                </div>
 
                 <!-- Certificate 30: Verified Technical Credential #12 -->
                 <div class="certificate-card glass-card" data-certificate-id="wa-12" data-category="technical">
-                    <div class="cert-taskbar-preview-hud">
-                        <span class="hud-live-dot"></span>
-                        <span class="hud-text">ACTIVE INSPECT // PREVIEW OPEN</span>
-                    </div>
                     <div class="certificate-thumb-wrapper">
-                        <img src="whatsapp_certs/WhatsApp Image 2026-07-02 at 6.40.48 PM.jpeg" alt="Verified Technical Credential #12" class="certificate-image" loading="lazy">
+                        <img src="whatsapp_certs/WhatsApp Image 2026-07-02 at 6.40.48 PM.jpeg" alt="Verified Technical Credential #12" class="certificate-image">
                         <div class="certificate-badge">Verified Honor</div>
+                        <div class="cert-hover-hint">
+                        <span class="cert-hover-pill"><i class="fas fa-expand"></i> OPEN CREDENTIAL</span>
                     </div>
+                </div>
                     <div class="certificate-info-box">
                         <h3 class="certificate-title">Verified Technical Credential #12</h3>
                         <p class="certificate-issuer"><i class="fas fa-university"></i> Technical Verification Authority</p>
                         <p class="certificate-date"><i class="far fa-calendar-alt"></i> 2025 – 2026</p>
                     </div>
-                    <div class="certificate-actions">
-                        <a href="#" class="cert-action-btn cert-action-view" data-certificate-id="wa-12" data-action="view">
-                            <i class="fas fa-expand"></i> View Credential
-                        </a>
-                        <a href="#" class="cert-action-btn cert-action-download" data-certificate-id="wa-12" data-action="download">
-                            <i class="fas fa-download"></i> Save
-                        </a>
                     </div>
-                </div>
 
                 <!-- Certificate 31: Verified Technical Credential #13 -->
                 <div class="certificate-card glass-card" data-certificate-id="wa-13" data-category="technical">
-                    <div class="cert-taskbar-preview-hud">
-                        <span class="hud-live-dot"></span>
-                        <span class="hud-text">ACTIVE INSPECT // PREVIEW OPEN</span>
-                    </div>
                     <div class="certificate-thumb-wrapper">
-                        <img src="whatsapp_certs/WhatsApp Image 2026-07-02 at 6.41.30 PM.jpeg" alt="Verified Technical Credential #13" class="certificate-image" loading="lazy">
+                        <img src="whatsapp_certs/WhatsApp Image 2026-07-02 at 6.41.30 PM.jpeg" alt="Verified Technical Credential #13" class="certificate-image">
                         <div class="certificate-badge">Verified Honor</div>
+                        <div class="cert-hover-hint">
+                        <span class="cert-hover-pill"><i class="fas fa-expand"></i> OPEN CREDENTIAL</span>
                     </div>
+                </div>
                     <div class="certificate-info-box">
                         <h3 class="certificate-title">Verified Technical Credential #13</h3>
                         <p class="certificate-issuer"><i class="fas fa-university"></i> Technical Verification Authority</p>
                         <p class="certificate-date"><i class="far fa-calendar-alt"></i> 2025 – 2026</p>
                     </div>
-                    <div class="certificate-actions">
-                        <a href="#" class="cert-action-btn cert-action-view" data-certificate-id="wa-13" data-action="view">
-                            <i class="fas fa-expand"></i> View Credential
-                        </a>
-                        <a href="#" class="cert-action-btn cert-action-download" data-certificate-id="wa-13" data-action="download">
-                            <i class="fas fa-download"></i> Save
-                        </a>
                     </div>
-                </div>
 
                 <!-- Certificate 32: Verified Technical Credential #14 -->
                 <div class="certificate-card glass-card" data-certificate-id="wa-14" data-category="technical">
-                    <div class="cert-taskbar-preview-hud">
-                        <span class="hud-live-dot"></span>
-                        <span class="hud-text">ACTIVE INSPECT // PREVIEW OPEN</span>
-                    </div>
                     <div class="certificate-thumb-wrapper">
-                        <img src="whatsapp_certs/WhatsApp Image 2026-07-02 at 6.41.37 PM.jpeg" alt="Verified Technical Credential #14" class="certificate-image" loading="lazy">
+                        <img src="whatsapp_certs/WhatsApp Image 2026-07-02 at 6.41.37 PM.jpeg" alt="Verified Technical Credential #14" class="certificate-image">
                         <div class="certificate-badge">Verified Honor</div>
+                        <div class="cert-hover-hint">
+                        <span class="cert-hover-pill"><i class="fas fa-expand"></i> OPEN CREDENTIAL</span>
                     </div>
+                </div>
                     <div class="certificate-info-box">
                         <h3 class="certificate-title">Verified Technical Credential #14</h3>
                         <p class="certificate-issuer"><i class="fas fa-university"></i> Technical Verification Authority</p>
                         <p class="certificate-date"><i class="far fa-calendar-alt"></i> 2025 – 2026</p>
                     </div>
-                    <div class="certificate-actions">
-                        <a href="#" class="cert-action-btn cert-action-view" data-certificate-id="wa-14" data-action="view">
-                            <i class="fas fa-expand"></i> View Credential
-                        </a>
-                        <a href="#" class="cert-action-btn cert-action-download" data-certificate-id="wa-14" data-action="download">
-                            <i class="fas fa-download"></i> Save
-                        </a>
                     </div>
-                </div>
 
                 <!-- Certificate 33: Verified Technical Credential #15 -->
                 <div class="certificate-card glass-card" data-certificate-id="wa-15" data-category="technical">
-                    <div class="cert-taskbar-preview-hud">
-                        <span class="hud-live-dot"></span>
-                        <span class="hud-text">ACTIVE INSPECT // PREVIEW OPEN</span>
-                    </div>
                     <div class="certificate-thumb-wrapper">
-                        <img src="whatsapp_certs/WhatsApp Image 2026-07-02 at 6.41.50 PM.jpeg" alt="Verified Technical Credential #15" class="certificate-image" loading="lazy">
+                        <img src="whatsapp_certs/WhatsApp Image 2026-07-02 at 6.41.50 PM.jpeg" alt="Verified Technical Credential #15" class="certificate-image">
                         <div class="certificate-badge">Verified Honor</div>
+                        <div class="cert-hover-hint">
+                        <span class="cert-hover-pill"><i class="fas fa-expand"></i> OPEN CREDENTIAL</span>
                     </div>
+                </div>
                     <div class="certificate-info-box">
                         <h3 class="certificate-title">Verified Technical Credential #15</h3>
                         <p class="certificate-issuer"><i class="fas fa-university"></i> Technical Verification Authority</p>
                         <p class="certificate-date"><i class="far fa-calendar-alt"></i> 2025 – 2026</p>
                     </div>
-                    <div class="certificate-actions">
-                        <a href="#" class="cert-action-btn cert-action-view" data-certificate-id="wa-15" data-action="view">
-                            <i class="fas fa-expand"></i> View Credential
-                        </a>
-                        <a href="#" class="cert-action-btn cert-action-download" data-certificate-id="wa-15" data-action="download">
-                            <i class="fas fa-download"></i> Save
-                        </a>
                     </div>
-                </div>
 
                 <!-- Certificate 34: Verified Technical Credential #16 -->
                 <div class="certificate-card glass-card" data-certificate-id="wa-16" data-category="technical">
-                    <div class="cert-taskbar-preview-hud">
-                        <span class="hud-live-dot"></span>
-                        <span class="hud-text">ACTIVE INSPECT // PREVIEW OPEN</span>
-                    </div>
                     <div class="certificate-thumb-wrapper">
-                        <img src="whatsapp_certs/WhatsApp Image 2026-07-02 at 6.43.24 PM.jpeg" alt="Verified Technical Credential #16" class="certificate-image" loading="lazy">
+                        <img src="whatsapp_certs/WhatsApp Image 2026-07-02 at 6.43.24 PM.jpeg" alt="Verified Technical Credential #16" class="certificate-image">
                         <div class="certificate-badge">Verified Honor</div>
+                        <div class="cert-hover-hint">
+                        <span class="cert-hover-pill"><i class="fas fa-expand"></i> OPEN CREDENTIAL</span>
                     </div>
+                </div>
                     <div class="certificate-info-box">
                         <h3 class="certificate-title">Verified Technical Credential #16</h3>
                         <p class="certificate-issuer"><i class="fas fa-university"></i> Technical Verification Authority</p>
                         <p class="certificate-date"><i class="far fa-calendar-alt"></i> 2025 – 2026</p>
                     </div>
-                    <div class="certificate-actions">
-                        <a href="#" class="cert-action-btn cert-action-view" data-certificate-id="wa-16" data-action="view">
-                            <i class="fas fa-expand"></i> View Credential
-                        </a>
-                        <a href="#" class="cert-action-btn cert-action-download" data-certificate-id="wa-16" data-action="download">
-                            <i class="fas fa-download"></i> Save
-                        </a>
                     </div>
-                </div>
 
                 <!-- Certificate 35: Verified Technical Credential #17 -->
                 <div class="certificate-card glass-card" data-certificate-id="wa-17" data-category="technical">
-                    <div class="cert-taskbar-preview-hud">
-                        <span class="hud-live-dot"></span>
-                        <span class="hud-text">ACTIVE INSPECT // PREVIEW OPEN</span>
-                    </div>
                     <div class="certificate-thumb-wrapper">
-                        <img src="whatsapp_certs/WhatsApp Image 2026-07-02 at 6.45.24 PM.jpeg" alt="Verified Technical Credential #17" class="certificate-image" loading="lazy">
+                        <img src="whatsapp_certs/WhatsApp Image 2026-07-02 at 6.45.24 PM.jpeg" alt="Verified Technical Credential #17" class="certificate-image">
                         <div class="certificate-badge">Verified Honor</div>
+                        <div class="cert-hover-hint">
+                        <span class="cert-hover-pill"><i class="fas fa-expand"></i> OPEN CREDENTIAL</span>
                     </div>
+                </div>
                     <div class="certificate-info-box">
                         <h3 class="certificate-title">Verified Technical Credential #17</h3>
                         <p class="certificate-issuer"><i class="fas fa-university"></i> Technical Verification Authority</p>
                         <p class="certificate-date"><i class="far fa-calendar-alt"></i> 2025 – 2026</p>
                     </div>
-                    <div class="certificate-actions">
-                        <a href="#" class="cert-action-btn cert-action-view" data-certificate-id="wa-17" data-action="view">
-                            <i class="fas fa-expand"></i> View Credential
-                        </a>
-                        <a href="#" class="cert-action-btn cert-action-download" data-certificate-id="wa-17" data-action="download">
-                            <i class="fas fa-download"></i> Save
-                        </a>
                     </div>
-                </div>
 
                 <!-- Certificate 36: Verified Technical Credential #18 -->
                 <div class="certificate-card glass-card" data-certificate-id="wa-18" data-category="technical">
-                    <div class="cert-taskbar-preview-hud">
-                        <span class="hud-live-dot"></span>
-                        <span class="hud-text">ACTIVE INSPECT // PREVIEW OPEN</span>
-                    </div>
                     <div class="certificate-thumb-wrapper">
-                        <img src="whatsapp_certs/WhatsApp Image 2026-07-02 at 6.45.35 PM.jpeg" alt="Verified Technical Credential #18" class="certificate-image" loading="lazy">
+                        <img src="whatsapp_certs/WhatsApp Image 2026-07-02 at 6.45.35 PM.jpeg" alt="Verified Technical Credential #18" class="certificate-image">
                         <div class="certificate-badge">Verified Honor</div>
+                        <div class="cert-hover-hint">
+                        <span class="cert-hover-pill"><i class="fas fa-expand"></i> OPEN CREDENTIAL</span>
                     </div>
+                </div>
                     <div class="certificate-info-box">
                         <h3 class="certificate-title">Verified Technical Credential #18</h3>
                         <p class="certificate-issuer"><i class="fas fa-university"></i> Technical Verification Authority</p>
                         <p class="certificate-date"><i class="far fa-calendar-alt"></i> 2025 – 2026</p>
                     </div>
-                    <div class="certificate-actions">
-                        <a href="#" class="cert-action-btn cert-action-view" data-certificate-id="wa-18" data-action="view">
-                            <i class="fas fa-expand"></i> View Credential
-                        </a>
-                        <a href="#" class="cert-action-btn cert-action-download" data-certificate-id="wa-18" data-action="download">
-                            <i class="fas fa-download"></i> Save
-                        </a>
                     </div>
-                </div>
 
                 <!-- Certificate 37: Verified Technical Credential #19 -->
                 <div class="certificate-card glass-card" data-certificate-id="wa-19" data-category="technical">
-                    <div class="cert-taskbar-preview-hud">
-                        <span class="hud-live-dot"></span>
-                        <span class="hud-text">ACTIVE INSPECT // PREVIEW OPEN</span>
-                    </div>
                     <div class="certificate-thumb-wrapper">
-                        <img src="whatsapp_certs/WhatsApp Image 2026-07-02 at 6.45.41 PM.jpeg" alt="Verified Technical Credential #19" class="certificate-image" loading="lazy">
+                        <img src="whatsapp_certs/WhatsApp Image 2026-07-02 at 6.45.41 PM.jpeg" alt="Verified Technical Credential #19" class="certificate-image">
                         <div class="certificate-badge">Verified Honor</div>
+                        <div class="cert-hover-hint">
+                        <span class="cert-hover-pill"><i class="fas fa-expand"></i> OPEN CREDENTIAL</span>
                     </div>
+                </div>
                     <div class="certificate-info-box">
                         <h3 class="certificate-title">Verified Technical Credential #19</h3>
                         <p class="certificate-issuer"><i class="fas fa-university"></i> Technical Verification Authority</p>
                         <p class="certificate-date"><i class="far fa-calendar-alt"></i> 2025 – 2026</p>
                     </div>
-                    <div class="certificate-actions">
-                        <a href="#" class="cert-action-btn cert-action-view" data-certificate-id="wa-19" data-action="view">
-                            <i class="fas fa-expand"></i> View Credential
-                        </a>
-                        <a href="#" class="cert-action-btn cert-action-download" data-certificate-id="wa-19" data-action="download">
-                            <i class="fas fa-download"></i> Save
-                        </a>
                     </div>
-                </div>
 
                 <!-- Certificate 38: Verified Technical Credential #20 -->
                 <div class="certificate-card glass-card" data-certificate-id="wa-20" data-category="technical">
-                    <div class="cert-taskbar-preview-hud">
-                        <span class="hud-live-dot"></span>
-                        <span class="hud-text">ACTIVE INSPECT // PREVIEW OPEN</span>
-                    </div>
                     <div class="certificate-thumb-wrapper">
-                        <img src="whatsapp_certs/WhatsApp Image 2026-07-02 at 6.46.13 PM.jpeg" alt="Verified Technical Credential #20" class="certificate-image" loading="lazy">
+                        <img src="whatsapp_certs/WhatsApp Image 2026-07-02 at 6.46.13 PM.jpeg" alt="Verified Technical Credential #20" class="certificate-image">
                         <div class="certificate-badge">Verified Honor</div>
+                        <div class="cert-hover-hint">
+                        <span class="cert-hover-pill"><i class="fas fa-expand"></i> OPEN CREDENTIAL</span>
                     </div>
+                </div>
                     <div class="certificate-info-box">
                         <h3 class="certificate-title">Verified Technical Credential #20</h3>
                         <p class="certificate-issuer"><i class="fas fa-university"></i> Technical Verification Authority</p>
                         <p class="certificate-date"><i class="far fa-calendar-alt"></i> 2025 – 2026</p>
                     </div>
-                    <div class="certificate-actions">
-                        <a href="#" class="cert-action-btn cert-action-view" data-certificate-id="wa-20" data-action="view">
-                            <i class="fas fa-expand"></i> View Credential
-                        </a>
-                        <a href="#" class="cert-action-btn cert-action-download" data-certificate-id="wa-20" data-action="download">
-                            <i class="fas fa-download"></i> Save
-                        </a>
                     </div>
-                </div>
             </div>
         </div>
     </section>
@@ -10691,7 +10367,7 @@
             if (!certificate) return;
 
             // If it's a PDF, open in new tab for better viewing
-            if (certificate.viewLink.toLowerCase().endsWith('.pdf')) {
+            if (certificate.viewLink && certificate.viewLink.toLowerCase().endsWith('.pdf')) {
                 window.open(certificate.viewLink, '_blank');
                 return;
             }
@@ -10700,24 +10376,39 @@
             if (!lightbox) {
                 lightbox = document.createElement("div");
                 lightbox.id = "certificate-lightbox";
-                lightbox.style.cssText = "display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:99999; justify-content:center; align-items:center; opacity:0; transition:opacity 0.3s ease;";
+                lightbox.style.cssText = "display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(3,7,18,0.92); z-index:99999; justify-content:center; align-items:center; flex-direction:column; opacity:0; backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); transition:opacity 0.25s ease;";
 
                 const closeBtn = document.createElement("span");
                 closeBtn.innerHTML = "&times;";
-                closeBtn.style.cssText = "position:absolute; top:16px; right:16px; width:44px; height:44px; border-radius:50%; background:rgba(0,0,0,0.65); border:1px solid rgba(255,255,255,0.25); color:white; font-size:26px; cursor:pointer; font-weight:bold; z-index:100000; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 15px rgba(0,0,0,0.4); transition:all 0.25s ease;";
+                closeBtn.style.cssText = "position:absolute; top:20px; right:24px; width:44px; height:44px; border-radius:50%; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); color:white; font-size:26px; cursor:pointer; font-weight:bold; z-index:100000; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 15px rgba(0,0,0,0.5); transition:all 0.2s ease;";
+                closeBtn.onmouseenter = () => closeBtn.style.background = 'rgba(255,255,255,0.25)';
+                closeBtn.onmouseleave = () => closeBtn.style.background = 'rgba(255,255,255,0.1)';
 
                 const img = document.createElement("img");
                 img.id = "lightbox-img";
-                img.style.cssText = "max-width:90vw; max-height:90vh; object-fit:contain; border-radius:8px; box-shadow:0 10px 30px rgba(0,0,0,0.5); transform:scale(0.9); transition:transform 0.3s ease;";
+                img.style.cssText = "max-width:92vw; max-height:80vh; object-fit:contain; border-radius:12px; box-shadow:0 15px 45px rgba(0,0,0,0.7), 0 0 35px rgba(0,242,254,0.2); transform:scale(0.92); transition:transform 0.25s cubic-bezier(0.16,1,0.3,1);";
 
+                const toolbar = document.createElement("div");
+                toolbar.id = "lightbox-toolbar";
+                toolbar.style.cssText = "display:flex; align-items:center; gap:16px; margin-top:18px; z-index:100000;";
+
+                const downloadBtn = document.createElement("a");
+                downloadBtn.id = "lightbox-download-btn";
+                downloadBtn.innerHTML = '<i class="fas fa-download"></i> Save Credential';
+                downloadBtn.style.cssText = "display:inline-flex; align-items:center; gap:8px; padding:10px 24px; border-radius:30px; background:#00f2fe; color:#030712; font-family:'Outfit', sans-serif; font-size:0.85rem; font-weight:700; text-decoration:none; box-shadow:0 6px 20px rgba(0,242,254,0.4); cursor:pointer; transition:all 0.2s ease;";
+                downloadBtn.onmouseenter = () => { downloadBtn.style.transform = 'translateY(-2px)'; downloadBtn.style.boxShadow = '0 8px 25px rgba(0,242,254,0.6)'; };
+                downloadBtn.onmouseleave = () => { downloadBtn.style.transform = 'none'; downloadBtn.style.boxShadow = '0 6px 20px rgba(0,242,254,0.4)'; };
+
+                toolbar.appendChild(downloadBtn);
                 lightbox.appendChild(closeBtn);
                 lightbox.appendChild(img);
+                lightbox.appendChild(toolbar);
                 document.body.appendChild(lightbox);
 
                 const closeLightbox = () => {
                     lightbox.style.opacity = "0";
-                    img.style.transform = "scale(0.9)";
-                    setTimeout(() => lightbox.style.display = "none", 300);
+                    img.style.transform = "scale(0.92)";
+                    setTimeout(() => lightbox.style.display = "none", 250);
                     document.body.style.overflow = "auto";
                 };
 
@@ -10728,11 +10419,22 @@
             }
 
             const img = document.getElementById("lightbox-img");
+            const downloadBtn = document.getElementById("lightbox-download-btn");
             lightbox = document.getElementById("certificate-lightbox");
 
             img.src = certificate.image;
-            lightbox.style.display = "flex";
+            downloadBtn.onclick = (e) => {
+                e.preventDefault();
+                const a = document.createElement("a");
+                a.href = certificate.downloadLink || certificate.image;
+                const ext = a.href.substring(a.href.lastIndexOf('.'));
+                a.download = `${certificate.title.replace(/\s+/g, '_')}_Certificate${ext || '.png'}`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            };
 
+            lightbox.style.display = "flex";
             setTimeout(() => {
                 lightbox.style.opacity = "1";
                 img.style.transform = "scale(1)";
@@ -11558,13 +11260,12 @@
 
     
     // =========================================================
-    // LAPTOP TASKBAR DOCK & 120FPS SILKY SMOOTH AERO PEEK ENGINE
+    // LAPTOP TASKBAR DOCK & MODERN CERTIFICATES SYSTEM
     // =========================================================
     (function initTaskbarCertificatesSystem() {
-        const grid = document.querySelector('.certificates-grid');
         const cards = document.querySelectorAll('.certificate-card');
         const tabs = document.querySelectorAll('.cert-dock-tab');
-        if (!grid || !cards.length) return;
+        if (!cards.length) return;
 
         // 1. Taskbar Dock Category Filter
         tabs.forEach(tab => {
@@ -11574,8 +11275,6 @@
                 const filter = tab.getAttribute('data-filter');
 
                 cards.forEach(card => {
-                    card.classList.remove('is-peeking');
-                    card.style.transform = '';
                     const cat = card.getAttribute('data-category');
                     if (filter === 'all' || cat === filter) {
                         card.classList.remove('is-hidden');
@@ -11586,125 +11285,18 @@
                         card.style.display = 'none';
                     }
                 });
-                grid.classList.remove('has-active-peek');
             });
         });
 
-        // 2. 120FPS RequestAnimationFrame Lerp Engine for Silky-Smooth & Ultra-Fast Tilt
-        let activeCard = null;
-        let targetRotX = 0;
-        let targetRotY = 0;
-        let currentRotX = 0;
-        let currentRotY = 0;
-        let rafId = null;
-        const isTouch = ('ontouchstart' in window) || navigator.maxTouchPoints > 0;
-
-        function updateCardTilt() {
-            if (!activeCard) return;
-
-            // Fast smooth linear interpolation (Lerp)
-            currentRotX += (targetRotX - currentRotX) * 0.28;
-            currentRotY += (targetRotY - currentRotY) * 0.28;
-
-            activeCard.style.transform = 'translateY(-14px) scale(1.05) perspective(800px) rotateX(' + currentRotX.toFixed(2) + 'deg) rotateY(' + currentRotY.toFixed(2) + 'deg)';
-
-            // Continue loop while card is active or settling
-            if (activeCard || Math.abs(targetRotX - currentRotX) > 0.05 || Math.abs(targetRotY - currentRotY) > 0.05) {
-                rafId = requestAnimationFrame(updateCardTilt);
-            }
-        }
-
+        // 2. Direct click to open certificate lightbox
         cards.forEach(card => {
-            // Hover Enter: Instant snappy open (0.18s)
-            card.addEventListener('mouseenter', () => {
-                if (isTouch) return;
-                activeCard = card;
-                targetRotX = 0;
-                targetRotY = 0;
-                currentRotX = 0;
-                currentRotY = 0;
-
-                // Disable transition on transform so RAF can update at pure 120fps with ZERO lag
-                card.style.transition = 'transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.18s ease, border-color 0.18s ease';
-                card.classList.add('is-peeking');
-                grid.classList.add('has-active-peek');
-
-                if (rafId) cancelAnimationFrame(rafId);
-                rafId = requestAnimationFrame(updateCardTilt);
-            });
-
-            // Mouse Move: Ultra-responsive cursor tracking with high-performance coordinates
-            card.addEventListener('mousemove', (e) => {
-                if (isTouch || activeCard !== card) return;
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left - rect.width / 2;
-                const y = e.clientY - rect.top - rect.height / 2;
-
-                // Target tilt degrees (-9 to +9)
-                targetRotX = (-y / (rect.height / 2)) * 8;
-                targetRotY = (x / (rect.width / 2)) * 8;
-
-                // Temporarily remove transition for instantaneous tracking
-                card.style.transition = 'box-shadow 0.18s ease, border-color 0.18s ease';
-
-                if (!rafId) {
-                    rafId = requestAnimationFrame(updateCardTilt);
+            card.addEventListener('click', () => {
+                const certId = card.getAttribute('data-certificate-id');
+                if (typeof openCertificateModal === 'function') {
+                    openCertificateModal(certId);
                 }
             });
-
-            // Hover Leave: Instant clean close
-            card.addEventListener('mouseleave', () => {
-                if (isTouch) return;
-                if (rafId) {
-                    cancelAnimationFrame(rafId);
-                    rafId = null;
-                }
-                const leavingCard = card;
-                activeCard = null;
-                targetRotX = 0;
-                targetRotY = 0;
-                currentRotX = 0;
-                currentRotY = 0;
-
-                // Fast smooth 0.18s glide back to neutral
-                leavingCard.style.transition = 'transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.18s ease, border-color 0.18s ease';
-                leavingCard.classList.remove('is-peeking');
-                leavingCard.style.transform = 'translateY(0) scale(1) perspective(800px) rotateX(0deg) rotateY(0deg)';
-
-                grid.classList.remove('has-active-peek');
-
-                setTimeout(() => {
-                    if (activeCard !== leavingCard) {
-                        leavingCard.style.transition = '';
-                        leavingCard.style.transform = '';
-                    }
-                }, 190);
-            });
-
-            // Mobile Touch Handler: Single tap opens preview & brings on top
-            card.addEventListener('touchstart', (e) => {
-                if (!card.classList.contains('is-peeking')) {
-                    cards.forEach(c => {
-                        c.classList.remove('is-peeking');
-                        c.style.transform = '';
-                    });
-                    grid.classList.add('has-active-peek');
-                    card.classList.add('is-peeking');
-                    card.style.transform = 'translateY(-10px) scale(1.04)';
-                }
-            }, { passive: true });
         });
-
-        // Touch outside closes the active peek
-        document.addEventListener('touchstart', (e) => {
-            if (!e.target.closest('.certificate-card') && !e.target.closest('.cert-taskbar-dock-wrapper')) {
-                cards.forEach(c => {
-                    c.classList.remove('is-peeking');
-                    c.style.transform = '';
-                });
-                grid.classList.remove('has-active-peek');
-            }
-        }, { passive: true });
     })();
 
     </script>
