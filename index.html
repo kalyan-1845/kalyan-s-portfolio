@@ -90,7 +90,7 @@
         
 
 
-        /* Global Styles */
+                /* Global Styles */
         * {
             margin: 0;
             padding: 0;
@@ -104,128 +104,52 @@
             .cursor, .cursor-follower { display: none !important; }
         }
 
-        html {
-            scroll-behavior: smooth;
-            background-color: var(--bg-color); /* Fallback if WebGL fails */
-        }
-
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: transparent; /* Allows NEXUS 3D canvas to be visible */
-            color: var(--text-color);
-            line-height: 1.6;
-            overflow-x: hidden;
-            transition: var(--transition);
-        }
-
-        /* Text Selection */
-        ::selection {
-            background: var(--selection-color);
-            color: #fff;
-        }
-
-        h1,
-        h2,
-        h3,
-        h4 {
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        a {
-            text-decoration: none;
-            color: var(--primary-color);
-            transition: var(--transition);
-        }
-
-        a:hover {
-            color: var(--accent-color);
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        section {
-            padding: 80px 0;
-            position: relative;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        section.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Glassmorphism Card */
-        .glass-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 15px;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 8px 32px 0 var(--shadow-color);
-            padding: 2rem;
-            transition: var(--transition);
-            animation: fadeInUp 0.8s ease forwards;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .glass-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px 0 var(--shadow-color);
-        }
-
-        /* Custom Cursor */
+        /* Custom Cursor (Always on top of all modals and lightboxes) */
         .cursor {
             width: 20px;
             height: 20px;
             border: 2px solid var(--primary-color);
             border-radius: 50%;
             position: fixed;
-            transform: translate(-50%, -50%);
             pointer-events: none;
-            z-index: 9999;
-            transition: all 0.1s ease;
-            transition-property: background, transform;
+            z-index: 99999999 !important;
+            transition: transform 0.1s ease;
+            transform: translate(-50%, -50%);
         }
 
         .cursor-follower {
             width: 40px;
             height: 40px;
-            background: rgba(0, 242, 254, 0.1);
+            background: rgba(0, 242, 254, 0.15);
             border-radius: 50%;
             position: fixed;
-            transform: translate(-50%, -50%);
             pointer-events: none;
-            z-index: 9998;
-            transition: all 0.3s ease;
+            z-index: 99999998 !important;
+            transition: transform 0.18s ease;
+            transform: translate(-50%, -50%);
         }
 
         .cursor.active {
-            transform: translate(-50%, -50%) scale(1.5);
-            background: rgba(0, 242, 254, 0.1);
+            transform: translate(-50%, -50%) scale(1.6);
+            background: rgba(0, 242, 254, 0.15);
         }
 
         .cursor-follower.active {
-            transform: translate(-50%, -50%) scale(1.5);
+            transform: translate(-50%, -50%) scale(1.6);
+        }
+
+        /* When any modal or lightbox is active, show native cursor as well */
+        body.lightbox-active,
+        body.lightbox-active *,
+        #certificate-lightbox,
+        #certificate-lightbox * {
+            cursor: auto !important;
+        }
+
+        #certificate-lightbox .lightbox-btn,
+        #certificate-lightbox button,
+        #certificate-lightbox a {
+            cursor: pointer !important;
         }
 
         /* Header & Navigation */
@@ -6884,6 +6808,20 @@
             box-shadow: 0 4px 18px rgba(2, 132, 199, 0.4);
         }
 
+    
+        /* Lightbox High-Visibility Cursor & Easy Close Controls */
+        #certificate-lightbox,
+        #certificate-lightbox * {
+            cursor: auto !important;
+        }
+
+        #certificate-lightbox .lightbox-btn,
+        #certificate-lightbox a,
+        #certificate-lightbox button,
+        #certificate-lightbox span {
+            cursor: pointer !important;
+        }
+
     </style>
 
 </head>
@@ -10361,7 +10299,7 @@
           }
 };
 
-        // Function to open certificate modal
+        // Function to open certificate modal with easy-close and visible cursor
         function openCertificateModal(certificateId) {
             const certificate = certificates[certificateId];
             if (!certificate) return;
@@ -10376,46 +10314,77 @@
             if (!lightbox) {
                 lightbox = document.createElement("div");
                 lightbox.id = "certificate-lightbox";
-                lightbox.style.cssText = "display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(3,7,18,0.92); z-index:99999; justify-content:center; align-items:center; flex-direction:column; opacity:0; backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); transition:opacity 0.25s ease;";
+                lightbox.style.cssText = "display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(3,7,18,0.92); z-index:99999; justify-content:center; align-items:center; flex-direction:column; opacity:0; backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); transition:opacity 0.2s ease; cursor:pointer;";
 
-                const closeBtn = document.createElement("span");
-                closeBtn.innerHTML = "&times;";
-                closeBtn.style.cssText = "position:absolute; top:20px; right:24px; width:44px; height:44px; border-radius:50%; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); color:white; font-size:26px; cursor:pointer; font-weight:bold; z-index:100000; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 15px rgba(0,0,0,0.5); transition:all 0.2s ease;";
-                closeBtn.onmouseenter = () => closeBtn.style.background = 'rgba(255,255,255,0.25)';
-                closeBtn.onmouseleave = () => closeBtn.style.background = 'rgba(255,255,255,0.1)';
+                // Top-right close button with clear icon and text
+                const closeBtn = document.createElement("div");
+                closeBtn.id = "lightbox-top-close-btn";
+                closeBtn.className = "lightbox-btn";
+                closeBtn.innerHTML = '<i class="fas fa-times"></i> <span>Close (ESC)</span>';
+                closeBtn.style.cssText = "position:absolute; top:20px; right:24px; padding:8px 18px; border-radius:30px; background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.25); color:white; font-family:'Outfit', sans-serif; font-size:0.85rem; font-weight:700; cursor:pointer !important; z-index:100000; display:flex; align-items:center; gap:8px; box-shadow:0 4px 20px rgba(0,0,0,0.6); transition:all 0.2s ease; user-select:none;";
+                closeBtn.onmouseenter = () => { closeBtn.style.background = 'rgba(239,68,68,0.8)'; closeBtn.style.borderColor = '#ef4444'; };
+                closeBtn.onmouseleave = () => { closeBtn.style.background = 'rgba(255,255,255,0.12)'; closeBtn.style.borderColor = 'rgba(255,255,255,0.25)'; };
 
+                // Image container
                 const img = document.createElement("img");
                 img.id = "lightbox-img";
-                img.style.cssText = "max-width:92vw; max-height:80vh; object-fit:contain; border-radius:12px; box-shadow:0 15px 45px rgba(0,0,0,0.7), 0 0 35px rgba(0,242,254,0.2); transform:scale(0.92); transition:transform 0.25s cubic-bezier(0.16,1,0.3,1);";
+                img.style.cssText = "max-width:92vw; max-height:78vh; object-fit:contain; border-radius:12px; box-shadow:0 15px 50px rgba(0,0,0,0.8), 0 0 35px rgba(0,242,254,0.25); transform:scale(0.94); transition:transform 0.2s cubic-bezier(0.16,1,0.3,1); cursor:default;";
+                img.onclick = (e) => e.stopPropagation(); // Clicking image doesn't close accidentally
 
+                // Bottom toolbar
                 const toolbar = document.createElement("div");
                 toolbar.id = "lightbox-toolbar";
-                toolbar.style.cssText = "display:flex; align-items:center; gap:16px; margin-top:18px; z-index:100000;";
+                toolbar.style.cssText = "display:flex; align-items:center; justify-content:center; gap:14px; margin-top:20px; z-index:100000; flex-wrap:wrap;";
+                toolbar.onclick = (e) => e.stopPropagation();
 
+                // Download Button
                 const downloadBtn = document.createElement("a");
                 downloadBtn.id = "lightbox-download-btn";
+                downloadBtn.className = "lightbox-btn";
                 downloadBtn.innerHTML = '<i class="fas fa-download"></i> Save Credential';
-                downloadBtn.style.cssText = "display:inline-flex; align-items:center; gap:8px; padding:10px 24px; border-radius:30px; background:#00f2fe; color:#030712; font-family:'Outfit', sans-serif; font-size:0.85rem; font-weight:700; text-decoration:none; box-shadow:0 6px 20px rgba(0,242,254,0.4); cursor:pointer; transition:all 0.2s ease;";
+                downloadBtn.style.cssText = "display:inline-flex; align-items:center; gap:8px; padding:10px 24px; border-radius:30px; background:#00f2fe; color:#030712; font-family:'Outfit', sans-serif; font-size:0.85rem; font-weight:700; text-decoration:none; box-shadow:0 6px 20px rgba(0,242,254,0.4); cursor:pointer !important; transition:all 0.2s ease;";
                 downloadBtn.onmouseenter = () => { downloadBtn.style.transform = 'translateY(-2px)'; downloadBtn.style.boxShadow = '0 8px 25px rgba(0,242,254,0.6)'; };
                 downloadBtn.onmouseleave = () => { downloadBtn.style.transform = 'none'; downloadBtn.style.boxShadow = '0 6px 20px rgba(0,242,254,0.4)'; };
 
+                // Bottom Close Button (big and prominent!)
+                const bottomCloseBtn = document.createElement("button");
+                bottomCloseBtn.id = "lightbox-bottom-close-btn";
+                bottomCloseBtn.className = "lightbox-btn";
+                bottomCloseBtn.innerHTML = '<i class="fas fa-times"></i> Close Preview';
+                bottomCloseBtn.style.cssText = "display:inline-flex; align-items:center; gap:8px; padding:10px 24px; border-radius:30px; background:rgba(255,255,255,0.12); color:#ffffff; border:1px solid rgba(255,255,255,0.25); font-family:'Outfit', sans-serif; font-size:0.85rem; font-weight:700; cursor:pointer !important; transition:all 0.2s ease;";
+                bottomCloseBtn.onmouseenter = () => { bottomCloseBtn.style.background = 'rgba(239,68,68,0.7)'; bottomCloseBtn.style.borderColor = '#ef4444'; bottomCloseBtn.style.transform = 'translateY(-2px)'; };
+                bottomCloseBtn.onmouseleave = () => { bottomCloseBtn.style.background = 'rgba(255,255,255,0.12)'; bottomCloseBtn.style.borderColor = 'rgba(255,255,255,0.25)'; bottomCloseBtn.style.transform = 'none'; };
+
+                // Easy Close Function
+                const closeLightbox = () => {
+                    lightbox.style.opacity = "0";
+                    img.style.transform = "scale(0.94)";
+                    setTimeout(() => lightbox.style.display = "none", 200);
+                    document.body.style.overflow = "auto";
+                    document.body.classList.remove("lightbox-active");
+                    document.removeEventListener("keydown", handleEscKey);
+                };
+
+                const handleEscKey = (e) => {
+                    if (e.key === "Escape" || e.keyCode === 27) {
+                        closeLightbox();
+                    }
+                };
+
+                closeBtn.onclick = closeLightbox;
+                bottomCloseBtn.onclick = closeLightbox;
+                lightbox.addEventListener("click", closeLightbox); // Clicking anywhere on the dark backdrop closes it instantly!
+
                 toolbar.appendChild(downloadBtn);
+                toolbar.appendChild(bottomCloseBtn);
                 lightbox.appendChild(closeBtn);
                 lightbox.appendChild(img);
                 lightbox.appendChild(toolbar);
                 document.body.appendChild(lightbox);
 
-                const closeLightbox = () => {
-                    lightbox.style.opacity = "0";
-                    img.style.transform = "scale(0.92)";
-                    setTimeout(() => lightbox.style.display = "none", 250);
-                    document.body.style.overflow = "auto";
-                };
-
-                closeBtn.onclick = closeLightbox;
-                lightbox.addEventListener("click", (e) => {
-                    if (e.target === lightbox) closeLightbox();
-                });
+                // Store closer on DOM
+                lightbox._close = closeLightbox;
+                lightbox._handleEsc = handleEscKey;
             }
 
             const img = document.getElementById("lightbox-img");
@@ -10435,12 +10404,13 @@
             };
 
             lightbox.style.display = "flex";
+            document.body.classList.add("lightbox-active");
             setTimeout(() => {
                 lightbox.style.opacity = "1";
                 img.style.transform = "scale(1)";
             }, 10);
-
             document.body.style.overflow = "hidden";
+            document.addEventListener("keydown", lightbox._handleEsc);
         }
 
         // Add event listeners to certificate cards
