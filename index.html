@@ -6795,28 +6795,27 @@
             font-weight: 800;
         }
 
-        /* Aero Peek Card Focus & Siblings Dim */
+        /* Fast & Smooth Aero Peek Focus (GPU Accelerated, No Heavy Blur) */
         .certificates-grid {
             position: relative;
-            transition: all 0.3s ease;
         }
 
         .certificates-grid.has-active-peek .certificate-card:not(.is-peeking) {
-            opacity: 0.32 !important;
-            filter: blur(1.8px) grayscale(35%) !important;
-            transform: scale(0.96) !important;
+            opacity: 0.35 !important;
+            transform: scale(0.98) translateZ(0) !important;
+            transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
             pointer-events: auto;
         }
 
         .certificate-card {
             position: relative;
             z-index: 2;
-            will-change: transform, box-shadow, opacity, filter;
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-                        box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-                        border-color 0.35s ease,
-                        opacity 0.35s ease,
-                        filter 0.35s ease;
+            will-change: transform, box-shadow, opacity;
+            transform: translateZ(0);
+            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+                        box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+                        border-color 0.2s ease,
+                        opacity 0.2s ease;
             transform-origin: center center;
             overflow: visible !important;
         }
@@ -6824,9 +6823,9 @@
         .certificate-card.is-peeking {
             z-index: 100 !important;
             border-color: #00f2fe !important;
-            box-shadow: 0 28px 70px rgba(0, 242, 254, 0.45),
-                        0 0 45px rgba(168, 85, 247, 0.35),
-                        inset 0 0 25px rgba(0, 242, 254, 0.15) !important;
+            box-shadow: 0 24px 60px rgba(0, 242, 254, 0.45),
+                        0 0 35px rgba(168, 85, 247, 0.35),
+                        inset 0 0 20px rgba(0, 242, 254, 0.15) !important;
         }
 
         .certificate-card.is-hidden {
@@ -6838,7 +6837,7 @@
             position: absolute;
             top: -15px;
             left: 50%;
-            transform: translateX(-50%) translateY(8px);
+            transform: translateX(-50%) translateY(6px);
             z-index: 10;
             display: inline-flex;
             align-items: center;
@@ -6855,7 +6854,7 @@
             box-shadow: 0 6px 20px rgba(0, 242, 254, 0.45);
             pointer-events: none;
             opacity: 0;
-            transition: opacity 0.32s ease, transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: opacity 0.18s ease, transform 0.18s cubic-bezier(0.16, 1, 0.3, 1);
             white-space: nowrap;
         }
 
@@ -11608,7 +11607,7 @@
 
     
     // =========================================================
-    // LAPTOP TASKBAR DOCK & AERO PEEK HOVER SYSTEM
+    // LAPTOP TASKBAR DOCK & 120FPS SILKY SMOOTH AERO PEEK ENGINE
     // =========================================================
     (function initTaskbarCertificatesSystem() {
         const grid = document.querySelector('.certificates-grid');
@@ -11630,7 +11629,7 @@
                     if (filter === 'all' || cat === filter) {
                         card.classList.remove('is-hidden');
                         card.style.display = 'flex';
-                        card.style.animation = 'fadeInUp 0.4s ease forwards';
+                        card.style.animation = 'fadeInUp 0.3s ease forwards';
                     } else {
                         card.classList.add('is-hidden');
                         card.style.display = 'none';
@@ -11640,41 +11639,98 @@
             });
         });
 
-        // 2. Aero Peek Hover Bring-to-Top and Close-on-Leave Physics
+        // 2. 120FPS RequestAnimationFrame Lerp Engine for Silky-Smooth & Ultra-Fast Tilt
         let activeCard = null;
+        let targetRotX = 0;
+        let targetRotY = 0;
+        let currentRotX = 0;
+        let currentRotY = 0;
+        let rafId = null;
         const isTouch = ('ontouchstart' in window) || navigator.maxTouchPoints > 0;
 
+        function updateCardTilt() {
+            if (!activeCard) return;
+
+            // Fast smooth linear interpolation (Lerp)
+            currentRotX += (targetRotX - currentRotX) * 0.28;
+            currentRotY += (targetRotY - currentRotY) * 0.28;
+
+            activeCard.style.transform = 'translateY(-14px) scale(1.05) perspective(800px) rotateX(' + currentRotX.toFixed(2) + 'deg) rotateY(' + currentRotY.toFixed(2) + 'deg)';
+
+            // Continue loop while card is active or settling
+            if (activeCard || Math.abs(targetRotX - currentRotX) > 0.05 || Math.abs(targetRotY - currentRotY) > 0.05) {
+                rafId = requestAnimationFrame(updateCardTilt);
+            }
+        }
+
         cards.forEach(card => {
-            // Hover Enter: Open & Bring on Top
+            // Hover Enter: Instant snappy open (0.18s)
             card.addEventListener('mouseenter', () => {
                 if (isTouch) return;
                 activeCard = card;
-                grid.classList.add('has-active-peek');
+                targetRotX = 0;
+                targetRotY = 0;
+                currentRotX = 0;
+                currentRotY = 0;
+
+                // Disable transition on transform so RAF can update at pure 120fps with ZERO lag
+                card.style.transition = 'transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.18s ease, border-color 0.18s ease';
                 card.classList.add('is-peeking');
-                card.style.transform = 'translateY(-14px) scale(1.05)';
+                grid.classList.add('has-active-peek');
+
+                if (rafId) cancelAnimationFrame(rafId);
+                rafId = requestAnimationFrame(updateCardTilt);
             });
 
-            // Mouse Move: 3D Perspective Tactile Tilt
+            // Mouse Move: Ultra-responsive cursor tracking with high-performance coordinates
             card.addEventListener('mousemove', (e) => {
                 if (isTouch || activeCard !== card) return;
                 const rect = card.getBoundingClientRect();
                 const x = e.clientX - rect.left - rect.width / 2;
                 const y = e.clientY - rect.top - rect.height / 2;
-                const rotX = (-y / rect.height) * 10;
-                const rotY = (x / rect.width) * 10;
-                card.style.transform = 'translateY(-14px) scale(1.05) perspective(800px) rotateX(' + rotX.toFixed(2) + 'deg) rotateY(' + rotY.toFixed(2) + 'deg)';
+
+                // Target tilt degrees (-9 to +9)
+                targetRotX = (-y / (rect.height / 2)) * 8;
+                targetRotY = (x / (rect.width / 2)) * 8;
+
+                // Temporarily remove transition for instantaneous tracking
+                card.style.transition = 'box-shadow 0.18s ease, border-color 0.18s ease';
+
+                if (!rafId) {
+                    rafId = requestAnimationFrame(updateCardTilt);
+                }
             });
 
-            // Hover Leave: Moving slightly or leaving automatically closes
+            // Hover Leave: Instant clean close
             card.addEventListener('mouseleave', () => {
                 if (isTouch) return;
-                card.classList.remove('is-peeking');
-                card.style.transform = '';
+                if (rafId) {
+                    cancelAnimationFrame(rafId);
+                    rafId = null;
+                }
+                const leavingCard = card;
                 activeCard = null;
+                targetRotX = 0;
+                targetRotY = 0;
+                currentRotX = 0;
+                currentRotY = 0;
+
+                // Fast smooth 0.18s glide back to neutral
+                leavingCard.style.transition = 'transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.18s ease, border-color 0.18s ease';
+                leavingCard.classList.remove('is-peeking');
+                leavingCard.style.transform = 'translateY(0) scale(1) perspective(800px) rotateX(0deg) rotateY(0deg)';
+
                 grid.classList.remove('has-active-peek');
+
+                setTimeout(() => {
+                    if (activeCard !== leavingCard) {
+                        leavingCard.style.transition = '';
+                        leavingCard.style.transform = '';
+                    }
+                }, 190);
             });
 
-            // Mobile Touch Handler: Tap opens preview & brings on top
+            // Mobile Touch Handler: Single tap opens preview & brings on top
             card.addEventListener('touchstart', (e) => {
                 if (!card.classList.contains('is-peeking')) {
                     cards.forEach(c => {
